@@ -27,3 +27,4 @@ const newStudent = mongoose.Schema({
         required: true
     }
 })
+
