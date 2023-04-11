@@ -8,7 +8,7 @@ const expressLayouts = require("express-ejs-layouts");
 const app = express();
 const exceltoJson = require("convert-excel-to-json");
 const path = require("path");
-
+const bcrypt = require('bcrypt');
 // model imported
 const newStudentModel = require("./Models/studentModel");
 
@@ -99,11 +99,22 @@ function importExceltoJson(filepath) {
     });
 
   function insertData() {
-    console;
+    const students = [...exceldata.Sheet1];
+    students.forEach((student, index) => {
+      const passwd = student.Rank + student.Branch;
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(passwd, salt, (err, hash) => {
+          if (err) throw err;
+          student.passwd = hash;
+        })
+
+      })
+    })
+    console.log(students);
     newStudentModel
       .create([...exceldata.Sheet1])
       .then((Data) => {
-        console.log(Data);
+        //console.log(Data);
         mongoose.connection.close().then(() => {
           console.log("connection closed");
         });
@@ -115,6 +126,10 @@ function importExceltoJson(filepath) {
       });
   }
 }
+
+
+
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log("Server has started at 5000");
