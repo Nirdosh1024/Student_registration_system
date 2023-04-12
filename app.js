@@ -8,9 +8,10 @@ const expressLayouts = require("express-ejs-layouts");
 const app = express();
 const exceltoJson = require("convert-excel-to-json");
 const path = require("path");
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 // model imported
 const newStudentModel = require("./Models/studentModel");
+const { stderr } = require("process");
 
 app.use(
   cors({
@@ -57,6 +58,7 @@ app.post("/upload", upload.single("excel"), (req, res) => {
     res.json({ status: "OKAY" });
   }
 });
+
 function importExceltoJson(filepath) {
   const exceldata = exceltoJson({
     sourceFile: filepath,
@@ -94,41 +96,39 @@ function importExceltoJson(filepath) {
       insertData();
     })
     .catch((e) => {
-      //   console.error(e);
       console.log("The error is when connected", e);
     });
 
-  function insertData() {
+  async function insertData() {
     const students = [...exceldata.Sheet1];
-    students.forEach((student, index) => {
-      const passwd = student.Rank + student.Branch;
-      bcrypt.genSalt(10, (err, salt) => {
-        bcrypt.hash(passwd, salt, (err, hash) => {
-          if (err) throw err;
-          student.passwd = hash;
-        })
+    const salt = await bcrypt.genSalt(10);
+    let s = [];
+    if (salt) {
+      for (let student of students) {
+        const passwd = student.Rank + student.Branch;
+        const hasedPasswd = await bcrypt.hash(passwd, salt);
+        if (hasedPasswd) {
+          student.passwd = hasedPasswd;
+        }
+        s.push(student);
+      }
 
-      })
-    })
-    console.log(students);
-    newStudentModel
-      .create([...exceldata.Sheet1])
-      .then((Data) => {
-        //console.log(Data);
-        mongoose.connection.close().then(() => {
-          console.log("connection closed");
-        });
-      })
-      .catch((e) => {
-        //   console.error(e);
-
-        console.log("The error is on insert ", e);
-      });
+      if (s.length) {
+        newStudentModel
+          .create([...s])
+          .then((Data) => {
+            console.log("uploaded data", Data);
+            mongoose.connection.close().then(() => {
+              console.log("connection closed");
+            });
+          })
+          .catch((e) => {
+            console.log("The error is on insert ", e);
+          });
+      }
+    }
   }
 }
-
-
-
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

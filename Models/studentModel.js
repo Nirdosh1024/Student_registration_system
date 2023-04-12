@@ -1,8 +1,8 @@
 /** @format */
 
 const mongoose = require("mongoose");
-const passport =  require("passport")
-const passportLocalMongoose =  require("passport-local-mongoose")
+const passport = require("passport");
+const passportLocalMongoose = require("passport-local-mongoose");
 
 const newStudent = mongoose.Schema({
   ID: {
@@ -29,9 +29,9 @@ const newStudent = mongoose.Schema({
     type: Number,
     required: true,
   },
-  Password: {
+  passwd: {
     type: String,
-  }
+  },
 });
 newStudent.plugin(passportLocalMongoose);
 
