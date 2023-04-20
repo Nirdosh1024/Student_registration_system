@@ -6,7 +6,7 @@ const newStudentModel = require("../Models/studentModel");
 
 module.exports = function(passport) {
     passport.use(
-        new LocalStrategy({ usernameField: "ID" }, (UserID, password, done) => {
+        new LocalStrategy({ usernameField: "UserID" }, (UserID, password, done) => {
             // Match user
             console.log("heelllo");
             newStudentModel.findOne({
@@ -17,6 +17,7 @@ module.exports = function(passport) {
                     return done(null, false);
                 }
 
+                console.log("function reaching here");
                 // Match password
                 bcrypt.compare(password, student.passwd, (err, isMatch) => {
                     if (err) throw err;
@@ -34,9 +35,11 @@ module.exports = function(passport) {
         done(null, student.id);
     });
 
-    passport.deserializeUser(function(ID, done) {
-        newStudentModel.findById(ID, function (err, student) {
-            done(err, student);
+    passport.deserializeUser(function(id, done) {
+        newStudentModel.findById(id).then(function(student) {
+            done(null, student);
+        }).catch(function(err) {
+            done(err, null);
         });
     });
 };

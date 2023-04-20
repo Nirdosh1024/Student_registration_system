@@ -32,6 +32,18 @@ app.use(
   })
 );
 
+mongoose
+    .connect("mongodb://localhost/myapp", {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+    .then(() => {
+      console.log("Mongo DB Connected....");
+    })
+    .catch((e) => {
+      console.log("The error is when connected", e);
+    });
+
 
 // initialising an express session to store authentication credentials
 app.use(session({
@@ -90,7 +102,7 @@ app.get("/authentication", (req, res) => {
 
 
 app.get("/dashboard", ensureAuthenticated, (req, res) => {
-  res.render("dashboard")
+  res.render("dashboard");
 });
 
 
@@ -101,6 +113,16 @@ app.post("/login", (req, res, next) => {
       failureRedirect: "/authentication",
       failureFlash: false
     })(req, res, next);
+});
+
+
+app.get('/logout', (req, res, next) => {
+  req.logout(err => {
+    if(err) {
+      return next(err);
+    }
+  });
+  res.redirect('/authentication');
 });
 
 function importExceltoJson(filepath) {
@@ -130,18 +152,7 @@ function importExceltoJson(filepath) {
   console.log(exceldata);
   // insert data in db
 
-  mongoose
-    .connect("mongodb://localhost/myapp", {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    })
-    .then(() => {
-      console.log("Mongo DB Connected....");
-      insertData();
-    })
-    .catch((e) => {
-      console.log("The error is when connected", e);
-    });
+  insertData();
 
   async function insertData() {
     const students = [...exceldata.Sheet1];
