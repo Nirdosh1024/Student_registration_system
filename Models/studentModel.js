@@ -33,7 +33,6 @@ const newStudent = mongoose.Schema({
     type: String,
   },
 });
-newStudent.plugin(passportLocalMongoose);
 
-const newStudentModel = mongoose.model("newStudent", newStudent);
+const newStudentModel = mongoose.model("newStudentModel", newStudent);
 module.exports = newStudentModel;

@@ -4,11 +4,23 @@ const express = require("express");
 const mongoose = require("mongoose");
 const multer = require("multer");
 const cors = require("cors");
-const expressLayouts = require("express-ejs-layouts");
 const app = express();
 const exceltoJson = require("convert-excel-to-json");
 const path = require("path");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
+const passport = require("passport");
+
+require('dotenv').config();
+
+const { ensureAuthenticated, forwardAuthenticated }  = require("./config/auth");
+
+// importing express session
+const session = require("express-session");
+
+// requiring the passport config file here
+require("./config/passport")(passport);
+
+
 // model imported
 const newStudentModel = require("./Models/studentModel");
 const { stderr } = require("process");
@@ -20,7 +32,20 @@ app.use(
   })
 );
 
-app.use(expressLayouts);
+
+// initialising an express session to store authentication credentials
+app.use(session({
+  secret: process.env.SECRET,
+  resave: true,
+  saveUninitialized: true
+}));
+
+
+// passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 app.set("view engine", "ejs");
 
 app.use(express.json());
@@ -57,6 +82,25 @@ app.post("/upload", upload.single("excel"), (req, res) => {
     importExceltoJson(filepath);
     res.json({ status: "OKAY" });
   }
+});
+
+app.get("/authentication", (req, res) => {
+  res.render("login");
+});
+
+
+app.get("/dashboard", ensureAuthenticated, (req, res) => {
+  res.render("dashboard")
+});
+
+
+
+app.post("/login", (req, res, next) => {
+    passport.authenticate('local', {
+      successRedirect: "/dashboard",
+      failureRedirect: "/authentication",
+      failureFlash: false
+    })(req, res, next);
 });
 
 function importExceltoJson(filepath) {
@@ -106,12 +150,15 @@ function importExceltoJson(filepath) {
     if (salt) {
       for (let student of students) {
         const passwd = student.Rank + student.Branch;
+        console.log(passwd);
         const hasedPasswd = await bcrypt.hash(passwd, salt);
         if (hasedPasswd) {
           student.passwd = hasedPasswd;
         }
         s.push(student);
       }
+
+    
 
       if (s.length) {
         newStudentModel
