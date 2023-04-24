@@ -9,7 +9,7 @@ const Admin = require("../Models/adminModel");
 
 module.exports = function(passport) {
     passport.use("local-student",
-        new LocalStrategy( { passReqToCallback: true},{ usernameField: "UserID" }, (req,UserID, password, done) => {
+        new LocalStrategy({ usernameField: "UserID" }, (UserID, password, done) => {
             // Match user
             console.log("heelllo");
             newStudentModel.findOne({
@@ -18,8 +18,7 @@ module.exports = function(passport) {
                 console.log(user);
                 if (!user) {
                     console.log("Btech karke bakri charawela")
-                    req.flash('error', "Student not found");
-                    return done(null, false);
+                    return done(null, false, {message: "That Id is not registered" });
 
                 }
 
@@ -30,9 +29,7 @@ module.exports = function(passport) {
                     if (isMatch) {
                         return done(null, user);
                     } else {
-                        req.flash('error', "Password Incorrect");
-
-                        return done(null, false);
+                        return done(null, false, {messsage: "Password Incorrect" });
                     }
                 });
             });
@@ -40,12 +37,11 @@ module.exports = function(passport) {
     );
 
 
-    passport.use("local-admin", new LocalStrategy({ passReqToCallback: true},{ usernameField: "UserID" }, (req, UserID, password, done) => {
+    passport.use("local-admin", new LocalStrategy({ usernameField: "UserID" }, (UserID, password, done) => {
         Admin.findOne({ID: UserID}).then((user) => {
             if(!user) {
                 console.log("Btech karke bakri charawela")
-                req.flash('error', "Admin not found");
-                return done(null, false);
+                return done(null, false, { message: "Admin not found" });
             }
 
             bcrypt.compare(password, user.Passwd, (err, isMatch) => {
@@ -54,8 +50,7 @@ module.exports = function(passport) {
                     console.log(user);
                     return done(null, user);
                 } else {
-                    req.flash('error', "Password Incorrect");
-                    return done(null, false);
+                    return done(null, false, { message: "Password Incorrect" });
                 }
             });
         })

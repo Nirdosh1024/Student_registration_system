@@ -1,7 +1,7 @@
 <h1>Login</h1>
-<% for (let i=0; i<errors.length; i++) { %>
-    <li><%= errors[i]%></li>
-<% } %>
+
+<%- include("./partials/messages"); %>
+
 <form action="/login" method="POST">
 
 <div>
