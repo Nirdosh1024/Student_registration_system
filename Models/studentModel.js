@@ -1,8 +1,7 @@
 /** @format */
 
 const mongoose = require("mongoose");
-const passport = require("passport");
-const passportLocalMongoose = require("passport-local-mongoose");
+
 
 const newStudent = mongoose.Schema({
   ID: {
@@ -32,6 +31,10 @@ const newStudent = mongoose.Schema({
   passwd: {
     type: String,
   },
+  role: {
+    type: String,
+    required: true
+  }
 });
 
 const newStudentModel = mongoose.model("newStudentModel", newStudent);

@@ -7,8 +7,11 @@ const cors = require("cors");
 const app = express();
 const exceltoJson = require("convert-excel-to-json");
 const path = require("path");
+const flash = require("connect-flash");
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
+
+
 
 require('dotenv').config();
 
@@ -23,17 +26,18 @@ require("./config/passport")(passport);
 
 // model imported
 const newStudentModel = require("./Models/studentModel");
+const Admin = require("./Models/adminModel");
 const { stderr } = require("process");
 
 app.use(
   cors({
-    origin: "http://localhost:3000/",
+    origin: "http://localhost:5000/",
     credentials: true,
   })
 );
 
 mongoose
-    .connect("mongodb://localhost/myapp", {
+    .connect("mongodb://localhost/studentdatabase", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
@@ -56,6 +60,15 @@ app.use(session({
 // passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
+
+// flash setup
+app.use(flash());
+
+// Global variables 
+app.use((req, res, next) => {
+  res.locals.errors =  req.flash('error')
+  next();
+});
 
 
 app.set("view engine", "ejs");
@@ -108,12 +121,49 @@ app.get("/dashboard", ensureAuthenticated, (req, res) => {
 
 
 app.post("/login", (req, res, next) => {
-    passport.authenticate('local', {
+    passport.authenticate('local-student', {
       successRedirect: "/dashboard",
       failureRedirect: "/authentication",
-      failureFlash: false
+      failureFlash: true
     })(req, res, next);
 });
+
+// app.post("/adminLogin", (req, res) => {
+//   const { UserID, password } = req.body; 
+//   Admin.findOne({ID: UserID}).then(async (admin) => {
+//     console.log("Function is reaching here");
+//     const password = await hashedPassword(UserID)
+//     admin.Passwd = password
+//     admin.
+//     save().then((admin) => {
+//       console.log("password is successfully saved")
+//     })
+//   }).catch((e) => {
+//     console.error(e);
+//   })
+//   res.json({status: "OKAY"});
+// })
+
+// async function hashedPassword(UserID){
+//   const salt = await bcrypt.genSalt(10);
+//   if (salt){
+//     const password = UserID + '@841'
+//     const hashedPass= await bcrypt.hash(password,salt);
+//     return hashedPass;
+//   } 
+// }
+
+app.get("/admindashboard", ensureAuthenticated, (req, res) => {
+  res.render("admindashboard");
+})
+
+app.post("/adminLogin", (req, res, next) => {
+  passport.authenticate("local-admin", {
+    successRedirect: "/admindashboard",
+    failureRedirect: "/authentication",
+    failureFlash: true
+  })(req, res, next);
+})
 
 
 app.get('/logout', (req, res, next) => {
@@ -165,6 +215,7 @@ function importExceltoJson(filepath) {
         const hasedPasswd = await bcrypt.hash(passwd, salt);
         if (hasedPasswd) {
           student.passwd = hasedPasswd;
+          student.role = "student";
         }
         s.push(student);
       }
