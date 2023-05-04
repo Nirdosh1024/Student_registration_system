@@ -5,19 +5,14 @@ const newStudentModel = require("../Models/studentModel");
 const Admin = require("../Models/adminModel");
 
 
-
-
 module.exports = function(passport) {
     passport.use("local-student",
         new LocalStrategy({ usernameField: "UserID" }, (UserID, password, done) => {
             // Match user
-            console.log("heelllo");
             newStudentModel.findOne({
                 ID: UserID
             }).then((user) => {
-                console.log(user);
                 if (!user) {
-                    console.log("Btech karke bakri charawela")
                     return done(null, false, {message: "That Id is not registered" });
 
                 }
@@ -37,17 +32,18 @@ module.exports = function(passport) {
     );
 
 
+
+
     passport.use("local-admin", new LocalStrategy({ usernameField: "UserID" }, (UserID, password, done) => {
         Admin.findOne({ID: UserID}).then((user) => {
             if(!user) {
-                console.log("Btech karke bakri charawela")
                 return done(null, false, { message: "Admin not found" });
             }
 
             bcrypt.compare(password, user.Passwd, (err, isMatch) => {
                 if (err) throw err;
                 if (isMatch) {
-                    console.log(user);
+                    //console.log(user);
                     return done(null, user);
                 } else {
                     return done(null, false, { message: "Password Incorrect" });

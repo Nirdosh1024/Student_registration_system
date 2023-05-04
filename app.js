@@ -10,7 +10,12 @@ const path = require("path");
 const flash = require("connect-flash");
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
+const helmet = require("helmet");
+const logger = require("morgan");
 
+
+// import routes
+const formRoute = require("./routes/formRoute");
 
 
 require('dotenv').config();
@@ -22,6 +27,13 @@ const session = require("express-session");
 
 // requiring the passport config file here
 require("./config/passport")(passport);
+
+
+// helmet config
+// app.use(helmet());
+
+// logger config
+app.use(logger('dev'));
 
 
 // model imported
@@ -53,7 +65,10 @@ mongoose
 app.use(session({
   secret: process.env.SECRET,
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 365 * 24 * 60 * 60 * 1000
+  }
 }));
 
 
@@ -76,6 +91,10 @@ app.set("view engine", "ejs");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+
+// require public folder
+app.use(express.static("public"));
 
 // multer setup to upload files to the server
 const storage = multer.diskStorage({
@@ -115,8 +134,23 @@ app.get("/authentication", (req, res) => {
 });
 
 
-app.get("/dashboard", ensureAuthenticated, (req, res) => {
-  res.render("dashboard");
+app.get("/dashboard", ensureAuthenticated, async (req, res) => {
+  const id = req.session.passport.user._id;
+
+  const user = await newStudentModel.findById(id);
+  const dataToBePassedToView = {
+    name: user.Name,
+    email: user.Email,
+    JEERoll: user.ID
+  }
+
+  if(req.user.dashboard_created){
+    res.render("dashboard")
+  }
+  else{
+  res.render("form", {
+    dataToBePassedToView
+  });}
 });
 
 
@@ -200,7 +234,6 @@ function importExceltoJson(filepath) {
     ],
   });
 
-  console.log(exceldata);
   // insert data in db
 
   insertData();
@@ -212,11 +245,11 @@ function importExceltoJson(filepath) {
     if (salt) {
       for (let student of students) {
         const passwd = student.Rank + student.Branch;
-        console.log(passwd);
         const hasedPasswd = await bcrypt.hash(passwd, salt);
         if (hasedPasswd) {
           student.passwd = hasedPasswd;
           student.role = "student";
+          student.dashboard_created = false;
         }
         s.push(student);
       }
@@ -228,9 +261,9 @@ function importExceltoJson(filepath) {
           .create([...s])
           .then((Data) => {
             console.log("uploaded data", Data);
-            mongoose.connection.close().then(() => {
-              console.log("connection closed");
-            });
+            // mongoose.connection.close().then(() => {
+            //   console.log("connection closed");
+            // });
           })
           .catch((e) => {
             console.log("The error is on insert ", e);
@@ -239,6 +272,8 @@ function importExceltoJson(filepath) {
     }
   }
 }
+
+app.use("/form-submit", formRoute);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
