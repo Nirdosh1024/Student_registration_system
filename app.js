@@ -116,7 +116,7 @@ app.post("/", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.render("layout");
+  res.render("homepage");
 });
 
 app.post("/upload", upload.single("excel"), (req, res) => {
@@ -275,7 +275,7 @@ function importExceltoJson(filepath) {
 
 app.use("/form-submit", formRoute);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log("Server has started at 5000");
+  console.log("Server has started at 3000");
 });

@@ -1,34 +1,66 @@
-<h1>Login</h1>
+<html>
+    <head>
+        <title>Login Page</title>
+        <link rel="stylesheet" href="./login.css">
+    </head>
+    <body>
+        
+        <%- include("./partials/messages"); %>
 
-<%- include("./partials/messages"); %>
+    <div class="login-page">
 
-<form action="/login" method="POST">
+        <div class="login-image">
+        <img class="img" src="./assets/ladkiversion2.png.png" alternative=""/>
+        </div>
 
-<div>
-    <label for="UserID">UserID</label>
-    <input type="text" id="UserID" name="UserID" required>
-</div>
+        <div id="login" class="login">
 
-<div>
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" required>
-</div>
+        <h1>WELCOME!</h1>
+        <img class="icon1" src="./assets/studenticon3.png" alternative=""/>
+        <button class="selectbtn1" id="user-btn">Login as Student</button>
+        </br></br>
+        <img class="icon2" src="./assets/studenticon1.png" alternative=""/>
+        <button class="selectbtn2" id="admin-btn">Login as Admin</button>
 
-<button type="submit">login</button>
-</form>
+        </div>
+        
+        <div id="user-login" class="login-form hidden">
+            <h1>Login As A Student</h1>
+            
+            <form class="userlogin-form" action="/login" method="POST"> 
+                <div class="userid">
+                    <label for="UserID">UserID</label>
+                    <input type="text" id="UserID" name="UserID" required>
+                    <span></span>
+                </div>
 
+                <div class="userpassword">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                    <span></span>
+                </div>
+                <button type="submit" class="stdbtn">Login</button>
+            </form>
+        </div>
+        <div id="admin-login" class="login-form hidden">
+                <h1>Login As An Admin</h1>
+                <form class="adminlogin-form" action="/adminLogin" method="POST">
+                <div>
+                    <label for="UserID">UserID</label>
+                    <input type="text" id="UserID" name="UserID" required>
+                    <span></span>
+                </div>
 
-<form action="/adminLogin" method="POST">
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                    <span></span>
+                </div>
 
-<div>
-    <label for="UserID">UserID</label>
-    <input type="text" id="UserID" name="UserID" required>
-</div>
-
-<div>
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" required>
-</div>
-
-<button type="submit">login</button>
-</form>
+                <button type="submit" class="adminbtn">Login</button>
+            </form>
+        </div>
+    </div>
+        <script src="login.js"></script>
+    </body>
+</html>
