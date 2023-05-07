@@ -1,2 +1,80 @@
-<h1>Hii you have successfully logged in</h1>
-<a href="/logout">Logout</a>
+<html>
+    <head>
+        <title>Dashboard</title>
+        <link rel="stylesheet" href="./dashboard.css">
+    </head>
+    <body>
+        <header>
+            <div class="collagelogo">
+                <img src="http://recsonbhadra.ac.in/static/media/Collegelogo.96cbe2da1f0150aefe6d.png" alt="logo" class="logo">
+            </div>
+            <div class="college-name middle">
+                <h3>Rajkiya Engineering College, Sonbhadra</h3>
+                <h5>An AICTE approved Government Engineering College affliated to AKTU Lucknow(College code-841)</h5>
+            </div>
+        </header>
+        <div class="side-bar">
+            <ul class="sideMenu-list">
+                <h2 class="sideMenu-heading text-center">My Dashboard</h2>
+                <li class="sideMenu-list-item" id="latest_updates">
+                    <a class=" sideMenu-active" href="">
+                        <span>-</span>
+                        Latest Updates
+                    </a>
+                </li>
+                <li class="sideMenu-list-item " id="registration_status">
+                    <a class="" href="">
+                        <span>-</span>
+                        Registration Status
+                    </a>
+                </li>
+
+                <li class="sideMenu-list-item " id="academic_calender">
+                    <a class=" " href="">
+                        <span>-</span>
+                        Academic Calender
+                    </a>
+                </li>
+                <!-- <li class="sideMenu-list-item " id="current_subjects">
+                    <a class=" " href="">
+                        <span>-</span>
+                        My Current Subjects
+                    </a>
+                </li> -->
+                <li class="sideMenu-list-item " id="Documents_for_download">
+                    <a class=" " href="">
+                        <span>-</span>
+                        Documents For Download
+                    </a>
+                </li>
+                <li class="sideMenu-list-item " id="certificate">
+                    <a class=" " href="">
+                        <span>-</span>
+                        Certificates
+                    </a>
+                </li>
+                <li class="sideMenu-list-item " id="Submitted_documents">
+                    <a class=" " href="">
+                        <span>-</span>
+                        Submitted Documents
+                    </a>
+                </li>
+                <li class="sideMenu-list-item " id="pending_payments">
+                    <a class=" " href="">
+                        <span>-</span>
+                        Pending Payments
+                    </a>
+                </li>
+                <li class="sideMenu-list-item " id="latest_updates">
+                    <a class=" " href="">
+                        <button class="btn">Sign Out</button>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+        <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+        <script src="index.js"></script>
+    </body>
+</html>
