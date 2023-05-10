@@ -134,13 +134,13 @@ app.get("/authentication", (req, res) => {
 });
 
 
+
 app.get("/dashboard", ensureAuthenticated, async (req, res) => {
   const id = req.session.passport.user._id;
 
   const user = await newStudentModel.findById(id);
   const dataToBePassedToView = {
     name: user.Name,
-    email: user.Email,
     JEERoll: user.ID
   }
 

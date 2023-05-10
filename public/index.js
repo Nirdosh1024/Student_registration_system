@@ -1,7 +1,8 @@
 const personalForm = document.querySelector(".personal-form");
 
 
-personalForm.addEventListener("submit", async () => {
+personalForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
     const dataInForm = new FormData(personalForm);
     const values = [...dataInForm];
     const formDataObject = {};
@@ -15,8 +16,10 @@ personalForm.addEventListener("submit", async () => {
         data: formDataObject
     });
 
-    console.log(axiosResponse);
-
+    
+    if(axiosResponse.data.status == "Okay") {
+        window.location.href = "/dashboard";
+    }
 })
 
 // Function for admin fee form submission

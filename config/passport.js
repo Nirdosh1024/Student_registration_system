@@ -12,16 +12,18 @@ module.exports = function(passport) {
             newStudentModel.findOne({
                 ID: UserID
             }).then((user) => {
+                console.log(user);
                 if (!user) {
                     return done(null, false, {message: "That Id is not registered" });
 
                 }
 
-                console.log("function reaching here");
+                
                 // Match password
                 bcrypt.compare(password, user.passwd, (err, isMatch) => {
                     if (err) throw err;
                     if (isMatch) {
+                        console.log("function reaching here");
                         return done(null, user);
                     } else {
                         return done(null, false, {messsage: "Password Incorrect" });
