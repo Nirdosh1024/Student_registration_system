@@ -1,23 +1,25 @@
 <html>
-    <head>
-        <title>Dashboard</title>
-        <link rel="stylesheet" href="./dashboard.css">
-        <link rel="stylesheet" href="./docs.css">
-    </head>
-    <body>
-        <header>
-            <div class="collagelogo">
-                <img src="http://recsonbhadra.ac.in/static/media/Collegelogo.96cbe2da1f0150aefe6d.png" alt="logo" class="logo">
-            </div>
-            <div class="college-name middle">
-                <h3>Rajkiya Engineering College, Sonbhadra</h3>
-                <h5>An AICTE approved Government Engineering College affliated to AKTU Lucknow(College code-841)</h5>
-            </div>
-            <div class="student-name">
-                <input class="input" type="text" id="student_name" name="name"  />
-            </div>
-        </header>
+  <head>
+      <title>Dashboard-Documents</title>
+      <link rel="stylesheet" href="./docs.css">
+  </head>
+  <body>
+      <header>
+          <div class="collagelogo">
+              <img src="http://recsonbhadra.ac.in/static/media/Collegelogo.96cbe2da1f0150aefe6d.png" alt="logo" class="logo">
+          </div>
+          <div class="college-name middle">
+              <h3>Rajkiya Engineering College, Sonbhadra</h3>
+              <h5>An AICTE approved Government Engineering College affliated to AKTU Lucknow(College code-841)</h5>
+          </div>
+          <div class="student-name">
+              <input class="input" type="text" id="student_name" name="name"  />
+          </div>
+        
+      </header>
 
+      <div class="docs-page">
+      <div class="main-content">
         <div class="side-bar">
             <ul class="sideMenu-list">
                 <h2 class="sideMenu-heading text-center">My Dashboard</h2>
@@ -27,14 +29,6 @@
                         Latest Updates
                     </a>
                 </li>
-
-                <li class="sideMenu-list-item " id="registration_status">
-                    <a class="" href="/studentform">
-                        <span>-</span>
-                        Registration Form
-                    </a>
-                </li>
-
                 <li class="sideMenu-list-item " id="registration_status">
                     <a class="" href="/status">
                         <span>-</span>
@@ -48,7 +42,6 @@
                         Academic Calender
                     </a>
                 </li>
-                
                 <!-- <li class="sideMenu-list-item " id="Documents_for_download">
                     <a class=" " href="">
                         <span>-</span>
@@ -67,30 +60,32 @@
                         Pending Payments
                     </a>
                 </li>
-                <li class="sideMenu-list-item " id="latest_updates">
-                    <a class=" " href="/logout">
-                        <button class="log-out-btn">log Out</button>
+                <li class="sideMenu-list-item" id="logout_button">
+                    <a href="/logout">
+                    <button class="log-out-btn">Log Out</button>
                     </a>
                 </li>
-
             </ul>
         </div>
-
-
         <div class="container">
             <div class="dashboard">
 
-                <h2 class="updates-heading">Latest Updates</h2>
+                <h2 class="dues-heading">Pending Payments</h2>
                 <div class="dashboard-content">
-                    <div class="latest_updates">
+                    <div class="pending payments">
+                        <div class="paid">
+
+                        </div>
 
                     </div>
                 </div>
             </div>
         </div>
-
-
-        <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
-        <script src="index.js"></script>
-    </body>
+    </div>
+</div>
+      <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+      <script src="index.js"></script>
+  </body>
 </html>
+
+
