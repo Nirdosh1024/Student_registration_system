@@ -42,9 +42,6 @@ router.post("/", (req, res) => {
             console.error(err);
         });
     }
-
-
-
     res.json({status: "Okay"});
 });
 

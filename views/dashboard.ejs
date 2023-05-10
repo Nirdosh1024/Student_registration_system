@@ -1,9 +1,8 @@
 <html>
     <head>
         <title>Dashboard</title>
-        <link rel="stylesheet" href="./dashboard.css">
-
-        <link rel="stylesheet" href="./docs.css">
+        <link rel="stylesheet" href="/css/dashboard.css">
+        <link rel="stylesheet" href="/css/docs.css">
     </head>
     <body>
         <header>
@@ -15,7 +14,7 @@
                 <h5>An AICTE approved Government Engineering College affliated to AKTU Lucknow(College code-841)</h5>
             </div>
             <div class="student-name">
-                <input class="input" type="text" id="student_name" name="name" value = " <%= dataToBePassedToView.name %> "  />
+                <input class="input" type="text" id="student_name" name="name" value="<%= dataToBePassedToView.name %>" />
             </div>
         </header>
     <div class="grid-container">
@@ -86,7 +85,7 @@
 
     </div>
         <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
-        <script src="index.js"></script>
+        <!-- <script src="index.js"></script> -->
     </body>
 </html>
 

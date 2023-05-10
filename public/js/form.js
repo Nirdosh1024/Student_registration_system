@@ -8,6 +8,8 @@ const aadharNo = document.getElementById("aadhar")
 const dob = document.getElementById("dob")
 
 
+console.log("This script is running")
+
 
 const successMsg = (form) => {
     const inputControlDivs = form.getElementsByClassName("input-control");
@@ -111,7 +113,7 @@ initialForm.addEventListener("submit" ,async (e) => {
   }
 }
 else{
-   console.log("form not validated")
+  console.log("form not validated")
 }
 })
 

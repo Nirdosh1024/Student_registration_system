@@ -28,10 +28,6 @@ const session = require("express-session");
 // requiring the passport config file here
 require("./config/passport")(passport);
 
-//rendering dashboard
-app.get("/dashboard",(req,res) =>{
-  res.render("dashboard")
-})
 
 //rendering registration form
 app.get("/studentform",(req,res) =>{
@@ -173,11 +169,10 @@ app.get("/dashboard", ensureAuthenticated, async (req, res) => {
   const dataToBePassedToView = {
     name: user.Name,
     JEERoll: user.ID
-    
   }
 
   if(req.user.dashboard_created){
-    res.render("dashboard",{
+    res.render("dashboard", {
       dataToBePassedToView
     })
   }
@@ -186,6 +181,11 @@ app.get("/dashboard", ensureAuthenticated, async (req, res) => {
     dataToBePassedToView
   });}
 });
+
+
+app.get("/layout", (req, res) => {
+  res.render("layout");
+})
 
 
 
