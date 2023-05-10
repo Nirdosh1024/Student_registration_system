@@ -18,7 +18,7 @@ router.post("/", (req, res) => {
     } = req.body;
 
 
-    console.log(JEERoll + " " + father_name + " " + mother_name + " " + gender + " " + branch + " " + Phone_number + " " + aadhar_number);
+    // console.log(JEERoll + " " + father_name + " " + mother_name + " " + gender + " " + branch + " " + Phone_number + " " + aadhar_number);
 
 
     if(req.body) {

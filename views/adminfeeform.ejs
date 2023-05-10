@@ -7,118 +7,111 @@
 <body>
   <h2> Annual Fee Details </h2>
   <div class="container">
-    <div class="form-container">
-      <h3>1st Year</h3>
-    <form action="/submit-form" method="post">
+    <form class = "adminfee-form" method="post" >
+      <div class="form-container">
+          <h3>1st Year</h3>
+        <div class="input-control">
+          <label for="academic-fee" >Academic Fee:</label>
+          <input type="number" id="academic-fee" name="first_academic_fee" required>
+        </div></br></br>
+        <div class="input-control">
+          <label for="maintenance-fee">Maintenance Fee:</label>
+          <input type="number" id="maintenance-fee" name="first_maintenance_fee" required>
+        </div></br></br>
+        <div class="input-control" >
+          <label for="hostel-fee">Hostel Fee:</label>
+          <input type="number" id="hostel-fee" name="first_hostel_fee" required>
+        </div></br></br>
+        <div class="input-control">
+          <label for="mess-fee">Mess Fee:</label>
+          <input type="number" id="mess-fee" name="first_mess_fee" required>
+        </div></br></br>
+        <div class="input-control">
+          <label for="mess-security-fee">Mess Security Fee:</label>
+          <input type="number" id="mess-security-fee" name="first_mess_security_fee" required>
+        </div></br></br>
+      </div></br></br>
+
+      <div class="form-container">
+        <h3>2nd Year</h3>
+        <div class="input-control">
+          <label for="academic-fee" >Academic Fee:</label>
+          <input type="number" id="academic-fee" name="second_academic_fee" required>
+        </div></br></br>
+        <div class="input-control">
+          <label for="maintenance-fee">Maintenance Fee:</label>
+          <input type="number" id="maintenance-fee" name="second_maintenance_fee" required>
+        </div></br></br>
+        <div class="input-control" >
+          <label for="hostel-fee">Hostel Fee:</label>
+          <input type="number" id="hostel-fee" name="second_hostel_fee" required>
+        </div></br></br>
+        <div class="input-control">
+          <label for="mess-fee">Mess Fee:</label>
+          <input type="number" id="mess-fee" name="second_mess_fee" required>
+        </div></br></br>
+        <div class="input-control">
+          <label for="mess-security-fee">Mess Security Fee:</label>
+          <input type="number" id="mess-security-fee" name="second_mess_security_fee" required>
+        </div></br></br>
+      </div>
+
+      <div class="form-container">
+          <h3>3rd Year</h3>
+        <div class="input-control">
+          <label for="academic-fee" >Academic Fee:</label>
+          <input type="number" id="academic-fee" name="third_academic_fee" required>
+        </div></br></br>
+        <div class="input-control">
+          <label for="maintenance-fee">Maintenance Fee:</label>
+          <input type="number" id="maintenance-fee" name="third_maintenance_fee" required>
+        </div></br></br>
+        <div class="input-control" >
+          <label for="hostel-fee">Hostel Fee:</label>
+          <input type="number" id="hostel-fee" name="third_hostel_fee" required>
+        </div></br></br>
+        <div class="input-control">
+          <label for="mess-fee">Mess Fee:</label>
+          <input type="number" id="mess-fee" name="third_mess_fee" required>
+        </div></br></br>
+        <div class="input-control">
+          <label for="mess-security-fee">Mess Security Fee:</label>
+          <input type="number" id="mess-security-fee" name="third_mess_security_fee" required>
+        </div></br></br>
+      </div></br></br>
+
+      <div class="form-container">
+          <h3>4th Year</h3>
+        <div class="input-control">
+          <label for="academic-fee" >Academic Fee:</label>
+          <input type="number" id="academic-fee" name="fourth_academic_fee" required>
+        </div></br></br>
+        <div class="input-control">
+          <label for="maintenance-fee">Maintenance Fee:</label>
+          <input type="number" id="maintenance-fee" name="fourth_maintenance_fee" required>
+        </div></br></br>
+        <div class="input-control" >
+          <label for="hostel-fee">Hostel Fee:</label>
+          <input type="number" id="hostel-fee" name="fourth_hostel_fee" required>
+        </div></br></br>
+        <div class="input-control">
+          <label for="mess-fee">Mess Fee:</label>
+          <input type="number" id="mess-fee" name="fourth_mess_fee" required>
+        </div></br></br>
+        <div class="input-control">
+          <label for="mess-security-fee">Mess Security Fee:</label>
+          <input type="number" id="mess-security-fee" name="fourth_mess_security_fee" required>
+        </div></br></br>
+      </div></br></br>
 
       <div class="input-control">
-        <label for="academic-fee" >Academic Fee:</label>
-        <input type="number" id="academic-fee" name="academic-fee" required>
-      </div></br></br>
-      <div class="input-control">
-        <label for="maintenance-fee">Maintenance Fee:</label>
-        <input type="number" id="maintenance-fee" name="maintenance-fee" required>
-      </div></br></br>
-      <div class="input-control" >
-        <label for="hostel-fee">Hostel Fee:</label>
-        <input type="number" id="hostel-fee" name="hostel-fee" required>
-      </div></br></br>
-      <div class="input-control">
-        <label for="mess-fee">Mess Fee:</label>
-        <input type="number" id="mess-fee" name="mess-fee" required>
-      </div></br></br>
-      <div class="input-control">
-        <label for="mess-security-fee">Mess Security Fee:</label>
-        <input type="number" id="mess-security-fee" name="mess-security-fee" required>
-      </div></br></br>
-      <div class="input-control">
         <input type="submit" value="Submit">
       </div></br></br>
+
     </form>
-    </div>
-    <div class="form-container">
-      <h3>2nd Year</h3>
-    <form action="/submit-form" method="post">
-      <div class="input-control">
-        <label for="academic-fee">Academic Fee:</label>
-        <input type="number" id="academic-fee" name="academic-fee" required>
-      </div></br></br>
-      <div class="input-control">
-        <label for="maintenance-fee">Maintenance Fee:</label>
-        <input type="number" id="maintenance-fee" name="maintenance-fee" required>
-      </div></br></br>
-      <div class="input-control">
-        <label for="hostel-fee">Hostel Fee:</label>
-        <input type="number" id="hostel-fee" name="hostel-fee" required>
-      </div></br></br>
-      <div class="input-control">
-        <label for="mess-fee">Mess Fee:</label>
-        <input type="number" id="mess-fee" name="mess-fee" required>
-      </div></br></br>
-      <div class="input-control">
-        <label for="mess-security-fee">Mess Security Fee:</label>
-        <input type="number" id="mess-security-fee" name="mess-security-fee" required>
-      </div></br></br>
-      <div class="input-control">
-        <input type="submit" value="Submit">
-      </div></br></br>
-    </form>
-    </div><div class="form-container">
-      <h3>3rd Year</h3>
-    <form action="/submit-form" method="post">
-      <div class="input-control">
-        <label for="academic-fee">Academic Fee:</label>
-        <input type="number" id="academic-fee" name="academic-fee" required>
-      </div></br></br>
-      <div class="input-control">
-        <label for="maintenance-fee">Maintenance Fee:</label>
-        <input type="number" id="maintenance-fee" name="maintenance-fee" required>
-      </div></br></br>
-      <div class="input-control">
-        <label for="hostel-fee">Hostel Fee:</label>
-        <input type="number" id="hostel-fee" name="hostel-fee" required>
-      </div></br></br>
-      <div class="input-control">
-        <label for="mess-fee">Mess Fee:</label>
-        <input type="number" id="mess-fee" name="mess-fee" required>
-      </div></br></br>
-      <div class="input-control">
-        <label for="mess-security-fee">Mess Security Fee:</label>
-        <input type="number" id="mess-security-fee" name="mess-security-fee" required>
-      </div></br></br>
-      <div class="input-control">
-        <input type="submit" value="Submit">
-      </div></br></br>
-    </form>
-    </div>
-    <div class="form-container">
-      <h3>4th Year</h3>
-    <form action="/submit-form" method="post">
-      <div class="input-control">
-        <label for="academic-fee">Academic Fee:</label>
-        <input type="number" id="academic-fee" name="academic-fee" required>
-      </div></br></br>
-      <div class="input-control">
-        <label for="maintenance-fee">Maintenance Fee:</label>
-        <input type="number" id="maintenance-fee" name="maintenance-fee" required>
-      </div></br></br>
-      <div class="input-control">
-        <label for="hostel-fee">Hostel Fee:</label>
-        <input type="number" id="hostel-fee" name="hostel-fee" required>
-      </div></br></br>
-      <div class="input-control">
-        <label for="mess-fee">Mess Fee:</label>
-        <input type="number" id="mess-fee" name="mess-fee" required>
-      </div></br></br>
-      <div class="input-control">
-        <label for="mess-security-fee">Mess Security Fee:</label>
-        <input type="number" id="mess-security-fee" name="mess-security-fee" required>
-      </div></br></br>
-      <div class="input-control">
-        <input type="submit" value="Submit">
-      </div></br></br>
-    </form>
-    </div>
+
   </div>
+  <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+  <script src="index.js"></script>
 </body>
 </html>
