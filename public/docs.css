@@ -72,24 +72,24 @@ header .log-out{
     height:20px;
 }
 
-
 .side-bar{
     background-color: rgb(233, 247, 247);
     box-shadow: 2px 0.5px #ececfc;
-    width:350px;
+    /* width:350px; */
     height:500px;
     padding: 10px 20px 50px 20px;
     margin-top: 6px;
 }
 
 .sideMenu-list-item{
-    width:400px;
+    /* width:400px; */
     font-size: 18px;
     margin-top: 25px;
     margin-left: 50px;
     color: #010081;
 
 }
+
 .sideMenu-heading{
     margin-top: 5%;
     margin-left: 15%;
@@ -109,15 +109,20 @@ header .log-out{
 .docs-page{
     display: flex;
 }
-.dashboard{
+/* .dashboard{
     background-color:#ffff;
-    /* box-shadow: 2px 0.5px #ececfc; */
     width: 800px;
     height: -webkit-fill-available;
     padding: 50px 50px 50px 50px;
     margin-top: -500px;
     margin-left: 360px;
     
+} */
+
+.grid-container{
+    display: grid;
+    grid-template-columns: 1.5fr 4.5fr;
+    column-gap: 40px;
 }
 
 .dashboard-content{
@@ -170,7 +175,6 @@ header .log-out{
     padding: 5px 5px;
     border-radius: 20px;
 }
-
 
 
 

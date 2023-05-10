@@ -4,7 +4,7 @@
       <link rel="stylesheet" href="./docs.css">
   </head>
   <body>
-      <header>
+        <header>
           <div class="collagelogo">
               <img src="http://recsonbhadra.ac.in/static/media/Collegelogo.96cbe2da1f0150aefe6d.png" alt="logo" class="logo">
           </div>
@@ -16,10 +16,9 @@
               <input class="input" type="text" id="student_name" name="name"  />
           </div>
         
-      </header>
+        </header>
 
-      <div class="docs-page">
-      <div class="main-content">
+    <div class="grid-container">
         <div class="side-bar">
             <ul class="sideMenu-list">
                 <h2 class="sideMenu-heading text-center">My Dashboard</h2>
@@ -29,6 +28,15 @@
                         Latest Updates
                     </a>
                 </li>
+
+
+                <li class="sideMenu-list-item " id="registration_status">
+                    <a class="" href="/studentform">
+                        <span>-</span>
+                        Registration Form
+                    </a>
+                </li>
+
                 <li class="sideMenu-list-item " id="registration_status">
                     <a class="" href="/status">
                         <span>-</span>
@@ -88,7 +96,7 @@
             </div>
         </div>
     </div>
-</div>
+    
       <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
       <script src="index.js"></script>
   </body>

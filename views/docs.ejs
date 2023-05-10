@@ -6,8 +6,8 @@
       integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ=="
       crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
-  <body>
-      <header>
+    <body>
+        <header>
           <div class="collagelogo">
               <img src="http://recsonbhadra.ac.in/static/media/Collegelogo.96cbe2da1f0150aefe6d.png" alt="logo" class="logo">
           </div>
@@ -18,208 +18,215 @@
           <div class="student-name">
               <input class="input" type="text" id="student_name" name="name"  />
           </div>
-      </header>
+        </header>
 
-    <div class="docs-page">
-    <div class="main-content">
-        <div class="side-bar">
-            <ul class="sideMenu-list">
-                <h2 class="sideMenu-heading text-center">My Dashboard</h2>
+        <div class="grid-container">
+            <div class="side-bar">
+                <ul class="sideMenu-list">
+                    <h2 class="sideMenu-heading text-center">My Dashboard</h2>
 
-                <li class="sideMenu-list-item" id="latest_updates">
-                    <a class=" sideMenu-active" href="/dashboard">
-                        <span>-</span>
-                        Latest Updates
-                    </a>
-                </li>
-
-                <li class="sideMenu-list-item " id="registration_status">
-                    <a class=" sideMenu-active" href="/status">
-                        <span>-</span>
-                        Registration Status
-                    </a>
-                </li>
-
-                <li class="sideMenu-list-item " id="academic_calender">
-                    <a class=" sideMenu-active " href="/calendar">
-                        <span>-</span>
-                        Academic Calender
-                    </a>
-                </li>
-                <!-- <li class="sideMenu-list-item " id="Documents_for_download">
-                    <a class=" sideMenu-active " href="">
-                        <span>-</span>
-                        Documents For Download
-                    </a>
-                </li> -->
-                
-                <li class="sideMenu-list-item " id="Submitted_documents">
-                    <a class=" sideMenu-active " href="/docs">
-                        <span>-</span>
-                        Submitted Documents
-                    </a>
-                </li>
-                <li class="sideMenu-list-item " id="pending_payments">
-                    <a class=" sideMenu-active " href="/dues">
-                        <span>-</span>
-                        Pending Payments
-                    </a>
-                </li>
-
-                <li class="sideMenu-list-item " id="logout-button">
-                    <a href="/logout">
-                    <button class="log-out-btn">Log Out</button>
-                    </a>
-                </li>
-
-            </ul>
-        </div>
-
-        <div class="container">
-            <div class="dashboard">
-                <h2 class="docs-heading">Submitted Documents</h2>
-                <div class="dashboard-content">
-                    <div class="submitted-documents">
+                    <li class="sideMenu-list-item" id="latest_updates">
+                        <a class=" sideMenu-active" href="/dashboard">
+                            <span>-</span>
+                            Latest Updates
+                        </a>
+                    </li>
 
 
-                        <div class="submitted-docs ">
-                            <div class="document-status">
-                                <i class="fa fa-check-circle green-bg">
-                                </i>
-                            </div>
-                            <div class="document-type">
-                                <span class="mr-2 font-weight-600 document_type_span"> Academic Fee Receipt</span>
-                                <div class="document-action dashboard-button text-center">
-                                    <a href="" target="_blank" class="text-decoration-none">VIEW DOCUMENT</a>
+                    <li class="sideMenu-list-item " id="registration_status">
+                        <a class="" href="/studentform">
+                            <span>-</span>
+                            Registration Form
+                        </a>
+                    </li>
+
+                    <li class="sideMenu-list-item " id="registration_status">
+                        <a class=" sideMenu-active" href="/status">
+                            <span>-</span>
+                            Registration Status
+                        </a>
+                    </li>
+
+                    <li class="sideMenu-list-item " id="academic_calender">
+                        <a class=" sideMenu-active " href="/calendar">
+                            <span>-</span>
+                            Academic Calender
+                        </a>
+                    </li>
+                    <!-- <li class="sideMenu-list-item " id="Documents_for_download">
+                        <a class=" sideMenu-active " href="">
+                            <span>-</span>
+                            Documents For Download
+                        </a>
+                    </li> -->
+                    
+                    <li class="sideMenu-list-item " id="Submitted_documents">
+                        <a class=" sideMenu-active " href="/docs">
+                            <span>-</span>
+                            Submitted Documents
+                        </a>
+                    </li>
+                    <li class="sideMenu-list-item " id="pending_payments">
+                        <a class=" sideMenu-active " href="/dues">
+                            <span>-</span>
+                            Pending Payments
+                        </a>
+                    </li>
+
+                    <li class="sideMenu-list-item " id="logout-button">
+                        <a href="/logout">
+                        <button class="log-out-btn">Log Out</button>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="container">
+                <div class="dashboard">
+                    <h2 class="docs-heading">Submitted Documents</h2>
+                    <div class="dashboard-content">
+                        <div class="submitted-documents">
+
+
+                            <div class="submitted-docs ">
+                                <div class="document-status">
+                                    <i class="fa fa-check-circle green-bg">
+                                    </i>
+                                </div>
+                                <div class="document-type">
+                                    <span class="mr-2 font-weight-600 document_type_span"> Academic Fee Receipt</span>
+                                    <div class="document-action dashboard-button text-center">
+                                        <a href="" target="_blank" class="text-decoration-none">VIEW DOCUMENT</a>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="submitted-docs ">
+                                <div class="document-status">
+                                    <i class="fa fa-check-circle green-bg">
+                                    </i>
+                                </div>
+                                <div class="document-type">
+                                    <span class="mr-2 font-weight-600 document_type_span"> Hostel Fee Receipt</span>
+                                    <div class="document-action dashboard-button text-center">
+                                        <a href="" target="_blank" class="text-decoration-none">VIEW DOCUMENT</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="submitted-docs ">
+                                <div class="document-status">
+                                    <i class="fa fa-check-circle green-bg">
+                                    </i>
+                                </div>
+                                <div class="document-type">
+                                    <span class="mr-2 font-weight-600 document_type_span"> Mess Fee Receipt </span>
+                                    <div class="document-action dashboard-button text-center">
+                                        <a href="" target="_blank" class="text-decoration-none">VIEW DOCUMENT</a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="submitted-docs">
+                                <div class="document-status">
+                                    <i class="fa fa-check-circle green-bg"></i>
+                                </div>
+                                <div class="document-type">
+                                    <span class="mr-2 font-weight-600 document_type_span"> Category Certificate </span>
+                                    <div class="document-action dashboard-button text-center">
+                                        <a href="" target="_blank" class="text-decoration-none" >VIEW DOCUMENT</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="submitted-docs ">
+                                <div class="document-status">
+                                    <i class="fa fa-check-circle green-bg">
+                                    </i>
+                                </div>
+                                <div class="document-type">
+                                    <span class="mr-2 font-weight-600 document_type_span"> Family Income Certificate </span>
+                                    <div class="document-action dashboard-button text-center">
+                                        <a href="" target="_blank" class="text-decoration-none">VIEW DOCUMENT</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="submitted-docs ">
+                                <div class="document-status">
+                                    <i class="fa fa-check-circle green-bg">
+                                    </i>
+                                </div>
+                                <div class="document-type">
+                                    <span class="mr-2 font-weight-600 document_type_span"> Photogragh </span>
+                                    <div class="document-action dashboard-button text-center">
+                                        <a href="" target="_blank" class="text-decoration-none">VIEW DOCUMENT</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="submitted-docs ">
+                                <div class="document-status">
+                                    <i class="fa fa-check-circle green-bg">
+                                    </i>
+                                </div>
+                                <div class="document-type">
+                                    <span class="mr-2 font-weight-600 document_type_span"> Signature </span>
+                                    <div class="document-action dashboard-button text-center">
+                                        <a href="" target="_blank" class="text-decoration-none">VIEW DOCUMENT</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="submitted-docs ">
+                                <div class="document-status">
+                                    <i class="fa fa-check-circle green-bg">
+                                    </i>
+                                </div>
+                                <div class="document-type">
+                                    <span class="mr-2 font-weight-600 document_type_span"> High School Certificate </span>
+                                    <div class="document-action dashboard-button text-center">
+                                        <a href="" target="_blank" class="text-decoration-none">VIEW DOCUMENT</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="submitted-docs ">
+                                <div class="document-status">
+                                    <i class="fa fa-check-circle green-bg">
+                                    </i>
+                                </div>
+                                <div class="document-type">
+                                    <span class="mr-2 font-weight-600 document_type_span"> Intermediate Certificate </span>
+                                    <div class="document-action dashboard-button text-center">
+                                        <a href="" target="_blank" class="text-decoration-none">VIEW DOCUMENT</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 
+                            <div class="submitted-docs ">
+                                <div class="document-status">
+                                    <i class="fa fa-check-circle green-bg">
+                                    </i>
+                                </div>
+                                <div class="document-type">
+                                    <span class="mr-2 font-weight-600 document_type_span"> Enrollment Letter </span>
+                                    <div class="document-action dashboard-button text-center">
+                                        <a href="" target="_blank" class="text-decoration-none">VIEW DOCUMENT</a>
+                                    </div>
+                                </div>
+                            </div> -->
+
                         </div>
-                        <div class="submitted-docs ">
-                            <div class="document-status">
-                                <i class="fa fa-check-circle green-bg">
-                                </i>
-                            </div>
-                            <div class="document-type">
-                                <span class="mr-2 font-weight-600 document_type_span"> Hostel Fee Receipt</span>
-                                <div class="document-action dashboard-button text-center">
-                                    <a href="" target="_blank" class="text-decoration-none">VIEW DOCUMENT</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="submitted-docs ">
-                            <div class="document-status">
-                                <i class="fa fa-check-circle green-bg">
-                                </i>
-                            </div>
-                            <div class="document-type">
-                                <span class="mr-2 font-weight-600 document_type_span"> Mess Fee Receipt </span>
-                                <div class="document-action dashboard-button text-center">
-                                    <a href="" target="_blank" class="text-decoration-none">VIEW DOCUMENT</a>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        <div class="submitted-docs">
-                            <div class="document-status">
-                                <i class="fa fa-check-circle green-bg"></i>
-                            </div>
-                            <div class="document-type">
-                                <span class="mr-2 font-weight-600 document_type_span"> Category Certificate </span>
-                                <div class="document-action dashboard-button text-center">
-                                    <a href="" target="_blank" class="text-decoration-none" >VIEW DOCUMENT</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="submitted-docs ">
-                            <div class="document-status">
-                                <i class="fa fa-check-circle green-bg">
-                                </i>
-                            </div>
-                            <div class="document-type">
-                                <span class="mr-2 font-weight-600 document_type_span"> Family Income Certificate </span>
-                                <div class="document-action dashboard-button text-center">
-                                    <a href="" target="_blank" class="text-decoration-none">VIEW DOCUMENT</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="submitted-docs ">
-                            <div class="document-status">
-                                <i class="fa fa-check-circle green-bg">
-                                </i>
-                            </div>
-                            <div class="document-type">
-                                <span class="mr-2 font-weight-600 document_type_span"> Photogragh </span>
-                                <div class="document-action dashboard-button text-center">
-                                    <a href="" target="_blank" class="text-decoration-none">VIEW DOCUMENT</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="submitted-docs ">
-                            <div class="document-status">
-                                <i class="fa fa-check-circle green-bg">
-                                </i>
-                            </div>
-                            <div class="document-type">
-                                <span class="mr-2 font-weight-600 document_type_span"> Signature </span>
-                                <div class="document-action dashboard-button text-center">
-                                    <a href="" target="_blank" class="text-decoration-none">VIEW DOCUMENT</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="submitted-docs ">
-                            <div class="document-status">
-                                <i class="fa fa-check-circle green-bg">
-                                </i>
-                            </div>
-                            <div class="document-type">
-                                <span class="mr-2 font-weight-600 document_type_span"> High School Certificate </span>
-                                <div class="document-action dashboard-button text-center">
-                                    <a href="" target="_blank" class="text-decoration-none">VIEW DOCUMENT</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="submitted-docs ">
-                            <div class="document-status">
-                                <i class="fa fa-check-circle green-bg">
-                                </i>
-                            </div>
-                            <div class="document-type">
-                                <span class="mr-2 font-weight-600 document_type_span"> Intermediate Certificate </span>
-                                <div class="document-action dashboard-button text-center">
-                                    <a href="" target="_blank" class="text-decoration-none">VIEW DOCUMENT</a>
-                                </div>
-                            </div>
-                        </div>
-<!-- 
-                        <div class="submitted-docs ">
-                            <div class="document-status">
-                                <i class="fa fa-check-circle green-bg">
-                                </i>
-                            </div>
-                            <div class="document-type">
-                                <span class="mr-2 font-weight-600 document_type_span"> Enrollment Letter </span>
-                                <div class="document-action dashboard-button text-center">
-                                    <a href="" target="_blank" class="text-decoration-none">VIEW DOCUMENT</a>
-                                </div>
-                            </div>
-                        </div> -->
-
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    
       <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
       <script src="index.js"></script>
-  </body>
+    </body>
 </html>
 
 
