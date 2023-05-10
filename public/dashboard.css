@@ -25,7 +25,6 @@ header {
     display: flex;
     margin-top: 20px;
     border-bottom: 1px solid silver;
-    /* justify-content: space-between; */
     align-items: center;
     box-shadow: 1px 3px #1b555599;
 }
@@ -69,14 +68,12 @@ header .college-name h5 {
 .side-bar{
     background-color: rgb(233, 247, 247);
     box-shadow: 2px 0.5px #ececfc;
-    /* width:350px; */
     height:-webkit-fill-available;
     padding: 10px 20px 50px 20px;
     margin-top: 6px;
 }
 
 .sideMenu-list-item{
-    /* width:400px; */
     font-size: 18px;
     margin-top: 25px;
     margin-left: 50px;
