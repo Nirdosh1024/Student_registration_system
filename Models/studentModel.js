@@ -12,10 +12,7 @@ const newStudent = mongoose.Schema({
     type: String,
     required: true,
   },
-  Email: {
-    type: String,
-    required: true,
-  },
+  
   Branch: {
     type: String,
     required: true,
@@ -62,6 +59,10 @@ const newStudent = mongoose.Schema({
     required: true
   },
   dashboard_created: {
+    type: Boolean,
+    required: true
+  },
+  form_submitted: {
     type: Boolean,
     required: true
   }

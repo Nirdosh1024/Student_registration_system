@@ -32,6 +32,7 @@ router.post("/", (req, res) => {
             user.Branch = branch;
             user.PhoneNumber = Phone_number;
             user.AadharNumber = aadhar_number;
+            user.form_submitted = false;
             user.save().then(() => {
                 console.log("user saved");
             }).catch((err) => {
