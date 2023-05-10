@@ -188,17 +188,28 @@ app.post("/login", (req, res, next) => {
 //   } 
 // }
 
-app.get("/admindashboard", ensureAuthenticated, (req, res) => {
-  res.render("admindashboard");
+// app.get("/admindashboard", ensureAuthenticated, (req, res) => {
+//   res.render("admindashboard");
+// })
+
+app.get("/adminfeeform", ensureAuthenticated, (req, res) => {
+  res.render("adminfeeform");
 })
+
+// app.post("/adminfeeform", (req,res) => {
+//   res.json({ status: "OKAY" });
+// })
 
 app.post("/adminLogin", (req, res, next) => {
   passport.authenticate("local-admin", {
-    successRedirect: "/admindashboard",
+    successRedirect: "/adminfeeform",
     failureRedirect: "/authentication",
     failureFlash: true
-  })(req, res, next);
+  })
+  (req, res, next);
 })
+
+
 
 
 app.get('/logout', (req, res, next) => {
@@ -275,7 +286,9 @@ function importExceltoJson(filepath) {
 
 app.use("/form-submit", formRoute);
 
-const PORT = process.env.PORT || 3000;
+app.use("/adminfeeform", require("./routes/adminformRoute"))
+
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log("Server has started at 3000");
+  console.log("Server has started at 5000");
 });
