@@ -38,15 +38,15 @@ header .logo {
     border: 1px solid #3e3e3e;
     border-radius: 100px;
 }
+
 header .collagelogo{
     height:80px;
     width:80px;
-
 }
+
 header .college-name {
     text-align: center; 
     margin-left:200px;
-
 }
 
 header .college-name h3 {
@@ -60,11 +60,24 @@ header .college-name h5 {
     font-style: italic;
     font-weight: 500;
 }
+
+header .student-name {
+    font-size:14px;
+    margin-left:40px;
+}
+
+header .log-out{
+    margin-left:20px;
+    width:50px;
+    height:20px;
+}
+
+
 .side-bar{
     background-color: rgb(233, 247, 247);
     box-shadow: 2px 0.5px #ececfc;
     width:350px;
-    height:-webkit-fill-available;
+    height:500px;
     padding: 10px 20px 50px 20px;
     margin-top: 6px;
 }
@@ -82,7 +95,68 @@ header .college-name h5 {
     margin-left: 15%;
     align-items: center;
 }
+.btn{
+    width:80px;
+    height:25px;
+    background-color: #EFEFEF;
+    font-size: 14px;
+    border-radius: 50px;
+    border: 1.5px solid #010081;
+    color: #010081;
+    cursor: pointer;
+    margin-left: 8%;
+}
+.docs-page{
+    display: flex;
+}
+.dashboard{
+    background-color:#ffff;
+    /* box-shadow: 2px 0.5px #ececfc; */
+    width: 800px;
+    height: -webkit-fill-available;
+    padding: 50px 50px 50px 50px;
+    margin-top: -500px;
+    margin-left: 360px;
+    
+}
 
+.dashboard-content{
+    padding: 10px;
+
+}
+.submitted-docs{
+    margin-left: 200px;
+    display:flex;
+    margin-top: 15px;
+    
+}
+.document-type{
+    display: flex;
+    /* display: grid;
+    grid-template-columns: 300px 0; */
+    font-size: 18px;
+    margin-left: 20px;
+
+}
+.dashboard-button{
+    font-size:14px;
+    width: 150px;
+    height:30px;
+    background-color: rgb(233, 247, 247);
+    text-align: center;
+    color: #010081;
+    font-weight: 300;
+    padding: 5px 5px;
+    border: 0.5px solid var(--color-primary);
+    border-radius: 5px;
+    margin-left: 30px;
+}
+.text-decoration-none{
+    color: #010081;
+}
+.sideMenu-active{
+    color: #010081;
+}
 .log-out-btn{
     font-size:14px;
     width: 80px;
@@ -95,4 +169,25 @@ header .college-name h5 {
     font-weight: 600;
     padding: 5px 5px;
     border-radius: 20px;
+}
+
+
+
+
+/*Academic calendar */
+.academic-calendar{
+    display:flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.calendar{
+    font-size: 20px;
+    color: #010081;
+    font-weight: 400px;
+
+}
+p{
+    margin-top: 20px;
+    font-size: 14px;
+    margin-left: 80px;
 }

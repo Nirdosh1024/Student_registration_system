@@ -1,0 +1,290 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'poppins',sans-serif;
+}
+
+body {
+    display:flex;
+    align-items: center;
+    min-height:100vh;
+    justify-content: center;
+    background: linear-gradient(80deg,#026ca5,#31DEDE99);    
+}
+
+.hidden {
+    display: none;
+  }
+
+.form-container{
+    position: relative;
+    max-width: 800px;
+    width: 75%;
+    border-radius: 10px;
+    padding:30px;
+    margin:100px 15px;
+    background-color: #fff;
+    box-shadow:0 5px 10px rgba(0,0,0,0.1);
+}
+
+.header{
+    margin-top: 20px;
+    height:80px;
+    background:var(--lg-color);
+    padding:20px,0;
+    color: #ff3860;
+}
+.header h1{
+    color: #010081;
+    font-size: 26px;
+    font-weight:600;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.header h6{
+    color: #0b494999;
+    font-size: 12px;
+    text-align: right;
+}
+
+h2{
+    color: #010081;
+    font-size: 22px;
+    margin-bottom: 10px;
+    font-weight: 500px;
+}
+
+.form-details{
+    margin-top: 10px;
+    padding:10px;
+}
+
+.personal-information-form{
+    position:relative;
+    margin-top:16px;
+    min-height:490px;
+    background-color: #fff;
+}
+
+.fee-details-form{
+    position:relative;
+    margin-top:16px;
+    min-height:490px;
+    background-color: #fff;
+}
+
+.hostel-details-form{
+    position:relative;
+    margin-top:16px;
+    min-height:490px;
+    background-color: #fff;
+}
+
+.educatinal-details-form{
+    position:relative;
+    margin-top:16px;
+    min-height:490px;
+    background-color: #fff;
+}
+
+.payment-form{
+    position:relative;
+    margin-top:16px;
+    min-height:490px;
+    background-color: #fff;
+}
+
+.form-details label{
+    display: inline-block;
+}
+
+
+
+.form-details {
+    display: grid;
+    column-gap: 3rem;
+    row-gap: 3rem;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.form-details .input-control {
+    align-self: center;
+}
+
+.input-control{
+    display:flex;
+    flex-direction: column;
+}
+
+.input-control select {
+    border: 2px solid #f0f0f0;
+	border-radius: 4px;
+	display: block;
+    background-color: #fff;
+	font-size: 12px;
+	padding: 10px;
+	width: 100%;
+}
+
+.btn{
+    width:150px;
+    height:40px;
+    background-color: #EFEFEF;
+    font-size: 20px;
+    border-radius: 50px;
+    border: 1.5px solid #010081;
+    color: #010081;
+    cursor: pointer;
+    margin-top: 50px;
+    margin-bottom: 15px;
+    margin-left: 450px;
+    outline: none;
+    padding: 5px;
+  }
+    
+  .btn:hover {
+      background-color: #31DEDE99;
+      color: #010081;
+  }
+
+
+
+
+
+
+.input-control input {
+    border: 2px solid #f0f0f0;
+	border-radius: 4px;
+	display: block;
+	font-size: 12px;
+	padding: 10px;
+	width: 100%;
+}
+
+.input-control input:focus {
+    outline: 0;
+}
+
+.input-control.success input {
+    border-color: #09c372;
+}
+
+.input-control.error input {
+    border-color: #ff3860;
+}
+
+.input-control .error {
+    color: #ff3860;
+    font-size: 9px;
+    height: 13px;
+}
+
+.personal-information{
+    background-color: #fff;
+    border-radius: 10px;
+    -webkit-border-radius:10px;
+    box-shadow: 2px #010081;
+    max-width: 100%;
+
+}
+
+.educational-details {
+    display: none;
+    background-color: #fff;
+    border-radius: 10px;
+    -webkit-border-radius:10px;
+    box-shadow: 2px #010081;
+    max-width: 100%;
+    margin-top:30%;
+     position: absolute;
+    /* top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; */
+    animation: slide-in 0.5s ease-in;
+}
+
+.hostel-details {
+    display: none;
+    background-color: #fff;
+    border-radius: 10px;
+    -webkit-border-radius:10px;
+    box-shadow: 2px #010081;
+    max-width: 100%;
+    position: absolute;
+    /* top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; */
+    animation: slide-in 0.5s ease-in;
+}
+
+.payment {
+    display: none;
+    background-color: #fff;
+    border-radius: 10px;
+    -webkit-border-radius:10px;
+    box-shadow: 2px #010081;
+    max-width: 100%;
+    position: absolute;
+    /* top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; */
+    animation: slide-in 0.5s ease-in;
+}
+
+.fee-details {
+    display: none;
+    background-color: #fff;
+    border-radius: 10px;
+    -webkit-border-radius:10px;
+    box-shadow: 2px #010081;
+    max-width: 100%;
+    position: absolute;
+    margin-top: 30%;
+    margin-bottom: 10%;
+    /* top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; */
+    animation: slide-in 0.5s ease-in;
+}
+
+
+/* form slide in animation */
+@keyframes slide-in {
+    0% {
+        transform: translateX(110%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+.checkbox{
+    width:20px;
+    height:20px;
+    margin-left: -140px;
+}
+
+.same-as-permanent{
+    margin-top: -20px;
+    margin-left: 30px;
+    font-size: 12px;
+}
+
+.educational-details{
+    margin-bottom: 100px;
+ 
+}
+.fee-details{
+    margin-bottom: 100px;
+}
+
+.hostel-select{
+    width:200px;
+    height:30px;   
+}

@@ -1,0 +1,633 @@
+<html>
+
+<head>
+    <title>Student Form</title>
+    <link rel="stylesheet" href="./studentform.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+        integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script defer src="formvalidation.js"></script>
+
+</head>
+
+<body>
+    <div class="form-container personal-information">
+        <form class="personal-information-form" method="POST" >
+            <div role="main" class="form-all">
+                <div class="header">
+                    <h1 class="form-header" data-component="header">Registration Form</h1>
+                    <h6 class="form-subHeader">Fill out the form carefully for registration</h6>
+                </div>
+
+                <h2 class="form-header" data-component="header">Personal Details:</h2>
+
+                <div class="form-details">
+
+                    <div class="input-control">
+                        <label for="name">Name of Student</label>
+                        <input type="text" id="name" name="name" placeholder="name" autocomplete="off" size="15"  />
+                    </div>
+                    
+
+                    <div class="input-control">
+                        <label for="Date">Date of Birth</label>
+                        <input type="date" id="dob" name="dob" autocomplete="off" />
+                        <div class="error"></div>
+                    </div>
+
+                    <div class="input-control">
+                        <label for="image"> Student's Photo</label>
+                        <div id="display_image"
+                            style="width:120px; height:130px; border:1px solid #335d8b;background-size: cover;text-align:center;"
+                            value="" placeholder="passport size photo" aria-label="upload photo"></div>
+                        <input type="file" id="image-input" style="margin-top:10px;"
+                            accept="image/png,image/jpg, image/jpeg " />
+                        <div class="error"></div>
+                    </div>                    
+
+                    <div class="input-control">
+                        <label for="gender">Gender</label>
+                        <select name="gender" id="gender" autocomplete="off">
+                            <option value="">Please Select</option>
+                            <option value="female">Female</option>
+                            <option value="male">Male</option>
+                            <option value="N/A">N/A</option>
+                        </select>
+                    </div>
+
+                    
+                    <div class="input-control">
+                        <label for="email">Student's E-mail</label>
+                        <input type="email" id="email" name="email" autocomplete="off" />
+                        <div class="error"></div>
+                    </div>
+                    
+
+                    <div class="input-control">
+                        <label for="number">Mobile Number</label>
+                        <input type="number" id="phoneNumber" name="phone_number" placeholder="phone no." autocomplete="off" size="10" />
+                        <div class="error"></div>
+                    </div>
+                    
+
+                    <div class="input-control">
+                        <label for="number">Student's Aadhar Number</label>
+                        <input type="number" id="aadhar" name="aadhar_number" autocomplete="off" />
+                        <div class="error"></div>
+                    </div>
+                    
+
+                    <div class="input-control">
+                        <label for="number">Enrollment Number</label>
+                        <input type="number" id="enrollment" name="enrollment_number" autocomplete="off" />    
+                    </div>
+                    
+
+                    <div class="input-control">
+                        <label for="course">Course</label>
+                        <select name="course" id="course" autocomplete="off"> 
+                            <option value="">Please Select</option>
+                            <option value="b.tech">B.tech</option>
+                        </select>
+                    </div>
+                    
+
+                    <div class="input-control">
+                        <label for="branch">Branch</label>
+                        <select name="branch" id="branch" autocomplete="off">
+                            <option value="">Please Select Carefully</option>
+                            <option value="CSE">Computer Science And Engineering</option>
+                            <option value="EL">Electronics Engineering</option>
+                            <option value="EE">Elecrical Engineering</option>
+                        </select>
+                    </div>
+                    
+
+                    <div class="input-control">
+                        <label for="year">Year</label>
+                        <select name="year" id="year" autocomplete="off">
+                            <option value="">Please Select Carefully</option>
+                            <option value="1st">1st year</option>
+                            <option value="2nd">2nd year</option>
+                            <option value="3rd">3rd year</option>
+                            <option value="4th">4th year</option>
+                        </select>
+                    </div>
+                    
+
+                    <div class="input-control">
+                        <label for="semester">Semester</label>
+                        <select name="semester" id="semester" autocomplete="off">
+                            <option value="">Please Select Carefully</option>
+                            <option value="1st">i</option>
+                            <option value="2nd">ii</option>
+                            <option value="3rd">iii</option>
+                            <option value="4th">iv</option>
+                            <option value="4th">v</option>
+                            <option value="4th">vi</option>
+                            <option value="4th">vii</option>
+                            <option value="4th">viii</option>
+                        </select>
+                    </div>
+                    
+
+                    <div class="input-control">
+                        <label for="name">Father's Name</label>
+                        <input type="text" id="name" name="name" autocomplete="off" minlength="3" />
+                    </div>
+                    
+
+                    <div class="input-control">
+                        <label for="name">Mother's Name</label>
+                        <input type="text" id="name" name="name" autocomplete="off" minlength="3" />
+                    </div>
+                    
+
+                    <div class="input-control">
+                        <label for="number">Parent's Phone Number</label>
+                        <input type="number" id="parentPhnNo" name="mobile_number" placeholder="phone no."
+                            autocomplete="off" maxlength="10" size="10" />
+                        <div class="error"></div>
+                    </div>
+                    
+
+                    <div class="input-control">
+                        <label for="email">Parent's E-mail</label>
+                        <input type="email" id="Parentemail" name="email" autocomplete="off" />
+                        <div class="error"></div>
+                    </div>
+                    
+
+                    <div class="input-control">
+                        <label for="number">Alternate Phone Number</label>
+
+                        <input type="number" id="number" name="mobile_number" placeholder="phone no." size="10" />
+                        <div class="error"></div>
+                    </div>
+                    
+
+                    <div class="input-control">
+                        <label for="category">Category</label>
+                        <select name="category" id="category" autocomplete="off">
+                            <option value="">Please Select Carefully</option>
+                            <option value="General">General</option>
+                            <option value="General-EWS">General-EWS</option>
+                            <option value="Other Backward Class (creamy layer)">Other Backward Class (creamy layer)</option>
+                            <option value="Other Backward Class (OBC- NCL)">Other Backward Class (OBC- NCL)</option>
+                            <option value="Scheduled Cast (SC)">Scheduled Cast (SC)</option>
+                            <option value="Scheduled Tribe(ST)">Scheduled Tribe(ST)</option>
+                            <option value="Pwd">Pwd</option>
+                        </select>
+                        <div class="error"></div>
+                    </div>
+                    
+
+                    <div class="input-control">
+                        <label for="category">Category Certificate</label>
+                        <input id="category-certificate" type="file" name="file_name" accept="pdf/*" />
+                        <div class="error"></div>
+                    </div>
+                    
+
+                    <div class="input-control">
+                        <label for="income">Annual Income</label>
+                        <select name="income" id="income" autocomplete="off">
+                            <option value="">Please Select Carefully</option>
+                            <option value="Below two Lakhs">Below two Lakhs</option>
+                            <option value="Between Two to Eight Lakhs">Between Two to Eight Lakhs</option>
+                            <option value="Above Eight Lakhs">Above Eight Lakhs</option>
+                        </select>
+                    </div>
+                    
+
+                    <div class="input-control">
+                        <label for="income">Income Certificate</label>
+                        <input id="income-certificate" type="file" name="file_name" accept="pdf/*" />
+                        <div class="error"></div>
+                    </div>
+                    
+
+                    <div class="input-control">
+                        <label for="address">Permanent Address</label></br>
+                        <input type="text" class="form-control" id="street-1" placeholder="Street Address_1" /></br>
+                        <input type="text" class="form-control" id="street-2" placeholder="Street Address_2" /></br>
+                        <input type="text" class="form-control" id="inputCity" placeholder="City" /></br>
+                        <input type="text" class="form-control" id="inputState" placeholder="State/Province" /></br>
+                        <input type="number" class="form-control" type="number" id="inputZip" placeholder="Pincode" size="6" /></br>
+                        <input type="text" class="form-control" id="inputCountry" placeholder="Country" />
+                        <div class="error"></div>
+                    </div>
+                    
+
+                    <div class="input-control">
+                        <label for="address">Correspondance Address</label></br>
+                        <input class="checkbox" type="checkbox" id="copy-address">
+                        <label class="same-as-permanent" for="copy-address">Same As Permanent Address</label></br>
+                        <input type="text" class="form-control" id="Cstreet-1" placeholder="Street Address_1" /></br>
+                        <input type="text" class="form-control" id="Cstreet-2" placeholder="Street Address_2" /></br>
+                        <input type="text" class="form-control" id="CinputCity" placeholder="City" /></br>
+                        <input type="text" class="form-control" id="CinputState" placeholder="State/Province" /></br>
+                        <input type="number" class="form-control" id="CinputZip" placeholder="Pincode" size="6" /></br>
+                        <input type="text" class="form-control" id="CinputCountry" placeholder="Country" />
+                        <div class="error"></div>
+                    </div>
+                    
+                    <div class="input-control">
+                        <label for="image"> Student's Signature</label></br>
+                        <div id="display_sign"
+                            style="width:250px; height:70px; border:1px solid #335d8b;background-size: cover;text-align:center;"
+                            value="" placeholder="passport size photo" aria-label="upload photo"></div>
+                        <input type="file" id="sign-input" style="margin-top:10px;"
+                            accept="image/png,image/jpg, image/jpeg ">
+                        <div class="error"></div>
+                    </div>
+
+
+                    <div class="input-control">
+                        <label for="name">Local Gaurdian's Name (If Any)</label>
+                        <input type="text" id="name" name="name" />
+                    </div>
+                    
+                    <div class="input-control">
+                        <input type="number" id="GaurdianNumber" name="mobile_number" placeholder="phone no." size="10" />
+                        <div class="error"></div>
+                    </div>
+                    
+                    <div class="input-control">
+                        <label for="address">Gaurdian's Address</label></br>
+                        <input type="text" class="form-control" id="autocomplete" placeholder="Street Address_1" /></br>
+                        <input type="text" class="form-control" id="autocomplete" placeholder="Street Address_2" /></br>
+                        <input type="text" class="form-control" id="inputCity" placeholder="City" /></br>
+                        <input type="text" class="form-control" id="inputState" placeholder="State/Province" /></br>
+                        <input type="number" class="form-control" id="GinputZip" placeholder="Pincode" size="6" /></br>
+                        <input type="text" class="form-control" id="inputCountry" placeholder="Country" />
+                    </div>
+                    
+        
+                </div>
+
+                <button class="btn" type="submit">Save</button>
+
+            </div>
+        </form>
+    </div>
+
+    <!--Educational Details-->
+
+    <div class="form-container educational-details hidden">
+        <form class="educational-details-form" action="/submit-form" method="POST">
+            <div role="main" class="form-all">
+                <div class="header">
+                    <h1 class="form-header" data-component="header">Registration Form</h1>
+                    <h6 class="form-subHeader">Fill out the form carefully for registration</h6>
+                </div>
+
+                <h2 class="form-header" data-component="header">Educational Details:</h2>
+
+                <!-- <div class="form-details"> -->
+                    <h4>High School Details:</h4>
+
+                    <div class="form-details">
+
+                        <div class="input-control">
+                            <label for="institute_name">Institute Name</label>
+                            <input type="text" id="highSchool" name="highSchool" />
+                            <div class="error"></div>
+                        </div>
+                        
+                        <div class="input-control">
+                            <label for="board">Board</label>
+                            <input type="text" id="highSchool-board" name="highSchool" required/>
+                            <div class="error"></div>
+                        </div>
+                        
+                        <div class="input-control">
+                            <label for ="highschoolmax-marks">Maximum Marks </label>
+                            <input type="number"
+                            id="highschool-maxmarks" name ="highschool-maxmarks">
+                            <div class="error"></div>
+                        </div>
+
+                        <div class="input-control">
+                            <label for="marks">Marks Obtained</label>
+                            <input type="number" id="highSchool-marks" name="marks_obtained" />
+                            <div class="error"></div>
+                        </div>
+                        
+
+                        <div class="input-control">
+                            <label for="year">Passing Year</label>
+                            <input type="number" id="highschool-year" name="year" />
+                            <div class="error"></div>
+                        </div>
+                        
+
+
+                        <div class="input-control">
+                            <label for="marksheet">Upload Marksheet</label>
+                            <input id="highSchool-marksheet" type="file" name="file_name" accept="pdf/*" />
+                            <div class="error"></div>
+                        </div>
+
+                    </div>
+                    <h4>Intermediate Details:</h4>
+
+                    <div class="form-details">
+
+                        <div class="input-control">
+                            <label for="institute_name">Institute Name</label>
+                            <input type="text" id="intermediate" name="intermediate" />
+                            <div class="error"></div>
+                        </div>
+
+                        <div class="input-control">
+                            <label for="board">Board</label>
+                            <input type="text" id="intermediate-board" name="intermediate" />
+                            <div class="error"></div>
+                        </div>
+                        
+
+                        <div class="input-control">
+                            <label for ="intermax-marks">Maximum Marks
+                            </label>
+                            <input type="number"
+                            id="inter-maxmarks" name ="inter-maxmarks">
+                            <div class="error"></div>
+                        </div>
+
+                        <div class="input-control">
+                            <label for="marks">Marks Obtained</label>
+                            <input type="number" id="inter-marks" name="marks_obtained" />
+                            <div class="error"></div>
+                        </div>
+                        
+
+                        <div class="input-control">
+                            <label for="year">Passing Year</label>
+                            <input type="number" id="inter-year" name="year" />
+                            <div class="error"></div>
+                        </div>
+                        
+
+                        <div class="input-control">
+                            <label for="marksheet">Upload Marksheet</label>
+
+                            <input id="inter-marksheet" type="file" name="file_name" accept="pdf/*" />
+                            <div class="error"></div>
+                        </div>
+                        
+
+                    </div>
+
+                    <h4>JEE Details:</h4>
+
+                    <div class="form-details">
+
+                        <div class="input-control">
+                            <label for="rank">General Rank</label>
+                            <input type="number" id="rank" name="rank" />
+                            <div class="error"></div>
+                        </div>
+                        
+
+                        <div class="input-control">
+                            <label for="percentile">JEE Percentile</label>
+                            <input type="number" id="percentile" name="percentile" />
+                            <div class="error"></div>
+                        </div>
+
+
+                        <div class="input-control">
+                            <label for="enrollment_letter">Enrollment Letter</label>
+                            <input id="enrollment-letter" type="file" name="file_name" accept="pdf/*" />
+                            <div class="error"></div>
+                        </div>
+                    </div>
+
+                    <button class="btn" type="submit">Save</button>
+
+                <!-- </div> -->
+
+            </div>
+        </form>
+    </div>
+
+    <!--Hostel Details-->
+
+    <div class="form-container hostel-details hidden">
+        <form class="hostel-details-form" action="/submit-form" method="POST">
+            <div role="main" class="form-all">
+                <div class="header">
+                    <h1 class="form-header" data-component="header">Registration Form</h1>
+                    <h6 class="form-subHeader">Fill out the form carefully for registration</h6>
+                </div>
+
+                <h2 class="form-header" data-component="header" style="color:#335d8b; font-size: 24px;">Hostel Details:
+                </h2>
+                <!-- <div class="form-details"> -->
+                
+                    <label for="hosteller">Are You Hosteller?</label>
+                    <select class="hostel-select" name="hosteller" id="hosteller">
+                        <option value="">Please Select</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+
+                    <ul class="complete-form" style="display: none">
+                        <h4>Hostel Allotment Form</h4>
+                        <label for="hostel">Opting For Hostel</label>
+                        
+                        <div class="form-details">
+                            <select class="hostel hostel-select">
+                                <option value="">Please Select</option>
+                                <option value="BH1">Boys' Hostel 1</option>
+                                <option value="BH2">Boys' Hostel 2</option>
+                                <option value="BH3">Boys' Hostel 3</option>
+                                <option value="GH">Girls' Hostel </option>
+                            </select>
+                        </div>
+                        <div class="form-details">
+                            <label for="room">Room Number</label>
+                            <select class="floor hostel-select">
+                                <option value="">Please Select</option>
+                                <option value="G"> G </option>
+                                <option value="F"> F </option>
+                                <option value="S"> S </option>
+                            </select>
+                            <select class="room-no hostel-select">
+                                <option value="">Please Select</option>
+                                <option value="1"> 1 </option>
+                                <option value="2"> 2 </option>
+                                <option value="3"> 3 </option>
+                                <option value="4"> 4 </option>
+                                <option value="5"> 5 </option>
+                                <option value="6"> 6 </option>
+                                <option value="7"> 7 </option>
+                                <option value="8"> 8 </option>
+                                <option value="9"> 9 </option>
+                                <option value="10"> 10 </option>
+                                <option value="11"> 11 </option>
+                                <option value="12"> 12 </option>
+                                <option value="13"> 13 </option>
+                                <option value="14"> 14 </option>
+                                <option value="15"> 15 </option>
+                                <option value="16"> 16 </option>
+                                <option value="17"> 17 </option>
+                                <option value="18"> 18 </option>
+                                <option value="19"> 19 </option>
+                                <option value="20"> 20 </option>
+                                <option value="21"> 21 </option>
+                                <option value="22"> 22 </option>
+                                <option value="23"> 23 </option>
+                                <option value="24"> 24 </option>
+                                <option value="25"> 25 </option>
+                                <option value="26"> 26 </option>
+                                <option value="27"> 27 </option>
+                                <option value="28"> 28 </option>
+                            </select>
+                        
+                        </div>
+                    </ul>
+                    
+                    <button class="btn" type="submit">Save</button>
+                <!-- </div> -->
+            </div>
+        </form>
+    </div>
+
+    <!--Pay Now form-->
+
+    <div class="form-container payment hidden">
+        <form class="payment-form" action="/submit-form" method="post">
+            <div role="main" class="form-all">
+                <div class="header">
+                    <h1 class="form-header" data-component="header">Registration Form</h1>
+                    <h6 class="form-subHeader">Fill out the form carefully for registration</h6>
+                </div>
+
+                <h2 class="form-header" data-component="header" style="color:#335d8b; font-size: 24px;">Payment Form:
+                </h2>
+                <!-- <div class="form-details"> -->
+
+                    <div class="form-details">
+
+                        <label for="feepay">Pay Fees</label>
+                        <select name="hosteller" id="hosteller">
+                            <option value="">Please Select</option>
+                            <option value="yes">Paying Full Fee</option>
+                            <option value="no">Paying In Installment</option>
+                        </select>
+
+                        <div class="input-group">
+                            <div class="input-box">
+                                <button class="GFG" onclick="window.location.href = 'https://formbuilder.ccavenue.com/live/rec-sonbhadra';">PAY NOW</button>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <button class="btn" type="submit">Save</button>
+
+                <!-- </div> -->
+            </div>
+        </form>
+    </div>
+
+
+
+    <!--Fee Details form-->
+
+    <div class="form-container fee-details hidden">
+        <form class="fee-details-form" action="/submit-form" method="post">
+            <div role="main" class="form-all">
+                <div class="header">
+                    <h1 class="form-header" data-component="header">Registration Form</h1>
+                    <h6 class="form-subHeader">Fill out the form carefully for registration</h6>
+                </div>
+
+                <h2 class="form-header" data-component="header" style="color:#335d8b; font-size: 24px;">Fee Details:</h2>
+                <!-- <div class="form-details"> -->
+
+                    <h4>Institute Fee:</h4>
+                    <div class="form-details">
+
+                        <div class="input-control">
+                            <label for="amount">Total Amount Paid</label>
+                            <input type="number" id="academicfee-amount" name="amount" />
+                            <div class="error"></div>
+                        </div>
+                
+
+                        <div class="input-control">
+                            <label for="fee_receipt">Fee Receipt</label>
+                            <input id="acedemicfee" type="file" name="file_name" accept="pdf/*" />
+                            <div class="error"></div>
+                        </div>
+                    </div>
+                
+                    <h4>Hostel Fee:</h4>
+                    <div class="form-details">
+
+                        <div class="input-control">
+                            <label for="amount">Total Amount Paid</label>
+                            <input type="number" id="hostel-amount" name="amount"/>
+                            <div class="error"></div>
+                        </div>
+                    
+
+                        <div class="input-control">
+                            <label for="fee_receipt">Fee Receipt</label>
+                            <input id="hostel-fee" type="file" name="hostel-fee" accept="pdf/*" />
+                            <div class="error"></div>
+                        </div>
+                    </div>
+                    <h4>Mess Fee:</h4>
+                    <div class="form-details">
+
+                        <div class="input-control">
+                            <label for="amount">Total Amount Paid</label>
+                            <input type="number" id="mess-amount" name="amount"/>
+                            <div class="error"></div>
+                        </div>
+
+                        <div class="input-control">
+                            <label for="amount">Mess Security Fee</label>
+                            <input type="number" id="messSecurity-amount" name="amount" />
+                            <div class="error"></div>
+                        </div>
+
+                        <div class="input-control">
+                            <label for="fee_receipt">Fee Receipt</label>
+                            <input  id="mess-fee" type="file" name="mess-fee" accept="pdf/*" />
+                            <div class="error"></div>
+                        </div>
+                    </div>
+                    
+
+                    <h4>Maintenance Fee:</h4>
+                    <div class="form-details">
+
+                        <div class="input-control">
+                            <label for="amount">Total Amount Paid</label>
+                            <input type="number" id="maintenance-amount" name="amount"/>
+                            <div class="error"></div>
+                        </div>
+
+                        <div class="input-control">
+                            <label for="fee_receipt">Fee Receipt</label>
+                            <input  id="maintenancefee" type="file" name="maintenance-fee" accept="pdf/*" />
+                            <div class="error"></div>
+                        </div>
+                    </div>
+                    <button class="btn" type="submit">Save</button>
+                <!-- </div> -->
+            </div>
+        </form>
+    </div>
+
+
+
+    <script src="studentform.js"></script>
+
+</body>
+
+</html>

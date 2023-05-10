@@ -1,28 +1,25 @@
 <html>
-    <head>
-        <title>Dashboard</title>
-        <link rel="stylesheet" href="./dashboard.css">
-<<<<<<< HEAD
-        <link rel="stylesheet" href="./docs.css">
-=======
+  <head>
+      <title>Dashboard-Documents</title>
+      <link rel="stylesheet" href="./docs.css">
+  </head>
+  <body>
+      <header>
+          <div class="collagelogo">
+              <img src="http://recsonbhadra.ac.in/static/media/Collegelogo.96cbe2da1f0150aefe6d.png" alt="logo" class="logo">
+          </div>
+          <div class="college-name middle">
+              <h3>Rajkiya Engineering College, Sonbhadra</h3>
+              <h5>An AICTE approved Government Engineering College affliated to AKTU Lucknow(College code-841)</h5>
+          </div>
+          <div class="student-name">
+              <input class="input" type="text" id="student_name" name="name"  />
+          </div>
         
-        
->>>>>>> 4e15c5a8e026102132692602a684c5af1c1bfa1a
-    </head>
-    <body>
-        <header>
-            <div class="collagelogo">
-                <img src="http://recsonbhadra.ac.in/static/media/Collegelogo.96cbe2da1f0150aefe6d.png" alt="logo" class="logo">
-            </div>
-            <div class="college-name middle">
-                <h3>Rajkiya Engineering College, Sonbhadra</h3>
-                <h5>An AICTE approved Government Engineering College affliated to AKTU Lucknow(College code-841)</h5>
-            </div>
-            <div class="student-name">
-                <input class="input" type="text" id="student_name" name="name"  />
-            </div>
-        </header>
+      </header>
 
+      <div class="docs-page">
+      <div class="main-content">
         <div class="side-bar">
             <ul class="sideMenu-list">
                 <h2 class="sideMenu-heading text-center">My Dashboard</h2>
@@ -32,14 +29,6 @@
                         Latest Updates
                     </a>
                 </li>
-
-                <li class="sideMenu-list-item " id="registration_status">
-                    <a class="" href="/studentform">
-                        <span>-</span>
-                        Registration Form
-                    </a>
-                </li>
-
                 <li class="sideMenu-list-item " id="registration_status">
                     <a class="" href="/status">
                         <span>-</span>
@@ -53,13 +42,13 @@
                         Academic Calender
                     </a>
                 </li>
-                
                 <!-- <li class="sideMenu-list-item " id="Documents_for_download">
                     <a class=" " href="">
                         <span>-</span>
                         Documents For Download
                     </a>
                 </li> -->
+
                 <li class="sideMenu-list-item " id="Submitted_documents">
                     <a class=" " href="/docs">
                         <span>-</span>
@@ -72,34 +61,37 @@
                         Pending Payments
                     </a>
                 </li>
-                <li class="sideMenu-list-item " id="latest_updates">
-                    <a class=" " href="/logout">
-<<<<<<< HEAD
-                        <button class="log-out-btn">log Out</button>
-=======
-                        <button class="btn">Sign Out</button>
->>>>>>> 4e15c5a8e026102132692602a684c5af1c1bfa1a
+                <li class="sideMenu-list-item" id="logout_button">
+                    <a href="/logout">
+                    <button class="log-out-btn">Log Out</button>
                     </a>
                 </li>
-
             </ul>
         </div>
-
-
         <div class="container">
             <div class="dashboard">
 
-                <h2 class="updates-heading">Latest Updates</h2>
+                <h2 class="Status-heading">Registration Status</h2>
                 <div class="dashboard-content">
-                    <div class="latest_updates">
+                    <div class="Registration-status">
+                        <div class="completed">
 
+                        </div>
+                        <div class="pending">
+
+                        </div>
+                        <div class="not-completed">
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-        <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
-        <script src="index.js"></script>
-    </body>
+    </div>
+</div>
+      <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+      <script src="index.js"></script>
+  </body>
 </html>
+
+
