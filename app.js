@@ -20,13 +20,41 @@ const formRoute = require("./routes/formRoute");
 
 require('dotenv').config();
 
-const { ensureAuthenticated, forwardAuthenticated }  = require("./config/auth");
+const { ensureAuthenticated, forwardAuthenticated } = require("./config/auth");
 
 // importing express session
 const session = require("express-session");
 
 // requiring the passport config file here
 require("./config/passport")(passport);
+
+
+
+//rendering registration form
+app.get("/studentform", (req, res) => {
+  res.render("studentform")
+})
+
+//rendering documents
+app.get("/docs", (req, res) => {
+  res.render("docs")
+})
+
+//rendering pending payment
+app.get("/dues", (req, res) => {
+  res.render("dues")
+})
+
+//rendering registration status
+app.get("/status", (req, res) => {
+  res.render("status")
+})
+
+
+
+
+
+
 
 
 // helmet config
@@ -49,16 +77,16 @@ app.use(
 );
 
 mongoose
-    .connect("mongodb://localhost/studentdatabase", {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    })
-    .then(() => {
-      console.log("Mongo DB Connected....");
-    })
-    .catch((e) => {
-      console.log("The error is when connected", e);
-    });
+  .connect("mongodb://localhost/studentdatabase", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Mongo DB Connected....");
+  })
+  .catch((e) => {
+    console.log("The error is when connected", e);
+  });
 
 
 // initialising an express session to store authentication credentials
@@ -82,7 +110,7 @@ app.use(flash());
 // Global variables 
 app.use((req, res, next) => {
   res.locals.error_msg = req.flash("error_msg");
-  res.locals.error =  req.flash('error');
+  res.locals.error = req.flash('error');
   next();
 });
 
@@ -140,27 +168,32 @@ app.get("/dashboard", ensureAuthenticated, async (req, res) => {
   const user = await newStudentModel.findById(id);
   const dataToBePassedToView = {
     name: user.Name,
-    email: user.Email,
     JEERoll: user.ID
+
   }
 
-  if(req.user.dashboard_created){
-    res.render("dashboard")
+  if (req.user.dashboard_created) {
+    res.render("dashboard", {
+      dataToBePassedToView
+    })
   }
-  else{
-  res.render("form", {
-    dataToBePassedToView
-  });}
+  else {
+    res.render("form", {
+      dataToBePassedToView
+    });
+  }
 });
 
-
+app.get("/layout",(req,res) => {
+  res.render("layout")
+})
 
 app.post("/login", (req, res, next) => {
-    passport.authenticate('local-student', {
-      successRedirect: "/dashboard",
-      failureRedirect: "/authentication",
-      failureFlash: true
-    })(req, res, next);
+  passport.authenticate('local-student', {
+    successRedirect: "/dashboard",
+    failureRedirect: "/authentication",
+    failureFlash: true
+  })(req, res, next);
 });
 
 // app.post("/adminLogin", (req, res) => {
@@ -206,7 +239,7 @@ app.post("/adminLogin", (req, res, next) => {
     failureRedirect: "/authentication",
     failureFlash: true
   })
-  (req, res, next);
+    (req, res, next);
 })
 
 
@@ -214,7 +247,7 @@ app.post("/adminLogin", (req, res, next) => {
 
 app.get('/logout', (req, res, next) => {
   req.logout(err => {
-    if(err) {
+    if (err) {
       return next(err);
     }
   });
@@ -241,10 +274,8 @@ function importExceltoJson(filepath) {
         columnToKey: {
           A: "ID",
           B: "Name",
-          C: "Email",
-          D: "Mobileno",
-          E: "Branch",
-          F: "Rank",
+          C: "Branch",
+          D: "Rank",
         },
       },
     ],
@@ -270,7 +301,7 @@ function importExceltoJson(filepath) {
         s.push(student);
       }
 
-    
+
 
       if (s.length) {
         newStudentModel
