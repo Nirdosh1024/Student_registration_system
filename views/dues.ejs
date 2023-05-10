@@ -4,22 +4,20 @@
       <link rel="stylesheet" href="./docs.css">
   </head>
   <body>
-      <header>
-          <div class="collagelogo">
-              <img src="http://recsonbhadra.ac.in/static/media/Collegelogo.96cbe2da1f0150aefe6d.png" alt="logo" class="logo">
-          </div>
-          <div class="college-name middle">
-              <h3>Rajkiya Engineering College, Sonbhadra</h3>
-              <h5>An AICTE approved Government Engineering College affliated to AKTU Lucknow(College code-841)</h5>
-          </div>
-          <div class="student-name">
-              <input class="input" type="text" id="student_name" name="name"  />
-          </div>
+        <header>
+            <div class="collagelogo">
+                <img src="http://recsonbhadra.ac.in/static/media/Collegelogo.96cbe2da1f0150aefe6d.png" alt="logo" class="logo">
+            </div>
+            <div class="college-name middle">
+                <h3>Rajkiya Engineering College, Sonbhadra</h3>
+                <h5>An AICTE approved Government Engineering College affliated to AKTU Lucknow(College code-841)</h5>
+            </div>
+            <div class="student-name">
+                <input class="input" type="text" id="student_name" name="name"  />
+            </div>
         
-      </header>
-
-      <div class="docs-page">
-      <div class="main-content">
+        </header>
+    <div class="grid-container">
         <div class="side-bar">
             <ul class="sideMenu-list">
                 <h2 class="sideMenu-heading text-center">My Dashboard</h2>
@@ -29,6 +27,15 @@
                         Latest Updates
                     </a>
                 </li>
+
+
+                <li class="sideMenu-list-item " id="registration_status">
+                    <a class="" href="/studentform">
+                        <span>-</span>
+                        Registration Form
+                    </a>
+                </li>
+
                 <li class="sideMenu-list-item " id="registration_status">
                     <a class="" href="/status">
                         <span>-</span>
@@ -82,7 +89,6 @@
             </div>
         </div>
     </div>
-</div>
       <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
       <script src="index.js"></script>
   </body>

@@ -60,17 +60,23 @@ header .college-name h5 {
     font-style: italic;
     font-weight: 500;
 }
+
+.grid-container{
+    display: grid;
+    grid-template-columns: 1fr,5fr;
+}
+
 .side-bar{
     background-color: rgb(233, 247, 247);
     box-shadow: 2px 0.5px #ececfc;
-    width:350px;
+    /* width:350px; */
     height:-webkit-fill-available;
     padding: 10px 20px 50px 20px;
     margin-top: 6px;
 }
 
 .sideMenu-list-item{
-    width:400px;
+    /* width:400px; */
     font-size: 18px;
     margin-top: 25px;
     margin-left: 50px;

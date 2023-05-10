@@ -1,17 +1,3 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'poppins',sans-serif;
-}
-
-body {
-    display:flex;
-    align-items: center;
-    min-height:100vh;
-    justify-content: center;
-    background: linear-gradient(80deg,#026ca5,#31DEDE99);    
-}
 
 .hidden {
     display: none;
@@ -19,23 +5,22 @@ body {
 
 .form-container{
     position: relative;
-    max-width: 800px;
-    width: 75%;
-    border-radius: 10px;
-    padding:30px;
-    margin:100px 15px;
+    border-radius: 10px;    
+    /* padding:10px; */
+    /* margin:100px 15px; */
     background-color: #fff;
     box-shadow:0 5px 10px rgba(0,0,0,0.1);
 }
 
-.header{
+.form-header{
     margin-top: 20px;
+    margin-left:20px;
     height:80px;
     background:var(--lg-color);
     padding:20px,0;
-    color: #ff3860;
+    color: #010081;
 }
-.header h1{
+.form-header h1{
     color: #010081;
     font-size: 26px;
     font-weight:600;
@@ -43,13 +28,13 @@ body {
     text-align: center;
 }
 
-.header h6{
+.form-header h6{
     color: #0b494999;
     font-size: 12px;
     text-align: right;
 }
 
-h2{
+.form-header h2{
     color: #010081;
     font-size: 22px;
     margin-bottom: 10px;
@@ -70,21 +55,22 @@ h2{
 
 .fee-details-form{
     position:relative;
-    margin-top:16px;
+    margin-top:40px;
     min-height:490px;
     background-color: #fff;
+
 }
 
 .hostel-details-form{
     position:relative;
-    margin-top:16px;
+    margin-top:40px;
     min-height:490px;
     background-color: #fff;
 }
 
 .educatinal-details-form{
     position:relative;
-    margin-top:16px;
+    margin-top:40px;
     min-height:490px;
     background-color: #fff;
 }
@@ -197,19 +183,21 @@ h2{
     -webkit-border-radius:10px;
     box-shadow: 2px #010081;
     max-width: 100%;
-    margin-top:30%;
+    margin-top: 10px;
+    /* margin-top:30%; */
      position: absolute;
     /* top: 0;
     left: 0;
     right: 0;
     bottom: 0; */
-    animation: slide-in 0.5s ease-in;
+    /* animation: slide-in 0.5s ease-in; */
 }
 
 .hostel-details {
     display: none;
     background-color: #fff;
     border-radius: 10px;
+    margin-top: 10px;
     -webkit-border-radius:10px;
     box-shadow: 2px #010081;
     max-width: 100%;
@@ -218,7 +206,7 @@ h2{
     left: 0;
     right: 0;
     bottom: 0; */
-    animation: slide-in 0.5s ease-in;
+    /* animation: slide-in 0.5s ease-in; */
 }
 
 .payment {
@@ -228,12 +216,13 @@ h2{
     -webkit-border-radius:10px;
     box-shadow: 2px #010081;
     max-width: 100%;
+    margin-top: 10px;
     position: absolute;
     /* top: 0;
     left: 0;
     right: 0;
     bottom: 0; */
-    animation: slide-in 0.5s ease-in;
+    /* animation: slide-in 0.5s ease-in; */
 }
 
 .fee-details {
@@ -243,26 +232,27 @@ h2{
     -webkit-border-radius:10px;
     box-shadow: 2px #010081;
     max-width: 100%;
+    margin-top: 10px;
     position: absolute;
-    margin-top: 30%;
-    margin-bottom: 10%;
+    /* margin-top: 30%; */
+    /* margin-bottom: 10%; */
     /* top: 0;
     left: 0;
     right: 0;
     bottom: 0; */
-    animation: slide-in 0.5s ease-in;
+    /* animation: slide-in 0.5s ease-in; */
 }
 
 
 /* form slide in animation */
-@keyframes slide-in {
+/* @keyframes slide-in {
     0% {
         transform: translateX(110%);
     }
     100% {
         transform: translateX(0%);
     }
-}
+} */
 
 .checkbox{
     width:20px;
