@@ -28,6 +28,37 @@ const session = require("express-session");
 // requiring the passport config file here
 require("./config/passport")(passport);
 
+//rendering dashboard
+app.get("/dashboard",(req,res) =>{
+  res.render("dashboard")
+})
+
+//rendering registration form
+app.get("/studentform",(req,res) =>{
+  res.render("studentform")
+})
+
+//rendering documents
+app.get("/docs",(req,res) =>{
+  res.render("docs")
+})
+
+//rendering pending payment
+app.get("/dues",(req,res) =>{
+  res.render("dues")
+})
+
+//rendering registration status
+app.get("/status",(req,res) =>{
+  res.render("status")
+})
+
+
+
+
+
+
+
 
 // helmet config
 // app.use(helmet());
@@ -140,12 +171,14 @@ app.get("/dashboard", ensureAuthenticated, async (req, res) => {
   const user = await newStudentModel.findById(id);
   const dataToBePassedToView = {
     name: user.Name,
-    email: user.Email,
     JEERoll: user.ID
+    
   }
 
   if(req.user.dashboard_created){
-    res.render("dashboard")
+    res.render("dashboard",{
+      dataToBePassedToView
+    })
   }
   else{
   res.render("form", {

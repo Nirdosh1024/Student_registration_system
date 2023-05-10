@@ -26,7 +26,8 @@ const newStudent = mongoose.Schema({
   },
   passwd: {
     type: String,
-    required: true
+    required: true,
+    lowerCase: true
   },
   role: {
     type: String,

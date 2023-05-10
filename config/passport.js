@@ -16,14 +16,16 @@ module.exports = function(passport) {
                     return done(null, false, {message: "That Id is not registered" });
 
                 }
-
-                console.log("function reaching here");
+               
                 // Match password
-                bcrypt.compare(password, user.passwd, (err, isMatch) => {
+                bcrypt.compare(password, String(user.passwd).trim(), (err, isMatch) => {
+                    console.log(password)
+                    console.log(user.passwd)
                     if (err) throw err;
                     if (isMatch) {
                         return done(null, user);
                     } else {
+                    
                         return done(null, false, {messsage: "Password Incorrect" });
                     }
                 });
