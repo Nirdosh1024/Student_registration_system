@@ -30,34 +30,34 @@ const newStudent = mongoose.Schema({
     type: String,
     required: true
   },
-  FatherName: {
-    type: String,
-    required: true
-  },
-  MotherName: {
-    type: String,
-    required: true
-  },
-  Gender: {
-    type: String,
-    required: true
-  },
-  PhoneNumber: {
-    type: Number,
-    required: true
-  },
-  AadharNumber: {
-    type: Number,
-    required: true
-  },
-  DOB: {
-    type: String,
-    required: true
-  },
-  Year: {
-    type: String,
+  // FatherName: {
+  //   type: String,
   //   required: true
-  },
+  // },
+  // MotherName: {
+  //   type: String,
+  //   required: true
+  // },
+  // Gender: {
+  //   type: String,
+  //   required: true
+  // },
+  // PhoneNumber: {
+  //   type: Number,
+  //   required: true
+  // },
+  // AadharNumber: {
+  //   type: Number,
+  //   required: true
+  // },
+  // DOB: {
+  //   type: String,
+  //   required: true
+  // },
+  // Year: {
+  //   type: String,
+  // //   required: true
+  // },
   dashboard_created: {
     type: Boolean,
     required: true
