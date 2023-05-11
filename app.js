@@ -111,6 +111,7 @@ app.use(flash());
 app.use((req, res, next) => {
   res.locals.error_msg = req.flash("error_msg");
   res.locals.error = req.flash('error');
+
   next();
 });
 
@@ -201,6 +202,7 @@ app.post("/login", (req, res, next) => {
 //   Admin.findOne({ID: UserID}).then(async (admin) => {
 //     console.log("Function is reaching here");
 //     const password = await hashedPassword(UserID)
+//     console.log(admin)
 //     admin.Passwd = password
 //     admin.
 //     save().then((admin) => {
@@ -217,13 +219,14 @@ app.post("/login", (req, res, next) => {
 //   if (salt){
 //     const password = UserID + '@841'
 //     const hashedPass= await bcrypt.hash(password,salt);
+    
 //     return hashedPass;
 //   } 
 // }
 
-// app.get("/admindashboard", ensureAuthenticated, (req, res) => {
-//   res.render("admindashboard");
-// })
+app.get("/admindashboard", ensureAuthenticated, (req, res) => {
+  res.render("admindashboard");
+})
 
 app.get("/adminfeeform", ensureAuthenticated, (req, res) => {
   res.render("adminfeeform");
@@ -235,7 +238,7 @@ app.get("/adminfeeform", ensureAuthenticated, (req, res) => {
 
 app.post("/adminLogin", (req, res, next) => {
   passport.authenticate("local-admin", {
-    successRedirect: "/adminfeeform",
+    successRedirect: "/admindashboard",
     failureRedirect: "/authentication",
     failureFlash: true
   })
@@ -329,3 +332,5 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log("Server has started at 5000");
 });
+
+

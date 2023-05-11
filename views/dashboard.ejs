@@ -1,8 +1,9 @@
 <html>
     <head>
         <title>Dashboard</title>
-        <link rel="stylesheet" href="/css/dashboard.css">
-        <link rel="stylesheet" href="/css/docs.css">
+        <link rel="stylesheet" href="./dashboard.css">
+
+        <link rel="stylesheet" href="./docs.css">
     </head>
     <body>
         <header>
@@ -14,7 +15,8 @@
                 <h5>An AICTE approved Government Engineering College affliated to AKTU Lucknow(College code-841)</h5>
             </div>
             <div class="student-name">
-                <input class="input" type="text" id="student_name" name="name" value="<%= dataToBePassedToView.name %>" />
+                <img class="icon" src="./assets/studenticon1.png" alternative=""/>
+                <input class="input student-name" type="text" id="student_name" name="name" value="<%= dataToBePassedToView.name %>" />
             </div>
         </header>
     <div class="grid-container">
@@ -29,41 +31,34 @@
                 </li>
 
                 <li class="sideMenu-list-item " id="registration_status">
-                    <a class="" href="/studentform">
+                    <a class="sideMenu-active" href="/studentform">
                         <span>-</span>
                         Registration Form
                     </a>
                 </li>
 
                 <li class="sideMenu-list-item " id="registration_status">
-                    <a class="" href="/status">
+                    <a class="sideMenu-active" href="/status">
                         <span>-</span>
                         Registration Status
                     </a>
                 </li>
 
-            
-                <!-- <li class="sideMenu-list-item " id="Documents_for_download">
-                    <a class=" " href="">
-                        <span>-</span>
-                        Documents For Download
-                    </a>
-                </li> -->
                 <li class="sideMenu-list-item " id="Submitted_documents">
-                    <a class=" " href="/docs">
+                    <a class="sideMenu-active " href="/docs">
                         <span>-</span>
                         Submitted Documents
                     </a>
                 </li>
                 <li class="sideMenu-list-item " id="pending_payments">
-                    <a class=" " href="/dues">
+                    <a class="sideMenu-active " href="/dues">
                         <span>-</span>
                         Pending Payments
                     </a>
                 </li>
                 <li class="sideMenu-list-item " id="latest_updates">
-                    <a class=" " href="/logout">
-                        <button class="log-out-btn">Sign Out</button>
+                    <a  href="/logout">
+                        <button class="log-out-btn">Log Out</button>
                     </a>
                 </li>
 
@@ -85,7 +80,7 @@
 
     </div>
         <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
-        <!-- <script src="index.js"></script> -->
+        <script src="index.js"></script>
     </body>
 </html>
 

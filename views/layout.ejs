@@ -4,12 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/adminfeeform.css">
+    <link rel="stylesheet" href="./css/admindashboard.css">
+    <link rel="stylesheet" href="./css/layout.css">
+
     <title>Document</title>
 </head>
 <body>
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="excel" id="excel">
-        <button type="submit">submit</button>
-    </form>
+    <header>
+        <div class="collagelogo">
+            <img src="http://recsonbhadra.ac.in/static/media/Collegelogo.96cbe2da1f0150aefe6d.png" alt="logo" class="logo">
+        </div>
+        <div class="college-name middle">
+            <h3>Rajkiya Engineering College, Sonbhadra</h3>
+            <h5>An AICTE approved Government Engineering College affliated to AKTU Lucknow(College code-841)</h5>
+        </div>
+    
+        </header>
+        <div class="container">
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <label for="new_student_data">Upload New Students Data</label>
+                <input type="file" name="excel" id="excel">
+                <button type="submit">submit</button>
+
+            </form>
+        </div>
 </body>
+
 </html>

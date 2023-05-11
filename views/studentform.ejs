@@ -2,13 +2,13 @@
 
 <head>
     <title>Student Form</title>
-    <link rel="stylesheet" href="/css/studentform.css">
-    <link rel="stylesheet" href="/css/docs.css">
-    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="./studentform.css">
+    <link rel="stylesheet" href="./docs.css">
+    <link rel="stylesheet" href="./dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
         integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script defer src="js/formvalidation.js"></script>
+    <script defer src="formvalidation.js"></script>
 
 </head>
 
@@ -37,47 +37,35 @@
             </li>
 
             <li class="sideMenu-list-item " id="registration_status">
-                <a class="" href="/studentform">
+                <a class="sideMenu-active" href="/studentform">
                     <span>-</span>
                     Registration Form
                 </a>
             </li>
 
             <li class="sideMenu-list-item " id="registration_status">
-                <a class="" href="/status">
+                <a class="sideMenu-active" href="/status">
                     <span>-</span>
                     Registration Status
                 </a>
             </li>
 
-            <li class="sideMenu-list-item " id="academic_calender">
-                <a class=" " href="/calendar">
-                    <span>-</span>
-                    Academic Calender
-                </a>
-            </li>
             
-            <!-- <li class="sideMenu-list-item " id="Documents_for_download">
-                <a class=" " href="">
-                    <span>-</span>
-                    Documents For Download
-                </a>
-            </li> -->
             <li class="sideMenu-list-item " id="Submitted_documents">
-                <a class=" " href="/docs">
+                <a class=" sideMenu-active" href="/docs">
                     <span>-</span>
                     Submitted Documents
                 </a>
             </li>
             <li class="sideMenu-list-item " id="pending_payments">
-                <a class=" " href="/dues">
+                <a class=" sideMenu-active" href="/dues">
                     <span>-</span>
                     Pending Payments
                 </a>
             </li>
             <li class="sideMenu-list-item " id="latest_updates">
                 <a class=" " href="/logout">
-                    <button class="btn">Sign Out</button>
+                    <button class="log-out-btn">Log Out</button>
                 </a>
             </li>
 
@@ -87,7 +75,6 @@
 
     <div class="container">
         <div class="dashboard">
-
             <div class="form-container personal-information">
                 <form class="personal-information-form" method="POST" >
                     <div role="main" class="form-all">
@@ -96,7 +83,7 @@
                             <h6 >Fill out the form carefully for registration</h6>
                         </div>
         
-                        <h2 class="form-header" data-component="header">Personal Details:</h2>
+                        <h2 class="subform-header" data-component="header">Personal Details:</h2>
         
                         <div class="form-details">
         
@@ -115,7 +102,7 @@
                             <div class="input-control">
                                 <label for="image"> Student's Photo</label>
                                 <div id="display_image"
-                                    style="width:120px; height:130px; border:1px solid #335d8b;background-size: cover;text-align:center;"
+                                    style="width:120px; height:130px; border:1px solid #010081;background-size: cover;text-align:center;"
                                     value="" placeholder="passport size photo" aria-label="upload photo"></div>
                                 <input type="file" id="image-input" style="margin-top:10px;"
                                     accept="image/png,image/jpg, image/jpeg " />
@@ -283,9 +270,31 @@
                                 <div class="error"></div>
                             </div>
                             
-        
+                            
                             <div class="input-control">
-                                <label for="address">Permanent Address</label></br>
+                                <label for="name">Local Gaurdian's Name (If Any)</label>
+                                <input type="text" id="name" name="name" />
+                            </div>
+                            
+                            <div class="input-control">
+                                <label for="gardian_phoneNo">Gaurdian's Phone Number</label>
+                                <input type="number" id="GaurdianNumber" name="mobile_number" placeholder="phone no." size="10" />
+                                <div class="error"></div>
+                            </div>
+
+                            <div class="input-control">
+                                <label for="image"> Student's Signature</label>
+                                <div id="display_sign"
+                                    style="width:250px; height:70px; border:1px solid #335d8b;background-size: cover;text-align:center;"
+                                    value="" placeholder="passport size photo" aria-label="upload photo"></div>
+                                <input type="file" id="sign-input" style="margin-top:10px;"
+                                    accept="image/png,image/jpg, image/jpeg ">
+                                <div class="error"></div>
+                            </div>
+        
+
+                            <div class="input-control">
+                                <label for="address">Permanent Address</label>
                                 <input type="text" class="form-control" id="street-1" placeholder="Street Address_1" /></br>
                                 <input type="text" class="form-control" id="street-2" placeholder="Street Address_2" /></br>
                                 <input type="text" class="form-control" id="inputCity" placeholder="City" /></br>
@@ -297,9 +306,9 @@
                             
         
                             <div class="input-control">
-                                <label for="address">Correspondance Address</label></br>
+                                <label for="address">Correspondance Address</label>
                                 <input class="checkbox" type="checkbox" id="copy-address">
-                                <label class="same-as-permanent" for="copy-address">Same As Permanent Address</label></br>
+                                <label class="same-as-permanent" for="copy-address">Same As Permanent Address</label>
                                 <input type="text" class="form-control" id="Cstreet-1" placeholder="Street Address_1" /></br>
                                 <input type="text" class="form-control" id="Cstreet-2" placeholder="Street Address_2" /></br>
                                 <input type="text" class="form-control" id="CinputCity" placeholder="City" /></br>
@@ -308,30 +317,11 @@
                                 <input type="text" class="form-control" id="CinputCountry" placeholder="Country" />
                                 <div class="error"></div>
                             </div>
-                            
-                            <div class="input-control">
-                                <label for="image"> Student's Signature</label></br>
-                                <div id="display_sign"
-                                    style="width:250px; height:70px; border:1px solid #335d8b;background-size: cover;text-align:center;"
-                                    value="" placeholder="passport size photo" aria-label="upload photo"></div>
-                                <input type="file" id="sign-input" style="margin-top:10px;"
-                                    accept="image/png,image/jpg, image/jpeg ">
-                                <div class="error"></div>
-                            </div>
         
         
-                            <div class="input-control">
-                                <label for="name">Local Gaurdian's Name (If Any)</label>
-                                <input type="text" id="name" name="name" />
-                            </div>
                             
                             <div class="input-control">
-                                <input type="number" id="GaurdianNumber" name="mobile_number" placeholder="phone no." size="10" />
-                                <div class="error"></div>
-                            </div>
-                            
-                            <div class="input-control">
-                                <label for="address">Gaurdian's Address</label></br>
+                                <label for="address">Gaurdian's Address</label>
                                 <input type="text" class="form-control" id="autocomplete" placeholder="Street Address_1" /></br>
                                 <input type="text" class="form-control" id="autocomplete" placeholder="Street Address_2" /></br>
                                 <input type="text" class="form-control" id="inputCity" placeholder="City" /></br>
@@ -342,9 +332,9 @@
                             
                 
                         </div>
-        
-                        <button class="btn" type="submit">Save</button>
-        
+                        <div class="form-button">
+                            <button class="btn" type="submit">Save</button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -354,14 +344,13 @@
             <div class="form-container educational-details hidden">
                 <form class="educational-details-form" action="/submit-form" method="POST">
                     <div role="main" class="form-all">
-                        <div class="header">
-                            <h1 class="form-header" data-component="header">Registration Form</h1>
-                            <h6 class="form-subHeader">Fill out the form carefully for registration</h6>
+                        <div class="form-header">
+                            <h1 data-component="header">Registration Form</h1>
+                            <h6>Fill out the form carefully for registration</h6>
                         </div>
         
-                        <h2 class="form-header" data-component="header">Educational Details:</h2>
+                        <h2 class="subform-header" data-component="header">Educational Details:</h2>
         
-                        <!-- <div class="form-details"> -->
                             <h4>High School Details:</h4>
         
                             <div class="form-details">
@@ -480,10 +469,10 @@
                                     <div class="error"></div>
                                 </div>
                             </div>
-        
+                        <div class="form-button">
+                            <button class="prev-btn" id="e-prev-btn" type="submit">Prev</button>
                             <button class="btn" type="submit">Save</button>
-        
-                        <!-- </div> -->
+                        </div>
         
                     </div>
                 </form>
@@ -494,26 +483,27 @@
             <div class="form-container hostel-details hidden">
                 <form class="hostel-details-form" action="/submit-form" method="POST">
                     <div role="main" class="form-all">
-                        <div class="header">
-                            <h1 class="form-header" data-component="header">Registration Form</h1>
-                            <h6 class="form-subHeader">Fill out the form carefully for registration</h6>
+                        <div class="form-header">
+                            <h1 data-component="header">Registration Form</h1>
+                            <h6>Fill out the form carefully for registration</h6>
                         </div>
         
-                        <h2 class="form-header" data-component="header" style="color:#335d8b; font-size: 24px;">Hostel Details:
-                        </h2>
-                        <!-- <div class="form-details"> -->
+                        <h2 class="subform-header" data-component="header">Hostel Details:</h2></br>
                         
                             <label for="hosteller">Are You Hosteller?</label>
+
+                            <div class="form-details">
                             <select class="hostel-select" name="hosteller" id="hosteller">
                                 <option value="">Please Select</option>
                                 <option value="yes">Yes</option>
                                 <option value="no">No</option>
                             </select>
-        
+                            </div>
                             <ul class="complete-form" style="display: none">
-                                <h4>Hostel Allotment Form</h4>
-                                <label for="hostel">Opting For Hostel</label>
-                                
+                                </br>
+                                <h4>Hostel Allotment Form</h4></br></br>
+                                <label for="hostel">Opting For Hostel:</label></br>
+                            
                                 <div class="form-details">
                                     <select class="hostel hostel-select">
                                         <option value="">Please Select</option>
@@ -524,7 +514,7 @@
                                     </select>
                                 </div>
                                 <div class="form-details">
-                                    <label for="room">Room Number</label>
+                                    <label for="room">Room Number:</label>
                                     <select class="floor hostel-select">
                                         <option value="">Please Select</option>
                                         <option value="G"> G </option>
@@ -565,9 +555,10 @@
                                 
                                 </div>
                             </ul>
-                            
+                        <div class="form-button">
+                            <button class="prev-btn" id="h-prev-btn" type="submit">Prev</button>
                             <button class="btn" type="submit">Save</button>
-                        <!-- </div> -->
+                        </div>
                     </div>
                 </form>
             </div>
@@ -577,19 +568,17 @@
             <div class="form-container payment hidden">
                 <form class="payment-form" action="/submit-form" method="post">
                     <div role="main" class="form-all">
-                        <div class="header">
-                            <h1 class="form-header" data-component="header">Registration Form</h1>
-                            <h6 class="form-subHeader">Fill out the form carefully for registration</h6>
+                        <div class="form-header">
+                            <h1 data-component="header">Registration Form</h1>
+                            <h6 >Fill out the form carefully for registration</h6>
                         </div>
         
-                        <h2 class="form-header" data-component="header" style="color:#335d8b; font-size: 24px;">Payment Form:
-                        </h2>
-                        <!-- <div class="form-details"> -->
+                        <h2 class="subform-header" data-component="header">Payment Form:</h2>
         
                             <div class="form-details">
         
-                                <label for="feepay">Pay Fees</label>
-                                <select name="hosteller" id="hosteller">
+                                <label for="fee_pay">Pay Fees</label>
+                                <select class="fee-type" name="fee-type" id="fee-type">
                                     <option value="">Please Select</option>
                                     <option value="yes">Paying Full Fee</option>
                                     <option value="no">Paying In Installment</option>
@@ -602,9 +591,10 @@
                                 </div>
                                 
                             </div>
+                        <div class="form-button">
+                            <button class="prev-btn" id="p-prev-btn" type="submit">Prev</button>
                             <button class="btn" type="submit">Save</button>
-        
-                        <!-- </div> -->
+                        </div>
                     </div>
                 </form>
             </div>
@@ -616,13 +606,12 @@
             <div class="form-container fee-details hidden">
                 <form class="fee-details-form" action="/submit-form" method="post">
                     <div role="main" class="form-all">
-                        <div class="header">
-                            <h1 class="form-header" data-component="header">Registration Form</h1>
-                            <h6 class="form-subHeader">Fill out the form carefully for registration</h6>
+                        <div class="form-header">
+                            <h1 data-component="header">Registration Form</h1>
+                            <h6>Fill out the form carefully for registration</h6>
                         </div>
         
-                        <h2 class="form-header" data-component="header" style="color:#335d8b; font-size: 24px;">Fee Details:</h2>
-                        <!-- <div class="form-details"> -->
+                        <h2 class="subform-header" data-component="header">Fee Details:</h2>
         
                             <h4>Institute Fee:</h4>
                             <div class="form-details">
@@ -695,8 +684,10 @@
                                     <div class="error"></div>
                                 </div>
                             </div>
-                            <button class="btn" type="submit">Save</button>
-                        <!-- </div> -->
+                        <div class="form-button">
+                            <button class="prev-btn" id="f-prev-btn" type="submit">Prev</button>
+                            <button class="btn" type="submit">Submit</button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -709,7 +700,7 @@
 
 
 </div>
-    <script src="js/studentform.js"></script>
+    <script src="studentform.js"></script>
 
 </body>
 
