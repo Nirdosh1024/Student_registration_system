@@ -7,6 +7,7 @@ const aadharNo = document.getElementById("aadhar")
 
 const dob = document.getElementById("dob")
 
+const popError = document.querySelector(".error-block")
 
 console.log("This script is running")
 
@@ -90,7 +91,7 @@ const setSuccess = element => {
 }
 
 const initialForm = document.querySelector(".initial-form")
-
+console.log(popError)
 initialForm.addEventListener("submit" ,async (e) => {
   e.preventDefault();
   if(validateInputForInitialForm(initialForm)){
@@ -111,10 +112,12 @@ initialForm.addEventListener("submit" ,async (e) => {
   if(axiosResponse.data.status === "Okay"){
       window.location.href = "/dashboard"
   }
+   
+  else{
+    popError.style.display = "block";
+ }
 }
-else{
-  console.log("form not validated")
-}
+
 })
 
 const validateInputForInitialForm = (initialForm) => {

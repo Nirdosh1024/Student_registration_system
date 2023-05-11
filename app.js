@@ -291,12 +291,13 @@ function importExceltoJson(filepath) {
     let s = [];
     if (salt) {
       for (let student of students) {
-        const passwd = student.Rank + student.Branch;
+        const passwd = "Recs@" + student.Rank;
         const hasedPasswd = await bcrypt.hash(passwd, salt);
         if (hasedPasswd) {
           student.passwd = hasedPasswd;
           student.role = "student";
           student.dashboard_created = false;
+          student.form_submitted = false;
         }
         s.push(student);
       }

@@ -22,17 +22,18 @@ router.post("/", (req, res) => {
 
 
     if(req.body) {
-        newStudentModel.findOne({ ID : JEERoll }).then((user) => {
-            user.dashboard_created = true;
-            user.FatherName = father_name;
-            user.MotherName = mother_name;
-            user.Gender = gender;
-            user.DOB = dob;
-            user.Year = year;
-            user.Branch = branch;
-            user.PhoneNumber = Phone_number;
-            user.AadharNumber = aadhar_number;
-            user.form_submitted = false;
+        newStudentModel.findOne({ ID : JEERoll, Branch : branch }).then((user) => {
+            console.log(user)
+            // user.dashboard_created = true;
+            // user.FatherName = father_name;
+            // user.MotherName = mother_name;
+            // user.Gender = gender;
+            // user.DOB = dob;
+            // user.Year = year;
+            // user.Branch = branch;
+            // user.PhoneNumber = Phone_number;
+            // user.AadharNumber = aadhar_number;
+          
             user.save().then(() => {
                 console.log("user saved");
             }).catch((err) => {
@@ -40,7 +41,8 @@ router.post("/", (req, res) => {
             });
             console.log(user);
         }).catch((err) => {
-            console.error(err);
+            console.log(err)
+            res.json({status: "Not Okay"})
         });
     }
     res.json({status: "Okay"});

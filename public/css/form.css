@@ -16,6 +16,16 @@ body {
     padding: 5px 20px 5px 20px;
     border-radius: 20px;
 }
+
+.error-block{
+    display: none;
+}
+
+.popup-error{
+    text-align: center;
+    font-size: 14px;
+    color:red;
+}
 form{
     display: -ms-inline-grid;
     margin-bottom: 10px;
