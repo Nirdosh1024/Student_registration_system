@@ -112,10 +112,9 @@ initialForm.addEventListener("submit" ,async (e) => {
   if(axiosResponse.data.status === "Okay"){
       window.location.href = "/dashboard"
   }
-   
-  else{
+  else if(axiosResponse.data.status === "Not Okay") {
     popError.style.display = "block";
- }
+  }
 }
 
 })

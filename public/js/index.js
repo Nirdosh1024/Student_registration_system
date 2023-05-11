@@ -7,11 +7,10 @@ adminfeeForm.addEventListener("submit" , async () => {
 
     const values = [...dataInForm];
     const formDataObject = {};
- 
- 
+
+
     values.forEach((ele) => {
         formDataObject[ele[0]] = ele[1];
-  
     })
 
     console.log(formDataObject);
@@ -23,4 +22,4 @@ adminfeeForm.addEventListener("submit" , async () => {
     });
 
     console.log(axiosRes)
- })
+})

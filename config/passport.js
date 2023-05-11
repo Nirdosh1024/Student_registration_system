@@ -14,7 +14,6 @@ module.exports = function(passport) {
             }).then((user) => {
                 if (!user) {
                     return done(null, false, {message: "That Id is not registered" });
-
                 }
 
                 // Match password
@@ -72,7 +71,7 @@ module.exports = function(passport) {
             });
         }
         else {
-            done({ message: 'No entity found' }, null);
+            done(null, false, { message: 'No entity found' });
         }
     });
 };

@@ -2,7 +2,7 @@ const router = require("express").Router();
 
 const newStudentModel = require("../Models/studentModel");
 
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
     const {
         JEERoll,
         name,
@@ -22,30 +22,28 @@ router.post("/", (req, res) => {
 
 
     if(req.body) {
-        newStudentModel.findOne({ ID : JEERoll, Branch : branch }).then((user) => {
-            console.log(user)
-            // user.dashboard_created = true;
-            // user.FatherName = father_name;
-            // user.MotherName = mother_name;
-            // user.Gender = gender;
-            // user.DOB = dob;
-            // user.Year = year;
-            // user.Branch = branch;
-            // user.PhoneNumber = Phone_number;
-            // user.AadharNumber = aadhar_number;
-          
+        const user  = await newStudentModel.findOne({ ID: JEERoll, Branch: branch });
+        if(!user) {
+            res.json({status: "Not Okay"});
+        } else {
+            user.dashboard_created = true;
+            user.FatherName = father_name;
+            user.MotherName = mother_name;
+            user.Gender = gender;
+            user.DOB = dob;
+            user.Year = year;
+            user.Branch = branch;
+            user.PhoneNumber = Phone_number;
+            user.AadharNumber = aadhar_number;
+
             user.save().then(() => {
-                console.log("user saved");
+                console.log("User Saved");
+                res.json({status: "Okay"});
             }).catch((err) => {
-                console.log(`couldn't save due to error ${err}`);
-            });
-            console.log(user);
-        }).catch((err) => {
-            console.log(err)
-            res.json({status: "Not Okay"})
-        });
+                console.log(err);
+            })
+        }
     }
-    res.json({status: "Okay"});
 });
 
 
