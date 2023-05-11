@@ -35,6 +35,7 @@ router.post("/", async (req, res) => {
             user.Branch = branch;
             user.PhoneNumber = Phone_number;
             user.AadharNumber = aadhar_number;
+            user.Email = email;
 
             user.save().then(() => {
                 console.log("User Saved");

@@ -30,10 +30,6 @@ require("./config/passport")(passport);
 
 
 
-//rendering registration form
-app.get("/studentform", (req, res) => {
-  res.render("studentform")
-})
 
 //rendering documents
 app.get("/docs", (req, res) => {
@@ -68,6 +64,7 @@ app.use(logger('dev'));
 const newStudentModel = require("./Models/studentModel");
 const Admin = require("./Models/adminModel");
 const { stderr } = require("process");
+const { accessSync } = require("fs");
 
 app.use(
   cors({
@@ -183,6 +180,32 @@ app.get("/dashboard", ensureAuthenticated, async (req, res) => {
     });
   }
 });
+
+//rendering registration form
+app.get("/studentform", ensureAuthenticated, async(req, res) => {
+  const id = req.session.passport.user._id
+
+  const user = await newStudentModel.findById(id);
+
+  const dataToBePassedToForm = {
+    name : user.Name,
+    JEERoll : user.ID,
+    gender : user.Gender,
+    dob : user.DOB,
+    year : user.Year,
+    branch : user.Branch,
+    Phone_number : user.PhoneNumber,
+    aadhar_number : user.AadharNumber,
+    father_name : user.FatherName,
+    mother_name : user.MotherName,
+    email : user.Email
+
+  }
+  res.render("studentform",{
+    dataToBePassedToForm
+  })
+})
+
 
 app.get("/layout",(req,res) => {
   res.render("layout")

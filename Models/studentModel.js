@@ -46,6 +46,11 @@ const newStudent = mongoose.Schema({
     type: Number,
     required: true
   },
+  Email : {
+    type :String, 
+    required: true
+  },  
+  
   AadharNumber: {
     type: Number,
     required: true
