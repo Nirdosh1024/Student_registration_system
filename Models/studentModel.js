@@ -61,6 +61,8 @@ const newStudent = mongoose.Schema({
   },
   Year: {
     type: String,
+    required: true
+  },
   dashboard_created: {
     type: Boolean,
     required: true
