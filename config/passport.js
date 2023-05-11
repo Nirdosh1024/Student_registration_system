@@ -52,11 +52,15 @@ module.exports = function(passport) {
     }))
 
     passport.serializeUser(function(user, done) {
-        done(null, { _id: user.id, role: user.role });
+        if(user.role === "student") {
+            done(null, { _id: user.id, role: user.role, name: user.Name, JEERoll: user.ID });
+        }
+        else {
+            done(null, { _id: user.id, role: user.role });
+        }
     });
 
     passport.deserializeUser(function(id, done) {
-        console.log(id.role);
         if(id.role === "student") {
             newStudentModel.findById(id).then(function(student) {
                 done(null, student);
