@@ -1,0 +1,136 @@
+*, ::after, ::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+
+:root {
+    --color-primary: #010081;
+    --color-secondary: #ffffff;
+    --color-black: #000000;
+    --ff: 'Poppins', sans-serif;
+}
+
+body {
+    width: 100%;
+    font-family: var(--ff);
+    color: var(--color-primary);
+}
+
+header {
+    padding: 10px 20px 30px 20px; 
+    display: flex;
+    margin-top: 20px;
+    border-bottom: 1px solid silver;
+    align-items: center;
+    box-shadow: 1px 3px #1b555599;
+}
+
+header .logo {  
+    height:80px;
+    width:80px;
+    margin-left:40px;
+    margin-right:200px;
+    border: 1px solid #3e3e3e;
+    border-radius: 100px;
+}
+header .collagelogo{
+    height:80px;
+    width:80px;
+
+}
+header .college-name {
+    text-align: center; 
+    margin-left:200px;
+
+}
+
+header .college-name h3 {
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+header .college-name h5 {
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 500;
+}
+
+
+header .student-name {
+    display: flex;
+    margin-left:50px;
+    gap:10px;
+}
+.student-name{
+    font-size:14px;
+    height: 30px;
+    border: 0 solid white;
+}
+
+.icon{
+    position: absolute;
+    width:30px;
+    height:30px;
+    background:white;
+    border-radius:10px solid #010081 ;
+    box-sizing: border-box;
+    border-color: #010081;
+}
+
+
+
+
+
+
+.grid-container{
+    display: grid;
+    grid-template-columns: 1fr,5fr;
+}
+
+.side-bar{
+    background-color: rgb(233, 247, 247);
+    box-shadow: 2px 0.5px #ececfc;
+    height:-webkit-fill-available;
+    padding: 10px 20px 50px 20px;
+    margin-top: 6px;
+}
+
+.sideMenu-list-item{
+    font-size: 18px;
+    margin-top: 25px;
+    margin-left: 50px;
+    color: #010081;
+
+}
+
+.sideMenu-heading{
+    margin-top: 5%;
+    margin-left: 15%;
+    align-items: center;
+}
+
+.log-out-btn{
+    font-size:14px;
+    width: 80px;
+    height:30px;
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: #EFEFEF;
+    text-align: center;
+    border: 1.5px solid #010081;
+    color: #010081;
+    font-weight: 600;
+    padding: 5px 5px;
+    border-radius: 5px;
+}
+
+.log-out-btn:hover{
+    background-color:#010081;
+    color: #ffff;
+    border:1.5px solid black;
+}

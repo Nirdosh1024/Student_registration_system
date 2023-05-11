@@ -30,29 +30,6 @@ require("./config/passport")(passport);
 
 
 
-
-//rendering documents
-app.get("/docs", (req, res) => {
-  res.render("docs")
-})
-
-//rendering pending payment
-app.get("/dues", (req, res) => {
-  res.render("dues")
-})
-
-//rendering registration status
-app.get("/status", (req, res) => {
-  res.render("status")
-})
-
-
-
-
-
-
-
-
 // helmet config
 // app.use(helmet());
 
@@ -159,15 +136,15 @@ app.get("/authentication", (req, res) => {
 });
 
 
-app.get("/dashboard", ensureAuthenticated, async (req, res) => {
-  const id = req.session.passport.user._id;
-
-  const user = await newStudentModel.findById(id);
+app.get("/dashboard", ensureAuthenticated, (req, res) => {
+  const user = req.session.passport.user;
+  
   const dataToBePassedToView = {
-    name: user.Name,
-    JEERoll: user.ID
-
+    name: user.name,
+    JEERoll: user.JEERoll
   }
+
+  console.log(dataToBePassedToView);
 
   if (req.user.dashboard_created) {
     res.render("dashboard", {
@@ -206,6 +183,48 @@ app.get("/studentform", ensureAuthenticated, async(req, res) => {
   })
 })
 
+//rendering documents
+app.get("/docs", ensureAuthenticated, (req, res) => {
+  const user = req.session.passport.user;
+  
+  const dataToBePassedToView = {
+    name: user.name,
+    JEERoll: user.JEERoll
+  }
+
+  res.render("docs", {
+    dataToBePassedToView
+  })
+})
+
+//rendering pending payment
+app.get("/dues", ensureAuthenticated, (req, res) => {
+  const user = req.session.passport.user;
+  
+  const dataToBePassedToView = {
+    name: user.name,
+    JEERoll: user.JEERoll
+  }
+
+  res.render("dues", {
+    dataToBePassedToView
+  })
+})
+
+//rendering registration status
+app.get("/status", ensureAuthenticated, (req, res) => {
+  const user = req.session.passport.user;
+  
+  const dataToBePassedToView = {
+    name: user.name,
+    JEERoll: user.JEERoll
+  }
+
+  res.render("status", {
+    dataToBePassedToView
+  })
+})
+
 
 app.get("/layout",(req,res) => {
   res.render("layout")
@@ -224,6 +243,7 @@ app.post("/login", (req, res, next) => {
 //   Admin.findOne({ID: UserID}).then(async (admin) => {
 //     console.log("Function is reaching here");
 //     const password = await hashedPassword(UserID)
+//     console.log(admin)
 //     admin.Passwd = password
 //     admin.
 //     save().then((admin) => {
@@ -240,13 +260,14 @@ app.post("/login", (req, res, next) => {
 //   if (salt){
 //     const password = UserID + '@841'
 //     const hashedPass= await bcrypt.hash(password,salt);
+    
 //     return hashedPass;
 //   } 
 // }
 
-// app.get("/admindashboard", ensureAuthenticated, (req, res) => {
-//   res.render("admindashboard");
-// })
+app.get("/admindashboard", ensureAuthenticated, (req, res) => {
+  res.render("admindashboard");
+})
 
 app.get("/adminfeeform", ensureAuthenticated, (req, res) => {
   res.render("adminfeeform");
@@ -258,7 +279,7 @@ app.get("/adminfeeform", ensureAuthenticated, (req, res) => {
 
 app.post("/adminLogin", (req, res, next) => {
   passport.authenticate("local-admin", {
-    successRedirect: "/adminfeeform",
+    successRedirect: "/admindashboard",
     failureRedirect: "/authentication",
     failureFlash: true
   })
@@ -352,3 +373,5 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log("Server has started at 5000");
 });
+
+

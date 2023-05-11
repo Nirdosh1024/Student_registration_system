@@ -1,29 +1,9 @@
 <html>
 
-<<<<<<< HEAD
-                    <li class="sideMenu-list-item " id="registration_status">
-                        <a class=" sideMenu-active" href="/status">
-                            <span>-</span>
-                            Registration Status
-                        </a>
-                    </li>
-
-                    <li class="sideMenu-list-item " id="Submitted_documents">
-                        <a class=" sideMenu-active " href="/docs">
-                            <span>-</span>
-                            Submitted Documents
-                        </a>
-                    </li>
-                    <li class="sideMenu-list-item " id="pending_payments">
-                        <a class=" sideMenu-active " href="/dues">
-                            <span>-</span>
-                            Pending Payments
-                        </a>
-                    </li>
-=======
 <head>
     <title>Dashboard-Documents</title>
-    <link rel="stylesheet" href="/css/docs.css">
+    <link rel="stylesheet" href="./docs.css">
+    <link rel="stylesheet" href="./dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
         integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -40,7 +20,9 @@
             <h5>An AICTE approved Government Engineering College affliated to AKTU Lucknow(College code-841)</h5>
         </div>
         <div class="student-name">
-            <input class="input" type="text" id="student_name" name="name" />
+            <img class="icon" src="./assets/studenticon1.png" alternative="" />
+            <input class="input student-name" type="text" id="student_name" name="name"
+                value="<%= dataToBePassedToView.name %>" />
         </div>
     </header>
 
@@ -58,7 +40,7 @@
 
 
                 <li class="sideMenu-list-item " id="registration_status">
-                    <a class="" href="/studentform">
+                    <a class="sideMenu-active" href="/studentform">
                         <span>-</span>
                         Registration Form
                     </a>
@@ -70,20 +52,6 @@
                         Registration Status
                     </a>
                 </li>
-
-                <li class="sideMenu-list-item " id="academic_calender">
-                    <a class=" sideMenu-active " href="/calendar">
-                        <span>-</span>
-                        Academic Calender
-                    </a>
-                </li>
-                <!-- <li class="sideMenu-list-item " id="Documents_for_download">
-                        <a class=" sideMenu-active " href="">
-                            <span>-</span>
-                            Documents For Download
-                        </a>
-                    </li> -->
->>>>>>> e4caa0b506988d4daab79a7291e55dbebfa1fa51
 
                 <li class="sideMenu-list-item " id="Submitted_documents">
                     <a class=" sideMenu-active " href="/docs">
@@ -250,7 +218,7 @@
     </div>
 
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
-    <script src="js/index.js"></script>
+    <script src="index.js"></script>
 </body>
 
 </html>
