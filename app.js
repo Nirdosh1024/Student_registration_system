@@ -30,32 +30,6 @@ require("./config/passport")(passport);
 
 
 
-//rendering registration form
-app.get("/studentform", (req, res) => {
-  res.render("studentform")
-})
-
-//rendering documents
-app.get("/docs", (req, res) => {
-  res.render("docs")
-})
-
-//rendering pending payment
-app.get("/dues", (req, res) => {
-  res.render("dues")
-})
-
-//rendering registration status
-app.get("/status", (req, res) => {
-  res.render("status")
-})
-
-
-
-
-
-
-
 
 // helmet config
 // app.use(helmet());
@@ -111,7 +85,6 @@ app.use(flash());
 app.use((req, res, next) => {
   res.locals.error_msg = req.flash("error_msg");
   res.locals.error = req.flash('error');
-
   next();
 });
 
@@ -163,15 +136,15 @@ app.get("/authentication", (req, res) => {
 });
 
 
-app.get("/dashboard", ensureAuthenticated, async (req, res) => {
-  const id = req.session.passport.user._id;
-
-  const user = await newStudentModel.findById(id);
+app.get("/dashboard", ensureAuthenticated, (req, res) => {
+  const user = req.session.passport.user;
+  
   const dataToBePassedToView = {
-    name: user.Name,
-    JEERoll: user.ID
-
+    name: user.name,
+    JEERoll: user.JEERoll
   }
+
+  console.log(dataToBePassedToView);
 
   if (req.user.dashboard_created) {
     res.render("dashboard", {
@@ -184,6 +157,63 @@ app.get("/dashboard", ensureAuthenticated, async (req, res) => {
     });
   }
 });
+
+//rendering registration form
+app.get("/studentform", ensureAuthenticated, (req, res) => {
+  const user = req.session.passport.user;
+  
+  const dataToBePassedToView = {
+    name: user.name,
+    JEERoll: user.JEERoll
+  }
+
+  res.render("studentform", {
+    dataToBePassedToView
+  })
+})
+
+//rendering documents
+app.get("/docs", ensureAuthenticated, (req, res) => {
+  const user = req.session.passport.user;
+  
+  const dataToBePassedToView = {
+    name: user.name,
+    JEERoll: user.JEERoll
+  }
+
+  res.render("docs", {
+    dataToBePassedToView
+  })
+})
+
+//rendering pending payment
+app.get("/dues", ensureAuthenticated, (req, res) => {
+  const user = req.session.passport.user;
+  
+  const dataToBePassedToView = {
+    name: user.name,
+    JEERoll: user.JEERoll
+  }
+
+  res.render("dues", {
+    dataToBePassedToView
+  })
+})
+
+//rendering registration status
+app.get("/status", ensureAuthenticated, (req, res) => {
+  const user = req.session.passport.user;
+  
+  const dataToBePassedToView = {
+    name: user.name,
+    JEERoll: user.JEERoll
+  }
+
+  res.render("status", {
+    dataToBePassedToView
+  })
+})
+
 
 app.get("/layout",(req,res) => {
   res.render("layout")
