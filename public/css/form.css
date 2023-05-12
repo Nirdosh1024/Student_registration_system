@@ -5,45 +5,63 @@ body {
     padding: 0;
     height:auto;
 }
-.form-container{    
-    width:45%;
-    top:5%;
-    left:25%;
-    margin-bottom:5%;
-    height:auto;
-    position:relative;
+.form-container{  
+    align-items: center;
+    width: 700px;
+    margin :2% auto;
     background-color: white;
-    padding: 5px 20px 5px 20px;
-    border-radius: 20px;
+    border-radius: 10px;
+    padding: 10px 20px 10px 20px;  
+}
+.div-error{
+    display: flex;
+    flex-direction: column;
+    
 }
 
 .error-block{
     display: none;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 .popup-error{
-    text-align: center;
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: 520;
     color:red;
 }
+.error{
+    font-size: 10px;
+    color: red;
+}
+
 form{
-    display: -ms-inline-grid;
-    margin-bottom: 10px;
-    padding:0 60px;
     box-sizing: border-box;
+    align-items: center;
+    padding:10px 20px 10px 20px;
 }
-.formdata{
-    display:grid;
-    grid-template-columns: 180px 0;
-    
+.form-details{
+    padding: 10px 20px 10px 10px;
+    width:70%;
+    margin: auto;
+    align-items: center;
 }
-.personal-form h1{
+
+.input-control{
+    display: flex;
+    justify-content: space-between;
+
+}
+form h1{
     text-align: center;
-    padding:0 0 15px 0;
+    margin-bottom: 10px;
+    font-weight: 200px;
     border-bottom: 1px solid silver;
     color:#010081;
+    margin-top: 20px;
+    padding-bottom: 10px;
 }
-.personal-form h2{
+h2{
     text-align: center;
     margin-top: 0;
     color:#010081;
@@ -54,25 +72,32 @@ label {
     align-items: center;
     font-size: 18px;
     color: #010081;
-    font-weight: bold;
+    font-weight: 550;
     margin-top: 10px;
     margin-bottom: 2px;
 }
-  
+.asterick::after{
+    content:"*";
+    color:red;
+    font-size: 18px;
+}  
+
+
 input[type="text"],
 input[type="number"],
 input[type="date"] {
-  border: 1px solid #1441a9;
-  border-color: #010081;
-  color: #010081;
-  border-radius: 5px;
-  box-sizing: border-box;
-  font-size: 16px;
-  margin-bottom: 5px;
-  margin-left: 80px;
-  padding: 5px;
-  width: 250px;
-  height:40px;
+    border: 1px solid #1441a9;
+    border-color: #010081;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #ffff;
+    color: #010081;
+    width: 180px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    cursor: pointer;
+
 }
 
 select {
@@ -82,12 +107,10 @@ select {
     box-sizing: border-box;
     background-color: #ffff;
     color: #010081;
-    font-size: 16px;
-    margin-bottom: 5px;
-    margin-left: 80px;
-    padding: 5px;
-    width: 250px;
-    height:40px;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 180px;
     cursor: pointer;
 }
 
@@ -95,23 +118,26 @@ select::-ms-expand {
     display: none;
 }
 
+.button-div{
 
+    display: flex;
+    justify-content: center;
+}
 .btn{
-    width:150px;
-    height:40px;
+    width:80px;
+    height:30px;
     background-color: #EFEFEF;
-    font-size: 20px;
+    font-size: 14px;
     border-radius: 50px;
     border: 1.5px solid #010081;
     color: #010081;
+    margin-top: 20px;
     cursor: pointer;
-    margin-left: 35%;
-    margin-bottom: 20px;
     outline: none;
     padding: 5px;
 }
     
-  .btn:hover {
+.btn:hover {
       background-color: #31DEDE99;
       color: #010081;
   }
