@@ -25,7 +25,6 @@ header {
     display: flex;
     margin-top: 20px;
     border-bottom: 1px solid silver;
-    /* justify-content: space-between; */
     align-items: center;
     box-shadow: 1px 3px #1b555599;
 }
@@ -61,50 +60,13 @@ header .college-name h5 {
     font-weight: 500;
 }
 
-header .student-name {
-    font-size:14px;
-    margin-left:40px;
-}
-
-header .log-out{
-    margin-left:20px;
-    width:50px;
-    height:20px;
-}
-
-.side-bar{
-    background-color: rgb(233, 247, 247);
-    box-shadow: 2px 0.5px #ececfc;
-    /* width:350px; */
-    height:500px;
-    padding: 10px 20px 50px 20px;
-    margin-top: 6px;
-}
-
-.sideMenu-list-item{
-    /* width:400px; */
-    font-size: 18px;
-    margin-top: 25px;
-    margin-left: 50px;
-    color: #010081;
-
-}
-
-.sideMenu-heading{
-    margin-top: 5%;
-    margin-left: 15%;
-    align-items: center;
-}
-
-
-
-
 .docs-page{
     display: flex;
 }
+
 .dashboard{
     background-color:#ffff;
-    padding: 10px 20px 10px 20px;
+    padding: 10px 50px 10px 50px;
     margin-top: 20px;
     
 }
@@ -112,7 +74,7 @@ header .log-out{
 .grid-container{
     display: grid;
     grid-template-columns: 1.5fr 4.5fr;
-    column-gap: 40px;
+    column-gap: 10px;
 }
 
 .dashboard-content{
@@ -127,8 +89,6 @@ header .log-out{
 }
 .document-type{
     display: flex;
-    /* display: grid;
-    grid-template-columns: 300px 0; */
     font-size: 18px;
     margin-left: 20px;
 
