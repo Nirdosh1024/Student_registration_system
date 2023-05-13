@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
         integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script defer src="formvalidation.js"></script>
+    <script defer src="./js/formvalidation.js"></script>
 
 </head>
 
 <body>
     <header>
+        <div class="header">
         <div class="collagelogo">
             <img src="http://recsonbhadra.ac.in/static/media/Collegelogo.96cbe2da1f0150aefe6d.png" alt="logo" class="logo">
         </div>
@@ -23,12 +24,9 @@
         </div>
         <div class="student-name">
             <img class="icon" src="./assets/studenticon1.png" alternative=""/>
-
-
-
-            <input class="input student-name" type="text" id="student_name" name="name" value="<%= dataToBePassedToView.name %>" />
-
+            <input class="input student-name" type="text" id="student_name" name="name" value="<%= dataToBePassedToForm.name %>" />
         </div>
+    </div>
     </header>
 <div class="grid-container">
     
@@ -82,7 +80,7 @@
     <div class="container">
         <div class="dashboard">
             <div class="form-container personal-information">
-                <form class="personal-information-form" method="POST" >
+                <form class="personal-information-form" method="POST" enctype="multipart/form-data" >
                     <div role="main" class="form-all">
                         <div class="form-header">
                             <h1  data-component="header">Registration Form</h1>
@@ -94,30 +92,30 @@
                         <div class="form-details">
         
                             <div class="input-control">
-                                <label for="name">Name of Student</label>
+                                <label class="asterick" for="name">Name of Student</label>
                                 <input type="text" id="name" name="name" placeholder="name" autocomplete="off" size="15" value="<%= dataToBePassedToForm.name%>" />
                             </div>
                             
         
                             <div class="input-control">
-                                <label for="Date">Date of Birth</label>
+                                <label class="asterick"for="Date">Date of Birth</label>
                                 <input type="date" id="dob" name="dob" autocomplete="off"  
                                 value="<%= dataToBePassedToForm.dob %>"/>
                                 <div class="error"></div>
                             </div>
         
                             <div class="input-control">
-                                <label for="image"> Student's Photo</label>
+                                <label class="asterick"for="image"> Student's Photo</label>
                                 <div id="display_image"
                                     style="width:120px; height:130px; border:1px solid gray;background-size: cover;text-align:center;"
                                     value="" placeholder="passport size photo" aria-label="upload photo"></div>
                                 <input type="file" id="image-input" style="margin-top:10px;"
-                                    accept="image/png,image/jpg, image/jpeg " />
+                                    accept="image/png,image/jpg, image/jpeg " name="photo_file" />
                                 <div class="error"></div>
                             </div>                    
         
                             <div class="input-control">
-                                <label for="gender">Gender</label>
+                                <label class="asterick"for="gender">Gender</label>
                                 <select name="gender" id="gender" autocomplete="off" 
                                 value="<%= dataToBePassedToForm.gender %>" >
                                     <option value="">Please Select</option>
@@ -129,14 +127,14 @@
         
                             
                             <div class="input-control">
-                                <label for="email">Student's E-mail</label>
+                                <label class="asterick"for="email">Student's E-mail</label>
                                 <input type="email" id="email" name="email" autocomplete="off" value="<%= dataToBePassedToForm.email %>" />
                                 <div class="error"></div>
                             </div>
                             
         
                             <div class="input-control">
-                                <label for="number">Mobile Number</label>
+                                <label class="asterick"for="number">Mobile Number</label>
                                 <input type="number" id="phoneNumber" name="phone_number" placeholder="phone no." autocomplete="off" size="10" 
                                 value= "<%= dataToBePassedToForm.Phone_number %>" />
                                 <div class="error"></div>
@@ -144,20 +142,20 @@
                             
         
                             <div class="input-control">
-                                <label for="number">Student's Aadhar Number</label>
+                                <label class="asterick"for="number">Student's Aadhar Number</label>
                                 <input type="number" id="aadhar" name="aadhar_number" autocomplete="off" value="<%= dataToBePassedToForm.aadhar_number %>" />
                                 <div class="error"></div>
                             </div>
                             
         
                             <div class="input-control">
-                                <label for="number">Enrollment Number</label>
+                                <label class="asterick"for="number">Enrollment Number</label>
                                 <input type="number" id="enrollment" name="enrollment_number" autocomplete="off" value= "<%= dataToBePassedToForm.JEERoll %>"/>    
                             </div>
                             
         
                             <div class="input-control">
-                                <label for="course">Course</label>
+                                <label class="asterick"for="course">Course</label>
                                 <select name="course" id="course" autocomplete="off"> 
                                     <option value="">Please Select</option>
                                     <option value="b.tech">B.tech</option>
@@ -166,7 +164,7 @@
                             
         
                             <div class="input-control">
-                                <label for="branch">Branch</label>
+                                <label class="asterick"for="branch">Branch</label>
                                 <input type ="text" name="branch" id="branch" autocomplete="off"  
                                 value= "<%= dataToBePassedToForm.branch %>" />
                                    
@@ -174,14 +172,14 @@
                             
         
                             <div class="input-control">
-                                <label for="year">Year</label>
+                                <label class="asterick"for="year">Year</label>
                                 <input type="text" name="year" id="year" autocomplete="off"
                                  value= "<%= dataToBePassedToForm.year %>" />
                             </div>
                             
         
                             <div class="input-control">
-                                <label for="semester">Semester</label>
+                                <label class="asterick"for="semester">Semester</label>
                                 <select name="semester" id="semester" autocomplete="off">
                                     <option value="">Please Select Carefully</option>
                                     <option value="1st">i</option>
@@ -197,19 +195,19 @@
                             
         
                             <div class="input-control">
-                                <label for="name">Father's Name</label>
+                                <label class="asterick"for="name">Father's Name</label>
                                 <input type="text" id="name" name="name" autocomplete="off" minlength="3" value="<%= dataToBePassedToForm.father_name %>"/>
                             </div>
                             
         
                             <div class="input-control">
-                                <label for="name">Mother's Name</label>
+                                <label class="asterick"for="name">Mother's Name</label>
                                 <input type="text" id="name" name="name" autocomplete="off" minlength="3" value="<%= dataToBePassedToForm.mother_name %>" />
                             </div>
                             
         
                             <div class="input-control">
-                                <label for="number">Parent's Phone Number</label>
+                                <label class="asterick"for="number">Parent's Phone Number</label>
                                 <input type="number" id="parentPhnNo" name="mobile_number" placeholder="phone no."
                                     autocomplete="off" maxlength="10" size="10" />
                                 <div class="error"></div>
@@ -232,7 +230,7 @@
                             
         
                             <div class="input-control">
-                                <label for="category">Category</label>
+                                <label class="asterick"for="category">Category</label>
                                 <select name="category" id="category" autocomplete="off">
                                     <option value="">Please Select Carefully</option>
                                     <option value="General">General</option>
@@ -248,14 +246,14 @@
                             
         
                             <div class="input-control">
-                                <label for="category">Category Certificate</label>
-                                <input id="category-certificate" type="file" name="file_name" accept="pdf/*" />
+                                <label class="asterick"for="category">Category Certificate</label>
+                                <input id="category-certificate" type="file" name="category_file" accept="pdf/*" />
                                 <div class="error"></div>
                             </div>
                             
         
                             <div class="input-control">
-                                <label for="income">Annual Income</label>
+                                <label class="asterick"for="income">Annual Income</label>
                                 <select name="income" id="income" autocomplete="off">
                                     <option value="">Please Select Carefully</option>
                                     <option value="Below two Lakhs">Below two Lakhs</option>
@@ -266,8 +264,8 @@
                             
         
                             <div class="input-control">
-                                <label for="income">Income Certificate</label>
-                                <input id="income-certificate" type="file" name="file_name" accept="pdf/*" />
+                                <label class="asterick"for="income">Income Certificate</label>
+                                <input id="income-certificate" type="file" name="income_file" accept="pdf/*" />
                                 <div class="error"></div>
                             </div>
                             
@@ -284,18 +282,18 @@
                             </div>
 
                             <div class="input-control">
-                                <label for="image"> Student's Signature</label>
+                                <label class="asterick"for="image"> Student's Signature</label>
                                 <div id="display_sign"
                                     style="width:250px; height:70px; border:1px solid gray;background-size: cover;text-align:center;"
                                     value="" placeholder="passport size photo" aria-label="upload photo"></div>
                                 <input type="file" id="sign-input" style="margin-top:10px;"
-                                    accept="image/png,image/jpg, image/jpeg ">
+                                    accept="image/png,image/jpg, image/jpeg " name="signature_file">
                                 <div class="error"></div>
                             </div>
         
 
                             <div class="input-control">
-                                <label for="address">Permanent Address</label>
+                                <label class="asterick" for="address">Permanent Address</label>
                                 <input type="text" class="form-control" id="street-1" placeholder="Street Address_1" /></br>
                                 <input type="text" class="form-control" id="street-2" placeholder="Street Address_2" /></br>
                                 <input type="text" class="form-control" id="inputCity" placeholder="City" /></br>
@@ -307,9 +305,9 @@
                             
         
                             <div class="input-control">
-                                <label for="address">Correspondance Address</label>
                                 <input class="checkbox" type="checkbox" id="copy-address">
                                 <label class="same-as-permanent" for="copy-address">Same As Permanent Address</label>
+                                <label class="asterick"for="address">Correspondance Address</label>
                                 <input type="text" class="form-control" id="Cstreet-1" placeholder="Street Address_1" /></br>
                                 <input type="text" class="form-control" id="Cstreet-2" placeholder="Street Address_2" /></br>
                                 <input type="text" class="form-control" id="CinputCity" placeholder="City" /></br>
@@ -343,7 +341,7 @@
             <!--Educational Details-->
         
             <div class="form-container educational-details hidden">
-                <form class="educational-details-form" action="/submit-form" method="POST">
+                <form class="educational-details-form" action="/submit-form" method="POST" enctype="multipart/form-data">
                     <div role="main" class="form-all">
                         <div class="form-header">
                             <h1 data-component="header">Registration Form</h1>
@@ -357,33 +355,33 @@
                             <div class="form-details">
         
                                 <div class="input-control">
-                                    <label for="institute_name">Institute Name</label>
+                                    <label class="asterick"for="institute_name">Institute Name</label>
                                     <input type="text" id="highSchool" name="highSchool" />
                                     <div class="error"></div>
                                 </div>
                                 
                                 <div class="input-control">
-                                    <label for="board">Board</label>
+                                    <label class="asterick"for="board">Board</label>
                                     <input type="text" id="highSchool-board" name="highSchool" />
                                     <div class="error"></div>
                                 </div>
                                 
                                 <div class="input-control">
-                                    <label for ="highschoolmax-marks">Maximum Marks </label>
+                                    <label class="asterick"for ="highschoolmax-marks">Maximum Marks </label>
                                     <input type="number"
                                     id="highschool-maxmarks" name ="highschool-maxmarks">
                                     <div class="error"></div>
                                 </div>
         
                                 <div class="input-control">
-                                    <label for="marks">Marks Obtained</label>
+                                    <label class="asterick"for="marks">Marks Obtained</label>
                                     <input type="number" id="highSchool-marks" name="marks_obtained" />
                                     <div class="error"></div>
                                 </div>
                                 
         
                                 <div class="input-control">
-                                    <label for="year">Passing Year</label>
+                                    <label class="asterick"for="year">Passing Year</label>
                                     <input type="number" id="highschool-year" name="year" />
                                     <div class="error"></div>
                                 </div>
@@ -391,8 +389,8 @@
         
         
                                 <div class="input-control">
-                                    <label for="marksheet">Upload Marksheet</label>
-                                    <input id="highSchool-marksheet" type="file" name="file_name" accept="pdf/*" />
+                                    <label class="asterick"for="marksheet">Upload Marksheet</label>
+                                    <input id="highSchool-marksheet" type="file" name="highschool_marksheet" accept="pdf/*" />
                                     <div class="error"></div>
                                 </div>
         
@@ -402,20 +400,20 @@
                             <div class="form-details">
         
                                 <div class="input-control">
-                                    <label for="institute_name">Institute Name</label>
+                                    <label class="asterick"for="institute_name">Institute Name</label>
                                     <input type="text" id="intermediate" name="intermediate" />
                                     <div class="error"></div>
                                 </div>
         
                                 <div class="input-control">
-                                    <label for="board">Board</label>
+                                    <label class="asterick"for="board">Board</label>
                                     <input type="text" id="intermediate-board" name="intermediate" />
                                     <div class="error"></div>
                                 </div>
                                 
         
                                 <div class="input-control">
-                                    <label for ="intermax-marks">Maximum Marks
+                                    <label class="asterick"for ="intermax-marks">Maximum Marks
                                     </label>
                                     <input type="number"
                                     id="inter-maxmarks" name ="inter-maxmarks">
@@ -423,23 +421,23 @@
                                 </div>
         
                                 <div class="input-control">
-                                    <label for="marks">Marks Obtained</label>
+                                    <label class="asterick"for="marks">Marks Obtained</label>
                                     <input type="number" id="inter-marks" name="marks_obtained" />
                                     <div class="error"></div>
                                 </div>
                                 
         
                                 <div class="input-control">
-                                    <label for="year">Passing Year</label>
+                                    <label class="asterick"for="year">Passing Year</label>
                                     <input type="number" id="inter-year" name="year" />
                                     <div class="error"></div>
                                 </div>
                                 
         
                                 <div class="input-control">
-                                    <label for="marksheet">Upload Marksheet</label>
+                                    <label class="asterick"for="marksheet">Upload Marksheet</label>
         
-                                    <input id="inter-marksheet" type="file" name="file_name" accept="pdf/*" />
+                                    <input id="inter-marksheet" type="file" name="inter_marksheet" accept="pdf/*" />
                                     <div class="error"></div>
                                 </div>
                                 
@@ -451,22 +449,22 @@
                             <div class="form-details">
         
                                 <div class="input-control">
-                                    <label for="rank">General Rank</label>
+                                    <label class="asterick"for="rank">General Rank</label>
                                     <input type="number" id="rank" name="rank" />
                                     <div class="error"></div>
                                 </div>
                                 
         
                                 <div class="input-control">
-                                    <label for="percentile">JEE Percentile</label>
+                                    <label class="asterick"for="percentile">JEE Percentile</label>
                                     <input type="number" id="percentile" name="percentile" />
                                     <div class="error"></div>
                                 </div>
         
         
                                 <div class="input-control">
-                                    <label for="enrollment_letter">Enrollment Letter</label>
-                                    <input id="enrollment-letter" type="file" name="file_name" accept="pdf/*" />
+                                    <label class="asterick"for="enrollment_letter">Enrollment Letter</label>
+                                    <input id="enrollment-letter" type="file" name="enrollment_letter" accept="pdf/*" t/>
                                     <div class="error"></div>
                                 </div>
                             </div>
@@ -482,7 +480,7 @@
             <!--Hostel Details-->
         
             <div class="form-container hostel-details hidden">
-                <form class="hostel-details-form" action="/submit-form" method="POST">
+                <form class="hostel-details-form" action="/submit-form" method="POST" >
                     <div role="main" class="form-all">
                         <div class="form-header">
                             <h1 data-component="header">Registration Form</h1>
@@ -491,7 +489,7 @@
         
                         <h2 class="subform-header" data-component="header">Hostel Details:</h2></br>
                         
-                            <label for="hosteller">Are You Hosteller?</label>
+                            <label class="asterick"for="hosteller">Are You Hosteller?</label>
 
                             <div class="form-details">
                             <select class="hostel-select" name="hosteller" id="hosteller">
@@ -503,7 +501,7 @@
                             <ul class="complete-form" style="display: none">
                                 </br>
                                 <h4>Hostel Allotment Form</h4></br></br>
-                                <label for="hostel">Opting For Hostel:</label></br>
+                                <label class="asterick"for="hostel">Opting For Hostel:</label></br>
                             
                                 <div class="form-details">
                                     <select class="hostel hostel-select">
@@ -515,7 +513,7 @@
                                     </select>
                                 </div>
                                 <div class="form-details">
-                                    <label for="room">Room Number:</label>
+                                    <label class="asterick"for="room">Room Number:</label>
                                     <select class="floor hostel-select">
                                         <option value="">Please Select</option>
                                         <option value="G"> G </option>
@@ -578,7 +576,7 @@
         
                             <div class="form-details">
         
-                                <label for="fee_pay">Pay Fees</label>
+                                <label class="asterick"for="fee_pay">Pay Fees</label>
                                 <select class="fee-type" name="fee-type" id="fee-type">
                                     <option value="">Please Select</option>
                                     <option value="yes">Paying Full Fee</option>
@@ -605,7 +603,7 @@
             <!--Fee Details form-->
         
             <div class="form-container fee-details hidden">
-                <form class="fee-details-form" action="/submit-form" method="post">
+                <form class="fee-details-form" action="/submit-form" method="post" enctype="multipart/form-data">
                     <div role="main" class="form-all">
                         <div class="form-header">
                             <h1 data-component="header">Registration Form</h1>
@@ -618,15 +616,15 @@
                             <div class="form-details">
         
                                 <div class="input-control">
-                                    <label for="amount">Total Amount Paid</label>
-                                    <input type="number" id="academicfee-amount" name="amount" />
+                                    <label class="asterick"for="amount">Total Amount Paid</label>
+                                    <input type="number" id="academicfee-amount" name="academicfee_amount" />
                                     <div class="error"></div>
                                 </div>
                         
         
                                 <div class="input-control">
-                                    <label for="fee_receipt">Fee Receipt</label>
-                                    <input id="acedemicfee" type="file" name="file_name" accept="pdf/*" />
+                                    <label class="asterick"for="fee_receipt">Fee Receipt</label>
+                                    <input id="acedemicfee" type="file" name="academicfee_receipt" accept="pdf/*" />
                                     <div class="error"></div>
                                 </div>
                             </div>
@@ -635,15 +633,15 @@
                             <div class="form-details">
         
                                 <div class="input-control">
-                                    <label for="amount">Total Amount Paid</label>
-                                    <input type="number" id="hostel-amount" name="amount"/>
+                                    <label class="asterick"for="amount">Total Amount Paid</label>
+                                    <input type="number" id="hostel-amount" name="hostel_receipt"/>
                                     <div class="error"></div>
                                 </div>
                             
         
                                 <div class="input-control">
-                                    <label for="fee_receipt">Fee Receipt</label>
-                                    <input id="hostel-fee" type="file" name="hostel-fee" accept="pdf/*" />
+                                    <label class="asterick"for="fee_receipt">Fee Receipt</label>
+                                    <input id="hostel-fee" type="file" name="hostelfee_receipt" accept="pdf/*" />
                                     <div class="error"></div>
                                 </div>
                             </div>
@@ -651,20 +649,25 @@
                             <div class="form-details">
         
                                 <div class="input-control">
-                                    <label for="amount">Total Amount Paid</label>
-                                    <input type="number" id="mess-amount" name="amount"/>
+                                    <label class="asterick"for="amount">Total Amount Paid</label>
+                                    <input type="number" id="mess-amount" name="messfee_amount"/>
                                     <div class="error"></div>
                                 </div>
         
                                 <div class="input-control">
-                                    <label for="amount">Mess Security Fee</label>
-                                    <input type="number" id="messSecurity-amount" name="amount" />
+                                    <label class="asterick"for="amount">Mess Security Fee</label>
+                                    <input type="number" id="messSecurity-amount" name="messsecurityfee_amount" />
                                     <div class="error"></div>
                                 </div>
         
+                                <div class="input-control">
+                                    <label class="asterick"for="fee_receipt">Fee Receipt</label>
+                                    <input  id="mess-fee" type="file" name="messfee_receipt" accept="pdf*" />
+                                    <div class="error"></div>
+                                </div>
                                 <div class="input-control">
                                     <label for="fee_receipt">Fee Receipt</label>
-                                    <input  id="mess-fee" type="file" name="mess-fee" accept="pdf/*" />
+                                    <input  id="mess-fee" type="file" name="messsecurityfee_receipt" accept="pdf/*" />
                                     <div class="error"></div>
                                 </div>
                             </div>
@@ -674,14 +677,14 @@
                             <div class="form-details">
         
                                 <div class="input-control">
-                                    <label for="amount">Total Amount Paid</label>
-                                    <input type="number" id="maintenance-amount" name="amount"/>
+                                    <label class="asterick"for="amount">Total Amount Paid</label>
+                                    <input type="number" id="maintenance-amount" name="maintenancefee_amount"/>
                                     <div class="error"></div>
                                 </div>
         
                                 <div class="input-control">
-                                    <label for="fee_receipt">Fee Receipt</label>
-                                    <input  id="maintenancefee" type="file" name="maintenance-fee" accept="pdf/*" />
+                                    <label class="asterick"for="fee_receipt">Fee Receipt</label>
+                                    <input  id="maintenancefee" type="file" name="maintenancefee_receipt" accept="pdf/*" />
                                     <div class="error"></div>
                                 </div>
                             </div>
@@ -701,8 +704,8 @@
 
 
 </div>
-    <script src="studentform.js"></script>
-
+    <script src="./js/studentform.js"></script>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
 </body>
 
 </html>

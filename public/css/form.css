@@ -5,24 +5,25 @@ body {
     padding: 0;
     height:auto;
 }
-.form-container{  
+
+.form-container{    
+    width:700px;
     align-items: center;
-    width: 700px;
-    margin :2% auto;
+    margin-bottom:2% auto;
     background-color: white;
+    padding: 10px 20px 10px 20px;
     border-radius: 10px;
-    padding: 10px 20px 10px 20px;  
-}
-.div-error{
-    display: flex;
-    flex-direction: column;
-    
 }
 
 .error-block{
     display: none;
     justify-content: center;
     margin-bottom: 20px;
+
+
+.div-error{
+    display: flex;
+    flex-direction: column;
 }
 
 .popup-error{
@@ -30,36 +31,41 @@ body {
     font-weight: 520;
     color:red;
 }
+
+
 .error{
     font-size: 10px;
-    color: red;
+    color:red;
 }
 
 form{
+    align-items: center;
+    padding:10px 20px 10px 20px;
     box-sizing: border-box;
     align-items: center;
     padding:10px 20px 10px 20px;
 }
+
 .form-details{
     padding: 10px 20px 10px 10px;
     width:70%;
-    margin: auto;
-    align-items: center;
+    margin:auto;
+    align-items:center;
 }
-
 .input-control{
-    display: flex;
+    display:flex;
     justify-content: space-between;
-
 }
+
+
 form h1{
     text-align: center;
     margin-bottom: 10px;
     font-weight: 200px;
+    padding-bottom: 10px;
     border-bottom: 1px solid silver;
     color:#010081;
     margin-top: 20px;
-    padding-bottom: 10px;
 }
 h2{
     text-align: center;
@@ -78,26 +84,26 @@ label {
 }
 .asterick::after{
     content:"*";
-    color:red;
+    color: red;
     font-size: 18px;
-}  
+} 
+
 
 
 input[type="text"],
 input[type="number"],
 input[type="date"] {
-    border: 1px solid #1441a9;
-    border-color: #010081;
-    border-radius: 5px;
-    box-sizing: border-box;
-    background-color: #ffff;
-    color: #010081;
-    width: 180px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 16px;
-    cursor: pointer;
-
+  border: 1px solid #1441a9;
+  border-color: #010081;
+  color: #010081;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: #ffff;
+  font-size: 16px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width: 180px;
+  cursor: pointer;
 }
 
 select {
@@ -119,6 +125,11 @@ select::-ms-expand {
 }
 
 .button-div{
+    display: flex;
+    justify-content: center;
+}
+
+
 
     display: flex;
     justify-content: center;
@@ -133,6 +144,7 @@ select::-ms-expand {
     color: #010081;
     margin-top: 20px;
     cursor: pointer;
+    margin-top: 20px;
     outline: none;
     padding: 5px;
 }

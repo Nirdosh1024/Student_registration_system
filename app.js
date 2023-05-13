@@ -101,14 +101,40 @@ app.use(express.static("public"));
 // multer setup to upload files to the server
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads");
+    if (file.mimetype === "application/pdf") {
+      cb(null, path.join(__dirname, '/uploads/document'));
+    }
+    else if (file.mimetype === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
+      cb(null, path.join(__dirname, '/uploads/studentData'));
+    }
+    else {
+      cb(null, path.join(__dirname, '/uploads/image'));
+    }
   },
   filename: (req, file, cb) => {
-    const { originalname } = file;
-    cb(null, originalname);
+    const name = file.originalname.toLowerCase().split(' ').join('-');
+    cb(null, name);
   },
 });
-const upload = multer({ storage });
+
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/jpg' || file.mimetype === 'image/png' ||
+    file.mimetype === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || file.mimetype === 'application/pdf') {
+    cb(null, true)
+  }
+  else { cb(null, false) }
+}
+const upload = multer({
+  storage: storage,
+  fileFilter: fileFilter
+}).fields([{ name: 'excel', maxCount: 1 }, { name: 'photo_file', maxCount: 1 },
+{ name: 'category_file', maxCount: 1 }, { name: 'income_file', maxCount: 1 },
+{ name: 'signature_file', maxCount: 1 }, { name: 'highschool_marksheet', maxCount: 1 },
+{ name: 'inter_marksheet', maxCount: 1 }, { name: 'enrollment_letter', maxCount: 1 },
+{ name: 'academicfee_receipt', maxCount: 1 },
+{ name: 'hostelfee_receipt', maxCount: 1 }, { name: 'messfee_receipt', maxCount: 1 },
+{ name: 'messsecurityfee_receipt', maxCount: 1 },
+{ name: 'maintenancefee_receipt', maxCount: 1 }]);
 
 app.post("/", (req, res) => {
   console.log(req);
@@ -121,11 +147,11 @@ app.get("/", (req, res) => {
   res.render("homepage");
 });
 
-app.post("/upload", upload.single("excel"), (req, res) => {
-  if (!req.file) {
+app.post("/upload", upload, (req, res) => {
+  if (!req.files) {
     res.json({ status: "NOT OKAY" });
   } else {
-    const filepath = path.join(__dirname, "/uploads", `${req.file.filename}`);
+    const filepath = path.join(__dirname, "/uploads/studentData", `${req.files['excel'][0].originalname}`);
     importExceltoJson(filepath);
     res.json({ status: "OKAY" });
   }
@@ -138,7 +164,7 @@ app.get("/authentication", (req, res) => {
 
 app.get("/dashboard", ensureAuthenticated, (req, res) => {
   const user = req.session.passport.user;
-  
+
   const dataToBePassedToView = {
     name: user.name,
     JEERoll: user.JEERoll
@@ -159,26 +185,26 @@ app.get("/dashboard", ensureAuthenticated, (req, res) => {
 });
 
 //rendering registration form
-app.get("/studentform", ensureAuthenticated, async(req, res) => {
+app.get("/studentform", ensureAuthenticated, async (req, res) => {
   const id = req.session.passport.user._id
 
   const user = await newStudentModel.findById(id);
 
   const dataToBePassedToForm = {
-    name : user.Name,
-    JEERoll : user.ID,
-    gender : user.Gender,
-    dob : user.DOB,
-    year : user.Year,
-    branch : user.Branch,
-    Phone_number : user.PhoneNumber,
-    aadhar_number : user.AadharNumber,
-    father_name : user.FatherName,
-    mother_name : user.MotherName,
-    email : user.Email
+    name: user.Name,
+    JEERoll: user.ID,
+    gender: user.Gender,
+    dob: user.DOB,
+    year: user.Year,
+    branch: user.Branch,
+    Phone_number: user.PhoneNumber,
+    aadhar_number: user.AadharNumber,
+    father_name: user.FatherName,
+    mother_name: user.MotherName,
+    email: user.Email
 
   }
-  res.render("studentform",{
+  res.render("studentform", {
     dataToBePassedToForm
   })
 })
@@ -186,7 +212,7 @@ app.get("/studentform", ensureAuthenticated, async(req, res) => {
 //rendering documents
 app.get("/docs", ensureAuthenticated, (req, res) => {
   const user = req.session.passport.user;
-  
+
   const dataToBePassedToView = {
     name: user.name,
     JEERoll: user.JEERoll
@@ -200,7 +226,7 @@ app.get("/docs", ensureAuthenticated, (req, res) => {
 //rendering pending payment
 app.get("/dues", ensureAuthenticated, (req, res) => {
   const user = req.session.passport.user;
-  
+
   const dataToBePassedToView = {
     name: user.name,
     JEERoll: user.JEERoll
@@ -214,7 +240,7 @@ app.get("/dues", ensureAuthenticated, (req, res) => {
 //rendering registration status
 app.get("/status", ensureAuthenticated, (req, res) => {
   const user = req.session.passport.user;
-  
+
   const dataToBePassedToView = {
     name: user.name,
     JEERoll: user.JEERoll
@@ -226,7 +252,7 @@ app.get("/status", ensureAuthenticated, (req, res) => {
 })
 
 
-app.get("/layout",(req,res) => {
+app.get("/layout", (req, res) => {
   res.render("layout")
 })
 
@@ -260,7 +286,7 @@ app.post("/login", (req, res, next) => {
 //   if (salt){
 //     const password = UserID + '@841'
 //     const hashedPass= await bcrypt.hash(password,salt);
-    
+
 //     return hashedPass;
 //   } 
 // }
@@ -368,6 +394,7 @@ function importExceltoJson(filepath) {
 app.use("/form-submit", formRoute);
 
 app.use("/adminfeeform", require("./routes/adminformRoute"))
+app.use("/studentform", require("./routes/studentformRoute"))
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

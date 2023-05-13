@@ -591,15 +591,20 @@ paymentForm.addEventListener("submit", (e) => {
 
 
 // fee form
-feeform.addEventListener("submit", (e) => {
+feeform.addEventListener("submit", async (e) => {
   e.preventDefault()
   let dataInForm = new FormData(feeform);
   const values = [...dataInForm.entries()];
   gArrayToStoreFormData.push([...values]);
-  console.log(gArrayToStoreFormData);
 
   if(validateInputForFeeDetails(feeform)){
-    console.log("validated")
+    const axiosRes = await axios({
+      method: "POST",
+      url: "http://localhost:5000/studentform",
+      data: gArrayToStoreFormData
+  });
+
+  console.log(axiosRes.data.status)
   }
   else{
      console.log("not validated")
