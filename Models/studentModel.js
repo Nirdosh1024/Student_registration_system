@@ -70,7 +70,20 @@ const newStudent = mongoose.Schema({
   form_submitted: {
     type: Boolean,
     required: false
+  },
+
+  filename: {
+    type: Object,
+    image:{
+      data:Buffer,
+      contentType: String
+    }
   }
+
+
+
+
+
 });
 
 const newStudentModel = mongoose.model("newStudentModel", newStudent);
