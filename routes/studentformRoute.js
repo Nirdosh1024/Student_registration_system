@@ -1,10 +1,9 @@
 const router = require("express").Router()
-const multer = require("multer");
+const upload = require("../config/multerConfig");
 
 
-
-router.post("/",(req,res) => {
-   console.log(req.body)
+router.post("/", upload, (req,res) => {
+   console.log(req.files);
    res.json({ status: "okay"})
 })
 
