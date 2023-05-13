@@ -2,7 +2,6 @@
     <head>
         <title>Basic form</title>
         <link rel="stylesheet" href="/css/form.css">
-        <link rel="stylesheet" href="/css/studentform.css">
     </head>
     <body>
         <div class="form-container">
@@ -11,44 +10,50 @@
                 <h1>Student's Registration</h1></br>
 
                 <h2>Basic Details</h2></br>
+
+               <div class="form-details">
                 <div class="error-block"><span class="popup-error">Error in the form... Kindly check your entries properly.</span></div>
 
                 <div class="input-control">
-                <label for="JEERoll">JEE Roll No. :</label>
+                <label class="asterick" for="JEERoll">JEE Roll No. :</label>
                 <input class="input" type="number" name="JEERoll" id="JEERoll" value ="<%= dataToBePassedToView.JEERoll %>"  />
-                </div></br></br>
+                </div>
                 
                 <div class="input-control">
-                <label for="name">Student's Name :</label>
+                <label class="asterick" for="name">Student's Name :</label>
                 <input class="input" type="text" id="student_name" name="name" value = "<%= dataToBePassedToView.name %> "  />
-                </div></br></br>
+                </div>
                 
                 <div class="input-control">
-                <label for="father's name">Father's Name :</label>
+                <label class="asterick" for="father's name">Father's Name :</label>
                 <input type="text" id="father_name" name="father_name"/>
-                </div></br></br>
-                <div class="input-control">
-                <label for="mother's name">Mother's Name :</label>
-                <input type="text" id="mother_name" name="mother_name"/>
-                </div></br></br>
-                <div class="input-control">
-                <label for="DOB">Date Of Birth :</label>
-                <input type="date" id="dob" name="dob"/>
-                <div class="error"></div>
-                </div></br></br>
+                </div>
 
                 <div class="input-control">
-                <label for="gender">Gender :</label>
+                <label class="asterick" for="mother's name">Mother's Name :</label>
+                <input type="text" id="mother_name" name="mother_name"/>
+                </div>
+
+                <div class="input-control">
+                <label class="asterick" for="DOB">Date Of Birth :</label>
+                <div class="div-error">
+                <input type="date" id="dob" name="dob"/>
+                <div class="error"></div>
+                </div>
+                </div>
+
+                <div class="input-control">
+                <label class="asterick" for="gender">Gender :</label>
                 <select name="gender">
                     <option value="select">Please Select</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="N/A">N/A</option>
                 </select>
-                </div></br></br>
+                </div>
 
                 <div class="input-control">
-                <label for="year">Year :</label>
+                <label class="asterick" for="year">Year :</label>
                 <select name="year">
                     <option value="select">Please Select</option>
                     <option value="1st">1st Year</option>
@@ -56,37 +61,45 @@
                     <option value="3rd">3rd Year</option>
                     <option value="4th">4th Year</option>
                 </select>
-            
-                </div></br></br>
+                </div>
+
                 <div class="input-control">
-                <label for="branch">Branch :</label>
+                <label class="asterick" for="branch">Branch :</label>
                 <select name="branch">
                     <option value="select">Please Select</option>
                     <option value="Computer Science and Engineering">Computer Science and Engineering</option>
                     <option value="Electronics Engineering">Electronics Engineering</option>
                     <option value="Electrical Engineering">Electrical Engineering</option>
                 </select>
-                </div></br></br>
+                </div>
+                
                 <div class="input-control">
-                <label for="mobile">Mobile Number :</label>
+                <label class="asterick" for="mobile">Mobile Number :</label>
+                <div class="div-error">
                 <input type="number" id="phone_number" name="Phone_number"/>
                 <div class="error"></div>
-                </div></br></br>
+                </div>
+                </div>
 
                 <div class="input-control">
-                <label for="email">Email Address :</label>
+                <label class="asterick" for="email">Email Address :</label>
+                <div class="div-error">
                 <input type="text" id="email" name="email" />
                 <div class="error"></div>
-                </div></br></br>
+                </div>
+                </div>
 
                 <div class="input-control">
-                <label for="aadhar">Aadhar Number :</label>
+                <label class="asterick" for="aadhar">Aadhar Number :</label>
+                <div class="div-error">
                 <input type="number" id="aadhar" name="aadhar_number"/>
                 <div class="error"></div>
-                </div></br></br>
-                
+                </div>
+                </div>
+            </div>
+            <div class="button-div">    
                 <input class="btn" type="submit" value="Submit"/> 
-                
+            </div>
             </form>
         </div>
         <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
