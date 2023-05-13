@@ -2,7 +2,6 @@
     <head>
         <title>Dashboard</title>
         <link rel="stylesheet" href="./css/dashboard.css">
-
         <link rel="stylesheet" href="./css/docs.css">
     </head>
     <body>
@@ -17,14 +16,16 @@
             <div class="student-name">
                 <img class="icon" src="./assets/studenticon1.png" alternative=""/>
                 <input class="input student-name" type="text" id="student_name" name="name" value="<%= dataToBePassedToView.name %>" />
+                <!-- <img class="icon" src="./assets/studenticon1.png" alternative=""/> -->
             </div>
         </header>
     <div class="grid-container">
+        
         <div class="side-bar">
             <ul class="sideMenu-list">
                 <h2 class="sideMenu-heading text-center">My Dashboard</h2>
                 <li class="sideMenu-list-item" id="latest_updates">
-                    <a class=" sideMenu-active" href="/dashboard">
+                    <a class=" sideMenu-active" href="">
                         <span>-</span>
                         Latest Updates
                     </a>

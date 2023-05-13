@@ -5,6 +5,7 @@ body {
     padding: 0;
     height:auto;
 }
+
 .form-container{    
     width:700px;
     align-items: center;
@@ -18,7 +19,7 @@ body {
     display: none;
     justify-content: center;
     margin-bottom: 20px;
-}
+
 
 .div-error{
     display: flex;
@@ -31,6 +32,7 @@ body {
     color:red;
 }
 
+
 .error{
     font-size: 10px;
     color:red;
@@ -40,6 +42,8 @@ form{
     align-items: center;
     padding:10px 20px 10px 20px;
     box-sizing: border-box;
+    align-items: center;
+    padding:10px 20px 10px 20px;
 }
 
 .form-details{
@@ -52,6 +56,7 @@ form{
     display:flex;
     justify-content: space-between;
 }
+
 
 form h1{
     text-align: center;
@@ -82,6 +87,7 @@ label {
     color: red;
     font-size: 18px;
 } 
+
 
 
 input[type="text"],
@@ -119,12 +125,15 @@ select::-ms-expand {
 }
 
 .button-div{
-
     display: flex;
     justify-content: center;
 }
 
 
+
+    display: flex;
+    justify-content: center;
+}
 .btn{
     width:80px;
     height:30px;
@@ -133,13 +142,14 @@ select::-ms-expand {
     border-radius: 50px;
     border: 1.5px solid #010081;
     color: #010081;
+    margin-top: 20px;
     cursor: pointer;
     margin-top: 20px;
     outline: none;
     padding: 5px;
 }
     
-  .btn:hover {
+.btn:hover {
       background-color: #31DEDE99;
       color: #010081;
   }
