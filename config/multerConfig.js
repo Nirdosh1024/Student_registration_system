@@ -1,6 +1,7 @@
 const multer = require("multer");
 const path = require("path");
 
+// multer setup to upload files to the server
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         if (file.mimetype === "application/pdf") {

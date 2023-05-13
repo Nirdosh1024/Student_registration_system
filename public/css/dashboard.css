@@ -21,7 +21,7 @@ body {
 }
 
 header {
-    padding: 10px 20px 30px 20px; 
+    padding: 10px 2px 30px 20px; 
     display: flex;
     margin-top: 20px;
     border-bottom: 1px solid silver;
@@ -66,8 +66,11 @@ header .student-name {
     margin-left:50px;
     gap:10px;
 }
+
 .student-name{
-    font-size:14px;
+    color: #010081;
+    font-size:16px;
+    font-weight: 600;
     height: 30px;
     border: 0 solid white;
 }
@@ -77,7 +80,7 @@ header .student-name {
     width:30px;
     height:30px;
     background:white;
-    border-radius:10px solid #010081 ;
+    border-radius:50px solid #010081 ;
     box-sizing: border-box;
     border-color: #010081;
 }
