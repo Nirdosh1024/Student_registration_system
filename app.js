@@ -101,15 +101,14 @@ app.use(express.static("public"));
 // multer setup to upload files to the server
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    console.log("helllooooooo")
     if (file.mimetype === "application/pdf") {
-      cb(null, path.join(__dirname, '../uploads/document'));
+      cb(null, path.join(__dirname, '/uploads/document'));
     }
     else if (file.mimetype === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
-      cb(null, path.join(__dirname, '../uploads/studentData'));
+      cb(null, path.join(__dirname, '/uploads/studentData'));
     }
     else {
-      cb(null, path.join(__dirname, '../uploads/image'));
+      cb(null, path.join(__dirname, '/uploads/image'));
     }
   },
   filename: (req, file, cb) => {
@@ -149,12 +148,11 @@ app.get("/", (req, res) => {
 });
 
 app.post("/upload", upload, (req, res) => {
-  console.log(req.files)
   if (!req.files) {
     res.json({ status: "NOT OKAY" });
   } else {
-    // const filepath = path.join(__dirname, "../uploads/studentData", `${req.files['excel'][0]}`);
-    // //importExceltoJson(filepath);
+    const filepath = path.join(__dirname, "/uploads/studentData", `${req.files['excel'][0].originalname}`);
+    importExceltoJson(filepath);
     res.json({ status: "OKAY" });
   }
 });
