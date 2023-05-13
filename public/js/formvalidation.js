@@ -47,8 +47,7 @@ const highPassingYear =  document.getElementById("highschool-year")
 const interPassingYear = document.getElementById("inter-year")
 
 
-let gArrayToStoreFormData = []
-
+let gFormData = new FormData();
 
 
 const successMsg = (form) => {
@@ -533,18 +532,19 @@ const personalInfo=document.querySelector('.personal-information')
 //personal form validation function declaration
 pform.addEventListener('submit', (e) => {
   e.preventDefault();
-
   let dataInForm = new FormData(pform);
   const values = [...dataInForm.entries()];
-  gArrayToStoreFormData.push([...values]);
+  values.forEach(value => {
+    gFormData.append(value[0], value[1]);
+  })
   // if(validateInputsForPersonalForm(pform)) {
   //   educationalDetails.style.display = "block";
   // } else {
   //   educationalDetails.style.display = "none";
   // }
   personalInfo.style.display="none";
-   educationalDetails.style.display = "block";
- })
+  educationalDetails.style.display = "block";
+})
 
 
 
@@ -553,7 +553,9 @@ eform.addEventListener(("submit"), (e) => {
   e.preventDefault();
   let dataInForm = new FormData(eform);
   const values = [...dataInForm.entries()];
-  gArrayToStoreFormData.push([...values]);
+  values.forEach(value => {
+    gFormData.append(value[0], value[1]);
+  })
   // if(validateInputForEducationalDetails(eform)) {
   //   hostelDetails.style.display = "block";
   // }
@@ -561,7 +563,7 @@ eform.addEventListener(("submit"), (e) => {
   //   hostelDetails.style.display = "none";
   // }
   educationalDetails.style.display="none";
- hostelDetails.style.display = "block";
+  hostelDetails.style.display = "block";
 })
 const paymentDetails = document.querySelector(".payment")
 
@@ -571,7 +573,9 @@ hostelDetailsForm.addEventListener("submit", (e) => {
   e.preventDefault();
   let dataInForm = new FormData(hostelDetailsForm);
   const values = [...dataInForm.entries()];
-  gArrayToStoreFormData.push([...values]);
+  values.forEach(value => {
+    gFormData.append(value[0], value[1]);
+  })
   hostelDetails.style.display="none";
   paymentDetails.style.display = "block";
 })
@@ -582,7 +586,9 @@ paymentForm.addEventListener("submit", (e) => {
   e.preventDefault();
   let dataInForm = new FormData(paymentForm);
   const values = [...dataInForm.entries()];
-  gArrayToStoreFormData.push([...values]);
+  values.forEach(value => {
+    gFormData.append(value[0], value[1]);
+  })
   paymentDetails.style.display="none";
   feeDetails.style.display = "block";
 
@@ -595,19 +601,21 @@ feeform.addEventListener("submit", async (e) => {
   e.preventDefault()
   let dataInForm = new FormData(feeform);
   const values = [...dataInForm.entries()];
-  gArrayToStoreFormData.push([...values]);
+  values.forEach(value => {
+    gFormData.append(value[0], value[1]);
+  })
+
 
   if(validateInputForFeeDetails(feeform)){
     const axiosRes = await axios({
       method: "POST",
       url: "http://localhost:5000/studentform",
-      data: gArrayToStoreFormData
+      data: gFormData
   });
-
   console.log(axiosRes.data.status)
   }
   else{
-     console.log("not validated")
+    console.log("not validated")
   }
 })
 

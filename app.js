@@ -14,7 +14,12 @@ const logger = require("morgan");
 // import routes
 const formRoute = require("./routes/formRoute");
 
-require("dotenv").config();
+
+// import multer config 
+const upload = require("./config/multerConfig")
+
+require('dotenv').config();
+
 
 const { ensureAuthenticated, forwardAuthenticated } = require("./config/auth");
 
@@ -91,6 +96,7 @@ app.use(express.urlencoded({ extended: true }));
 // require public folder
 app.use(express.static("public"));
 
+
 app.post("/", (req, res) => {
   console.log(req);
   res.status(201).json({
@@ -137,6 +143,18 @@ app.get("/dashboard", ensureAuthenticated, (req, res) => {
     });
   }
 });
+
+
+app.get("/test", (req, res) => {
+  res.render("test");
+})
+
+
+app.post("/test", upload, (req, res) => {
+  console.log(req.files);
+  res.json({status: "OKAY"});
+})
+
 
 //rendering registration form
 app.get("/studentform", ensureAuthenticated, async (req, res) => {
