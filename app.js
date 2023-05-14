@@ -341,7 +341,7 @@ function importExceltoJson(filepath) {
 app.use("/form-submit", formRoute);
 
 app.use("/adminfeeform", require("./routes/adminformRoute"));
-app.use("/studentform", upload, require("./routes/studentformRoute"));
+app.use("/studentform", require("./routes/studentformRoute"));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

@@ -196,19 +196,19 @@
         
                             <div class="input-control">
                                 <label class="asterick"for="name">Father's Name</label>
-                                <input type="text" id="name" name="name" autocomplete="off" minlength="3" value="<%= dataToBePassedToForm.father_name %>"/>
+                                <input type="text" id="name" name="father_name" autocomplete="off" minlength="3" value="<%= dataToBePassedToForm.father_name %>"/>
                             </div>
                             
         
                             <div class="input-control">
                                 <label class="asterick"for="name">Mother's Name</label>
-                                <input type="text" id="name" name="name" autocomplete="off" minlength="3" value="<%= dataToBePassedToForm.mother_name %>" />
+                                <input type="text" id="name" name="mother_name" autocomplete="off" minlength="3" value="<%= dataToBePassedToForm.mother_name %>" />
                             </div>
                             
         
                             <div class="input-control">
                                 <label class="asterick"for="number">Parent's Phone Number</label>
-                                <input type="number" id="parentPhnNo" name="mobile_number" placeholder="phone no."
+                                <input type="number" id="parentPhnNo" name="parentphone_number" placeholder="phone no."
                                     autocomplete="off" maxlength="10" size="10" />
                                 <div class="error"></div>
                             </div>
@@ -216,7 +216,7 @@
         
                             <div class="input-control">
                                 <label for="email">Parent's E-mail</label>
-                                <input type="email" id="Parentemail" name="email" autocomplete="off" />
+                                <input type="email" id="Parentemail" name="parent_email" autocomplete="off" />
                                 <div class="error"></div>
                             </div>
                             
@@ -224,7 +224,7 @@
                             <div class="input-control">
                                 <label for="number">Alternate Phone Number</label>
         
-                                <input type="number" id="number" name="mobile_number" placeholder="phone no." size="10" />
+                                <input type="number" id="number" name="alter_phnno" placeholder="phone no." size="10" />
                                 <div class="error"></div>
                             </div>
                             
@@ -272,12 +272,12 @@
                             
                             <div class="input-control">
                                 <label for="name">Local Gaurdian's Name (If Any)</label>
-                                <input type="text" id="name" name="name" />
+                                <input type="text" id="name" name="gaurdian_name" />
                             </div>
                             
                             <div class="input-control">
                                 <label for="gardian_phoneNo">Gaurdian's Phone Number</label>
-                                <input type="number" id="GaurdianNumber" name="mobile_number" placeholder="phone no." size="10" />
+                                <input type="number" id="GaurdianNumber" name="gaurdian_phnno" placeholder="phone no." size="10" />
                                 <div class="error"></div>
                             </div>
 
@@ -294,13 +294,13 @@
 
                             <div class="input-control">
                                 <label class="asterick" for="address">Permanent Address</label>
-                                <input type="text" class="form-control" id="street-1" placeholder="Street Address_1" /></br>
-                                <input type="text" class="form-control" id="street-2" placeholder="Street Address_2" /></br>
-                                <input type="text" class="form-control" id="inputCity" placeholder="City" /></br>
-                                <input type="text" class="form-control" id="inputState" placeholder="State/Province" /></br>
-                                <input type="number" class="form-control" type="number" id="inputZip" placeholder="Pincode" size="6" /></br>
-                                <input type="text" class="form-control" id="inputCountry" placeholder="Country" />
-                                <div class="error"></div>
+                                <input type="text" class="input-control" id="street-1" placeholder="Street Address_1" /></br>
+                                <input type="text" class="input-control" id="street-2" placeholder="Street Address_2" /></br>
+                                <input type="text" class="input-control" id="inputCity" placeholder="City" /></br>
+                                <input type="text" class="input-control" id="inputState" placeholder="State/Province" /></br>
+                                <input type="number" class="input-control" type="number" id="inputZip" placeholder="Pincode" size="6" /></br>
+                                <input type="text" class="input-control" id="inputCountry" placeholder="Country" />
+                                <div class="error"></input
                             </div>
                             
         
@@ -308,12 +308,12 @@
                                 <input class="checkbox" type="checkbox" id="copy-address">
                                 <label class="same-as-permanent" for="copy-address">Same As Permanent Address</label>
                                 <label class="asterick"for="address">Correspondance Address</label>
-                                <input type="text" class="form-control" id="Cstreet-1" placeholder="Street Address_1" /></br>
-                                <input type="text" class="form-control" id="Cstreet-2" placeholder="Street Address_2" /></br>
-                                <input type="text" class="form-control" id="CinputCity" placeholder="City" /></br>
-                                <input type="text" class="form-control" id="CinputState" placeholder="State/Province" /></br>
-                                <input type="number" class="form-control" id="CinputZip" placeholder="Pincode" size="6" /></br>
-                                <input type="text" class="form-control" id="CinputCountry" placeholder="Country" />
+                                <input type="text" class="input-control" id="Cstreet-1" placeholder="Street Address_1" /></br>
+                                <input type="text" class="input-control" id="Cstreet-2" placeholder="Street Address_2" /></br>
+                                <input type="text" class="input-control" id="CinputCity" placeholder="City" /></br>
+                                <input type="text" class="input-control" id="CinputState" placeholder="State/Province" /><input
+                                <input type="number" class="input-control" id="CinputZip" placeholder="Pincode" size="6" /></br>
+                                <input type="text" class="input-control" id="CinputCountry" placeholder="Country" />
                                 <div class="error"></div>
                             </div>
         
@@ -321,12 +321,12 @@
                             
                             <div class="input-control">
                                 <label for="address">Gaurdian's Address</label>
-                                <input type="text" class="form-control" id="autocomplete" placeholder="Street Address_1" /></br>
-                                <input type="text" class="form-control" id="autocomplete" placeholder="Street Address_2" /></br>
-                                <input type="text" class="form-control" id="inputCity" placeholder="City" /></br>
-                                <input type="text" class="form-control" id="inputState" placeholder="State/Province" /></br>
-                                <input type="number" class="form-control" id="GinputZip" placeholder="Pincode" size="6" /></br>
-                                <input type="text" class="form-control" id="inputCountry" placeholder="Country" />
+                                <input type="text" class="input-control" id="autocomplete" placeholder="Street Address_1" /></br>
+                                <input type="text" class="input-control" id="autocomplete" placeholder="Street Address_2" /></br>
+                                <input type="text" class="input-control" id="inputCity" placeholder="City" /></br>
+                                <input type="text" class="input-control" id="inputState" placeholder="State/Province" /></br>
+                                <input type="number" class="input-control" id="GinputZip" placeholder="Pincode" size="6" /></br>
+                                <input type="text" class="input-control" id="inputCountry" placeholder="Country" />
                             </div>
                             
                 
@@ -356,33 +356,34 @@
         
                                 <div class="input-control">
                                     <label class="asterick"for="institute_name">Institute Name</label>
-                                    <input type="text" id="highSchool" name="highSchool" />
+                                    <input type="text" id="highSchool" name="highschool_institute" />
                                     <div class="error"></div>
                                 </div>
                                 
                                 <div class="input-control">
                                     <label class="asterick"for="board">Board</label>
-                                    <input type="text" id="highSchool-board" name="highSchool" />
+                                    <input type="text" id="highSchool-board" name="highschool_board" />
                                     <div class="error"></div>
                                 </div>
                                 
                                 <div class="input-control">
                                     <label class="asterick"for ="highschoolmax-marks">Maximum Marks </label>
                                     <input type="number"
-                                    id="highschool-maxmarks" name ="highschool-maxmarks">
+                                    id="highschool-maxmarks" name ="highschool_maxmarks">
                                     <div class="error"></div>
                                 </div>
         
                                 <div class="input-control">
                                     <label class="asterick"for="marks">Marks Obtained</label>
-                                    <input type="number" id="highSchool-marks" name="marks_obtained" />
+                                    <input type="number" id="highSchool-marks" name="highschool_marks" />
                                     <div class="error"></div>
                                 </div>
-                                
+
+                              
         
                                 <div class="input-control">
                                     <label class="asterick"for="year">Passing Year</label>
-                                    <input type="number" id="highschool-year" name="year" />
+                                    <input type="number" id="highschool-year" name="highschool_year" />
                                     <div class="error"></div>
                                 </div>
                                 
@@ -401,13 +402,13 @@
         
                                 <div class="input-control">
                                     <label class="asterick"for="institute_name">Institute Name</label>
-                                    <input type="text" id="intermediate" name="intermediate" />
+                                    <input type="text" id="intermediate" name="intermediate_institute" />
                                     <div class="error"></div>
                                 </div>
         
                                 <div class="input-control">
                                     <label class="asterick"for="board">Board</label>
-                                    <input type="text" id="intermediate-board" name="intermediate" />
+                                    <input type="text" id="intermediate-board" name="intermediate_board" />
                                     <div class="error"></div>
                                 </div>
                                 
@@ -416,20 +417,20 @@
                                     <label class="asterick"for ="intermax-marks">Maximum Marks
                                     </label>
                                     <input type="number"
-                                    id="inter-maxmarks" name ="inter-maxmarks">
+                                    id="inter-maxmarks" name ="inter_maxmarks">
                                     <div class="error"></div>
                                 </div>
         
                                 <div class="input-control">
                                     <label class="asterick"for="marks">Marks Obtained</label>
-                                    <input type="number" id="inter-marks" name="marks_obtained" />
+                                    <input type="number" id="inter-marks" name="inter_marks" />
                                     <div class="error"></div>
                                 </div>
                                 
         
                                 <div class="input-control">
                                     <label class="asterick"for="year">Passing Year</label>
-                                    <input type="number" id="inter-year" name="year" />
+                                    <input type="number" id="inter-year" name="inter_year" />
                                     <div class="error"></div>
                                 </div>
                                 
@@ -577,7 +578,7 @@
                             <div class="form-details">
         
                                 <label class="asterick"for="fee_pay">Pay Fees</label>
-                                <select class="fee-type" name="fee-type" id="fee-type">
+                                <select class="fee-type" name="fee_type" id="fee-type">
                                     <option value="">Please Select</option>
                                     <option value="yes">Paying Full Fee</option>
                                     <option value="no">Paying In Installment</option>

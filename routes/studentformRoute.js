@@ -6,7 +6,7 @@ const fs = require('fs')
 
 
 router.post("/",upload,(req,res) => {
-
+   console.log(req.body)
    const obj= {
       filename : req.body.photo_file,
       image: {
