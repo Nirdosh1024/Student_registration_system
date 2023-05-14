@@ -1,5 +1,4 @@
 const router = require("express").Router()
-const upload = require("../config/multerConfig");
 
 
 const newStudentModel = require("../Models/studentModel")
