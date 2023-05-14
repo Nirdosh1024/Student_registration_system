@@ -614,7 +614,11 @@ feeform.addEventListener("submit", async (e) => {
     gFormData.append(value[0], value[1]);
   })
   
-  if(validateInputForFeeDetails(feeform)){
+
+  const termAndConditionCheckmark = document.getElementById("accept_t&c");
+  console.log([...gFormData.entries()])
+
+  if(validateInputForFeeDetails(feeform) && termAndConditionCheckmark.checked){
     const axiosRes = await axios({
       method: "POST",
       url: "http://localhost:5000/studentform",

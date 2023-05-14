@@ -294,13 +294,13 @@
 
                             <div class="input-control">
                                 <label class="asterick" for="address">Permanent Address</label>
-                                <input type="text" class="input-control" id="street-1" placeholder="Street Address_1" /></br>
-                                <input type="text" class="input-control" id="street-2" placeholder="Street Address_2" /></br>
-                                <input type="text" class="input-control" id="inputCity" placeholder="City" /></br>
-                                <input type="text" class="input-control" id="inputState" placeholder="State/Province" /></br>
-                                <input type="number" class="input-control" type="number" id="inputZip" placeholder="Pincode" size="6" /></br>
-                                <input type="text" class="input-control" id="inputCountry" placeholder="Country" />
-                                <div class="error"></input
+                                <input type="text" class="input-control" name="p_street_1" id="street-1" placeholder="Street Address_1" /></br>
+                                <input type="text" class="input-control" name="p_street_2" id="street-2" placeholder="Street Address_2" /></br>
+                                <input type="text" class="input-control" name="p_city" id="inputCity" placeholder="City" /></br>
+                                <input type="text" class="input-control" name="p_state" id="inputState" placeholder="State/Province" /></br>
+                                <input type="number" class="input-control" name="p_pincode" type="number" id="inputZip" placeholder="Pincode" size="6" /></br>
+                                <input type="text" class="input-control" name="p_country" id="inputCountry" placeholder="Country" />
+                                <div class="error"></div></input>
                             </div>
                             
         
@@ -308,12 +308,12 @@
                                 <input class="checkbox" type="checkbox" id="copy-address">
                                 <label class="same-as-permanent" for="copy-address">Same As Permanent Address</label>
                                 <label class="asterick"for="address">Correspondance Address</label>
-                                <input type="text" class="input-control" id="Cstreet-1" placeholder="Street Address_1" /></br>
-                                <input type="text" class="input-control" id="Cstreet-2" placeholder="Street Address_2" /></br>
-                                <input type="text" class="input-control" id="CinputCity" placeholder="City" /></br>
-                                <input type="text" class="input-control" id="CinputState" placeholder="State/Province" /><input
-                                <input type="number" class="input-control" id="CinputZip" placeholder="Pincode" size="6" /></br>
-                                <input type="text" class="input-control" id="CinputCountry" placeholder="Country" />
+                                <input type="text" class="input-control" name="c_street_1" id="Cstreet-1" placeholder="Street Address_1" /></br>
+                                <input type="text" class="input-control" name="c_street_2" id="Cstreet-2" placeholder="Street Address_2" /></br>
+                                <input type="text" class="input-control" name="c_city" id="CinputCity" placeholder="City" /></br>
+                                <input type="text" class="input-control" name="c_state" id="CinputState" placeholder="State/Province" /><input>
+                                <input type="number" class="input-control" name="c_pincode" id="CinputZip" placeholder="Pincode" size="6" /></br>
+                                <input type="text" class="input-control"  name="c_country" id="CinputCountry" placeholder="Country" />
                                 <div class="error"></div>
                             </div>
         
@@ -321,12 +321,12 @@
                             
                             <div class="input-control">
                                 <label for="address">Gaurdian's Address</label>
-                                <input type="text" class="input-control" id="autocomplete" placeholder="Street Address_1" /></br>
-                                <input type="text" class="input-control" id="autocomplete" placeholder="Street Address_2" /></br>
-                                <input type="text" class="input-control" id="inputCity" placeholder="City" /></br>
-                                <input type="text" class="input-control" id="inputState" placeholder="State/Province" /></br>
-                                <input type="number" class="input-control" id="GinputZip" placeholder="Pincode" size="6" /></br>
-                                <input type="text" class="input-control" id="inputCountry" placeholder="Country" />
+                                <input type="text" class="input-control" name="g_street_1" id="autocomplete" placeholder="Street Address_1" /></br>
+                                <input type="text" class="input-control" name="g_street_2" id="autocomplete" placeholder="Street Address_2" /></br>
+                                <input type="text" class="input-control" name="g_city" id="inputCity" placeholder="City" /></br>
+                                <input type="text" class="input-control" name="g_state" id="inputState" placeholder="State/Province" /></br>
+                                <input type="number" class="input-control" name="g_pincode" id="GinputZip" placeholder="Pincode" size="6" /></br>
+                                <input type="text" class="input-control" name="g_country" id="inputCountry" placeholder="Country" />
                             </div>
                             
                 
@@ -689,6 +689,8 @@
                                     <div class="error"></div>
                                 </div>
                             </div>
+                        <input type="checkbox" name="accept_t&c" id="accept_t&c">
+                        <label for="accept_t&c">I, hereby declare that the information furnished above is true, complete and to the best of my knowledge and belief and agree to the terms & conditions of college registration process.</label>
                         <div class="form-button">
                             <button class="prev-btn" id="f-prev-btn" type="submit">Prev</button>
                             <button class="btn" type="submit">Submit</button>

@@ -5,25 +5,23 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express();
 const exceltoJson = require("convert-excel-to-json");
+const path = require("path");
 const flash = require("connect-flash");
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
 const helmet = require("helmet");
 const logger = require("morgan");
 
+
 // import routes
 const formRoute = require("./routes/formRoute");
-
 
 // import multer config 
 const upload = require("./config/multerConfig")
 
 require('dotenv').config();
 
-
 const { ensureAuthenticated, forwardAuthenticated } = require("./config/auth");
-
-const upload = require("./config/multerConfig");
 
 // importing express session
 const session = require("express-session");
@@ -31,11 +29,14 @@ const session = require("express-session");
 // requiring the passport config file here
 require("./config/passport")(passport);
 
+
+
 // helmet config
 // app.use(helmet());
 
 // logger config
-app.use(logger("dev"));
+app.use(logger('dev'));
+
 
 // model imported
 const newStudentModel = require("./Models/studentModel");
@@ -62,17 +63,17 @@ mongoose
     console.log("The error is when connected", e);
   });
 
+
 // initialising an express session to store authentication credentials
-app.use(
-  session({
-    secret: process.env.SECRET,
-    resave: true,
-    saveUninitialized: true,
-    cookie: {
-      maxAge: 365 * 24 * 60 * 60 * 1000,
-    },
-  })
-);
+app.use(session({
+  secret: process.env.SECRET,
+  resave: true,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 365 * 24 * 60 * 60 * 1000
+  }
+}));
+
 
 // passport middleware
 app.use(passport.initialize());
@@ -81,17 +82,19 @@ app.use(passport.session());
 // flash setup
 app.use(flash());
 
-// Global variables
+// Global variables 
 app.use((req, res, next) => {
   res.locals.error_msg = req.flash("error_msg");
-  res.locals.error = req.flash("error");
+  res.locals.error = req.flash('error');
   next();
 });
+
 
 app.set("view engine", "ejs");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 
 // require public folder
 app.use(express.static("public"));
@@ -112,8 +115,7 @@ app.post("/upload", upload, (req, res) => {
   if (!req.files) {
     res.json({ status: "NOT OKAY" });
   } else {
-    const filepath = req.files["excel"][0].path;
-    console.log(filepath);
+    const filepath = path.join(__dirname, "/uploads/studentData", `${req.files['excel'][0].originalname}`);
     importExceltoJson(filepath);
     res.json({ status: "OKAY" });
   }
@@ -123,42 +125,33 @@ app.get("/authentication", (req, res) => {
   res.render("login");
 });
 
+
 app.get("/dashboard", ensureAuthenticated, (req, res) => {
   const user = req.session.passport.user;
 
   const dataToBePassedToView = {
     name: user.name,
-    JEERoll: user.JEERoll,
-  };
+    JEERoll: user.JEERoll
+  }
 
   console.log(dataToBePassedToView);
 
   if (req.user.dashboard_created) {
     res.render("dashboard", {
-      dataToBePassedToView,
-    });
-  } else {
+      dataToBePassedToView
+    })
+  }
+  else {
     res.render("form", {
-      dataToBePassedToView,
+      dataToBePassedToView
     });
   }
 });
 
 
-app.get("/test", (req, res) => {
-  res.render("test");
-})
-
-
-app.post("/test", upload, (req, res) => {
-  console.log(req.files);
-  res.json({status: "OKAY"});
-})
-
-
 //rendering registration form
 app.get("/studentform", ensureAuthenticated, async (req, res) => {
-  const id = req.session.passport.user._id;
+  const id = req.session.passport.user._id
 
   const user = await newStudentModel.findById(id);
 
@@ -173,75 +166,71 @@ app.get("/studentform", ensureAuthenticated, async (req, res) => {
     aadhar_number: user.AadharNumber,
     father_name: user.FatherName,
     mother_name: user.MotherName,
-    email: user.Email,
-  };
+    email: user.Email
+
+  }
   res.render("studentform", {
-    dataToBePassedToForm,
-  });
-});
+    dataToBePassedToForm
+  })
+})
 
 //rendering documents
-app.get("/docs", ensureAuthenticated, async (req, res) => {
-  const id = req.session.passport.user._id;
-
-  const user = await newStudentModel.findById(id);
+app.get("/docs", ensureAuthenticated, (req, res) => {
+  const user = req.session.passport.user;
 
   const dataToBePassedToView = {
     name: user.name,
-    JEERoll: user.JEERoll,
-  };
+    JEERoll: user.JEERoll
+  }
 
   res.render("docs", {
-    dataToBePassedToView,
-  });
-});
+    dataToBePassedToView
+  })
+})
 
 //rendering pending payment
-app.get("/dues", ensureAuthenticated, async (req, res) => {
-  const id = req.session.passport.user._id;
-
-  const user = await newStudentModel.findById(id);
+app.get("/dues", ensureAuthenticated, (req, res) => {
+  const user = req.session.passport.user;
 
   const dataToBePassedToView = {
     name: user.name,
-    JEERoll: user.JEERoll,
-  };
+    JEERoll: user.JEERoll
+  }
 
   res.render("dues", {
-    dataToBePassedToView,
-  });
-});
+    dataToBePassedToView
+  })
+})
 
 //rendering registration status
-app.get("/status", ensureAuthenticated, async (req, res) => {
-  const id = req.session.passport.user._id;
-
-  const user = await newStudentModel.findById(id);
+app.get("/status", ensureAuthenticated, (req, res) => {
+  const user = req.session.passport.user;
 
   const dataToBePassedToView = {
     name: user.name,
-    JEERoll: user.JEERoll,
-  };
+    JEERoll: user.JEERoll
+  }
 
   res.render("status", {
-    dataToBePassedToView,
-  });
-});
+    dataToBePassedToView
+  })
+})
+
 
 app.get("/layout", (req, res) => {
-  res.render("layout");
-});
+  res.render("layout")
+})
 
 app.post("/login", (req, res, next) => {
-  passport.authenticate("local-student", {
+  passport.authenticate('local-student', {
     successRedirect: "/dashboard",
     failureRedirect: "/authentication",
-    failureFlash: true,
+    failureFlash: true
   })(req, res, next);
 });
 
 // app.post("/adminLogin", (req, res) => {
-//   const { UserID, password } = req.body;
+//   const { UserID, password } = req.body; 
 //   Admin.findOne({ID: UserID}).then(async (admin) => {
 //     console.log("Function is reaching here");
 //     const password = await hashedPassword(UserID)
@@ -264,16 +253,16 @@ app.post("/login", (req, res, next) => {
 //     const hashedPass= await bcrypt.hash(password,salt);
 
 //     return hashedPass;
-//   }
+//   } 
 // }
 
 app.get("/admindashboard", ensureAuthenticated, (req, res) => {
   res.render("admindashboard");
-});
+})
 
 app.get("/adminfeeform", ensureAuthenticated, (req, res) => {
   res.render("adminfeeform");
-});
+})
 
 // app.post("/adminfeeform", (req,res) => {
 //   res.json({ status: "OKAY" });
@@ -283,18 +272,27 @@ app.post("/adminLogin", (req, res, next) => {
   passport.authenticate("local-admin", {
     successRedirect: "/admindashboard",
     failureRedirect: "/authentication",
-    failureFlash: true,
-  })(req, res, next);
-});
+    failureFlash: true
+  })
+    (req, res, next);
+})
 
-app.get("/logout", (req, res, next) => {
-  req.logout((err) => {
+
+
+
+app.get('/logout', (req, res, next) => {
+  req.logout(err => {
     if (err) {
       return next(err);
     }
   });
-  res.redirect("/authentication");
+  res.redirect('/authentication');
 });
+
+
+
+
+
 
 function importExceltoJson(filepath) {
   const exceldata = exceltoJson({
@@ -339,29 +337,33 @@ function importExceltoJson(filepath) {
         s.push(student);
       }
 
-      // if (s.length) {
-      //   newStudentModel
-      //     .create([...s])
-      //     .then((Data) => {
-      //       console.log("uploaded data", Data);
-      //       // mongoose.connection.close().then(() => {
-      //       //   console.log("connection closed");
-      //       // });
-      //     })
-      //     .catch((e) => {
-      //       console.log("The error is on insert ", e);
-      //     });
-      // }
+
+
+      if (s.length) {
+        newStudentModel
+          .create([...s])
+          .then((Data) => {
+            console.log("uploaded data", Data);
+            // mongoose.connection.close().then(() => {
+            //   console.log("connection closed");
+            // });
+          })
+          .catch((e) => {
+            console.log("The error is on insert ", e);
+          });
+      }
     }
   }
 }
 
 app.use("/form-submit", formRoute);
 
-app.use("/adminfeeform", require("./routes/adminformRoute"));
-app.use("/studentform", require("./routes/studentformRoute"));
+app.use("/adminfeeform", require("./routes/adminformRoute"))
+app.use("/studentform", require("./routes/studentformRoute"))
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log("Server has started at 5000");
 });
+
+
