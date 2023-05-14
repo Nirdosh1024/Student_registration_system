@@ -50,7 +50,6 @@ const interPassingYear = document.getElementById("inter-year")
 let gFormData = new FormData();
 
 
-
 const successMsg = (form) => {
   const inputControlDivs = form.getElementsByClassName("input-control");
   
@@ -542,7 +541,6 @@ const personalInfo=document.querySelector('.personal-information')
 //personal form validation function declaration
 pform.addEventListener('submit', (e) => {
   e.preventDefault();
-
   let dataInForm = new FormData(pform);
   const values = [...dataInForm.entries()];
   values.forEach(value => {
@@ -554,8 +552,8 @@ pform.addEventListener('submit', (e) => {
   //   educationalDetails.style.display = "none";
   // }
   personalInfo.style.display="none";
-   educationalDetails.style.display = "block";
- })
+  educationalDetails.style.display = "block";
+})
 
 
 
@@ -574,7 +572,7 @@ eform.addEventListener(("submit"), (e) => {
   //   hostelDetails.style.display = "none";
   // }
   educationalDetails.style.display="none";
- hostelDetails.style.display = "block";
+  hostelDetails.style.display = "block";
 })
 const paymentDetails = document.querySelector(".payment")
 
@@ -615,17 +613,17 @@ feeform.addEventListener("submit", async (e) => {
   values.forEach(value => {
     gFormData.append(value[0], value[1]);
   })
+  
   if(validateInputForFeeDetails(feeform)){
     const axiosRes = await axios({
       method: "POST",
       url: "http://localhost:5000/studentform",
       data: gFormData
   });
-
   console.log(axiosRes.data.status)
   }
   else{
-     console.log("not validated")
+    console.log("not validated")
   }
 })
 
