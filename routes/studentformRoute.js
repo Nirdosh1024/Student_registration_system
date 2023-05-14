@@ -11,6 +11,7 @@ const fs = require('fs')
 router.post("/",upload,(req,res) => {
 
 const obj= {
+  
       filename : req.body.photo_file,
       image: {
          data: fs.readFileSync(req.files["photo_file"][0].path),

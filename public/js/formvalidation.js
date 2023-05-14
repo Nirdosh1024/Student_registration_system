@@ -193,6 +193,12 @@ const isValidMarks = (marks) => {
   }
 }
 
+//function to calculate percentage
+const percentCalculate = (marks,maxmarks) => {
+   let percent =  parseFloat((marks/maxmarks)*100).toFixed(2);
+   return percent;
+}
+
 
 
 const validateInputsForPersonalForm = (pform) => {
@@ -348,8 +354,11 @@ const validateInputForEducationalDetails = (eform) => {
     setError(interPassingYear, "Provide a valid passing year")
   }
   if(parseInt(highPassingYearvalue) >= parseInt(interPassingYearvalue)){
+    
     setError(highPassingYear, "Provide a valid passing year")
   }
+  if(percentCalculate(highSchoolMarksvalue,highschoolmaxMarksvalue))
+
   if(successMsg(eform)) {
       return true;
   } else {
@@ -604,8 +613,7 @@ feeform.addEventListener("submit", async (e) => {
   values.forEach(value => {
     gFormData.append(value[0], value[1]);
   })
-
-
+  
   if(validateInputForFeeDetails(feeform)){
     const axiosRes = await axios({
       method: "POST",

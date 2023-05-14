@@ -71,18 +71,66 @@ const newStudent = mongoose.Schema({
     type: Boolean,
     required: false
   },
-
-  filename: {
-    type: Object,
-    image:{
-      data:Buffer,
-      contentType: String
-    }
-  }
-
-
-
-
+ 
+  semester:{
+    type:String,
+    required:true
+  },
+  father_name:{
+    type: String,
+    required: true
+  },
+  mother_name: {
+    type: String,
+    required: true
+  },
+  parent_phn: {
+    type: Number,
+    required: true
+  },
+  parent_email: {
+    type: String,
+    required: true
+  },
+  category: {
+    type: String,
+    required: true
+  },
+  income: {
+    type: String,
+    required: true
+  },
+  gaurdian_name: {
+    type: String,
+  },
+  gaurdian_phn:{
+    type: Number
+  },
+  highschool_percent:{
+    type: Number,
+    required: true
+  },
+  inter_percent:{
+    type: Number,
+    required: true
+  },
+  JEE_percentile:{
+    type: Number,
+    required: true
+  },
+  hosteller:{
+    type: String,
+    required: true
+  },
+  room_no:{
+    type: String,
+  },
+  
+  document:[{
+    doc_name: String,
+    filepath : String,
+    filename : String
+}]
 
 });
 
