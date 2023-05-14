@@ -193,11 +193,7 @@ const isValidMarks = (marks) => {
   }
 }
 
-//function to calculate percentage
-const percentCalculate = (marks,maxmarks) => {
-   let percent =  parseFloat((marks/maxmarks)*100).toFixed(2);
-   return percent;
-}
+
 
 
 
@@ -403,7 +399,7 @@ const validateInputForFeeDetails = (feeform) => {
     setError(hostelfeeAmount , "Provide a valid value")
   }
   
-  if(parseInt(messSecurityAmountvalue) <= 0){
+  if(parseInt(messSecurityAmountvalue) < 0){
     setError(messSecurityAmount , "Provide a valid value")
   }
 
@@ -624,7 +620,9 @@ feeform.addEventListener("submit", async (e) => {
       url: "http://localhost:5000/studentform",
       data: gFormData
   });
-  console.log(axiosRes.data.status)
+  if(axiosRes.data.status === "okay"){
+    window.location.href = "/status"
+  }
   }
   else{
     console.log("not validated")

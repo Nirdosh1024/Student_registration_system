@@ -299,7 +299,6 @@
                                 <input type="text" class="input-control" name="p_city" id="inputCity" placeholder="City" /></br>
                                 <input type="text" class="input-control" name="p_state" id="inputState" placeholder="State/Province" /></br>
                                 <input type="number" class="input-control" name="p_pincode" type="number" id="inputZip" placeholder="Pincode" size="6" /></br>
-                                <input type="text" class="input-control" name="p_country" id="inputCountry" placeholder="Country" />
                                 <div class="error"></div></input>
                             </div>
                             
@@ -313,7 +312,7 @@
                                 <input type="text" class="input-control" name="c_city" id="CinputCity" placeholder="City" /></br>
                                 <input type="text" class="input-control" name="c_state" id="CinputState" placeholder="State/Province" /><input>
                                 <input type="number" class="input-control" name="c_pincode" id="CinputZip" placeholder="Pincode" size="6" /></br>
-                                <input type="text" class="input-control"  name="c_country" id="CinputCountry" placeholder="Country" />
+                               
                                 <div class="error"></div>
                             </div>
         
@@ -326,7 +325,7 @@
                                 <input type="text" class="input-control" name="g_city" id="inputCity" placeholder="City" /></br>
                                 <input type="text" class="input-control" name="g_state" id="inputState" placeholder="State/Province" /></br>
                                 <input type="number" class="input-control" name="g_pincode" id="GinputZip" placeholder="Pincode" size="6" /></br>
-                                <input type="text" class="input-control" name="g_country" id="inputCountry" placeholder="Country" />
+                            
                             </div>
                             
                 
@@ -495,8 +494,8 @@
                             <div class="form-details">
                             <select class="hostel-select" name="hosteller" id="hosteller">
                                 <option value="">Please Select</option>
-                                <option value="yes">Yes</option>
-                                <option value="no">No</option>
+                                <option value="true">Yes</option>
+                                <option value="">No</option>
                             </select>
                             </div>
                             <ul class="complete-form" style="display: none">
@@ -515,13 +514,13 @@
                                 </div>
                                 <div class="form-details">
                                     <label class="asterick"for="room">Room Number:</label>
-                                    <select class="floor hostel-select">
+                                    <select class="floor hostel-select" name = "floor">
                                         <option value="">Please Select</option>
                                         <option value="G"> G </option>
                                         <option value="F"> F </option>
                                         <option value="S"> S </option>
                                     </select>
-                                    <select class="room-no hostel-select">
+                                    <select class="room-no hostel-select" name = "room_no">
                                         <option value="">Please Select</option>
                                         <option value="1"> 1 </option>
                                         <option value="2"> 2 </option>
@@ -581,7 +580,7 @@
                                 <select class="fee-type" name="fee_type" id="fee-type">
                                     <option value="">Please Select</option>
                                     <option value="yes">Paying Full Fee</option>
-                                    <option value="no">Paying In Installment</option>
+                                    <option value="">Paying In Installment</option>
                                 </select>
         
                                 <div class="input-group">
@@ -635,7 +634,7 @@
         
                                 <div class="input-control">
                                     <label class="asterick"for="amount">Total Amount Paid</label>
-                                    <input type="number" id="hostel-amount" name="hostel_receipt"/>
+                                    <input type="number" id="hostel-amount" name="hostelfee_amount"/>
                                     <div class="error"></div>
                                 </div>
                             
@@ -657,7 +656,7 @@
         
                                 <div class="input-control">
                                     <label class="asterick"for="amount">Mess Security Fee</label>
-                                    <input type="number" id="messSecurity-amount" name="messsecurityfee_amount" />
+                                    <input type="number" id="messSecurity-amount" name="messsecurityfee_amount" value="0" />
                                     <div class="error"></div>
                                 </div>
         
@@ -689,8 +688,8 @@
                                     <div class="error"></div>
                                 </div>
                             </div>
-                        <input type="checkbox" name="accept_t&c" id="accept_t&c">
-                        <label for="accept_t&c">I, hereby declare that the information furnished above is true, complete and to the best of my knowledge and belief and agree to the terms & conditions of college registration process.</label>
+                        <input type="checkbox" name="accept_terms" id="accept_t&c">
+                        <label for="accept_terms">I, hereby declare that the information furnished above is true, complete and to the best of my knowledge and belief and agree to the terms & conditions of college registration process.</label>
                         <div class="form-button">
                             <button class="prev-btn" id="f-prev-btn" type="submit">Prev</button>
                             <button class="btn" type="submit">Submit</button>

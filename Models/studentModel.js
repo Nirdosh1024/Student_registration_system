@@ -2,8 +2,7 @@
 
 const mongoose = require("mongoose");
 
-
-const newStudent = mongoose.Schema({
+const newStudent= mongoose.Schema({
   ID: {
     type: Number,
     required: true,
@@ -12,7 +11,7 @@ const newStudent = mongoose.Schema({
     type: String,
     required: true,
   },
-  
+
   Branch: {
     type: String,
     required: true,
@@ -24,114 +23,162 @@ const newStudent = mongoose.Schema({
   passwd: {
     type: String,
     required: true,
-    lowerCase: true
+    lowerCase: true,
   },
   role: {
     type: String,
-    required: true
+    required: true,
   },
   FatherName: {
     type: String,
-    required: true
+    required: true,
   },
   MotherName: {
     type: String,
-    required: true
+    required: true,
   },
-  Gender: {
+  gender: {
     type: String,
-    required: true
+    required: true,
   },
-  PhoneNumber: {
+  phoneNumber: {
     type: Number,
-    required: true
+    //required: true,
   },
-  Email : {
-    type :String, 
-    required: true
-  },  
-  
+  Email: {
+    type: String,
+  },
+
   AadharNumber: {
     type: Number,
-    required: true
+    required: true,
   },
   DOB: {
     type: String,
-    required: true
+    required: true,
   },
   Year: {
     type: String,
-    required: true
+    //required: true,
   },
-  dashboard_created: {
-    type: Boolean,
-    required: true
-  },
-  form_submitted: {
-    type: Boolean,
-    required: false
-  },
- 
-  semester:{
-    type:String,
-    required:true
-  },
-  father_name:{
+
+  semester: {
     type: String,
-    required: true
-  },
-  mother_name: {
-    type: String,
-    required: true
+   // required: true,
+    default: 1,
   },
   parent_phn: {
     type: Number,
-    required: true
+    //required: true,
+    default: 0,
+  },
+  parent_alternate_no: {
+    type: Number,
   },
   parent_email: {
     type: String,
-    required: true
+    //required: true,
+    default: "",
   },
   category: {
     type: String,
-    required: true
+    //required: true,
+    default: "",
   },
   income: {
     type: String,
-    required: true
+    //required: true,
+    default: "",
+  },
+  address: {
+    type: String,
+    //required: true,
+    default: "",
   },
   gaurdian_name: {
     type: String,
   },
-  gaurdian_phn:{
-    type: Number
-  },
-  highschool_percent:{
+  gaurdian_phn: {
     type: Number,
-    required: true
   },
-  inter_percent:{
-    type: Number,
-    required: true
-  },
-  JEE_percentile:{
-    type: Number,
-    required: true
-  },
-  hosteller:{
+  gaurdian_address: {
     type: String,
-    required: true
+    //required: true,
+    default: "",
   },
-  room_no:{
-    type: String,
-  },
+  highschool: 
+    {
+      passing_year: Number,
+      board: String,
+      institute: String,
+      percent: Number,
+    },
   
-  document:[{
-    doc_name: String,
-    filepath : String,
-    filename : String
-}]
+  intermediate: 
+    {
+      passing_year: Number,
+      board: String,
+      institute: String,
+      percent: Number,
+    },
+  
+  JEE_rank: {
+    type: Number,
+    default: 0,
+    //required: true,
+  },
+  JEE_percentile: {
+    type: Number,
+    default: 0,
+    //required: true,
+  },
+  hosteller: {
+    type: Boolean,
+    default: true,
+    //required: true,
+  },
+  room_no: {
+    type: String,
+  },
+  fee_type:{
+    type: Boolean,
+    //required: true
+  },
 
+  fees: 
+    {
+      academic_fee: Number,
+      mess_fee: Number,
+      messsecurity_fee: Number,
+      hostel_fee: Number,
+      maintenance_fee: Number,
+      pending_fee: { academic_fee: Number, mess_fee: Number },
+      fee_paid: Boolean,
+    },
+  document: [
+    {
+      doc_name: String,
+      filepath: String,
+      filename: String,
+    },
+  ],
+  dashboard_created: {
+    type: Boolean,
+    required: true,
+  },
+  form_submitted: {
+    type: Boolean,
+    required: true,
+  },
+  data_validated_by_admin:{
+   type: Number,
+   required : true
+  },
+  accept_terms: {
+    type: Boolean,
+    //required: true,
+    default: false,
+  },
 });
 
 const newStudentModel = mongoose.model("newStudentModel", newStudent);

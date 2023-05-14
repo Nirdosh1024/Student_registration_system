@@ -22,7 +22,9 @@ router.post("/", async (req, res) => {
 
 
     if(req.body) {
+        //console.log(req.body)
         const user  = await newStudentModel.findOne({ ID: JEERoll, Branch: branch });
+    
         if(!user) {
             res.json({status: "Not Okay"});
         } else {

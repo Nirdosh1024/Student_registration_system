@@ -73,15 +73,19 @@
                 <h2 class="Status-heading">Registration Status</h2>
                 <div class="dashboard-content">
                     <div class="Registration-status">
+                        <% if(dataToBePassedToView.formValidated === 1) { %>
                         <div class="completed">
-
+                            <p>Your registration is successful.</p>
                         </div>
+                        <% } else if(dataToBePassedToView.formValidated === 0) { %>
                         <div class="pending">
-
+                          <p>Your Registration is in pending stage.</p>
                         </div>
-                        <div class="not-completed">
-
+                        <% } else { %>
+                        <div class="incorrect">
+                            <p>Your registration has been scrutinized and was found incorrect. Kindly check following errors. </p>
                         </div>
+                        <% } %>
                     </div>
                 </div>
             </div>

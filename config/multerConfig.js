@@ -39,3 +39,4 @@ module.exports = multer({
 { name: 'hostelfee_receipt', maxCount: 1 }, { name: 'messfee_receipt', maxCount: 1 },
 { name: 'messsecurityfee_receipt', maxCount: 1 },
 { name: 'maintenancefee_receipt', maxCount: 1 }]);
+

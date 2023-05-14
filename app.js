@@ -189,12 +189,13 @@ app.get("/docs", ensureAuthenticated, (req, res) => {
 })
 
 //rendering pending payment
-app.get("/dues", ensureAuthenticated, (req, res) => {
+app.get("/dues", ensureAuthenticated,  (req, res) => {
   const user = req.session.passport.user;
-
+  
   const dataToBePassedToView = {
     name: user.name,
-    JEERoll: user.JEERoll
+    JEERoll: user.JEERoll,
+   
   }
 
   res.render("dues", {
@@ -203,12 +204,16 @@ app.get("/dues", ensureAuthenticated, (req, res) => {
 })
 
 //rendering registration status
-app.get("/status", ensureAuthenticated, (req, res) => {
-  const user = req.session.passport.user;
+app.get("/status", ensureAuthenticated,async (req, res) => {
+  
+  const id = req.session.passport.user._id
+
+  const user = await newStudentModel.findById(id)
 
   const dataToBePassedToView = {
     name: user.name,
-    JEERoll: user.JEERoll
+    JEERoll: user.JEERoll,
+    formValidated: user.data_validated_by_admin
   }
 
   res.render("status", {
