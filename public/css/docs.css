@@ -114,6 +114,23 @@ header .college-name h5 {
 }
 
 
+header .student-name {
+    display: flex;
+    margin-left:50px;
+    gap:10px;
+}
+
+.student-name{
+    color: #010081;
+    font-size:16px;
+    font-weight: 600;
+    height: 30px;
+    border: 0 solid white;
+}
+
+
+
+
 
 
 /*Academic calendar */

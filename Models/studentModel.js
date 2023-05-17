@@ -39,7 +39,7 @@ const newStudent= mongoose.Schema({
   },
   gender: {
     type: String,
-    required: true,
+   // required: true,
   },
   phoneNumber: {
     type: Number,
@@ -172,7 +172,7 @@ const newStudent= mongoose.Schema({
   },
   data_validated_by_admin:{
    type: Number,
-   required : true
+   //required : true
   },
   accept_terms: {
     type: Boolean,

@@ -15,15 +15,15 @@ h2{
 .all-form{
   margin-top: 20px;
   display: grid;
-  column-gap: 4rem;
-  padding: 10px 20px 10px 20px;
+  column-gap: 2rem;
+  padding: 20px 30px 20px 30px;
   grid-template-columns:repeat(4, 2fr);
 }
 
 .input-control label {
   color:#010081;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 16px;
   margin-left: 10px;
   margin-bottom: 10px;
 }
@@ -34,12 +34,18 @@ h2{
   margin-bottom: 10px;
   width:180px;
  }
- /* .input-control input[type="number"] {
-  margin-bottom: 10px;
+ .input-control input[type="number"] {
+  margin-bottom: 20px;
   width:150px;
   height: 25px;
   color: #010081;
- } */
+ }
+h3{
+  font-size:18px;
+  color:#010081;
+  margin-bottom: 25px;
+}
+
 .input-control input[type="submit"] {
   width:80px;
   height:30px;
@@ -64,3 +70,8 @@ h2{
   display:flex;
   justify-content: space-between;
 } 
+.form-container{
+  border: 0.1px solid #1b555599;
+  box-shadow: 1px 2px #1b555599;
+  padding:10px 20px 10px 20px;
+}

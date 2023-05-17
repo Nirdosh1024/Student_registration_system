@@ -8,18 +8,17 @@ body {
 
 .form-container{    
     width:700px;
-    align-items: center;
-    margin-bottom:2% auto;
+    margin:2% auto;
     background-color: white;
     padding: 10px 20px 10px 20px;
-    border-radius: 10px;
+    border-radius : 10px;
 }
 
 .error-block{
     display: none;
     justify-content: center;
     margin-bottom: 20px;
-
+}
 
 .div-error{
     display: flex;
@@ -32,16 +31,14 @@ body {
     color:red;
 }
 
-
 .error{
     font-size: 10px;
     color:red;
 }
 
-form{
-    align-items: center;
-    padding:10px 20px 10px 20px;
-    box-sizing: border-box;
+form {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     padding:10px 20px 10px 20px;
 }
@@ -52,13 +49,13 @@ form{
     margin:auto;
     align-items:center;
 }
+
 .input-control{
     display:flex;
     justify-content: space-between;
 }
 
-
-form h1{
+.form-heading h1{
     text-align: center;
     margin-bottom: 10px;
     font-weight: 200px;
@@ -67,13 +64,14 @@ form h1{
     color:#010081;
     margin-top: 20px;
 }
-h2{
+
+.sub-heading h2{
     text-align: center;
     margin-top: 0;
     color:#010081;
 }
 
-label {
+label{
     display:flexbox;
     align-items: center;
     font-size: 18px;
@@ -88,9 +86,7 @@ label {
     font-size: 18px;
 } 
 
-
-
-input[type="text"],
+.form-container input[type="text"],
 input[type="number"],
 input[type="date"] {
   border: 1px solid #1441a9;
@@ -106,7 +102,7 @@ input[type="date"] {
   cursor: pointer;
 }
 
-select {
+.form-container select {
     border: 1px solid #1441a9;
     border-color: #010081;
     border-radius: 5px;
@@ -120,7 +116,7 @@ select {
     cursor: pointer;
 }
 
-select::-ms-expand {
+.form-container select::-ms-expand {
     display: none;
 }
 
@@ -129,11 +125,9 @@ select::-ms-expand {
     justify-content: center;
 }
 
+    /* display: flex;
+    justify-content: center; */
 
-
-    display: flex;
-    justify-content: center;
-}
 .btn{
     width:80px;
     height:30px;
@@ -152,4 +146,4 @@ select::-ms-expand {
 .btn:hover {
       background-color: #31DEDE99;
       color: #010081;
-  }
+}

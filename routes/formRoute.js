@@ -12,7 +12,7 @@ router.post("/", async (req, res) => {
         gender,
         year,
         branch,
-        Phone_number,
+        phone_number,
         email,
         aadhar_number
     } = req.body;
@@ -31,11 +31,11 @@ router.post("/", async (req, res) => {
             user.dashboard_created = true;
             user.FatherName = father_name;
             user.MotherName = mother_name;
-            user.Gender = gender;
+            user.gender = gender;
             user.DOB = dob;
             user.Year = year;
             user.Branch = branch;
-            user.PhoneNumber = Phone_number;
+            user.phoneNumber = phone_number;
             user.AadharNumber = aadhar_number;
             user.Email = email;
 

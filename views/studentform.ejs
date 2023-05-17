@@ -14,9 +14,9 @@
 
 <body>
     <header>
-        <div class="header">
         <div class="collagelogo">
-            <img src="http://recsonbhadra.ac.in/static/media/Collegelogo.96cbe2da1f0150aefe6d.png" alt="logo" class="logo">
+            <img src="http://recsonbhadra.ac.in/static/media/Collegelogo.96cbe2da1f0150aefe6d.png" alt="logo"
+                class="logo">
         </div>
         <div class="college-name middle">
             <h3>Rajkiya Engineering College, Sonbhadra</h3>
@@ -24,12 +24,11 @@
         </div>
         <div class="student-name">
             <img class="icon" src="./assets/studenticon1.png" alternative=""/>
-            <input class="input student-name" type="text" id="student_name" name="name" value="<%= dataToBePassedToForm.name %>" />
+            <input class="input student-name" type="text" id="student_name" name="name" value = "<%= dataToBePassedToForm.name %>" />
         </div>
-    </div>
     </header>
+
 <div class="grid-container">
-    
     <div class="side-bar">
         <ul class="sideMenu-list">
             <h2 class="sideMenu-heading text-center">My Dashboard</h2>
@@ -116,13 +115,7 @@
         
                             <div class="input-control">
                                 <label class="asterick"for="gender">Gender</label>
-                                <select name="gender" id="gender" autocomplete="off" 
-                                value="<%= dataToBePassedToForm.gender %>" >
-                                    <option value="">Please Select</option>
-                                    <option value="female">Female</option>
-                                    <option value="male">Male</option>
-                                    <option value="N/A">N/A</option>
-                                </select>
+                                <input name="gender" id="gender" autocomplete="off"value="<%= dataToBePassedToForm.gender %>" ></input>
                             </div>
         
                             
@@ -299,7 +292,7 @@
                                 <input type="text" class="input-control" name="p_city" id="inputCity" placeholder="City" /></br>
                                 <input type="text" class="input-control" name="p_state" id="inputState" placeholder="State/Province" /></br>
                                 <input type="number" class="input-control" name="p_pincode" type="number" id="inputZip" placeholder="Pincode" size="6" /></br>
-                                <div class="error"></div></input>
+                                <div class="error"></div>
                             </div>
                             
         
@@ -310,9 +303,8 @@
                                 <input type="text" class="input-control" name="c_street_1" id="Cstreet-1" placeholder="Street Address_1" /></br>
                                 <input type="text" class="input-control" name="c_street_2" id="Cstreet-2" placeholder="Street Address_2" /></br>
                                 <input type="text" class="input-control" name="c_city" id="CinputCity" placeholder="City" /></br>
-                                <input type="text" class="input-control" name="c_state" id="CinputState" placeholder="State/Province" /><input>
+                                <input type="text" class="input-control" name="c_state" id="CinputState" placeholder="State/Province" /></br>
                                 <input type="number" class="input-control" name="c_pincode" id="CinputZip" placeholder="Pincode" size="6" /></br>
-                               
                                 <div class="error"></div>
                             </div>
         
@@ -700,9 +692,6 @@
 
         </div>
     </div>
-
-
-
 
 
 </div>

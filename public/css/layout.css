@@ -1,21 +1,31 @@
 .container{
-    padding:10px 20px 10px 20px;
-    margin-top: 50px;
+    padding:20px 30px 20px 30px;
+    border: 1px solid #010081;
+    box-shadow: 1px 2px #1b555599;
+    width: 600px;
+    margin: 10% auto;
     align-items: center;
 }
 .container label {
     color:#010081;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 18px;
     margin-left: 50px;
   }
-  .container input {
-    border: 0.5px solid #ccc;
-    border-radius: 4px;
+  .container input[type="text"] {
+    border: 1px solid #1441a9;
+    border-color: #010081;
+    color: #010081;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #ffff;
+    font-size: 16px;
+    margin-left: 40px;
     margin-bottom: 10px;
-    width:180px;
-    margin-left: 50px;
-
+    margin-top: 10px;
+    width: 180px;
+    height:30px;
+    cursor: pointer;  
    }
    button {
     width:80px;
@@ -23,8 +33,6 @@
     background-color: #ffff;
     font-size: 14px;
     font-weight: 700;
-    /* align-items: center; */
-    margin-left: 100px;
     margin-left: 100px;
     border-radius: 10px;
     border: 1.5px solid #010081;
@@ -37,4 +45,17 @@
   button:hover {
     background-color: #cff0d1;
   }
-  
+  .container input[type="file"]{
+    border: 1px solid #1441a9;
+    border-color: #010081;
+    color: #010081;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #ffff;
+    font-size: 16px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 40px;
+    width: 220px;
+    cursor: pointer;  
+  }

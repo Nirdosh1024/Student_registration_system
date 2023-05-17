@@ -635,22 +635,31 @@ const hPrevButton = document.getElementById("h-prev-btn");
 const pPrevButton = document.getElementById("p-prev-btn");
 const fPrevButton = document.getElementById("f-prev-btn");
 
-ePrevButton.addEventListener("click",()=>{
+ePrevButton.addEventListener("click",(e)=>{
+  e.preventDefault()
   personalInfo.style.display = "block"
   educationalDetails.style.display = "none"
+ 
 })
 
-hPrevButton.addEventListener("click",()=>{
+hPrevButton.addEventListener("click",(e)=>{
+  e.preventDefault()
   educationalDetails.style.display = "block"
   hostelDetails.style.display = "none"
+ 
 })
 
-pPrevButton.addEventListener("click",()=>{
+pPrevButton.addEventListener("click",(e)=>{
+  e.preventDefault() 
   hostelDetails.style.display = "block"
   paymentDetails.style.display = "none"
+ 
 })
 
-fPrevButton.addEventListener("click",() =>{
+fPrevButton.addEventListener("click",(e) =>{
+  e.preventDefault()
   paymentDetails.style.display = "block"
   feeDetails.style.display = "none"
+  
+
 })

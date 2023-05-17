@@ -158,11 +158,11 @@ app.get("/studentform", ensureAuthenticated, async (req, res) => {
   const dataToBePassedToForm = {
     name: user.Name,
     JEERoll: user.ID,
-    gender: user.Gender,
+    gender: user.gender,
     dob: user.DOB,
     year: user.Year,
     branch: user.Branch,
-    Phone_number: user.PhoneNumber,
+    Phone_number: user.phoneNumber,
     aadhar_number: user.AadharNumber,
     father_name: user.FatherName,
     mother_name: user.MotherName,
@@ -211,7 +211,7 @@ app.get("/status", ensureAuthenticated,async (req, res) => {
   const user = await newStudentModel.findById(id)
 
   const dataToBePassedToView = {
-    name: user.name,
+    name: user.Name,
     JEERoll: user.JEERoll,
     formValidated: user.data_validated_by_admin
   }
