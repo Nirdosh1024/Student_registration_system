@@ -23,7 +23,8 @@ const collegefee = mongoose.Schema({
       },
       mess_security_fee: {
         type: Number,
-        required: true
+        default : 0,
+        //required: true
       }
 });
 
