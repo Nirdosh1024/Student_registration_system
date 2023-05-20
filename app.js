@@ -160,7 +160,6 @@ app.get("/studentform", ensureAuthenticated, async (req, res) => {
     JEERoll: user.ID,
     gender: user.gender,
     dob: user.DOB,
-    year: user.Year,
     branch: user.Branch,
     Phone_number: user.phoneNumber,
     aadhar_number: user.AadharNumber,

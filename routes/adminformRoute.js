@@ -31,36 +31,35 @@ router.post("/" , (req,res) => {
     if(req.body){
         Adminfee.insertMany([
             {
-                year: "first",
-                academic_fee: first_academic_fee,
-                maintenance_fee: first_maintenance_fee,
-                hostel_fee: first_hostel_fee,
-                mess_fee: first_mess_fee,
-                mess_security_fee: first_mess_security_fee
+                year: "1st",
+                academic_fee: parseInt(first_academic_fee),
+                maintenance_fee:parseInt(first_maintenance_fee),
+                hostel_fee: parseInt(first_hostel_fee),
+                mess_fee: parseInt(first_mess_fee),
+                mess_security_fee: parseInt(first_mess_security_fee)
             },
             {
-                year: "second",
-                academic_fee: second_academic_fee,
-                maintenance_fee: second_maintenance_fee,
-                hostel_fee: second_hostel_fee,
-                mess_fee: second_mess_fee,
-                mess_security_fee: second_mess_security_fee
+                year: "2nd",
+                academic_fee: parseInt(second_academic_fee),
+                maintenance_fee: parseInt(second_maintenance_fee),
+                hostel_fee: parseInt(second_hostel_fee),
+                mess_fee: parseInt(second_mess_fee),
+         
             },
             {
-                year: "third",
-                academic_fee: third_academic_fee,
-                maintenance_fee: third_maintenance_fee,
-                hostel_fee: third_hostel_fee,
-                mess_fee: third_mess_fee,
-                mess_security_fee: third_mess_security_fee
+                year: "3rd",
+                academic_fee: parseInt(third_academic_fee),
+                maintenance_fee: parseInt(third_maintenance_fee),
+                hostel_fee: parseInt(third_hostel_fee),
+                mess_fee: parseInt(third_mess_fee),
+
             },
             {
-                year: "fourth",
-                academic_fee: fourth_academic_fee,
-                maintenance_fee: fourth_maintenance_fee,
-                hostel_fee: fourth_hostel_fee,
-                mess_fee: fourth_mess_fee,
-                mess_security_fee: fourth_mess_security_fee
+                year: "4th",
+                academic_fee: parseInt(fourth_academic_fee),
+                maintenance_fee: parseInt(fourth_maintenance_fee),
+                hostel_fee: parseInt(fourth_hostel_fee),
+                mess_fee: parseInt(fourth_mess_fee),
             }
         ]).then(() => {
             console.log("Data Inserted");
