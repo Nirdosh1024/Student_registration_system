@@ -3,8 +3,7 @@ const router = require("express").Router()
 
 const newStudentModel = require("../Models/studentModel")
 const upload = require("../config/multerConfig")
-const fs = require('fs')
-
+const Adminfee = require("../Models/collegefeeModel")
 
 router.post("/",upload, async (req,res) => {
     const{
@@ -52,7 +51,34 @@ router.post("/",upload, async (req,res) => {
   maintenancefee_amount,
   accept_terms
     } = req.body;
+
+ 
+    const id = req.session.passport.user._id
+
+
+   const user = await newStudentModel.findById(id)
+   const year  = user.Year;
+   console.log(year)
+   const adminfee = await Adminfee.findOne({ year : year});
   
+      const academicfee = user.academic_fee;
+      const messfee = user.mess_fee;
+      const hostelfee = user.hostel_fee;
+      const maintenancefee = user.maintenance_fee;
+       
+      const Academicfee= adminfee.academic_fee;
+      const Messfee = adminfee.mess_fee;
+      const Hostelfee = adminfee.hostel_fee;
+      const Maintenancefee = adminfee.maintenance_fee;
+      const Messsecurityfee = adminfee.mess_security_fee;
+
+const totalmessFee =  Messfee + Messsecurityfee;  
+const pendingAcademic = Academicfee - academicfee
+
+const pendingHostel  =  Hostelfee - hostelfee;
+const pendingMess =  totalmessFee - messfee;
+const pendigMaintenance =  Maintenancefee - maintenancefee;
+   
     const highschoolPercent = percentCalculate(highschool_marks,highschool_maxmarks);
     const interPercent = percentCalculate(inter_marks,inter_maxmarks);
 
@@ -60,9 +86,9 @@ router.post("/",upload, async (req,res) => {
 
     const intermediate = {passing_year: inter_year , board: intermediate_board, institute: intermediate_institute , percent : interPercent}
 
-    const feeDetail = { academic_fee :parseInt(academicfee_amount), mess_fee : messfee_amount, messsecurity_fee : messsecurityfee_amount, hostel_fee : hostelfee_amount,
-      maintenance_fee : maintenancefee_amount,
-   pending_fee: {academic_fee: 0 , mess_fee: 0}, fee_paid: false}
+    const feeDetail = { academic_fee :parseInt(academicfee_amount), mess_fee : parseInt(messfee_amount) + parseInt(messsecurityfee_amount) , hostel_fee : parseInt(hostelfee_amount),
+      maintenance_fee : parseInt(maintenancefee_amount),
+   pending_fee: {academic_fee: pendingAcademic , mess_fee: pendingMess, hostel_fee : pendingHostel, maintenance_fee : pendigMaintenance}, fee_paid: false}
 
    //file property fetch
 
@@ -137,4 +163,5 @@ const percentCalculate = (marks,maxmarks) => {
    return percent;
 }
 
+ 
 module.exports = router;

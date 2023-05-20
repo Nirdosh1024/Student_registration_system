@@ -12,7 +12,7 @@ router.post("/", async (req, res) => {
         gender,
         year,
         branch,
-        phone_number,
+        Phone_number,
         email,
         aadhar_number
     } = req.body;
@@ -35,7 +35,7 @@ router.post("/", async (req, res) => {
             user.DOB = dob;
             user.Year = year;
             user.Branch = branch;
-            user.phoneNumber = phone_number;
+            user.phoneNumber = Phone_number;
             user.AadharNumber = aadhar_number;
             user.Email = email;
 
