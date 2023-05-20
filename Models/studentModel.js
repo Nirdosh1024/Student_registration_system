@@ -152,8 +152,10 @@ const newStudent= mongoose.Schema({
       hostel_fee: Number,
       maintenance_fee: Number,
       pending_fee: { academic_fee: Number, mess_fee: Number, hostel_fee : Number , maintenance_fee : Number },
-      fee_paid: Boolean,
+
     },
+    fee_paid:{ type : Boolean},
+
   document: [
     {
       doc_name: String,
