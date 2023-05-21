@@ -154,6 +154,7 @@ app.get("/studentform", ensureAuthenticated, async (req, res) => {
   const id = req.session.passport.user._id
 
   const user = await newStudentModel.findById(id);
+  console.log(user)
 
   const dataToBePassedToForm = {
     name: user.Name,
@@ -174,23 +175,38 @@ app.get("/studentform", ensureAuthenticated, async (req, res) => {
 })
 
 //rendering documents
-app.get("/docs", ensureAuthenticated, (req, res) => {
+app.get("/docs", ensureAuthenticated, async (req, res) => {
   const user = req.session.passport.user;
+
+
+  const id = req.session.passport.user._id
+
+  const userFullData = await newStudentModel.findById(id)
+
+const docArray = {}
+
+for(let i of userFullData.document){
+docArray[i.doc_name] = i._id
+}
+
+console.log(docArray)
 
   const dataToBePassedToView = {
     name: user.name,
     JEERoll: user.JEERoll
+  
   }
 
   res.render("docs", {
-    dataToBePassedToView
+    dataToBePassedToView,docArray
   })
 })
 
 //rendering pending payment
-app.get("/dues", ensureAuthenticated,  (req, res) => {
+app.get("/dues", ensureAuthenticated,  async (req, res) => {
   const user = req.session.passport.user;
-  
+ 
+
   const dataToBePassedToView = {
     name: user.name,
     JEERoll: user.JEERoll,
@@ -281,7 +297,10 @@ app.post("/adminLogin", (req, res, next) => {
     (req, res, next);
 })
 
-
+app.get("/download/:id" , (req,res) => {
+   console.log(req.params.id)
+   res.download()
+})
 
 
 app.get('/logout', (req, res, next) => {
