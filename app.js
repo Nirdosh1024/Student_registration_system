@@ -141,8 +141,11 @@ app.get("/academicFAQs", (req, res) => {
 });
 
 
-app.get("/dashboard", ensureAuthenticated, (req, res) => {
+app.get("/dashboard", ensureAuthenticated, async (req, res) => {
   const user = req.session.passport.user;
+  const updateFullData = await updateModel.find()
+  const updateData = updateFullData[0].update
+ 
 
   const dataToBePassedToView = {
     name: user.name,
@@ -153,7 +156,7 @@ app.get("/dashboard", ensureAuthenticated, (req, res) => {
 
   if (req.user.dashboard_created) {
     res.render("dashboard", {
-      dataToBePassedToView
+      dataToBePassedToView , updateData
     })
   }
   else {
@@ -311,12 +314,15 @@ app.post("/adminupdate"  , async (req,res) => {
 
   console.log(req.body)
   if(req.body){
-    await updateModel.update({},{$push : { update : updateObj}}). 
-   then((data) => {
-      console.log("data is saved").catch((error) => {
+    await updateModel.updateOne({},{$push : { update : updateObj}}).
+    // const newUpdate = new updateModel({updateObj})
+    // newUpdate.save(). 
+   then(() => {
+    res.send({status :"okay"})
+      console.log("data is saved")}).catch((error) => {
         console.log("Error saving data" , error)
       })
-    })
+    
   }
 })
 
