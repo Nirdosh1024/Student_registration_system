@@ -74,10 +74,12 @@
                 <div class="dashboard-content">
                     <div class="latest_updates">
                        
-                          <% for (var i = 0; i < data.length; i++) { %>
-                            <div><%= data[i] %></div>
+                          <% for (var i = 0; i < updateData.length; i++) { %>
+                            <div class ="heading"><%= updateData[i].heading %></div>
+                            <div class="description"><%= updateData[i].description%></div>
+                            <br>
                           <% } %>
-                        
+
                     </div>
                 </div>
             </div>
