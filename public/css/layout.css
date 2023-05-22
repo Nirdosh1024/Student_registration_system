@@ -12,6 +12,13 @@
     font-size: 18px;
     margin-left: 50px;
   }
+.form-details{
+  margin-top: 20px;
+  display: grid;
+  column-gap: 2rem;
+  padding: 20px 30px 20px 30px;
+  grid-template-columns:repeat(1, 2fr);
+}
   .container input[type="text"] {
     border: 1px solid #1441a9;
     border-color: #010081;
@@ -20,20 +27,22 @@
     box-sizing: border-box;
     background-color: #ffff;
     font-size: 16px;
+    padding: 5px;
     margin-left: 40px;
     margin-bottom: 10px;
     margin-top: 10px;
-    width: 180px;
+    width: 150px;
     height:30px;
     cursor: pointer;  
    }
    button {
+    margin: 2% auto;
     width:80px;
     height:30px;
     background-color: #ffff;
     font-size: 14px;
     font-weight: 700;
-    margin-left: 100px;
+    /* margin-left: 100px; */
     border-radius: 10px;
     border: 1.5px solid #010081;
     color: #010081;
@@ -55,7 +64,7 @@
     font-size: 16px;
     margin-bottom: 10px;
     margin-top: 10px;
-    margin-left: 40px;
+    margin-left: 20px;
     width: 220px;
     cursor: pointer;  
   }
