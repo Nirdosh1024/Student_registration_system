@@ -89,15 +89,15 @@ header .sign-in .sign-in-btn {
 
 .main-section-with-functionalities .functionalities div {
     padding: 0.75rem 3rem 0.850rem 3rem;
-    border: 2px solid var(--color-primary);
+    border: 2px solid #010081;
     text-align: center;
     border-radius: 5px;
     margin-bottom: 1.75rem;
 }
 
 .main-section-with-functionalities .functionalities div:hover {
-    color: var(--color-secondary);
-    background: var(--color-primary);
+    color: white;
+    background: #010081;
 }
 
 
@@ -121,8 +121,8 @@ header .sign-in .sign-in-btn {
 
 /* news and circular indicator */
 .news-and-circular-indicator {
-    margin: 2.5rem 3.75rem;
-    font-size: 3.125rem;
+    margin: 1.5rem 1.75rem;
+    font-size: 2.125rem;
     font-weight: 700;
 }
 
@@ -181,16 +181,13 @@ header .sign-in .sign-in-btn {
 
 /* footer */
 footer {
-    background: #010081;
+    background: #31DEDE99;
     height: 10rem;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; */
+    border: 1px solid var(--color-primary);
     bottom: 0;
     left: 10px;
     right: 0;
-    box-shadow: 0 -5px 300px 100px var(--color-secondary);
+    /* box-shadow: 0 -5px 300px 100px var(--color-secondary); */
 }
 h6{
     display:block;
@@ -198,7 +195,7 @@ h6{
     font-weight: 800;
     text-transform: uppercase;
     text-align:center;
-    color: #ffffff;
+    color: #010081;
     padding-top: 30px;
 
 }
@@ -214,6 +211,13 @@ footer .collagelogo{
     width:5.6875rem;
     
 
+}
+.pages{
+    color: #010081;
+}
+.pages:hover{
+    color: white;
+    background: #010081;
 }
 
 @media (min-width: 1440px) {
