@@ -73,7 +73,11 @@
                 <h2 class="updates-heading">Latest Updates</h2>
                 <div class="dashboard-content">
                     <div class="latest_updates">
-
+                       
+                          <% for (var i = 0; i < data.length; i++) { %>
+                            <div><%= data[i] %></div>
+                          <% } %>
+                        
                     </div>
                 </div>
             </div>
