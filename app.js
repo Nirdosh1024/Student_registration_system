@@ -41,8 +41,10 @@ app.use(logger('dev'));
 // model imported
 const newStudentModel = require("./Models/studentModel");
 const Admin = require("./Models/adminModel");
+const updateModel = require("./Models/updateModel")
 const { stderr } = require("process");
 const { accessSync } = require("fs");
+const { error } = require("console");
 
 app.use(
   cors({
@@ -115,7 +117,8 @@ app.post("/upload", upload, (req, res) => {
   if (!req.files) {
     res.json({ status: "NOT OKAY" });
   } else {
-    const filepath = path.join(__dirname, "/uploads/studentData", `${req.files['excel'][0].originalname}`);
+    console.log(req.files)
+    const filepath = path.join(__dirname, "/uploads/studentData", `${req.files['excel'][0].filename}`);
     importExceltoJson(filepath);
     res.json({ status: "OKAY" });
   }
@@ -146,7 +149,7 @@ app.get("/dashboard", ensureAuthenticated, (req, res) => {
     JEERoll: user.JEERoll
   }
 
-  console.log(dataToBePassedToView);
+  //console.log(dataToBePassedToView);
 
   if (req.user.dashboard_created) {
     res.render("dashboard", {
@@ -201,7 +204,7 @@ for(let i of userFullData.document){
 docArray[i.doc_name] = i._id
 }
 
-console.log(docArray)
+//console.log(docArray)
 
   const dataToBePassedToView = {
     name: user.name,
@@ -296,9 +299,26 @@ app.get("/adminfeeform", ensureAuthenticated, (req, res) => {
   res.render("adminfeeform");
 })
 
+app.get("/adminupdate" , ensureAuthenticated , (req,res) => {
+  res.render("adminUpdate")
+})
 // app.post("/adminfeeform", (req,res) => {
 //   res.json({ status: "OKAY" });
 // })
+
+app.post("/adminupdate"  , async (req,res) => {
+  const updateObj =  req.body
+
+  console.log(req.body)
+  if(req.body){
+    await updateModel.update({},{$push : { update : updateObj}}). 
+   then((data) => {
+      console.log("data is saved").catch((error) => {
+        console.log("Error saving data" , error)
+      })
+    })
+  }
+})
 
 app.post("/adminLogin", (req, res, next) => {
   passport.authenticate("local-admin", {
@@ -309,9 +329,27 @@ app.post("/adminLogin", (req, res, next) => {
     (req, res, next);
 })
 
-app.get("/download/:id" , (req,res) => {
-   console.log(req.params.id)
-   res.download()
+app.get("/download/:id" , ensureAuthenticated, async (req,res) => {
+   const Id = req.params.id;
+   console.log(typeof Id)
+   //
+   await newStudentModel.find({document:{$elemMatch:{_id : Id }}},{"document.$" : 1}).then((filedata) => {
+  const file = filedata[0].document  
+  const filePath = file[0].filepath
+  const fileName = file[0].filename
+  
+  res.download(filePath , fileName, (err)=> {
+    if(err){
+      res.send(err)
+    }
+  })
+
+
+   }).catch((error)=>{
+    res.send({ msg : "file does not exist"})
+   })
+   
+   
 })
 
 
