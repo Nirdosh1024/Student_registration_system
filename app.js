@@ -117,9 +117,9 @@ app.post("/upload", upload, (req, res) => {
   if (!req.files) {
     res.json({ status: "NOT OKAY" });
   } else {
-    console.log(req.files)
+    const batch = req.body.batch
     const filepath = path.join(__dirname, "/uploads/studentData", `${req.files['excel'][0].filename}`);
-    importExceltoJson(filepath);
+    importExceltoJson(filepath,batch);
     res.json({ status: "OKAY" });
   }
 });
@@ -373,7 +373,7 @@ app.get('/logout', (req, res, next) => {
 
 
 
-function importExceltoJson(filepath) {
+function importExceltoJson(filepath,batch) {
   const exceldata = exceltoJson({
     sourceFile: filepath,
 
@@ -397,9 +397,9 @@ function importExceltoJson(filepath) {
 
   // insert data in db
 
-  insertData();
+  insertData(batch);
 
-  async function insertData() {
+  async function insertData(batch) {
     const students = [...exceldata.Sheet1];
     const salt = await bcrypt.genSalt(10);
     let s = [];
@@ -412,6 +412,7 @@ function importExceltoJson(filepath) {
           student.role = "student";
           student.dashboard_created = false;
           student.form_submitted = false;
+          student.batch = batch;
         }
         s.push(student);
       }
