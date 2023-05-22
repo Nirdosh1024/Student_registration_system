@@ -76,11 +76,11 @@
                     <div class="Registration-status">
                         <% if(dataToBePassedToView.formValidated === 1) { %>
                         <div class="completed">
-                            <p>Your registration is successful.</p>
+                            <p>Your registration is <span style="font-size: 22px; font-weight: 800; color:rgb(45, 178, 11);">successful</span>.</p>
                         </div>
                         <% } else if(dataToBePassedToView.formValidated === 0) { %>
                         <div class="pending">
-                          <p>Your Registration is in pending stage.</p>
+                          <p>Your Registration is in <span style="font-size: 22px; font-weight: 800; color:rgb(251, 117, 22);">pending</span> stage.</p>
                         </div>
                         <% } else { %>
                         <div class="incorrect">
