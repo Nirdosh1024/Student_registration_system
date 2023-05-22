@@ -55,7 +55,7 @@ header .college-name h3 {
 }
 
 header .college-name h5 {
-    font-size: 20px;
+    font-size: 18px;
     font-style: italic;
     font-weight: 500;
 }
@@ -149,4 +149,14 @@ p{
     margin-top: 20px;
     font-size: 14px;
     margin-left: 80px;
+}
+
+
+/* status */
+.Registration-status p{
+    font-size: 20px;
+}
+
+.pending-payments p{
+    font-size: 20px;
 }

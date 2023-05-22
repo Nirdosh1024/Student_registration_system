@@ -1,0 +1,92 @@
+*, ::after, ::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+
+:root {
+    --color-primary: #010081;
+    --color-secondary: #ffffff;
+    --color-black: #000000;
+    --ff: 'Poppins', sans-serif;
+}
+
+body {
+    width: 100%;
+    font-family: var(--ff);
+    color: var(--color-primary);
+}
+
+header {
+    padding: 2.375rem 3.75rem 2.125rem 3.75rem; 
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
+}
+
+header .logo {
+    height: 6rem;
+    width: 6rem;
+    border: 1px solid #3e3e3e;
+    border-radius: 100px;
+}
+header .collagelogo{
+    height:6rem;
+    width:6rem;
+
+}
+header .college-name {
+    text-align: center;
+    margin-left: 10%;
+}
+
+header .college-name h3 {
+    font-size: 2.125rem;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+header .college-name h5 {
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: 500;
+}
+.heading {
+    text-align: center;
+    width: 100%;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 0.5rem;
+    background: #31DEDE99;
+    border: 1px solid var(--color-primary);
+}
+.container{
+    width:70%;
+    margin:2% auto;
+    border:0.5px solid #1b555599;
+    box-shadow: 2px 3px #1b555599;
+    padding:20px 30px 20px 30px;
+}
+.faq-conatiner{
+    width:70%;
+    margin:2% auto;
+    border:0.5px solid #1b555599;
+    box-shadow: 2px 3px #1b555599;
+    padding:20px 30px 20px 30px;
+}
+.contact-us h1{
+    padding-left: 100px;
+}
+.contact-us{
+    width:70%;
+    margin:2% auto;
+}
+.contact-items{
+    padding-left:100px ;
+}
+.basic-details{
+    padding-left: 50px;
+}

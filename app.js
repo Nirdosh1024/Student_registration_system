@@ -125,6 +125,18 @@ app.get("/authentication", (req, res) => {
   res.render("login");
 });
 
+app.get("/guidelines", (req, res) => {
+  res.render("guideline");
+});
+
+app.get("/helpingdesk", (req, res) => {
+  res.render("helpdesk");
+});
+
+app.get("/academicFAQs", (req, res) => {
+  res.render("faqs");
+});
+
 
 app.get("/dashboard", ensureAuthenticated, (req, res) => {
   const user = req.session.passport.user;
