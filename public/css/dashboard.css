@@ -137,3 +137,28 @@ header .student-name {
     color: #ffff;
     border:1.5px solid black;
 }
+.updates-heading{
+    color:#010081;
+    font-size: 26px;
+    margin-left: 10px;
+}
+
+.latest_updates{
+    /* border:1px solid #ccc; */
+    box-shadow: 0.5px 1px silver;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.heading{
+    font-size:18px;
+    font-weight: 600;
+    margin-top:5px;
+    padding:5px;
+}
+.description{
+    font-size:16px;
+    font-weight: 300;
+    margin-bottom: 5px;
+    color:#3838d8;
+    padding: 5px;
+}
