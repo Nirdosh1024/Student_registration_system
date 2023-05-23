@@ -163,17 +163,17 @@ input[type="password"] {
   border-radius: 5px;
   box-sizing: border-box;
   display: block;
-  font-size: 22px;
+  font-size: 18px;
   margin-bottom: 20px;
   padding: 10px;
-  width: 100%;
+  width: 80%;
 }
 
 .stdbtn{
-  width:200px;
-  height:50px;
+  width:150px;
+  height:40px;
   background-color: #EFEFEF;
-  font-size: 22px;
+  font-size: 20px;
   border-radius: 50px;
   border: 2px solid #010081;
   color: #010081;
@@ -189,10 +189,10 @@ input[type="password"] {
     color: #010081;
 }
 .adminbtn{
-  width:200px;
-  height:50px;
+  width:150px;
+  height:40px;
   background-color: #EFEFEF;
-  font-size: 22px;
+  font-size: 20px;
   border-radius: 50px;
   border: 2px solid #010081;
   color: #010081;
