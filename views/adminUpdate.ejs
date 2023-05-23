@@ -4,18 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./css/admindashboard.css">
+    <link rel="stylesheet" href="./css/adminUpdate.css">
+    <title>New Updates</title>
 </head>
-<body>
+<body> 
+    <header>
+        <div class="collagelogo">
+            <img src="http://recsonbhadra.ac.in/static/media/Collegelogo.96cbe2da1f0150aefe6d.png" alt="logo" class="logo">
+        </div>
+        <div class="college-name middle">
+            <h3>Rajkiya Engineering College, Sonbhadra</h3>
+            <h5>An AICTE approved Government Engineering College affliated to AKTU Lucknow(College code-841)</h5>
+        </div>
+    
+      </header>
+    
+      <h2> New Updates </h2>
+      
+
     <div class="container">
         <form action="/adminupdate" method="POST" class="update">
         <div class="input-control">
-            <label for="update_heading">Heading</label>
-            <input type="text" id="update_heading" name="heading"/>
-        </div>
+            <label for="update_heading">Heading:</label>
+            <input class="update-heading" type="text" id="update_heading" name="heading"/>
+        </div></br>
         <div class="input-control">
-            <label for="add_description">Description</label>
-            <input type="text" id="description" name="description"/>
+            <label for="add_description">Description:</label>
+            <textarea class="update-description" type="text" id="description" name="description"></textarea>
         </div>
         <div class="button-div">
             <input class="btn" type="submit" value="Submit"/> 
