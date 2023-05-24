@@ -4,6 +4,7 @@ const router = require("express").Router()
 const newStudentModel = require("../Models/studentModel")
 const upload = require("../config/multerConfig")
 const Adminfee = require("../Models/collegefeeModel")
+const unverifedData = require("../Models/unverifiedDocsModel")
 
 router.post("/", upload, async (req, res) => {
    const {
@@ -96,7 +97,8 @@ router.post("/", upload, async (req, res) => {
       fileArray.push({
          doc_name: file[0].fieldname,
          filepath: file[0].path,
-         filename: file[0].originalname
+         filename: file[0].originalname,
+         verified : false
       })
    })
    console.log(fileArray)
@@ -107,7 +109,7 @@ router.post("/", upload, async (req, res) => {
 
 
       const user = await newStudentModel.findOne({ ID: enrollment_number });
-
+      
       if (!user) {
          res.json({ status: "Not Okay" });
       }
@@ -130,10 +132,11 @@ router.post("/", upload, async (req, res) => {
          user.hosteller = Boolean(hosteller);
          user.room_no = floor + '-' + room_no;
          user.fee_type = Boolean(fee_type);
-         user.fees = feeDetail;
-         user.document = fileArray;
+         
+    
          user.data_validated_by_admin = 0;
          user.accept_terms = true;
+      
          if(pendingMess === 0 || pendigMaintenance === 0 || pendingHostel === 0 || pendingAcademic === 0){
             user.fee_paid = true;
          }
@@ -146,10 +149,19 @@ router.post("/", upload, async (req, res) => {
             res.json({ status: "not okay" })
          })
       }
+      const unverifiedUser = await unverifedData.create({
+         ID : enrollment_number,
+         fees : feeDetail,
+         document : fileArray
+      }).then(() => {
+         console.log("user data is saved in unverified database")
+      }).catch((err) => {
+         console.log(err)
 
-
+      })
+     
    }
-
+   
 
 
 

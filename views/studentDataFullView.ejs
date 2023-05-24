@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div> <% if (<%= collections %>) { %>
+      <table>
+        <% for (let row = 0; row < rowcol.rows; row++) { %>
+          <tr>
+            <% for (let col = 0; col < rowcol.cols ; col++) { %>
+              <td> <% if (col === 0){ %>
+                  <%= row +1 %>
+                  <% }  else { %>  
+                  <%= collections[row].ID , collections[row].Name , collections[row].Branch , collections[row].batch ,collections[row].Year %> <% } %></td>
+            <% } %>
+          </tr>
+        <% } %>
+      </table><% }
+      else { %>
+        <p>No data available.</p>
+      <% } %>
+      </div>
+</body>
+</html>

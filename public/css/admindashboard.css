@@ -130,3 +130,10 @@ header .student-name {
     border:1.5px solid black;
 }
 
+.admin-name{
+    color: #010081;
+    font-size:16px;
+    font-weight: 600;
+    height: 30px;
+    border: 0 solid white;
+}

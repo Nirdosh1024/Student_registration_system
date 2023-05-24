@@ -7,11 +7,14 @@ const newStudent= mongoose.Schema({
     type: Number,
     required: true,
   },
+  
   Name: {
     type: String,
     required: true,
   },
-
+  batch:{
+    type: String
+  },
   Branch: {
     type: String,
     required: true,

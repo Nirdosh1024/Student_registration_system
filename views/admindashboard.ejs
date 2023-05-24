@@ -17,6 +17,11 @@
             <h3>Rajkiya Engineering College, Sonbhadra</h3>
             <h5>An AICTE approved Government Engineering College affliated to AKTU Lucknow(College code-841)</h5>
         </div>
+        <div class="admin-name">
+            <img class="icon" src="./assets/studenticon1.png" alternative=""/>
+            <div class="input admin-name"> <%= dataToBePassedToView.name %> </div>
+
+        </div>
 
     </header>
 
@@ -30,7 +35,12 @@
                     Registering New Student
                 </a>
             </li>
-
+            <li class="sideMenu-list-item " id="registration_status">
+                <a class="sideMenu-active" href="/viewdata">
+                    <span>-</span>
+                   View Student Details
+                </a>
+            </li>
             <li class="sideMenu-list-item " id="registration_status">
                 <a class="sideMenu-active" href="/adminfeeform">
                     <span>-</span>
