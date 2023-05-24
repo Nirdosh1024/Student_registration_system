@@ -15,7 +15,7 @@
             </div>
             <div class="student-name">
                 <img class="icon" src="./assets/studenticon1.png" alternative=""/>
-                <input class="input student-name" type="text" id="student_name" name="name" value="<%= dataToBePassedToView.name %>" />
+                <div class="input student-name"> <%= dataToBePassedToView.name %> </div>
 
             </div>
         </header>
@@ -71,14 +71,15 @@
             <div class="dashboard">
 
                 <h2 class="updates-heading">Latest Updates</h2>
-                <div class="dashboard-content">
-                    <div class="latest_updates">
-                       
-                          <% for (var i = 0; i < data.length; i++) { %>
-                            <div><%= data[i] %></div>
-                          <% } %>
-                        
-                    </div>
+                <div class="dashboard-content">   
+                    <% for (var i = 0; i < updateData.length; i++) { %>
+                        <div class="latest_updates">
+                            <div class ="heading"><%= updateData[i].heading %></div>
+                            <div class="description"><%= updateData[i].description%></div>
+                        </div>
+                    <% } %>
+
+                    
                 </div>
             </div>
         </div>

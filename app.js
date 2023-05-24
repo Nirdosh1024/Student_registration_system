@@ -117,9 +117,9 @@ app.post("/upload", upload, (req, res) => {
   if (!req.files) {
     res.json({ status: "NOT OKAY" });
   } else {
-    console.log(req.files)
+    const batch = req.body.batch
     const filepath = path.join(__dirname, "/uploads/studentData", `${req.files['excel'][0].filename}`);
-    importExceltoJson(filepath);
+    importExceltoJson(filepath,batch);
     res.json({ status: "OKAY" });
   }
 });
@@ -141,8 +141,11 @@ app.get("/academicFAQs", (req, res) => {
 });
 
 
-app.get("/dashboard", ensureAuthenticated, (req, res) => {
+app.get("/dashboard", ensureAuthenticated, async (req, res) => {
   const user = req.session.passport.user;
+  const updateFullData = await updateModel.find()
+  const updateData = updateFullData[0].update
+ 
 
   const dataToBePassedToView = {
     name: user.name,
@@ -153,7 +156,7 @@ app.get("/dashboard", ensureAuthenticated, (req, res) => {
 
   if (req.user.dashboard_created) {
     res.render("dashboard", {
-      dataToBePassedToView
+      dataToBePassedToView , updateData
     })
   }
   else {
@@ -311,12 +314,15 @@ app.post("/adminupdate"  , async (req,res) => {
 
   console.log(req.body)
   if(req.body){
-    await updateModel.update({},{$push : { update : updateObj}}). 
-   then((data) => {
-      console.log("data is saved").catch((error) => {
+    await updateModel.updateOne({},{$push : { update : updateObj}}).
+    // const newUpdate = new updateModel({updateObj})
+    // newUpdate.save(). 
+   then(() => {
+    res.send({status :"okay"})
+      console.log("data is saved")}).catch((error) => {
         console.log("Error saving data" , error)
       })
-    })
+    
   }
 })
 
@@ -367,7 +373,7 @@ app.get('/logout', (req, res, next) => {
 
 
 
-function importExceltoJson(filepath) {
+function importExceltoJson(filepath,batch) {
   const exceldata = exceltoJson({
     sourceFile: filepath,
 
@@ -391,9 +397,9 @@ function importExceltoJson(filepath) {
 
   // insert data in db
 
-  insertData();
+  insertData(batch);
 
-  async function insertData() {
+  async function insertData(batch) {
     const students = [...exceldata.Sheet1];
     const salt = await bcrypt.genSalt(10);
     let s = [];
@@ -406,6 +412,7 @@ function importExceltoJson(filepath) {
           student.role = "student";
           student.dashboard_created = false;
           student.form_submitted = false;
+          student.batch = batch;
         }
         s.push(student);
       }
