@@ -1,5 +1,5 @@
 .pop-up {
-    /* display: none; */
+    display: none;
     position: absolute;
     top: 0;
     right: 0;
@@ -29,4 +29,8 @@
 
 .visible {
     display: block;
+}
+
+.modal{
+    opacity: 0.3;
 }

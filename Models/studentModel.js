@@ -62,7 +62,7 @@ const newStudent= mongoose.Schema({
   },
   Year: {
     type: String,
-    //required: true,
+    required: true,
   },
 
   semester: {
@@ -77,6 +77,7 @@ const newStudent= mongoose.Schema({
   },
   parent_alternate_no: {
     type: Number,
+    default: 0
   },
   parent_email: {
     type: String,
@@ -100,9 +101,11 @@ const newStudent= mongoose.Schema({
   },
   gaurdian_name: {
     type: String,
+    default: ""
   },
   gaurdian_phn: {
     type: Number,
+    default: ""
   },
   gaurdian_address: {
     type: String,
@@ -142,10 +145,11 @@ const newStudent= mongoose.Schema({
   },
   room_no: {
     type: String,
+    default: ""
   },
   fee_type:{
     type: Boolean,
-    //required: true
+    required: true
   },
 
   fees: 

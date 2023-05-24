@@ -336,6 +336,7 @@ app.post("/adminupdate"  , async (req,res) => {
 })
 
 app.get("/viewdata" ,async (req,res) => {
+
   const subData = await newStudentModel.find({ accept_terms: true});
   
   await newStudentModel.count({accept_terms :true}).then( (count) => {
@@ -354,6 +355,40 @@ app.get("/viewdata" ,async (req,res) => {
     }});
   
 })
+
+app.get("/viewdata/viewmore" , async (req ,res) => {
+  
+  const id = req.query.id;
+
+  const student = await newStudentModel.findOne({ID: id})
+  const datatoviewmore = {
+    gender : student.gender,
+    dob : student.DOB,
+    phoneNum : student.phoneNumber,
+    email : student.Email,
+    aadhar : student.AadharNumber,
+    sem : student.semester,
+    father_name : student.FatherName,
+    mother_name : student.MotherName,
+    parentphn : student.parent_phn,
+    parentEmail : student.parent_email,
+    category : student.category,
+    income : student.income,
+    address : student.address,
+    gaurdian : student.gaurdian_name,
+    gaurdianphn : student.gaurdian_phn,
+    gaurdianadd : student.gaurdian_address,
+    jeerank : student.JEE_rank,
+    jeepercent : student.JEE_percentile,
+    hosteler : student.hosteller,
+    roomno : student.room_no,
+   
+  }
+
+  //console.log(datatoviewmore)
+   res.send(datatoviewmore);
+})
+
 
 app.post("/adminLogin", (req, res, next) => {
   passport.authenticate("local-admin", {
@@ -387,7 +422,9 @@ app.get("/download/:id" , ensureAuthenticated, async (req,res) => {
    
 })
 
-
+// app.get("/fakeview" , (req, res) => {
+//   res.render("viewMorePopup")
+// })
 app.get('/logout', (req, res, next) => {
   req.logout(err => {
     if (err) {

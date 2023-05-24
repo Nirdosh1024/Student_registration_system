@@ -1,41 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-      <% if(collections.length !== 0) { %>
-        <table class="data-table">
-          <% for (let row = 0; row < rowcol.rows; row++) { %>
-          <tr class="row">
-            <% for (let col = 0; col < rowcol.cols ; col++) { %>
-            <td class="column one">
-              <% if (col === 0) { %>
-                <%= row + 1 %>
-              <% } else { %>
-                <%= collections[row].ID %>, <%= collections[row].Name %>, <%= collections[row].Branch %>, <%= collections[row].batch %>, <%= collections[row].Year %> %>
-              <% } %>
-            </td>
-            <td class="column two">
-              <% if (col !== 0) { %>
-                <div class="btn-container">
-                  <button class="view-more-btn" data-id="<%= collections[row].ID %>">View More</button>
-                </div>
-              <% } %>
-            </td>
-            <% } %>
-          </tr>
-          <% } %>
-        </table>
-      <% } else { %>
-      <div class="no-data-available">
-        No Data Available
-      </div>
+    <link rel="stylesheet" href="./css/viewmorepopup.css" />
+  </head>
+  <body>
+    <% if(collections.length !== 0) { %>
+    <table class="data-table">
+      <% for (let row = 0; row < rowcol.rows; row++) { %>
+      <tr class="row">
+        <td class="column one">
+          <%= row + 1 %> <%= collections[row].ID %>, <%= collections[row].Name
+          %>, <%= collections[row].Branch %>, <%= collections[row].batch %>, <%=
+          collections[row].Year %> %>
+        </td>
+        <td class="column two">
+          <div class="btn-container">
+            <button class="view-more-btn" data-id="<%= collections[row].ID %>" >
+              View More
+            </button>
+          </div>
+        </td>
+      </tr>
       <% } %>
+    </table>
+    <% } else { %>
+    <div class="no-data-available">No Data Available</div>
+    <% } %>
 
-      <script src="./js/index.js"></script>
-</body>
+
+    <div class="pop-up">
+      <div class="modal">
+          <div class="grid">
+              
+                  <label for="field"> Gender: </label>
+                  <span class="Gender"> Field Value </span>
+              
+              
+                  <label for="field"> DOB: </label>
+                  <span class="DOB"> Field Value </span>
+              
+              
+                  <label for="field"> Phone Number: </label>
+                  <span class="Phone_Number"> Field Value </span>
+              
+              
+                  <label for="field"> Email: </label>
+                  <span class="Email"> Field Value </span>
+
+                  <label for="field"> Aadhar Number: </label>
+                  <span class="aadharNo"> Field Value </span>
+                 
+                  <label for="field"> Sem: </label>
+                  <span class="sem"> Field Value </span>
+
+                  <label for="field"> Father's Name: </label>
+                  <span class="fatherName"> Field Value </span>
+              
+                  <label for="field"> Mother Name: </label>
+                  <span class="motherName"> Field Value </span>
+                 
+
+                  <label for="field"> Parent's Phone Number: </label>
+                  <span class="parentphn"> Field Value </span>
+                  
+
+                  <label for="field"> Parent's Email: </label>
+                  <span class="parentEmail"> Field Value </span>
+              
+                  <label for="field"> Category: </label>
+                  <span class="category"> Field Value </span>
+                  
+
+                  <label for="field"> Income: </label>
+                  <span class="income"> Field Value </span>
+                  
+
+                  <label for="field"> Address: </label>
+                  <span class="address"> Field Value </span>
+                  
+                  
+                  <label for="field"> Gaurdian: </label>
+                  <span class="gaurdian"> Field Value </span>
+                  
+
+
+                  <label for="field"> Gaurdian's Phone Number: </label>
+                  <span class="gaurdianphn"> Field Value </span>
+                  
+                
+                  <label for="field"> Gaurdian's Address: </label>
+                  <span class="gaurdianaddress"> Field Value </span>
+                  
+
+                  <label for="field"> JEE Rank: </label>
+                  <span class="jeerank"> Field Value </span>
+                   
+
+
+                  <label for="field"> JEE Percentile: </label>
+                  <span class="jeepercentile"> Field Value </span>
+                  
+
+
+                  <label for="field"> hosteller: </label>
+                  <span class="hosteller"> Field Value </span>
+                  
+
+                  <label for="field"> Room Number: </label>
+                  <span class="roomno"> Field Value </span>
+
+                  
+                  <div class="btn-container">
+                    <button class="close">close</button>
+                  </div>
+          </div>
+          
+      </div>
+     
+  </div>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="./js/viewdata.js"></script>
+  </body>
 </html>

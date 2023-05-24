@@ -24,12 +24,3 @@ adminfeeForm.addEventListener("submit" , async () => {
     console.log(axiosRes)
 })
 
-
-const dataTable = document.querySelector(".data-table");
-
-
-dataTable.addEventListener("click", (e) => {
-    if(e.target.classList.contains("view-more-btn")) {
-        console.log(e.target.dataset['id']);
-    }
-})
