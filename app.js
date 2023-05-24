@@ -143,8 +143,10 @@ app.get("/academicFAQs", (req, res) => {
 
 app.get("/dashboard", ensureAuthenticated, async (req, res) => {
   const user = req.session.passport.user;
+  
   const updateFullData = await updateModel.find()
   const updateData = updateFullData[0].update
+ 
  
 
   const dataToBePassedToView = {
@@ -294,8 +296,13 @@ app.post("/login", (req, res, next) => {
 //   } 
 // }
 
-app.get("/admindashboard", ensureAuthenticated, (req, res) => {
-  res.render("admindashboard");
+app.get("/admindashboard", ensureAuthenticated, async (req, res) => {
+  const id = req.session.passport.user._id;
+  const admin =  await Admin.findById(id)
+  const dataToBePassedToView = {
+    name: admin.ID
+  }
+  res.render("admindashboard",{dataToBePassedToView});
 })
 
 app.get("/adminfeeform", ensureAuthenticated, (req, res) => {
@@ -314,17 +321,37 @@ app.post("/adminupdate"  , async (req,res) => {
 
   console.log(req.body)
   if(req.body){
-    await updateModel.updateOne({},{$push : { update : updateObj}}).
-    // const newUpdate = new updateModel({updateObj})
-    // newUpdate.save(). 
+    const data = updateModel.find();
+    if(data)
+    {await updateModel.updateOne({},{$push : { update : updateObj}}).
    then(() => {
     res.send({status :"okay"})
       console.log("data is saved")}).catch((error) => {
         console.log("Error saving data" , error)
-      })
-    
+      })}
+    else{
+      await updateModel.create(updateObj).then((result) =>{console.log("data is saved",result)}).catch((err) => {console.log(err)})
+    }
   }
 })
+
+app.get("/viewdata" ,async (req,res) => {
+  const subData = await newStudentModel.find({ accept_terms: true});
+  
+  await newStudentModel.count({accept_terms :true}).then( (count) => {
+    console.log('Number of entries:', count);
+    const rowcol = {
+      rows : count  ,
+      cols : 6
+    }
+   
+     res.render("studentDataFullView",  {rowcol}, {collections : subData})
+    }).catch((err) => { {
+      console.error('Error:', err);
+    }});
+  
+})
+
 
 app.post("/adminLogin", (req, res, next) => {
   passport.authenticate("local-admin", {
