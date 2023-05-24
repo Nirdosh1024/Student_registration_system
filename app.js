@@ -344,14 +344,16 @@ app.get("/viewdata" ,async (req,res) => {
       rows : count  ,
       cols : 6
     }
-   
-     res.render("studentDataFullView",  {rowcol}, {collections : subData})
+  
+    res.render("studentDataFullView", {
+      rowcol,
+      collections: subData
+    })
     }).catch((err) => { {
       console.error('Error:', err);
     }});
   
 })
-
 
 app.post("/adminLogin", (req, res, next) => {
   passport.authenticate("local-admin", {

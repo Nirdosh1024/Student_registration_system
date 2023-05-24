@@ -1,0 +1,32 @@
+.pop-up {
+    /* display: none; */
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom : 0;
+}
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background: #9f9f9f;
+}
+
+.grid {
+    display: grid;
+    border: 2px solid #cecece;
+    background: #ffffff;
+    border-radius: 5px;
+    padding: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2rem;
+    row-gap: 2rem;
+}
+
+.visible {
+    display: block;
+}

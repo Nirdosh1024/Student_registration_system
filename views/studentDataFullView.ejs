@@ -7,22 +7,35 @@
     <title>Document</title>
 </head>
 <body>
-    <div> <% if (<%= collections %>) { %>
-      <table>
-        <% for (let row = 0; row < rowcol.rows; row++) { %>
-          <tr>
+      <% if(collections.length !== 0) { %>
+        <table class="data-table">
+          <% for (let row = 0; row < rowcol.rows; row++) { %>
+          <tr class="row">
             <% for (let col = 0; col < rowcol.cols ; col++) { %>
-              <td> <% if (col === 0){ %>
-                  <%= row +1 %>
-                  <% }  else { %>  
-                  <%= collections[row].ID , collections[row].Name , collections[row].Branch , collections[row].batch ,collections[row].Year %> <% } %></td>
+            <td class="column one">
+              <% if (col === 0) { %>
+                <%= row + 1 %>
+              <% } else { %>
+                <%= collections[row].ID %>, <%= collections[row].Name %>, <%= collections[row].Branch %>, <%= collections[row].batch %>, <%= collections[row].Year %> %>
+              <% } %>
+            </td>
+            <td class="column two">
+              <% if (col !== 0) { %>
+                <div class="btn-container">
+                  <button class="view-more-btn" data-id="<%= collections[row].ID %>">View More</button>
+                </div>
+              <% } %>
+            </td>
             <% } %>
           </tr>
-        <% } %>
-      </table><% }
-      else { %>
-        <p>No data available.</p>
-      <% } %>
+          <% } %>
+        </table>
+      <% } else { %>
+      <div class="no-data-available">
+        No Data Available
       </div>
+      <% } %>
+
+      <script src="./js/index.js"></script>
 </body>
 </html>
