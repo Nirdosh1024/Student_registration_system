@@ -335,7 +335,12 @@ app.post("/adminupdate"  , async (req,res) => {
   }
 })
 
-app.get("/viewdata" ,async (req,res) => {
+app.get("/viewdata", ensureAuthenticated, async (req,res) => {
+
+  const id = req.session.passport.user._id;
+  const admin =  await Admin.findById(id)
+  const role = admin.ID;
+
 
   const subData = await newStudentModel.find({ accept_terms: true});
   
@@ -348,12 +353,12 @@ app.get("/viewdata" ,async (req,res) => {
   
     res.render("studentDataFullView", {
       rowcol,
-      collections: subData
+      collections: subData,
+      role: role
     })
     }).catch((err) => { {
       console.error('Error:', err);
     }});
-  
 })
 
 app.get("/viewdata/viewmore" , async (req ,res) => {
@@ -382,13 +387,25 @@ app.get("/viewdata/viewmore" , async (req ,res) => {
     jeepercent : student.JEE_percentile,
     hosteler : student.hosteller,
     roomno : student.room_no,
-   
   }
 
   //console.log(datatoviewmore)
-   res.send(datatoviewmore);
+  res.send(datatoviewmore);
 })
 
+app.get("/viewdata/viewFeeDetails", async (req, res) => {
+    const id = req.query.id;
+
+    const student = await newStudentModel.findOne({ID: id});
+
+    const dataToFeeDetails = {
+      fees: student.fees,
+      document: student.document,
+      semester: student.semester
+    }
+
+    res.send(dataToFeeDetails);
+})
 
 app.post("/adminLogin", (req, res, next) => {
   passport.authenticate("local-admin", {

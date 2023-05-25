@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Student Registration System | Admin</title>
     <link rel="stylesheet" href="./css/viewmorepopup.css" />
   </head>
   <body>
@@ -19,9 +19,15 @@
         </td>
         <td class="column two">
           <div class="btn-container">
-            <button class="view-more-btn" data-id="<%= collections[row].ID %>" >
-              View More
-            </button>
+            <% if (role === "RECAccounts") { %>
+              <button class="view-fee-details" data-id="<%= collections[row].ID %>">
+                View Fee Details
+              </button>
+            <% } else { %>
+              <button class="view-more-btn" data-id="<%= collections[row].ID %>">
+                View More
+              </button>
+            <% } %>
           </div>
         </td>
       </tr>
@@ -121,6 +127,48 @@
           </div>
         </div>
       </div>
+  </div>
+
+
+  <div class="fee-details-popup">
+    <div class="modal">
+      <div class="grid">
+        <div class="column one">
+          <label for="fee-type">Fee Type</label>
+          <label for="academic-fee">Academic Fee</label>
+          <label for="hostel-fee">Hostel Fee</label>
+          <span class="mess-fee-with-sem">Mess Fee</label>
+          <label for="maintenance-fee">Maintenance Fee</label>
+        </div>
+
+        <div class="column two">
+          <label for="fee-paid">Fee Paid</label>
+          <span class="paid-academic-fee"></span>
+          <span class="paid-hostel-fee"></span>
+          <span class="paid-mess-fee"></span>
+          <span class="paid-maintenance-fee"></span>
+        </div>
+
+        <div class="column three">
+          <label for="fee-paid">Fee Pending</label>
+          <span class="pending-academic-fee"></span>
+          <span class="pending-hostel-fee"></span>
+          <span class="pending-mess-fee"></span>
+          <span class="pending-maintenance-fee"></span>
+        </div>
+
+        <div class="column four">
+          <label for="file">File</label>
+          <span class="academic-fee-file"></span>
+          <span class="hostel-fee-file"></span>
+          <span class="mess-fee-file"></span>
+          <span class="maintenance-fee-file"></span>
+        </div>
+        <div class="close-btn-container">
+          <button class="close-fee-details-btn">X</button>
+        </div>
+      </div>
+    </div>
   </div>
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
     <script src="./js/viewdata.js"></script>
