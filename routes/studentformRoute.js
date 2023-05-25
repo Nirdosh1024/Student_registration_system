@@ -50,7 +50,8 @@ router.post("/", upload, async (req, res) => {
       messsecurityfee_amount,
       hostelfee_amount,
       maintenancefee_amount,
-      accept_terms
+      accept_terms,
+      hostel
    } = req.body;
 
 
@@ -129,6 +130,7 @@ router.post("/", upload, async (req, res) => {
          user.intermediate = intermediate;
          user.JEE_rank = rank;
          user.JEE_percentile = percentile;
+         user.hostel = hostel;
          user.hosteller = Boolean(hosteller);
          user.room_no = floor + '-' + room_no;
          user.fee_type = Boolean(fee_type);
@@ -152,7 +154,10 @@ router.post("/", upload, async (req, res) => {
       const unverifiedUser = await unverifedData.create({
          ID : enrollment_number,
          fees : feeDetail,
-         document : fileArray
+         document : fileArray,
+         verified_by_admissionCell : false,
+         verified_by_accounts : false,
+         verified_by_warden : false
       }).then(() => {
          console.log("user data is saved in unverified database")
       }).catch((err) => {
@@ -161,9 +166,6 @@ router.post("/", upload, async (req, res) => {
       })
      
    }
-   
-
-
 
 })
 

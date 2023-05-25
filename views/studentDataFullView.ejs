@@ -137,7 +137,7 @@
           <label for="fee-type">Fee Type</label>
           <label for="academic-fee">Academic Fee</label>
           <label for="hostel-fee">Hostel Fee</label>
-          <span class="mess-fee-with-sem">Mess Fee</label>
+          <span class="mess-fee-with-sem">Mess Fee</span>
           <label for="maintenance-fee">Maintenance Fee</label>
         </div>
 
@@ -159,17 +159,17 @@
 
         <div class="column four">
           <label for="file">File</label>
-          <span class="academic-fee-file"></span>
-          <span class="hostel-fee-file"></span>
-          <span class="mess-fee-file"></span>
-          <span class="maintenance-fee-file"></span>
+          <button class="academic-fee-file" target = "_blank">view file</button><input type="checkbox" name = "academicstatus" class = "academicstatus">
+          <span></span>
+          <button class="mess-fee-file" target = "_blank">view file</button><input type="checkbox" name = "messstatus" class = "messstatus">
+          <button class="maintenance-fee-file" target = "_blank">view file</button><input type="checkbox" name = "maintainstatus" class = "maintainstatus">
         </div>
         <div class="close-btn-container">
           <button class="close-fee-details-btn">X</button>
         </div>
       </div>
     </div>
-  </div>
+  </div> 
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
     <script src="./js/viewdata.js"></script>
   </body>

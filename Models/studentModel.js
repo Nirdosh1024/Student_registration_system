@@ -143,6 +143,10 @@ const newStudent= mongoose.Schema({
     default: true,
     //required: true,
   },
+  hostel : {
+    type: String,
+    default : ""
+  },
   room_no: {
     type: String,
     default: ""

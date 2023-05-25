@@ -11,6 +11,7 @@ const bcrypt = require("bcryptjs");
 const passport = require("passport");
 const helmet = require("helmet");
 const logger = require("morgan");
+const fs = require("fs");
 
 
 // import routes
@@ -45,6 +46,7 @@ const updateModel = require("./Models/updateModel")
 const { stderr } = require("process");
 const { accessSync } = require("fs");
 const { error } = require("console");
+const unverifiedData = require("./Models/unverifiedDocsModel");
 
 app.use(
   cors({
@@ -396,15 +398,23 @@ app.get("/viewdata/viewmore" , async (req ,res) => {
 app.get("/viewdata/viewFeeDetails", async (req, res) => {
     const id = req.query.id;
 
-    const student = await newStudentModel.findOne({ID: id});
+    const student = await unverifiedData.findOne({ID: id});
+    const user = await newStudentModel.findOne({ ID : id});
 
     const dataToFeeDetails = {
+
       fees: student.fees,
       document: student.document,
-      semester: student.semester
+      semester: user.semester
     }
 
     res.send(dataToFeeDetails);
+})
+
+app.get("/viewdata/viewfeedetails/viewfile" , async (req,res) => {
+  const path = req.query.path;  
+  const file = fs.readFileSync(path);
+  res.send(file)
 })
 
 app.post("/adminLogin", (req, res, next) => {
