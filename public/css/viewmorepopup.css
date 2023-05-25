@@ -11,26 +11,30 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background: #cfcfcf73;
     height: 100vh;
-    width: 100vw;
-    background: #9f9f9f;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #cecece;
+    background: #ffffff;
+    border-radius: 5px;
+}
+
+.close-btn {
+    align-self: flex-start;
+    padding-top: 1rem;
+    padding-right: 1rem;
 }
 
 .grid {
     display: grid;
-    border: 2px solid #cecece;
-    background: #ffffff;
-    border-radius: 5px;
     padding: 2rem;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 2rem;
     row-gap: 2rem;
 }
 
-.visible {
-    display: block;
-}
-
-.modal{
-    opacity: 0.3;
-}

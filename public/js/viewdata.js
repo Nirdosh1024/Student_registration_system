@@ -30,11 +30,13 @@ dataTable.addEventListener("click", async (e) => {
         const axiosResponse = await axios({
             method: "GET",
             url: "http://localhost:5000/viewdata/viewmore",
-            params :{ id : id
-            }        });
+            params: { 
+                id : id
+            }        
+        });
         const resData = axiosResponse.data;
 
-     popup.style.display = "block";
+    popup.style.display = "block";
     sgender.textContent = resData.gender;
     sdob.textContent = resData.dob;
     sphoneNum.textContent = resData.phoneNum;
