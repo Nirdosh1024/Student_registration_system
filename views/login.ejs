@@ -5,7 +5,7 @@
     </head>
     <body>
         
-        <%- include("./partials/messages"); %>
+        
 
     <div class="login-page">
 
@@ -16,6 +16,9 @@
         <div id="login" class="login">
 
         <h1>WELCOME!</h1>
+        <div class="login-error-box">
+        <%- include("./partials/messages"); %>
+        </div>
         <img class="icon1" src="./assets/studenticon3.png" alternative=""/>
         <button class="selectbtn1" id="user-btn">Login as Student</button>
         </br></br>

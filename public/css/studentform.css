@@ -291,6 +291,10 @@
     padding:20px 40px 20px 40px;
 }
 
+.complete-form {
+    display: none;
+}
+
 
 
 

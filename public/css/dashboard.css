@@ -1,4 +1,6 @@
-*, ::after, ::before {
+*,
+::after,
+::before {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -18,33 +20,37 @@ body {
     width: 100%;
     font-family: var(--ff);
     color: var(--color-primary);
+    display: grid;
+    grid-template-rows: 2fr 10fr;
 }
 
 header {
-    padding: 10px 2px 30px 20px; 
+    padding: 30px 20px 30px 20px;
     display: flex;
-    margin-top: 20px;
+    justify-content: space-between;
     border-bottom: 1px solid silver;
     align-items: center;
     box-shadow: 1px 3px #1b555599;
 }
 
-header .logo {  
-    height:80px;
-    width:80px;
-    margin-left:40px;
-    margin-right:200px;
+header .logo {
+    height: 80px;
+    width: 80px;
+    margin-left: 40px;
+    margin-right: 200px;
     border: 1px solid #3e3e3e;
     border-radius: 100px;
 }
-header .collagelogo{
-    height:80px;
-    width:80px;
+
+header .collagelogo {
+    height: 80px;
+    width: 80px;
 
 }
+
 header .college-name {
-    text-align: center; 
-    margin-left:200px;
+    text-align: center;
+    margin-left: 200px;
 
 }
 
@@ -63,26 +69,21 @@ header .college-name h5 {
 
 header .student-name {
     display: flex;
-    margin-left:50px;
-    gap:10px;
+    align-items: center;
 }
 
-.student-name{
+.student-name {
     color: #010081;
-    font-size:16px;
+    font-size: 16px;
     font-weight: 600;
+}
+
+.icon {
+    width: 30px;
     height: 30px;
-    border: 0 solid white;
-}
-
-.icon{
-    position: absolute;
-    width:30px;
-    height:30px;
-    background:white;
-    border-radius:50px solid #010081 ;
+    background: white;
+    margin-right: 0.5rem;
     box-sizing: border-box;
-    border-color: #010081;
 }
 
 
@@ -90,20 +91,20 @@ header .student-name {
 
 
 
-.grid-container{
+.grid-container {
     display: grid;
-    grid-template-columns: 1fr,5fr;
+    grid-template-columns: 1fr, 5fr;
 }
 
-.side-bar{
+.side-bar {
     background-color: rgb(233, 247, 247);
     box-shadow: 2px 0.5px #ececfc;
-    height:-webkit-fill-available;
+    height: -webkit-fill-available;
     padding: 10px 20px 50px 20px;
     margin-top: 6px;
 }
 
-.sideMenu-list-item{
+.sideMenu-list-item {
     font-size: 18px;
     margin-top: 25px;
     margin-left: 50px;
@@ -111,16 +112,16 @@ header .student-name {
 
 }
 
-.sideMenu-heading{
+.sideMenu-heading {
     margin-top: 5%;
     margin-left: 15%;
     align-items: center;
 }
 
-.log-out-btn{
-    font-size:14px;
+.log-out-btn {
+    font-size: 14px;
     width: 80px;
-    height:30px;
+    height: 30px;
     margin-top: 20px;
     margin-left: 20px;
     background-color: #EFEFEF;
@@ -132,33 +133,36 @@ header .student-name {
     border-radius: 5px;
 }
 
-.log-out-btn:hover{
-    background-color:#010081;
+.log-out-btn:hover {
+    background-color: #010081;
     color: #ffff;
-    border:1.5px solid black;
+    border: 1.5px solid black;
 }
-.updates-heading{
-    color:#010081;
+
+.updates-heading {
+    color: #010081;
     font-size: 26px;
     margin-left: 10px;
 }
 
-.latest_updates{
+.latest_updates {
     /* border:1px solid #ccc; */
     box-shadow: 0.5px 1px silver;
     margin-top: 30px;
     margin-bottom: 20px;
 }
-.heading{
-    font-size:18px;
+
+.heading {
+    font-size: 18px;
     font-weight: 600;
-    margin-top:5px;
-    padding:5px;
+    margin-top: 5px;
+    padding: 5px;
 }
-.description{
-    font-size:16px;
+
+.description {
+    font-size: 16px;
     font-weight: 300;
     margin-bottom: 5px;
-    color:#3838d8;
+    color: #3838d8;
     padding: 5px;
 }

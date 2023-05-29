@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Registration System | Admin</title>
+  <link rel="stylesheet" href="./css/viewmorepopup.css" />
+</head>
+
+<body>
+  <% if (role==="RECAccounts" ) { %>
+  <% if (studentData.length !==0) { %>
+  <table class="data-table">
+    <% studentData.forEach((student, index)=> { %>
+    <tr class="row">
+      <td class="column one">
+        <%= index + 1 %>
+        <%= student.ID %>, <%= student.Name %>, <%= student.Branch %>, <%= student.batch %>, <%= student.Year %>
+        %>
+      </td>
+      <td class="column two">
+        <div class="btn-container">
+          <button class="view-fee-details" data-id="<%= student.ID %>">
+            View Fee Details
+          </button>
+        </div>
+      </td>
+    </tr>
+    <% }) %>
+  </table>
+  <% } else { %>
+  <div class="no-data-to-render">There is no data available</div>
+  <% } %>
+  <% } else if(role==="RECDeanAcad" ) { %>
+  <% if (studentData.length !==0) { %>
+  <table class="data-table">
+    <% studentData.forEach((student, index)=> { %>
+    <tr class="row">
+      <td class="column one">
+        <%= index + 1 %>
+        <%= student.ID %>, <%= student.Name %>, <%= student.Branch %>, <%= student.batch %>, <%=
+                                  student.Year %> %>
+      </td>
+      <td class="column two">
+        <div class="btn-container">
+          <button class="view-more-btn" data-id="<%= student.ID %>">
+            View More
+          </button>
+          <button class="view-fee-details" data-id="<%= student.ID %>">
+            View Fee Details
+          </button>
+          <button class="view-documents" data-id="<%= student.ID %>">
+            View Documents
+          </button>
+        </div>
+      </td>
+    </tr>
+    <% }) %>
+  </table>
+  <% } else { %>
+  <div class="no-data-to-render">There is no data available</div>
+  <% } %>
+  <% } else if(role==="RECDSW" || role==="Director" ) { %>
+  <% if (studentData.length !==0) { %>
+  <table class="data-table">
+    <% studentData.forEach((student, index)=> { %>
+    <tr class="row">
+      <td class="column one">
+        <%= index + 1 %>
+        <%= student.ID %>, <%= student.Name %>, <%= student.Branch %>, <%= student.batch %>, <%=
+                                          student.Year %> %>
+      </td>
+      <td class="column two">
+        <div class="btn-container">
+          <button class="view-more-btn" data-id="<%= student.ID %>">
+            View More
+          </button>
+          <button class="view-fee-details" data-id="<%= student.ID %>">
+            View Fee Details
+          </button>
+          <button class="view-documents" data-id="<%= student.ID %>">
+            View Documents
+          </button>
+        </div>
+      </td>
+    </tr>
+    <% }) %>
+  </table>
+  <% } else { %>
+  <div class="no-data-to-render">There is no data available</div>
+  <% } %>
+  <% } %>
+
+  <div class="fee-details-popup">
+    <div class="modal">
+      <div class="grid">
+        <div class="column one">
+          <label for="fee-type">Fee Type</label>
+          <label for="academic-fee">Academic Fee</label>
+          <label for="hostel-fee">Hostel Fee</label>
+          <span class="mess-fee-with-sem">Mess Fee</span>
+          <label for="maintenance-fee">Maintenance Fee</label>
+        </div>
+
+        <div class="column two">
+          <label for="fee-paid">Fee Paid</label>
+          <span class="paid-academic-fee"></span>
+          <span class="paid-hostel-fee"></span>
+          <span class="paid-mess-fee"></span>
+          <span class="paid-maintenance-fee"></span>
+        </div>
+
+        <div class="column three">
+          <label for="fee-paid">Fee Pending</label>
+          <span class="pending-academic-fee"></span>
+          <span class="pending-hostel-fee"></span>
+          <span class="pending-mess-fee"></span>
+          <span class="pending-maintenance-fee"></span>
+        </div>
+
+        <div class="column four status-from-accountant">
+          <label for="file">File</label>
+          <div class="academic-fee-status-container">
+            <a class="academic-fee-file" target="_blank">view file</a>
+          </div>
+
+          <span>&nbsp;</span>
+
+          <div class="mess-fee-verification-status-container">
+            <a class="mess-fee-file" target="_blank">view file</a>
+          </div>
+
+          <div class="maintenance-fee-verification-status-container">
+            <a class="maintenance-fee-file" target="_blank">view file</a>
+          </div>
+        </div>
+        <div class="close-btn-container">
+          <button class="close-fee-details-btn">X</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pop-up">
+    <div class="modal">
+      <div class="flex">
+        <div class="grid">
+          <label for="field"> Gender: </label>
+          <span class="Gender"></span>
+
+          <label for="field"> DOB: </label>
+          <span class="DOB"></span>
+
+          <label for="field"> Phone Number: </label>
+          <span class="Phone_Number"></span>
+
+          <label for="field"> Email: </label>
+          <span class="Email"></span>
+
+          <label for="field"> Aadhar Number: </label>
+          <span class="aadharNo"></span>
+
+          <label for="field"> Sem: </label>
+          <span class="sem"></span>
+
+          <label for="field"> Father's Name: </label>
+          <span class="fatherName"></span>
+
+          <label for="field"> Mother Name: </label>
+          <span class="motherName"></span>
+
+          <label for="field"> Parent's Phone Number: </label>
+          <span class="parentphn"></span>
+
+          <label for="field"> Parent's Email: </label>
+          <span class="parentEmail"></span>
+        </div>
+
+        <div class="grid">
+          <label for="field"> Category: </label>
+          <span class="category"></span>
+
+          <label for="field"> Income: </label>
+          <span class="income"></span>
+
+          <label for="field"> Address: </label>
+          <span class="address"></span>
+
+          <label for="field"> Gaurdian: </label>
+          <span class="gaurdian"></span>
+
+          <label for="field"> Gaurdian's Phone Number: </label>
+          <span class="gaurdianphn"></span>
+
+          <label for="field"> Gaurdian's Address: </label>
+          <span class="gaurdianaddress"></span>
+
+          <label for="field"> JEE Rank: </label>
+          <span class="jeerank"></span>
+
+          <label for="field"> JEE Percentile: </label>
+          <span class="jeepercentile"></span>
+
+          <label for="field"> hosteller: </label>
+          <span class="hosteller"></span>
+
+          <label for="field"> Room Number: </label>
+          <span class="roomno"></span>
+        </div>
+        <div class="btn-container close-btn">
+          <button class="close">close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="documents-pop-up">
+    <div class="modal">
+      <div class="grid">
+        <div class="column one">
+          <label for="photo-file">Student Photo: </label>
+          <label for="income-file">Income: </label>
+          <label for="signature-file">Signature: </label>
+          <label for="highschool-marksheet-file">High School Marksheet:
+          </label>
+          <label for="inter-marksheet-file">Inter Marksheet</label>
+          <label for="enrollment-letter-file">Enrollment Letter: </label>
+          <label for="category-file">Category Certificate: </label>
+        </div>
+
+        <form class="column two status-from-dean-acad">
+          <div class="photo-file-status-container">
+            <a class="photo-file" target="_blank">view file</a>
+          </div>
+          <div class="income-file-status-container">
+            <a class="income-file" target="_blank">view file</a>
+          </div>
+          <div class="signature-file-status-container">
+            <a class="signature-file" target="_blank">view file</a>
+          </div>
+          <div class="highschool-marksheet-file-status-container">
+            <a class="highschool-marksheet-file" target="_blank">view file</a>
+          </div>
+          <div class="inter-marksheet-file-status-container">
+            <a class="inter-marksheet-file" target="_blank">view file</a>
+          </div>
+          <div class="enrollment-letter-file-status-container">
+            <a class="enrollment-letter-file" target="_blank">view file</a>
+          </div>
+          <div class="category-file-status-container">
+            <a class="category-file" target="_blank">view file</a>
+          </div>
+        </form>
+        <div class="close-btn-container">
+          <button class="close-view-documents-btn">X</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+  <script src="./js/viewdata.js"></script>
+</body>
+
+</html>

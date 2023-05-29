@@ -2,6 +2,7 @@ body {
   font-family: Arial, sans-serif;
   background-color: #ffff;
 }
+
 h2{
   color: #010081;
   font-size: 22px;
@@ -13,10 +14,7 @@ h2{
 
 .all-form{
   margin-top: 20px;
-  display: grid;
-  column-gap: 2rem;
   padding: 20px 30px 20px 30px;
-  grid-template-columns:repeat(4, 2fr);
 }
 
 .input-control label {
@@ -33,6 +31,11 @@ h2{
   margin-bottom: 10px;
   width:180px;
  }
+
+.form-container h3 {
+  text-align: center;
+}
+
  .input-control input[type="number"] {
   margin-bottom: 20px;
   width:150px;
@@ -65,10 +68,18 @@ h3{
   background-color: #cff0d1;
 }
 
+.form-details {
+  padding-top: 1rem;
+  display: grid;
+  row-gap: 1rem;
+}
+
 .input-control{
   display:flex;
+  padding: 0 4rem;
   justify-content: space-between;
 } 
+
 .form-container{
   border: 0.1px solid #1b555599;
   box-shadow: 1px 2px #1b555599;

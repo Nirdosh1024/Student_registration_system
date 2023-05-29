@@ -1,5 +1,7 @@
 .pop-up,
-.fee-details-popup {
+.fee-details-popup,
+.documents-pop-up,
+.hostel-details-pop-up {
     display: none;
     position: absolute;
     top: 0;
@@ -8,8 +10,8 @@
     bottom : 0;
 }
 
-.pop-up .modal,
-.fee-details-popup .modal {
+
+.modal {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,38 +19,12 @@
     height: 100vh;
 }
 
-.fee-details-popup .grid {
-    display: grid;
-    position: relative;
-    padding: 2rem;
-    border: 2px solid #cecece;
-    border-radius: 5px;
-    background: #ffffff;
-    grid-template-columns: repeat(4, 1fr);
-}
-
-.fee-details-popup .grid .column {
-    display: grid;
-    row-gap: 1rem;
-}
-
-.fee-details-popup .grid .column label:first-child {
-    font-weight: 600;
-}
-
 .flex {
     display: flex;
     align-items: center;
-    justify-content: center;
     border: 2px solid #cecece;
     background: #ffffff;
     border-radius: 5px;
-}
-
-.close-btn {
-    align-self: flex-start;
-    padding-top: 1rem;
-    padding-right: 1rem;
 }
 
 .grid {
@@ -57,11 +33,65 @@
     grid-template-columns: repeat(2, 1fr);
     column-gap: 2rem;
     row-gap: 2rem;
+    background: #ffffff;
+    position: relative;
 }
+
+.fee-details-popup .grid {
+    display: grid;
+    padding: 2rem 2rem 3rem 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    border: 2px solid #cecece;
+    border-radius: 5px;
+}
+
+.documents-pop-up .grid {
+    padding: 2rem 2rem 3rem 2rem;
+    border: 2px solid #cecece;
+    border-radius: 5px;
+}
+
+.hostel-details-pop-up .grid {
+    padding-bottom: 4rem;
+    border: 2px solid #cecece;
+    border-radius: 5px;
+}
+
+.documents-pop-up .grid .two {
+    display: flex;
+    justify-content: center;
+}
+
+.fee-details-popup .grid .column,
+.documents-pop-up .grid .column,
+.hostel-details-pop-up .grid .column {
+    display: grid;
+    row-gap: 1rem;
+}
+
+
+.fee-details-popup .grid .column label:first-child {
+    font-weight: 600;
+}
+
+.close-btn {
+    align-self: flex-start;
+    padding-top: 1rem;
+    padding-right: 1rem;
+}
+
+
 
 .close-btn-container {
     position: absolute;
     right: 1rem;
     top: 1rem;
 }
+
+.cta-container {
+    position: absolute;
+    bottom: 0.5rem;
+}
+
+
 

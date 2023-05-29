@@ -1,82 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="./css/admindashboard.css" >
-    <link rel="stylesheet" href="./css/docs.css" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="./css/admindashboard.css">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
 </head>
+
 <body>
-    <header>
-        <div class="collagelogo">
-            <img src="http://recsonbhadra.ac.in/static/media/Collegelogo.96cbe2da1f0150aefe6d.png" alt="logo" class="logo">
-        </div>
-        <div class="college-name middle">
-            <h3>Rajkiya Engineering College, Sonbhadra</h3>
-            <h5>An AICTE approved Government Engineering College affliated to AKTU Lucknow(College code-841)</h5>
-        </div>
-        <div class="admin-name">
-            <img class="icon" src="./assets/studenticon1.png" alternative=""/>
-            <div class="input admin-name"> <%= dataToBePassedToView.name %> </div>
+  <header>
+    <div class="collagelogo">
+      <img src="http://recsonbhadra.ac.in/static/media/Collegelogo.96cbe2da1f0150aefe6d.png" alt="logo" class="logo">
+    </div>
+    <div class="college-name middle">
+      <h3>Rajkiya Engineering College, Sonbhadra</h3>
+      <h5>An AICTE approved Government Engineering College affliated to AKTU Lucknow(College code-841)</h5>
+    </div>
+    <div class="admin-name">
+      <img class="icon" src="./assets/studenticon1.png" alternative="" />
+      <div class="input"> <%= dataToBePassedToView.name %> </div>
+    </div>
 
-        </div>
+  </header>
 
-    </header>
-
-<div class="grid-container">
+  <div class="grid-container">
     <div class="side-bar">
-        <ul class="sideMenu-list">
-            <h2 class="sideMenu-heading text-center">Dashboard</h2>
-            <li class="sideMenu-list-item" id="latest_updates">
-                <a class=" sideMenu-active" href="/layout">
-                    <span>-</span>
-                    Registering New Student
-                </a>
-            </li>
-            <li class="sideMenu-list-item " id="registration_status">
-                <a class="sideMenu-active" href="/viewdata">
-                    <span>-</span>
-                   View Student Details
-                </a>
-            </li>
-            <li class="sideMenu-list-item " id="registration_status">
-                <a class="sideMenu-active" href="/adminfeeform">
-                    <span>-</span>
-                    Fee Structure
-                </a>
-            </li>
+      <ul class="sideMenu-list">
+        <h2 class="sideMenu-heading text-center">Dashboard</h2>
+        <li class="sideMenu-list-item" id="latest_updates">
+          <a class=" sideMenu-active" href="/layout">
+            <span>-</span>
+            Registering New Student
+          </a>
+        </li>
+
+        <% if (dataToBePassedToView.name !== "Director" && dataToBePassedToView.name !== "RECDSW") { %>
+        <li class="sideMenu-list-item " id="registration_status">
+          <a class="sideMenu-active" href="/viewdata">
+            <span>-</span>
+            View Students Data
+          </a>
+        </li>
+        <% } %>
+
+        <li class="sideMenu-list-item" id="data-verified">
+          <a href="/viewverifieddata" class="sideMenu-active">
+            <span>-</span>
+            View verified Data
+          </a>
+        </li>
+
+        <li class="sideMenu-list-item " id="registration_status">
+          <a class="sideMenu-active" href="/adminfeeform">
+            <span>-</span>
+            Fee Structure
+          </a>
+        </li>
 
 
-            <li class="sideMenu-list-item " id="registration_status">
-                <a class="sideMenu-active" href="/adminupdate">
-                    <span>-</span>
-                   Adding Updates
-                </a>
-            </li>
+        <li class="sideMenu-list-item " id="registration_status">
+          <a class="sideMenu-active" href="/adminupdate">
+            <span>-</span>
+            Adding Updates
+          </a>
+        </li>
 
-            <li class="sideMenu-list-item " id="latest_updates">
-                <a  href="/logout">
-                    <button class="log-out-btn">Log Out</button>
-                </a>
-            </li>
+        <li class="sideMenu-list-item " id="latest_updates">
+          <a href="/logout">
+            <button class="log-out-btn">Log Out</button>
+          </a>
+        </li>
 
-        </ul>
+      </ul>
     </div>
 
 
     <div class="container">
-        <div class="dashboard">
-            <h2 class="updates-heading">Welcome!!</h2>
-            <div class="dashboard-content">
-                
-            </div>
+      <div class="dashboard">
+        <h2 class="updates-heading">Welcome!!</h2>
+        <div class="dashboard-content">
+
         </div>
+      </div>
     </div>
 
-</div>
+  </div>
 
 
 </body>
+
 </html>

@@ -10,28 +10,42 @@
   <body>
     <% if(collections.length !== 0) { %>
     <table class="data-table">
-      <% for (let row = 0; row < rowcol.rows; row++) { %>
+      <% collections.forEach((collection, index) => { %>
       <tr class="row">
         <td class="column one">
-          <%= row + 1 %> <%= collections[row].ID %>, <%= collections[row].Name
-          %>, <%= collections[row].Branch %>, <%= collections[row].batch %>, <%=
-          collections[row].Year %> %>
+          <%= index + 1 %> <%= collection.ID %>, <%= collection.Name
+          %>, <%= collection.Branch %>, <%= collection.batch %>, <%=
+          collection.Year %> %>
         </td>
         <td class="column two">
           <div class="btn-container">
             <% if (role === "RECAccounts") { %>
-              <button class="view-fee-details" data-id="<%= collections[row].ID %>">
+              <button class="view-fee-details" data-id="<%= collection.ID %>">
                 View Fee Details
               </button>
+            <% } else if (role === "RECDeanAcad") { %>
+              <button class="view-more-btn" data-id="<%= collection.ID %>">
+                View More
+              </button>
+              <button class="view-documents" data-id="<%= collection.ID %>">
+                View Documents
+              </button>
+            <% } else if(role === "BH1Warden" || role === "BH2Warden" || role === "BH3Warden" || role === "GHWarden") { %>
+              <button class="view-more-btn" data-id="<%= collection.ID %>">
+                View More
+              </button>
+              <button class="view-hostel-details" data-id="<%= collection.ID %>">
+                View Hostel Details
+              </button>
             <% } else { %>
-              <button class="view-more-btn" data-id="<%= collections[row].ID %>">
+              <button class="view-more-btn" data-id="<%= collection.ID %>">
                 View More
               </button>
             <% } %>
           </div>
         </td>
       </tr>
-      <% } %>
+    <% }) %>
     </table>
     <% } else { %>
     <div class="no-data-available">No Data Available</div>
@@ -157,19 +171,112 @@
           <span class="pending-maintenance-fee"></span>
         </div>
 
-        <div class="column four">
+        <form class="column four status-from-accountant">
           <label for="file">File</label>
-          <button class="academic-fee-file" target = "_blank">view file</button><input type="checkbox" name = "academicstatus" class = "academicstatus">
-          <span></span>
-          <button class="mess-fee-file" target = "_blank">view file</button><input type="checkbox" name = "messstatus" class = "messstatus">
-          <button class="maintenance-fee-file" target = "_blank">view file</button><input type="checkbox" name = "maintainstatus" class = "maintainstatus">
-        </div>
+          <div class="academic-fee-status-container">
+            <a class="academic-fee-file" target = "_blank">view file</a><input type="checkbox" name = "academicstatus" class = "academicstatus">
+          </div>
+          
+          <span>&nbsp;</span>
+
+          <div class="mess-fee-verification-status-container">
+          <a class="mess-fee-file" target = "_blank">view file</a><input type="checkbox" name = "messstatus" class = "messstatus">
+          </div>
+
+          <div class="maintenance-fee-verification-status-container">
+          <a class="maintenance-fee-file" target = "_blank">view file</a><input type="checkbox" name = "maintainstatus" class = "maintainstatus">
+          </div>
+
+          <div class="cta-container">
+            <input type="submit" value="Reject" class="rejected-by-accounts">
+            <input type="submit" value="Submit" class="submitted-by-accounts">
+          </div>
+        </form>
         <div class="close-btn-container">
           <button class="close-fee-details-btn">X</button>
         </div>
       </div>
     </div>
   </div> 
+
+  <div class="documents-pop-up">
+    <div class="modal">
+      <div class="grid">
+        <div class="column one">
+          <label for="photo-file">Student Photo: </label>
+          <label for="income-file">Income: </label>
+          <label for="signature-file">Signature: </label>
+          <label for="highschool-marksheet-file">High School Marksheet: </label>
+          <label for="inter-marksheet-file">Inter Marksheet</label>
+          <label for="enrollment-letter-file">Enrollment Letter: </label>
+          <label for="category-file">Category Certificate: </label>
+        </div>
+
+        <form class="column two status-from-dean-acad">
+          <div class="photo-file-status-container">
+            <a class="photo-file" target = "_blank">view file</a><input type="checkbox" name = "photostatus" class = "photostatus">
+          </div>
+          <div class="income-file-status-container">
+            <a class="income-file" target = "_blank">view file</a><input type="checkbox" name = "incomestatus" class = "incomestatus">
+          </div>
+          <div class="signature-file-status-container">
+            <a class="signature-file" target = "_blank">view file</a><input type="checkbox" name = "signaturestatus" class = "signaturestatus">
+          </div>
+          <div class="highschool-marksheet-file-status-container">
+            <a class="highschool-marksheet-file" target = "_blank">view file</a><input type="checkbox" name = "highschoolstatus" class = "highschoolstatus">
+          </div>
+          <div class="inter-marksheet-file-status-container">
+            <a class="inter-marksheet-file" target = "_blank">view file</a><input type="checkbox" name = "interstatus" class = "interstatus">
+          </div>
+          <div class="enrollment-letter-file-status-container">
+            <a class="enrollment-letter-file" target = "_blank">view file</a><input type="checkbox" name = "enrollmentstatus" class = "enrollmentstatus">
+          </div>
+          <div class="category-file-status-container">
+            <a class="category-file" target = "_blank">view file</a><input type="checkbox" name = "categorystatus" class = "categorystatus">
+          </div>
+
+          <div class="cta-container">
+            <input type="submit" value="Reject" class="rejected-by-dean-acad">
+            <input type="submit" value="Submit"class="submitted-by-dean-acad">
+          </div>
+        </form>
+        <div class="close-btn-container">
+          <button class="close-view-documents-btn">X</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hostel-details-pop-up">
+    <div class="modal">
+      <div class="grid">
+        <div class="column one">
+          <label for="hostel">Hostel: </label>
+          <label for="room-no">Room No: </label>
+          <label for="mess-fee-receipt">Mess Fee Receipt: </label>
+        </div>
+
+        <form class="column two hostel-verification-status">
+          <div class="hostel-name-status-container">
+          <span class="hostel-name"></span><input type="checkbox" name="hostel-name-status" id="hostel-name-status">
+          </div>
+          <div class="room-no-status-container">
+          <span class="room-no"></span><input type="checkbox" name="room-no-status" id="room-no-status">
+          </div>
+
+          <div class="mess-fee-status-container">
+            <a class="mess-fee-file-for-hostel-verification" target="_blank">View File</a><input type="checkbox" name="messfeestatus" id="messfeestatus">
+          </div>
+
+          <div class="cta-container">
+            <input type="submit" value="Reject" class="rejected-by-warden">
+            <input type="submit" value="Submit" class="submitted-by-warden"> 
+          </div>
+          
+        </form>
+      </div>
+    </div>
+  </div>
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
     <script src="./js/viewdata.js"></script>
   </body>

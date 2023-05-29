@@ -184,7 +184,38 @@ const newStudent= mongoose.Schema({
   },
   data_validated_by_admin:{
    type: Number,
-   //required : true
+   required : true,
+   default: 0
+  },
+  verified_by_accounts: {
+    type: Boolean,
+    required: true,
+    default: false
+  },
+  verified_by_dean_acad: {
+    type: Boolean,
+    required: true,
+    default: false
+  },
+  verified_by_warden: {
+    type: Boolean,
+    required: true,
+    default: false
+  },
+  rejected_by_accounts: {
+    type: Boolean,
+    required: true,
+    default: false
+  },
+  rejected_by_warden: {
+    type: Boolean,
+    required: true,
+    default: false
+  },
+  rejected_by_dean_acad: {
+    type: Boolean,
+    required: true,
+    default: false
   },
   accept_terms: {
     type: Boolean,

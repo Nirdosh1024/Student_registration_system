@@ -1,93 +1,94 @@
 <html>
-    <head>
-        <title>Dashboard</title>
-        <link rel="stylesheet" href="./css/dashboard.css">
-        <link rel="stylesheet" href="./css/docs.css">
-    </head>
-    <body>
-        <header>
-            <div class="collagelogo">
-                <img src="http://recsonbhadra.ac.in/static/media/Collegelogo.96cbe2da1f0150aefe6d.png" alt="logo" class="logo">
-            </div>
-            <div class="college-name middle">
-                <h3>Rajkiya Engineering College, Sonbhadra</h3>
-                <h5>An AICTE approved Government Engineering College affliated to AKTU Lucknow(College code-841)</h5>
-            </div>
-            <div class="student-name">
-                <img class="icon" src="./assets/studenticon1.png" alternative=""/>
-                <div class="input student-name"> <%= dataToBePassedToView.name %> </div>
 
-            </div>
-        </header>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="./css/dashboard.css">
+  <link rel="stylesheet" href="./css/docs.css">
+</head>
 
-    <div class="grid-container">
-        <div class="side-bar">
-            <ul class="sideMenu-list">
-                <h2 class="sideMenu-heading text-center">My Dashboard</h2>
-                <li class="sideMenu-list-item" id="latest_updates">
-                    <a class=" sideMenu-active" href="">
-                        <span>-</span>
-                        Latest Updates
-                    </a>
-                </li>
-
-                <li class="sideMenu-list-item " id="registration_status">
-                    <a class="sideMenu-active" href="/studentform">
-                        <span>-</span>
-                        Registration Form
-                    </a>
-                </li>
-
-                <li class="sideMenu-list-item " id="registration_status">
-                    <a class="sideMenu-active" href="/status">
-                        <span>-</span>
-                        Registration Status
-                    </a>
-                </li>
-
-                <li class="sideMenu-list-item " id="Submitted_documents">
-                    <a class="sideMenu-active " href="/docs">
-                        <span>-</span>
-                        Submitted Documents
-                    </a>
-                </li>
-                <li class="sideMenu-list-item " id="pending_payments">
-                    <a class="sideMenu-active " href="/dues">
-                        <span>-</span>
-                        Pending Payments
-                    </a>
-                </li>
-                <li class="sideMenu-list-item " id="latest_updates">
-                    <a  href="/logout">
-                        <button class="log-out-btn">Log Out</button>
-                    </a>
-                </li>
-
-            </ul>
-        </div>
-    
-
-        <div class="container">
-            <div class="dashboard">
-
-                <h2 class="updates-heading">Latest Updates</h2>
-                <div class="dashboard-content">   
-                    <% for (var i = 0; i < updateData.length; i++) { %>
-                        <div class="latest_updates">
-                            <div class ="heading"><%= updateData[i].heading %></div>
-                            <div class="description"><%= updateData[i].description%></div>
-                        </div>
-                    <% } %>
-
-                    
-                </div>
-            </div>
-        </div>
-
+<body>
+  <header>
+    <div class="collagelogo">
+      <img src="http://recsonbhadra.ac.in/static/media/Collegelogo.96cbe2da1f0150aefe6d.png" alt="logo" class="logo">
     </div>
-        <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
-        <script src="js/index.js"></script>
-    </body>
+    <div class="college-name middle">
+      <h3>Rajkiya Engineering College, Sonbhadra</h3>
+      <h5>An AICTE approved Government Engineering College affliated to AKTU Lucknow(College code-841)</h5>
+    </div>
+    <div class="student-name">
+      <img class="icon" src="./assets/studenticon1.png" alternative="" />
+      <div class="input"> <%= dataToBePassedToView.name %> </div>
+    </div>
+  </header>
+
+  <div class="grid-container">
+    <div class="side-bar">
+      <ul class="sideMenu-list">
+        <h2 class="sideMenu-heading text-center">My Dashboard</h2>
+        <li class="sideMenu-list-item" id="latest_updates">
+          <a class=" sideMenu-active" href="">
+            <span>-</span>
+            Latest Updates
+          </a>
+        </li>
+
+        <li class="sideMenu-list-item " id="registration_status">
+          <a class="sideMenu-active" href="/studentform">
+            <span>-</span>
+            Registration Form
+          </a>
+        </li>
+
+        <% if (dataToBePassedToView.validatedByAdmin !== 0) { %>
+        <li class="sideMenu-list-item " id="registration_status">
+          <a class="sideMenu-active" href="/status">
+            <span>-</span>
+            Registration Status
+          </a>
+        </li>
+        <% } %>
+
+        <li class="sideMenu-list-item " id="Submitted_documents">
+          <a class="sideMenu-active " href="/docs">
+            <span>-</span>
+            Submitted Documents
+          </a>
+        </li>
+        <li class="sideMenu-list-item " id="pending_payments">
+          <a class="sideMenu-active " href="/dues">
+            <span>-</span>
+            Pending Payments
+          </a>
+        </li>
+        <li class="sideMenu-list-item " id="latest_updates">
+          <a href="/logout">
+            <button class="log-out-btn">Log Out</button>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+
+
+    <div class="container">
+      <div class="dashboard">
+
+        <h2 class="updates-heading">Latest Updates</h2>
+        <div class="dashboard-content">
+          <% for (var i = 0; i < updateData.length; i++) { %>
+          <div class="latest_updates">
+            <div class="heading"><%= updateData[i].heading %></div>
+            <div class="description"><%= updateData[i].description%></div>
+          </div>
+          <% } %>
+
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+</body>
+
 </html>
-
-

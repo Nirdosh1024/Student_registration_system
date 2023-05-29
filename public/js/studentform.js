@@ -31,11 +31,11 @@ sign_input.addEventListener("change", function () {
 //Hostel form
 
 const hostelform = document.getElementById("hosteller");
+console.log(hostelform)
 const hostelAllotmentForm = document.querySelector(".complete-form");
 
-
-hostelform.addEventListener("click", () => {
-  if (hostelform.value === "yes") {
+hostelform.addEventListener("click", (e) => {
+  if (e.target.children[1].selected) {
     hostelAllotmentForm.style.display = "block";
   } else {
     hostelAllotmentForm.style.display = "none";

@@ -3,7 +3,8 @@
 const dataTable = document.querySelector(".data-table");
 const popup = document.querySelector(".pop-up");
 const closebtn = document.querySelector(".close");
-console.log(popup)
+const hostelDetailsPopup = document.querySelector(".hostel-details-pop-up")
+const closeViewDocumentsBtn = document.querySelector(".close-view-documents-btn")
 
 const feeDetailsPopup = document.querySelector(".fee-details-popup");
 const closeFeeDetailsBtn = document.querySelector(".close-fee-details-btn");
@@ -15,10 +16,10 @@ const semail = document.querySelector(".Email")
 const saadhar = document.querySelector(".aadharNo");
 const ssem = document.querySelector(".sem");
 const sfathername = document.querySelector(".fatherName");
-const smothername =  document.querySelector(".motherName");
+const smothername = document.querySelector(".motherName");
 const sparentphn = document.querySelector(".parentphn");
 const sparentemail = document.querySelector(".parentEmail");
-const scategory =  document.querySelector(".category");
+const scategory = document.querySelector(".category");
 const sincome = document.querySelector(".address");
 const sgaurdian = document.querySelector(".gaurdian");
 const sgaurdianphn = document.querySelector(".gaurdianphn");
@@ -46,62 +47,90 @@ const pendingMaintenanceFee = document.querySelector(".pending-maintenance-fee")
 
 const academicfeefile = document.querySelector(".academic-fee-file");
 const messfeefile = document.querySelector(".mess-fee-file");
-const maintenancefeefile  = document.querySelector(".maintenance-fee-file");
+const maintenancefeefile = document.querySelector(".maintenance-fee-file");
 
-const academicstatus  =  document.querySelector(".academicstatus");
-const messstatus =  document.querySelector(".messstatus");
+const academicstatus = document.querySelector(".academicstatus");
+const messstatus = document.querySelector(".messstatus");
 const maintenancestatus = document.querySelector(".maintenancestatus");
+const submittedByAccounts = document.querySelector(".submitted-by-accounts");
+const rejectedByAccounts = document.querySelector(".rejected-by-accounts");
+
+// grabbing elements to populate the documents of a particular students
+const documentPopup = document.querySelector(".documents-pop-up");
+
+const photoFile = document.querySelector(".photo-file");
+const incomeFile = document.querySelector(".income-file");
+const signatureFile = document.querySelector(".signature-file");
+const highSchoolMarksheetFile = document.querySelector(".highschool-marksheet-file");
+const interMarksheetFile = document.querySelector(".inter-marksheet-file");
+const enrollmentLetterFile = document.querySelector(".enrollment-letter-file");
+const categoryFile = document.querySelector(".category-file");
+const rejectedByDeanAcad = document.querySelector(".rejected-by-dean-acad");
+const submittedByDeanAcad = document.querySelector(".submitted-by-dean-acad");
+
+// grabbing elements to populate hostel details pop up
+const hostelName = document.querySelector(".hostel-name")
+const roomNo = document.querySelector(".room-no");
+const messFeeFile = document.querySelector(".mess-fee-file-for-hostel-verification");
+const submittedByWarden = document.querySelector(".submitted-by-warden");
+const rejectedByWarden = document.querySelector(".rejected-by-warden");
+
+console.log(submittedByAccounts)
+console.log(rejectedByAccounts)
+console.log(submittedByDeanAcad)
+console.log(rejectedByDeanAcad)
+console.log(submittedByWarden)
+console.log(rejectedByWarden)
 
 dataTable.addEventListener("click", async (e) => {
-    if(e.target.classList.contains("view-more-btn")) {
+    if (e.target.classList.contains("view-more-btn")) {
         const id = e.target.dataset['id']
-    
+
         const axiosResponse = await axios({
             method: "GET",
             url: "http://localhost:5000/viewdata/viewmore",
-            params: { 
-                id : id
-            }        
+            params: {
+                id: id
+            }
         });
         const resData = axiosResponse.data;
 
-    popup.style.display = "block";
-    sgender.textContent = resData.gender;
-    sdob.textContent = resData.dob;
-    sphoneNum.textContent = resData.phoneNum;
-    semail.textContent = resData.email;
-    saadhar.textContent = resData.aadhar;
-    ssem.textContent =  resData.sem;
-    sfathername.textContent = resData.father_name;
-    smothername.textContent = resData.mother_name;
-    sparentphn.textContent = resData.parentphn;
-    sparentemail.textContent = resData.parentEmail;
-    scategory.textContent = resData.category;
-    sincome.textContent = resData.income;
-    saddress.textContent = resData.address;
-    sgaurdian.textContent = resData.gaurdian;
-    sgaurdianphn.textContent = resData.gaurdianphn;
-    sgaurdaddress.textContent = resData.gaurdianadd;
-    sjeerank.textContent = resData.jeerank;
-    sjeepercent.textContent = resData.sjeepercent;
-    const result = resData.hosteler === "true" ? "Yes" : "No"
-    shosteler.textContent = result;
-    sroomno.textContent = resData.roomno;
+        popup.style.display = "block";
+        sgender.textContent = resData.gender;
+        sdob.textContent = resData.dob;
+        sphoneNum.textContent = resData.phoneNum;
+        semail.textContent = resData.email;
+        saadhar.textContent = resData.aadhar;
+        ssem.textContent = resData.sem;
+        sfathername.textContent = resData.father_name;
+        smothername.textContent = resData.mother_name;
+        sparentphn.textContent = resData.parentphn;
+        sparentemail.textContent = resData.parentEmail;
+        scategory.textContent = resData.category;
+        sincome.textContent = resData.income;
+        saddress.textContent = resData.address;
+        sgaurdian.textContent = resData.gaurdian;
+        sgaurdianphn.textContent = resData.gaurdianphn;
+        sgaurdaddress.textContent = resData.gaurdianadd;
+        sjeerank.textContent = resData.jeerank;
+        sjeepercent.textContent = resData.sjeepercent;
+        const result = resData.hosteler === "true" ? "Yes" : "No"
+        shosteler.textContent = result;
+        sroomno.textContent = resData.roomno;
     }
 
 
-    else if(e.target.classList.contains("view-fee-details")) {
+    else if (e.target.classList.contains("view-fee-details")) {
         const id = e.target.dataset['id'];
 
         const axiosResponse = await axios({
             method: "GET",
             url: "http://localhost:5000/viewdata/viewFeeDetails",
-            params: { 
-                id : id
-            }        
+            params: {
+                id: id
+            }
         });
         const resData = axiosResponse.data;
-        console.log(resData);
         feeDetailsPopup.style.display = "block";
 
         // data is to be populated here with the help of textContent Property
@@ -116,48 +145,204 @@ dataTable.addEventListener("click", async (e) => {
         pendingMaintenanceFee.textContent = resData.fees.pending_fee.maintenance_fee;
         semesterField.textContent += "(" + resData.semester + ")";
 
-        feeDetailsPopup.addEventListener("click" , async (e) => {
-            if(e.target.classList.contains("academic-fee-file")){
-                const axiosResponse = await axios({
-                    method: "GET",
-                    url : "http://localhost:5000/viewdata/viewfeedetails/viewfile",
-                    params : {
-                        path : resData.document[6].filepath
-                    }
-                })
+        feeDetailsPopup.addEventListener("click", async (e) => {
+            if (e.target.classList.contains("academic-fee-file")) {
+                const encodedQueryParameters = encodeURIComponent(resData.document.academicfeefileObject.filepath);
+                academicfeefile.href = `/viewdata/viewdetails/filepreview?path=${encodedQueryParameters}`
             }
-            else if(e.target.classList.contains("mess-fee-file")){
-                const axiosResponse = await axios({
-                    method: "GET",
-                    url : "http://localhost:5000/viewdata/viewfeedetails/viewfile",
-                    params : {
-                        path : resData.document[8].filepath
-                    }
-                })
-
-            
+            else if (e.target.classList.contains("mess-fee-file")) {
+                const encodedQueryParameters = encodeURIComponent(resData.document.messfeefileObject.filepath);
+                messfeefile.href = `/viewdata/viewdetails/filepreview?path=${encodedQueryParameters}`
             }
-            else{
-                const axiosResponse = await axios({
-                    method: "GET",
-                    url : "http://localhost:5000/viewdata/viewfeedetails/viewfile",
-                    params : {
-                        path : resData.document[9].filepath
-                    }
-                })
+            else {
+                const encodedQueryParameters = encodeURIComponent(resData.document.maintenancefeefileObject.filepath);
+                maintenancefeefile.href = `/viewdata/viewdetails/filepreview?path=${encodedQueryParameters}`
             }
         })
-        // academicfeefile.src = resData.document[6].filepath;
-        // messfeefile.src = resData.document[8].filepath;
-        // maintenancefeefile.src = resData.document[9].filepath;
+        
 
+        submittedByAccounts.addEventListener("click", async (e) => {
+            const academicstatus = document.querySelector(".academicstatus");
+            const messstatus = document.querySelector(".messstatus")
+            const maintainstatus = document.querySelector(".maintainstatus");
+
+
+            const axiosResponse = await axios({
+                method: "POST",
+                url: "http://localhost:5000/statusfromaccountant",
+                data: {
+                    academicVerified: academicstatus.checked ? true : false,
+                    messVerified: messstatus.checked ? true : false,
+                    maintenanceVerified: maintainstatus.checked ? true : false,
+                    ID: id
+                }
+            })
+            window.location.reload()
+        })
+
+        rejectedByAccounts.addEventListener("click", async () => {
+            const axiosResponse = await axios({
+                method: "POST",
+                url: "http://localhost:5000/rejected",
+                data: {
+                    rejectedFrom: "Accounts",
+                    id: id
+                }
+            })
+            window.location.reload()
+        })
+    } else if (e.target.classList.contains("view-documents")) {
+        const id = e.target.dataset['id'];
+
+        const axiosResponse = await axios({
+            method: "GET",
+            url: "http://localhost:5000/viewdata/viewDocuments",
+            params: {
+                id: id
+            }
+        });
+        const resData = axiosResponse.data;
+        documentPopup.style.display = "block";
+
+        documentPopup.addEventListener("click", (e) => {
+            if (e.target.classList.contains("photo-file")) {
+                const encodedQueryParameters = encodeURIComponent(resData.document.photofileObject.filepath);
+                photoFile.href = `/viewdata/viewdetails/filepreview?path=${encodedQueryParameters}`
+            } else if (e.target.classList.contains("income-file")) {
+                const encodedQueryParameters = encodeURIComponent(resData.document.incomefileObject.filepath);
+                incomeFile.href = `/viewdata/viewdetails/filepreview?path=${encodedQueryParameters}`
+
+            } else if (e.target.classList.contains("signature-file")) {
+                const encodedQueryParameters = encodeURIComponent(resData.document.signaturefileObject.filepath);
+                signatureFile.href = `/viewdata/viewdetails/filepreview?path=${encodedQueryParameters}`
+
+            } else if (e.target.classList.contains("highschool-marksheet-file")) {
+                const encodedQueryParameters = encodeURIComponent(resData.document.highschoolmarksheetfileObject.filepath);
+                highSchoolMarksheetFile.href = `/viewdata/viewdetails/filepreview?path=${encodedQueryParameters}`
+
+            } else if (e.target.classList.contains("inter-marksheet-file")) {
+                const encodedQueryParameters = encodeURIComponent(resData.document.intermarksheetfileObject.filepath);
+                interMarksheetFile.href = `/viewdata/viewdetails/filepreview?path=${encodedQueryParameters}`
+
+            } else if (e.target.classList.contains("enrollment-letter-file")) {
+                const encodedQueryParameters = encodeURIComponent(resData.document.enrollmentletterfileObject.filepath);
+                enrollmentLetterFile.href = `/viewdata/viewdetails/filepreview?path=${encodedQueryParameters}`
+            } else if (e.target.classList.contains("category-file")) {
+                const encodedQueryParameters = encodeURIComponent(resData.document.categoryfileObject.filepath);
+                categoryFile.href = `/viewdata/viewdetails/filepreview?path=${encodedQueryParameters}`
+            }
+        })
+
+        submittedByDeanAcad.addEventListener("click", async (e) => {
+
+            const photoStatus = document.querySelector(".photostatus");
+            const incomeStatus = document.querySelector(".incomestatus");
+            const signatureStatus = document.querySelector(".signaturestatus");
+            const highschoolStatus = document.querySelector(".highschoolstatus");
+            const interStatus = document.querySelector(".interstatus");
+            const enrollmentStatus = document.querySelector(".enrollmentstatus");
+            const categoryStatus = document.querySelector(".categorystatus");
+
+            const axiosResponse = await axios({
+                method: "POST",
+                url: "http://localhost:5000/statusfromdeanacad",
+                data: {
+                    photoVerified: photoStatus.checked ? true : false,
+                    signatureVerified: signatureStatus.checked ? true : false,
+                    incomeVerified: incomeStatus.checked ? true : false,
+                    highschoolMarksheetVerified: highschoolStatus.checked ? true : false,
+                    interMarkSheetVerified: interStatus.checked ? true : false,
+                    enrollmentLetterVerified: enrollmentStatus.checked ? true : false,
+                    categoryVerified: categoryStatus.checked ? true : false,
+                    ID: id
+                }
+            })
+            window.location.reload();
+        })
+
+        rejectedByDeanAcad.addEventListener("click", async () => {
+            const axiosResponse = await axios({
+                method: "POST",
+                url: "http://localhost:5000/rejected",
+                data: {
+                    rejectedFrom: "DeanAcad",
+                    id: id
+                }
+            })
+            window.location.reload()
+        })
+    } else if(e.target.classList.contains("view-hostel-details")) {
+        const id = e.target.dataset['id'];
+
+        const axiosResponse = await axios({
+            method: "GET",
+            url: "http://localhost:5000/viewdata/viewHostelDetails",
+            params: {
+                id: id,
+            }
+        })
+
+        const resData = axiosResponse.data;
+
+
+        hostelDetailsPopup.style.display = "block";
+        hostelName.textContent = resData.hostel;
+        roomNo.textContent = resData.roomNo;
+
+        const encodedQueryParameters = encodeURIComponent(resData.messFeeReceipt.filepath);
+        messFeeFile.href = `/viewdata/viewdetails/filepreview?path=${encodedQueryParameters}`
+        
+        submittedByWarden.addEventListener("click", async (e) => {
+
+            const hostelNameStatus = document.getElementById("hostel-name-status");
+            const roomNoStatus = document.getElementById("room-no-status");
+            const messFeeStatus = document.getElementById("messfeestatus");
+            
+            const axiosResponse = await axios({
+                method: "GET",
+                url: "http://localhost:5000/statusFromWarden",
+                data: {
+                    hostelNameVerified: hostelNameStatus.checked ? true : false,
+                    roomNumberVerified: roomNoStatus.checked ? true : false,
+                    messFeeVerified: messFeeStatus.checked ? true : false,
+                    ID: id
+                }
+            })
+            window.location.reload();
+        })
+
+        rejectedByWarden.addEventListener("click", async () => {
+            const axiosResponse = await axios({
+                method: "POST",
+                url: "http://localhost:5000/rejected",
+                data: {
+                    rejectedFrom: "Warden",
+                    id: id
+                }
+            })
+            window.location.reload()
+        })
     }
 })
 
-closebtn.addEventListener("click" , (e) => {
-    popup.style.display = "none"
-})
+
 
 closeFeeDetailsBtn.addEventListener("click", () => {
-    feeDetailsPopup.style.display = "none"
+    feeDetailsPopup.style.display = "none";
+    window.location.reload();
 })
+
+closeViewDocumentsBtn.addEventListener("click", () => {
+    documentPopup.style.display = "none";
+    window.location.reload();
+})
+
+
+closebtn.addEventListener("click", (e) => {
+    popup.style.display = "none";
+})
+
+
+
+
+
