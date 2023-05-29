@@ -29,12 +29,15 @@
     <div class="side-bar">
       <ul class="sideMenu-list">
         <h2 class="sideMenu-heading text-center">Dashboard</h2>
+
+        <% if (dataToBePassedToView.name === "RECDSW" || dataToBePassedToView.name === "RECDeanAcad") { %>
         <li class="sideMenu-list-item" id="latest_updates">
           <a class=" sideMenu-active" href="/layout">
             <span>-</span>
             Registering New Student
           </a>
         </li>
+        <% } %>
 
         <% if (dataToBePassedToView.name !== "Director" && dataToBePassedToView.name !== "RECDSW") { %>
         <li class="sideMenu-list-item " id="registration_status">
@@ -52,13 +55,15 @@
           </a>
         </li>
 
+
+        <% if(dataToBePassedToView.name === "RECDSW" || dataToBePassedToView.name === "RECDeanAcad") { %>
         <li class="sideMenu-list-item " id="registration_status">
           <a class="sideMenu-active" href="/adminfeeform">
             <span>-</span>
             Fee Structure
           </a>
         </li>
-
+        <% } %>
 
         <li class="sideMenu-list-item " id="registration_status">
           <a class="sideMenu-active" href="/adminupdate">

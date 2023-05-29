@@ -33,7 +33,7 @@
   <% } else { %>
   <div class="no-data-to-render">There is no data available</div>
   <% } %>
-  <% } else if(role==="RECDeanAcad" ) { %>
+  <% } else if(role==="RECDeanAcad" || role==="RECDSW" || role==="Director") { %>
   <% if (studentData.length !==0) { %>
   <table class="data-table">
     <% studentData.forEach((student, index)=> { %>
@@ -62,26 +62,19 @@
   <% } else { %>
   <div class="no-data-to-render">There is no data available</div>
   <% } %>
-  <% } else if(role==="RECDSW" || role==="Director" ) { %>
+  <% } else if(role === "BH1Warden" || role === "BH2Warden" || role === "BH3Warden" || role === "GHWarden") { %>
   <% if (studentData.length !==0) { %>
   <table class="data-table">
     <% studentData.forEach((student, index)=> { %>
     <tr class="row">
       <td class="column one">
         <%= index + 1 %>
-        <%= student.ID %>, <%= student.Name %>, <%= student.Branch %>, <%= student.batch %>, <%=
-                                          student.Year %> %>
+        <%= student.ID %>, <%= student.Name %>, <%= student.Branch %>, <%= student.batch %>, <%= student.Year %> %>
       </td>
       <td class="column two">
         <div class="btn-container">
           <button class="view-more-btn" data-id="<%= student.ID %>">
             View More
-          </button>
-          <button class="view-fee-details" data-id="<%= student.ID %>">
-            View Fee Details
-          </button>
-          <button class="view-documents" data-id="<%= student.ID %>">
-            View Documents
           </button>
         </div>
       </td>

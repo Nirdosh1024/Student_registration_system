@@ -135,7 +135,7 @@ router.post("/", upload, async (req, res) => {
          user.room_no = floor + '-' + room_no;
          user.fee_type = Boolean(fee_type);
          
-    
+   
          user.data_validated_by_admin = 0;
          user.accept_terms = true;
       
@@ -164,7 +164,7 @@ router.post("/", upload, async (req, res) => {
          console.log(err)
 
       })
-     
+   
    }
 
 })

@@ -37,7 +37,6 @@ header .logo {
     height: 80px;
     width: 80px;
     margin-left: 40px;
-    margin-right: 200px;
     border: 1px solid #3e3e3e;
     border-radius: 100px;
 }
@@ -50,8 +49,6 @@ header .collagelogo {
 
 header .college-name {
     text-align: center;
-    margin-left: 200px;
-
 }
 
 header .college-name h3 {

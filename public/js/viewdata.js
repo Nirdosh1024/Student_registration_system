@@ -146,18 +146,11 @@ dataTable.addEventListener("click", async (e) => {
         semesterField.textContent += "(" + resData.semester + ")";
 
         feeDetailsPopup.addEventListener("click", async (e) => {
-            if (e.target.classList.contains("academic-fee-file")) {
-                const encodedQueryParameters = encodeURIComponent(resData.document.academicfeefileObject.filepath);
-                academicfeefile.href = `/viewdata/viewdetails/filepreview?path=${encodedQueryParameters}`
-            }
-            else if (e.target.classList.contains("mess-fee-file")) {
-                const encodedQueryParameters = encodeURIComponent(resData.document.messfeefileObject.filepath);
-                messfeefile.href = `/viewdata/viewdetails/filepreview?path=${encodedQueryParameters}`
-            }
-            else {
-                const encodedQueryParameters = encodeURIComponent(resData.document.maintenancefeefileObject.filepath);
-                maintenancefeefile.href = `/viewdata/viewdetails/filepreview?path=${encodedQueryParameters}`
-            }
+                academicfeefile.href = `/viewdata/viewdetails/filepreview?path=${encodeURIComponent(resData.document.academicfeefileObject.filepath)}`
+            
+                messfeefile.href = `/viewdata/viewdetails/filepreview?path=${encodeURIComponent(resData.document.messfeefileObject.filepath)}`
+            
+                maintenancefeefile.href = `/viewdata/viewdetails/filepreview?path=${encodeURIComponent(resData.document.maintenancefeefileObject.filepath)}`
         })
         
 
@@ -205,32 +198,19 @@ dataTable.addEventListener("click", async (e) => {
         documentPopup.style.display = "block";
 
         documentPopup.addEventListener("click", (e) => {
-            if (e.target.classList.contains("photo-file")) {
-                const encodedQueryParameters = encodeURIComponent(resData.document.photofileObject.filepath);
-                photoFile.href = `/viewdata/viewdetails/filepreview?path=${encodedQueryParameters}`
-            } else if (e.target.classList.contains("income-file")) {
-                const encodedQueryParameters = encodeURIComponent(resData.document.incomefileObject.filepath);
-                incomeFile.href = `/viewdata/viewdetails/filepreview?path=${encodedQueryParameters}`
+                photoFile.href = `/viewdata/viewdetails/filepreview?path=${encodeURIComponent(resData.document.photofileObject.filepath)}`
 
-            } else if (e.target.classList.contains("signature-file")) {
-                const encodedQueryParameters = encodeURIComponent(resData.document.signaturefileObject.filepath);
-                signatureFile.href = `/viewdata/viewdetails/filepreview?path=${encodedQueryParameters}`
+                incomeFile.href = `/viewdata/viewdetails/filepreview?path=${encodeURIComponent(resData.document.incomefileObject.filepath)}`
 
-            } else if (e.target.classList.contains("highschool-marksheet-file")) {
-                const encodedQueryParameters = encodeURIComponent(resData.document.highschoolmarksheetfileObject.filepath);
-                highSchoolMarksheetFile.href = `/viewdata/viewdetails/filepreview?path=${encodedQueryParameters}`
+                signatureFile.href = `/viewdata/viewdetails/filepreview?path=${encodeURIComponent(resData.document.signaturefileObject.filepath)}`
 
-            } else if (e.target.classList.contains("inter-marksheet-file")) {
-                const encodedQueryParameters = encodeURIComponent(resData.document.intermarksheetfileObject.filepath);
-                interMarksheetFile.href = `/viewdata/viewdetails/filepreview?path=${encodedQueryParameters}`
+                highSchoolMarksheetFile.href = `/viewdata/viewdetails/filepreview?path=${encodeURIComponent(resData.document.highschoolmarksheetfileObject.filepath)}`
 
-            } else if (e.target.classList.contains("enrollment-letter-file")) {
-                const encodedQueryParameters = encodeURIComponent(resData.document.enrollmentletterfileObject.filepath);
-                enrollmentLetterFile.href = `/viewdata/viewdetails/filepreview?path=${encodedQueryParameters}`
-            } else if (e.target.classList.contains("category-file")) {
-                const encodedQueryParameters = encodeURIComponent(resData.document.categoryfileObject.filepath);
-                categoryFile.href = `/viewdata/viewdetails/filepreview?path=${encodedQueryParameters}`
-            }
+                interMarksheetFile.href = `/viewdata/viewdetails/filepreview?path=${encodeURIComponent(resData.document.intermarksheetfileObject.filepath)}`
+
+                enrollmentLetterFile.href = `/viewdata/viewdetails/filepreview?path=${encodeURIComponent(resData.document.enrollmentletterfileObject.filepath)}`
+
+                categoryFile.href = `/viewdata/viewdetails/filepreview?path=${encodeURIComponent(resData.document.categoryfileObject.filepath)}`
         })
 
         submittedByDeanAcad.addEventListener("click", async (e) => {
@@ -289,9 +269,7 @@ dataTable.addEventListener("click", async (e) => {
         hostelName.textContent = resData.hostel;
         roomNo.textContent = resData.room;
 
-
-        const encodedQueryParameters = encodeURIComponent(resData.messFeeReceipt.filepath);
-        messFeeFile.href = `/viewdata/viewdetails/filepreview?path=${encodedQueryParameters}`
+        messFeeFile.href = `/viewdata/viewdetails/filepreview?path=${encodeURIComponent(resData.messFeeReceipt.filepath)}`
         
         submittedByWarden.addEventListener("click", async (e) => {
 

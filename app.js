@@ -1,5 +1,3 @@
-/** @format */
-
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -146,15 +144,20 @@ app.get("/academicFAQs", (req, res) => {
 app.get("/dashboard", ensureAuthenticated, async (req, res) => {
  
   const id = req.session.passport.user._id;
+  
   const user = await newStudentModel.findById(id)
   const updateFullData = await updateModel.find()
-  const updateData = updateFullData[0].update
 
-
-  console.log(user.data_validated_by_admin)
+  let updateData;
+  if(updateFullData.length > 0) {
+    updateData = updateFullData[0].update
+  } else {
+    updateData = [];
+  }
+  
   const dataToBePassedToView = {
-    name: user.name,
-    JEERoll: user.JEERoll,
+    name: user.Name,
+    JEERoll: user.ID,
     validatedByAdmin: user.data_validated_by_admin
   }
 
@@ -217,8 +220,8 @@ app.get("/docs", ensureAuthenticated, async (req, res) => {
   //console.log(docArray)
 
   const dataToBePassedToView = {
-    name: userFullData.name,
-    JEERoll: userFullData.JEERoll,
+    name: userFullData.Name,
+    JEERoll: userFullData.ID,
     validatedByAdmin : userFullData.data_validated_by_admin
 
   }
@@ -231,14 +234,28 @@ app.get("/docs", ensureAuthenticated, async (req, res) => {
 //rendering pending payment
 app.get("/dues", ensureAuthenticated, async (req, res) => {
   const id  = req.session.passport.user._id;
-  const user = await newStudentModel.findById(id)
+  const user = await newStudentModel.findById(id);
 
+  const dataRaw = await unverifiedData.findOne({ ID: user.ID });
+  
+
+  let feeRemaining;
+
+  if(user.data_validated_by_admin > 1 && user.data_validated_by_admin < 3) {
+      feeRemaining = user.fees.pending_fee;
+  } else {
+      feeRemaining = dataRaw.fees.pending_fee;
+  }
+
+
+  console.log(feeRemaining);
 
   const dataToBePassedToView = {
-    name: user.name,
-    JEERoll: user.JEERoll,
-    validatedByAdmin : user.data_validated_by_admin
-
+    name: user.Name,
+    JEERoll: user.ID,
+    validatedByAdmin : user.data_validated_by_admin,
+    feePaidDetail: user.fee_type,
+    pendingFee: feeRemaining
   }
 
   res.render("dues", {
@@ -252,23 +269,32 @@ app.get("/status", ensureAuthenticated, async (req, res) => {
   const id = req.session.passport.user._id
 
   const user = await newStudentModel.findById(id)
+  const dataFromRawAfterVerified = await unverifiedData.findOne({ ID: user.ID });
 
   // user.validated can have three values i.e 1 which means it's pending, 2 which means it is successfully
   // validated by all admins and finally 3 if it is rejected by any of the admin
 
   if(user.rejected_by_accounts || user.rejected_by_dean_acad || user.rejected_by_warden ) {
-    user.data_validated_by_admin = 3
+    user.data_validated_by_admin = 3;
   }
 
   if(user.verified_by_accounts && user.verified_by_dean_acad && user.verified_by_warden) {
-    user.data_validated_by_admin = 2
+    user.data_validated_by_admin = 2;
   }
 
   if((!user.verified_by_accounts && !user.verified_by_dean_acad && !user.verified_by_warden) && (!user.rejected_by_accounts && !user.rejected_by_dean_acad && !user.rejected_by_warden) && user.accept_terms) {
-    user.data_validated_by_admin = 1
+    user.data_validated_by_admin = 1;
+  } 
+
+  user.save().then(() => console.log("User Saved")).catch((err) => console.log(err));
+
+  if(user.data_validated_by_admin === 2) {
+    user.fees = dataFromRawAfterVerified.fees;
+    user.document = dataFromRawAfterVerified.document;
+    user.save().then(() => console.log("Data From Unverified data merged into student model collections")).catch((err) => console.error(err));
+    unverifiedData.deleteOne({ ID: user.ID }).then(() => console.log("Data deleted from raw storage")).catch((err) => console.error(err));
   }
 
-  user.save().then(() => console.log("User Saved after form submission")).catch((err) => console.log(err));
 
   const dataToBePassedToView = {
     name: user.Name,
@@ -294,32 +320,36 @@ app.post("/login", (req, res, next) => {
   })(req, res, next);
 });
 
-// app.post("/adminLogin", (req, res) => {
-//   const { UserID, password } = req.body; 
-//   Admin.findOne({ID: UserID}).then(async (admin) => {
-//     console.log("Function is reaching here");
-//     const password = await hashedPassword(UserID)
-//     console.log(admin)
-//     admin.Passwd = password
-//     admin.
-//     save().then((admin) => {
-//       console.log("password is successfully saved")
-//     })
-//   }).catch((e) => {
-//     console.error(e);
-//   })
-//   res.json({status: "OKAY"});
-// })
+app.get("/admin-creation", (req, res) => {
+  res.render("test")
+})
 
-// async function hashedPassword(UserID){
-//   const salt = await bcrypt.genSalt(10);
-//   if (salt){
-//     const password = UserID + '@841'
-//     const hashedPass= await bcrypt.hash(password,salt);
 
-//     return hashedPass;
-//   } 
-// }
+app.post("/admin-creation", async (req, res) => {
+  const { UserID } = req.body; 
+
+  const password = await hashedPassword(UserID);
+  
+  const newAdmin = new Admin({
+    ID: UserID,
+    role: "admin",
+    Passwd: password
+  })
+
+  newAdmin.save().then(() => console.log("admin saved")).catch((err) => console.log(err));
+
+  res.json({status: "OKAY"});
+})
+
+async function hashedPassword(UserID){
+  const salt = await bcrypt.genSalt(10);
+  if (salt){
+    const password = UserID + '@841'
+    const hashedPass= await bcrypt.hash(password,salt);
+
+    return hashedPass;
+  } 
+}
 
 app.get("/admindashboard", ensureAuthenticated, async (req, res) => {
   const id = req.session.passport.user._id;
@@ -441,26 +471,26 @@ app.get("/viewverifieddata", ensureAuthenticated, async (req, res) => {
   } else if(role === "BH1Warden") {
     const studentData = await newStudentModel.find({ verified_by_warden: true, hostel: "BH1" });
     res.render("verifiedstudentdata", {
-      collections: studentData,
+      studentData: studentData,
       role: role
     })
   } else if(role === "BH2Warden") {
     const studentData = await newStudentModel.find({ verified_by_warden: true, hostel: "BH2" });
     console.log(studentData)
     res.render("verifiedstudentdata", {
-      collections: studentData,
+      studentData: studentData,
       role: role
     })
   } else if(role === "BH3Warden") {
     const studentData = await newStudentModel.find({ verified_by_warden: true, hostel: "BH3" });
     res.render("verifiedstudentdata", {
-      collections: studentData,
+      studentData: studentData,
       role: role
     })
   } else if(role === "GHWarden") {
     const studentData = await newStudentModel.find({ verified_by_warden: true, hostel: "GH" });
     res.render("verifiedstudentdata", {
-      collections: studentData,
+      studentData: studentData,
       role: role
     })
   }
@@ -831,5 +861,3 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log("Server has started at 5000");
 });
-
-

@@ -73,13 +73,19 @@
         <h2 class="dues-heading">Pending Payments</h2>
         <div class="dashboard-content">
           <div class="pending-payments">
+            <% if(dataToBePassedToView.feePaidDetail) { %>
             <div class="paid">
-              <p>you have paid all the fee.</p>
+              <p>You have paid all the fee.</p>
             </div>
+            <% } else { %>
             <div class="unpaid">
-              <!-- <p>Remaining fee </p> -->
+              <p>You have remaining fee as follows: </p>
+              <p class="academic-fee"><%= dataToBePassedToView.pendingFee.academic_fee %></p>
+              <p class="mess-fee"><%= dataToBePassedToView.pendingFee.mess_fee %></p>
+              <p class="hostel-fee"><%= dataToBePassedToView.pendingFee.hostel_fee %></p>
+              <p class="maintenance-fee"><%= dataToBePassedToView.pendingFee.maintenance_fee %></p>
             </div>
-
+            <% } %>
           </div>
         </div>
       </div>

@@ -10,7 +10,9 @@ const newAdmin = mongoose.Schema({
         type: String,
         required : true
     },
-
+    hostel: {
+        type: String,
+    },
     Passwd: {
         type: String,
         required : true

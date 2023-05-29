@@ -72,7 +72,7 @@ form {
 }
 
 label{
-    display:flexbox;
+    display:flex;
     align-items: center;
     font-size: 18px;
     color: #010081;

@@ -21,11 +21,11 @@ body {
     font-family: var(--ff);
     color: var(--color-primary);
     display: grid;
-    grid-template-rows: 2fr 9fr;
+    grid-template-rows: 2fr 8.2fr;
 }
 
 header {
-    padding: 30px 20px 30px 20px;
+    padding: 20px;
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid silver;
@@ -37,7 +37,6 @@ header .logo {
     height: 80px;
     width: 80px;
     margin-left: 40px;
-    margin-right: 200px;
     border: 1px solid #3e3e3e;
     border-radius: 100px;
 }
@@ -85,11 +84,8 @@ header .student-name {
 .icon {
     width: 30px;
     height: 30px;
-    background: white;
-    border-radius: 10px;
     margin-right: 0.5rem;
     box-sizing: border-box;
-    border-color: #010081;
 }
 
 .dashboard {

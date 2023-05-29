@@ -18,14 +18,12 @@ const p1Street = document.getElementById("street-2")
 const pCity = document.getElementById("inputCity")
 const pState = document.getElementById("inputState")
 const pPincode = document.getElementById("inputZip")
-const pCountry = document.getElementById("inputCountry")
 
 const cStreet = document.getElementById("Cstreet-1")
 const c1Street = document.getElementById("Cstreet-2")
 const cCity = document.getElementById("CinputCity")
 const cState = document.getElementById("CinputState")
 const cPincode = document.getElementById("CinputZip")
-const cCountry = document.getElementById("CinputCountry")
 
 
 // grabbing elements of educational detail form by id
@@ -447,7 +445,6 @@ copyAddressBtn.addEventListener("click", () => {
   const pCityvalue = pCity.value
   const pStatevalue = pState.value
   const pPincodevalue = pPincode.value
-  const pCountryvalue = pCountry.value
 
 
 
@@ -483,13 +480,6 @@ copyAddressBtn.addEventListener("click", () => {
       setError(pState, "Kindly fill out Permanent address")
     }
 
-    if (pCountryvalue) {
-      cCountry.value = pCountryvalue
-    }
-
-    else {
-      setError(pCountry, "Kindly fill out Permanent address")
-    }
     if (pPincodevalue) {
       cPincode.value = pPincodevalue
 
