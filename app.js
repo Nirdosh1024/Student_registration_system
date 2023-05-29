@@ -144,13 +144,14 @@ app.get("/academicFAQs", (req, res) => {
 
 
 app.get("/dashboard", ensureAuthenticated, async (req, res) => {
-  const user = req.session.passport.user;
-
+ 
+  const id = req.session.passport.user._id;
+  const user = await newStudentModel.findById(id)
   const updateFullData = await updateModel.find()
   const updateData = updateFullData[0].update
 
 
-
+  console.log(user.data_validated_by_admin)
   const dataToBePassedToView = {
     name: user.name,
     JEERoll: user.JEERoll,
@@ -189,7 +190,8 @@ app.get("/studentform", ensureAuthenticated, async (req, res) => {
     aadhar_number: user.AadharNumber,
     father_name: user.FatherName,
     mother_name: user.MotherName,
-    email: user.Email
+    email: user.Email,
+    validatedByAdmin : user.data_validated_by_admin
 
   }
   res.render("studentform", {
@@ -199,7 +201,7 @@ app.get("/studentform", ensureAuthenticated, async (req, res) => {
 
 //rendering documents
 app.get("/docs", ensureAuthenticated, async (req, res) => {
-  const user = req.session.passport.user;
+  
 
 
   const id = req.session.passport.user._id
@@ -215,8 +217,9 @@ app.get("/docs", ensureAuthenticated, async (req, res) => {
   //console.log(docArray)
 
   const dataToBePassedToView = {
-    name: user.name,
-    JEERoll: user.JEERoll
+    name: userFullData.name,
+    JEERoll: userFullData.JEERoll,
+    validatedByAdmin : userFullData.data_validated_by_admin
 
   }
 
@@ -227,12 +230,14 @@ app.get("/docs", ensureAuthenticated, async (req, res) => {
 
 //rendering pending payment
 app.get("/dues", ensureAuthenticated, async (req, res) => {
-  const user = req.session.passport.user;
+  const id  = req.session.passport.user._id;
+  const user = await newStudentModel.findById(id)
 
 
   const dataToBePassedToView = {
     name: user.name,
     JEERoll: user.JEERoll,
+    validatedByAdmin : user.data_validated_by_admin
 
   }
 
@@ -259,7 +264,7 @@ app.get("/status", ensureAuthenticated, async (req, res) => {
     user.data_validated_by_admin = 2
   }
 
-  if((!user.verified_by_accounts && !user.verified_by_dean_acad && !user.verified_by_warden) && (!user.rejected_by_accounts && !user.rejected_by_dean_acad && !user.rejected_by_warden)) {
+  if((!user.verified_by_accounts && !user.verified_by_dean_acad && !user.verified_by_warden) && (!user.rejected_by_accounts && !user.rejected_by_dean_acad && !user.rejected_by_warden) && user.accept_terms) {
     user.data_validated_by_admin = 1
   }
 
@@ -369,7 +374,7 @@ app.get("/viewdata", ensureAuthenticated, async (req, res) => {
 
   const filteredDataForRECDeanAcad = subData.filter((data, index) => !data.verified_by_dean_acad || data.rejected_by_dean_acad)
 
-  const filteredDataForWardens = subData.filter((data, index) => !data.verified_by_warden || rejectedByWarden)
+  const filteredDataForWardens = subData.filter((data, index) => !data.verified_by_warden || data.rejected_by_warden)
 
   if (role === "RECAccounts") {
     res.render("studentDataFullView", {
@@ -441,6 +446,7 @@ app.get("/viewverifieddata", ensureAuthenticated, async (req, res) => {
     })
   } else if(role === "BH2Warden") {
     const studentData = await newStudentModel.find({ verified_by_warden: true, hostel: "BH2" });
+    console.log(studentData)
     res.render("verifiedstudentdata", {
       collections: studentData,
       role: role

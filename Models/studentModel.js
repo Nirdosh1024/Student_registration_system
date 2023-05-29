@@ -34,11 +34,13 @@ const newStudent= mongoose.Schema({
   },
   FatherName: {
     type: String,
-    required: true,
+    //required: true,
+    default : ""
   },
   MotherName: {
     type: String,
-    required: true,
+    //required: true,
+    default : ""
   },
   gender: {
     type: String,
@@ -54,15 +56,18 @@ const newStudent= mongoose.Schema({
 
   AadharNumber: {
     type: Number,
-    required: true,
+    //required: true,
+    default : 0
   },
   DOB: {
     type: String,
-    required: true,
+    //required: true,
+    default : ""
   },
   Year: {
     type: String,
-    required: true,
+    //required: true,
+    default : ""
   },
 
   semester: {
@@ -153,7 +158,7 @@ const newStudent= mongoose.Schema({
   },
   fee_type:{
     type: Boolean,
-    required: true
+    //required: true
   },
 
   fees: 

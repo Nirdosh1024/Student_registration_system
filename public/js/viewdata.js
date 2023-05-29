@@ -287,7 +287,8 @@ dataTable.addEventListener("click", async (e) => {
 
         hostelDetailsPopup.style.display = "block";
         hostelName.textContent = resData.hostel;
-        roomNo.textContent = resData.roomNo;
+        roomNo.textContent = resData.room;
+
 
         const encodedQueryParameters = encodeURIComponent(resData.messFeeReceipt.filepath);
         messFeeFile.href = `/viewdata/viewdetails/filepreview?path=${encodedQueryParameters}`
@@ -299,7 +300,7 @@ dataTable.addEventListener("click", async (e) => {
             const messFeeStatus = document.getElementById("messfeestatus");
             
             const axiosResponse = await axios({
-                method: "GET",
+                method: "POST",
                 url: "http://localhost:5000/statusFromWarden",
                 data: {
                     hostelNameVerified: hostelNameStatus.checked ? true : false,

@@ -39,13 +39,14 @@
             Registration Form
           </a>
         </li>
-
-        <li class="sideMenu-list-item " id="registration_status">
-          <a class="sideMenu-active" href="/status">
-            <span>-</span>
-            Registration Status
-          </a>
-        </li>
+        <% if (dataToBePassedToView.validatedByAdmin !== 0) { %>
+          <li class="sideMenu-list-item " id="registration_status">
+            <a class="sideMenu-active" href="/status">
+              <span>-</span>
+              Registration Status
+            </a>
+          </li>
+          <% } %>
 
         <li class="sideMenu-list-item " id="Submitted_documents">
           <a class="sideMenu-active " href="/docs">
