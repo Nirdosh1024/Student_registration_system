@@ -1,0 +1,57 @@
+.data-table {
+    width: 100%;
+}
+
+.data-table .row {
+    display: grid;
+    grid-template-columns: 6fr 3fr;
+}
+
+
+.data-table button {
+    cursor: pointer;
+    padding: 0.5rem 1.25rem;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    color: #010081;
+    border: 2px solid #010081;
+    border-radius: 4px;
+    background: #ffffff;
+}
+
+
+.data-table button:hover {
+    color: #ffffff;
+    background: #010081;
+}
+
+.data-table .row {
+    padding: 1rem 0.5rem;
+    border-bottom: 1px solid #010081;
+}
+
+.data-table .row .btn-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.data-table .one {
+    padding-top: 0.625rem;
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr 2fr 1fr 1fr;
+}
+
+.data-table .one .Id, 
+.data-table .one .name {
+    font-weight: 600;
+}
+
+.no-data-available {
+    display: flex;
+    padding-top: 7rem;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+}

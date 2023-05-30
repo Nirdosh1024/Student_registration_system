@@ -140,6 +140,10 @@ app.get("/academicFAQs", (req, res) => {
   res.render("faqs");
 });
 
+app.get("/documents-download", (req, res) => {
+  res.redirect("docs");
+})
+
 
 app.get("/dashboard", ensureAuthenticated, async (req, res) => {
  
@@ -223,7 +227,6 @@ app.get("/docs", ensureAuthenticated, async (req, res) => {
     name: userFullData.Name,
     JEERoll: userFullData.ID,
     validatedByAdmin : userFullData.data_validated_by_admin
-
   }
 
   res.render("docs", {

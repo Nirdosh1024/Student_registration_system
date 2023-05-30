@@ -6,16 +6,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Student Registration System | Admin</title>
     <link rel="stylesheet" href="./css/viewmorepopup.css" />
+    <link rel="stylesheet" href="./css/admindashboard.css">
+    <link rel="stylesheet" href="./css/studentdatafullview.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,500&display=swap" rel="stylesheet">
   </head>
   <body>
+
+
+    <header>
+      <div class="collagelogo">
+        <img src="http://recsonbhadra.ac.in/static/media/Collegelogo.96cbe2da1f0150aefe6d.png" alt="logo" class="logo">
+      </div>
+      <div class="college-name middle">
+        <h3>Rajkiya Engineering College, Sonbhadra</h3>
+        <h5>An AICTE approved Government Engineering College affliated to AKTU Lucknow(College code-841)</h5>
+      </div>
+      <div class="admin-name">
+        <img class="icon" src="./assets/studenticon1.png" alternative="" />
+        <div class="input"> <%= role %> </div>
+      </div>
+    </header>
+
+    <div class="grid-container">
+      <div class="side-bar">
+        <ul class="sideMenu-list">
+          <h2 class="sideMenu-heading text-center">Dashboard</h2>
+  
+          <% if (role === "RECDSW" || role === "RECDeanAcad") { %>
+          <li class="sideMenu-list-item" id="latest_updates">
+            <a class=" sideMenu-active" href="/layout">
+              <span>-</span>
+              Registering New Student
+            </a>
+          </li>
+          <% } %>
+  
+          <% if (role !== "Director" && role !== "RECDSW") { %>
+          <li class="sideMenu-list-item " id="registration_status">
+            <a class="sideMenu-active" href="/viewdata">
+              <span>-</span>
+              View Students Data
+            </a>
+          </li>
+          <% } %>
+  
+          <li class="sideMenu-list-item" id="data-verified">
+            <a href="/viewverifieddata" class="sideMenu-active">
+              <span>-</span>
+              View verified Data
+            </a>
+          </li>
+  
+  
+          <% if(role === "RECDSW" || role === "RECDeanAcad") { %>
+          <li class="sideMenu-list-item " id="registration_status">
+            <a class="sideMenu-active" href="/adminfeeform">
+              <span>-</span>
+              Fee Structure
+            </a>
+          </li>
+          <% } %>
+  
+          <li class="sideMenu-list-item " id="registration_status">
+            <a class="sideMenu-active" href="/adminupdate">
+              <span>-</span>
+              Adding Updates
+            </a>
+          </li>
+  
+          <li class="sideMenu-list-item " id="latest_updates">
+            <a href="/logout">
+              <button class="log-out-btn">Log Out</button>
+            </a>
+          </li>
+  
+        </ul>
+      </div>
+
+    <div class="data-populated">
     <% if(collections.length !== 0) { %>
     <table class="data-table">
       <% collections.forEach((collection, index) => { %>
       <tr class="row">
         <td class="column one">
-          <%= index + 1 %> <%= collection.ID %>, <%= collection.Name
-          %>, <%= collection.Branch %>, <%= collection.batch %>, <%=
-          collection.Year %> %>
+          <span class="index"><%= index + 1 %></span> <span class="Id"><%= collection.ID %></span> <span class="name"><%= collection.Name
+          %></span> <span class="branch"><%= collection.Branch %></span> <span class="batch"><%= collection.batch %></span> <span class="year"><%=
+          collection.Year %> %></span>
         </td>
         <td class="column two">
           <div class="btn-container">
@@ -48,9 +126,10 @@
     <% }) %>
     </table>
     <% } else { %>
-    <div class="no-data-available">No Data Available</div>
+    <div class="no-data-available">There is currently no data to be validated</div>
     <% } %>
-
+  </div>
+</div>
 
     <div class="pop-up">
       <div class="modal">

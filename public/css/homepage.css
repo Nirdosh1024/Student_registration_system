@@ -21,29 +21,24 @@ body {
 }
 
 header {
-    padding: 2.375rem 3.75rem 2.125rem 3.75rem; 
+    padding: 1.0625rem 1rem; 
     display: flex;
     justify-content: space-between;
-    align-items: center;
 }
 
 header .logo {
-    height: 10.6875rem;
-    width: 10.6875rem;
-    border: 1px solid #3e3e3e;
+    height: 8.5rem;
+    width: 8.5rem;
     border-radius: 100px;
 }
-header .collagelogo{
-    height:10.6875rem;
-    width:10.6875rem;
 
-}
 header .college-name {
+    padding-top: 1.75rem;
     text-align: center;
 }
 
 header .college-name h3 {
-    font-size: 3.125rem;
+    font-size: 2rem;
     text-transform: uppercase;
     font-weight: 700;
 }
@@ -54,14 +49,17 @@ header .college-name h5 {
     font-weight: 500;
 }
 
+header .sign-in {
+    padding-top: 2.75rem;
+}
+
 header .sign-in .sign-in-btn {
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: 600;
-    width: 110px;
-    height:40px;
-    padding: 0.75rem 2.625rem;
+    padding: 0.825rem 1.5rem;
     border: 2px solid var(--color-primary);
     border-radius: 50px;
+    cursor: pointer;
 }
 
 
@@ -69,7 +67,7 @@ header .sign-in .sign-in-btn {
 .heading {
     text-align: center;
     width: 100%;
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     padding: 0.5rem;
     background: #31DEDE99;
@@ -80,19 +78,24 @@ header .sign-in .sign-in-btn {
 
 /* main section with functionalities and animated image */
 .main-section-with-functionalities {
-    padding: 5.4375rem 10% 7.1875rem 18.09%;
-    font-size: 1.625rem;
+    padding: 3rem 5%;
+    font-size: 1.25rem;
     font-weight: 500;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .main-section-with-functionalities .functionalities div {
-    padding: 0.75rem 3rem 0.850rem 3rem;
     border: 2px solid #010081;
     text-align: center;
     border-radius: 5px;
     margin-bottom: 1.75rem;
+    cursor: pointer;
+}
+
+.main-section-with-functionalities .functionalities div a {
+    display: block;
+    padding: 0.75rem 1rem 0.850rem 1rem;
 }
 
 .main-section-with-functionalities .functionalities div:hover {
@@ -121,8 +124,8 @@ header .sign-in .sign-in-btn {
 
 /* news and circular indicator */
 .news-and-circular-indicator {
-    margin: 1.5rem 1.75rem;
-    font-size: 2.125rem;
+    margin: 1.5rem 1.75rem 1rem 1.75rem;
+    font-size: 1.825rem;
     font-weight: 700;
 }
 
@@ -133,9 +136,10 @@ header .sign-in .sign-in-btn {
     display: flex;
     justify-content: flex-end;
     padding-right: 3.75rem;
-    font-size: 1.25rem;
+    font-size: 1.0625rem;
     color: var(--color-black);
     font-weight: 500;
+    cursor: pointer;
 }
 
 
@@ -145,16 +149,16 @@ header .sign-in .sign-in-btn {
 }
 
 .dividing-line {
-    width: 52%;
+    width: 95%;
     background-color: var(--color-black);
     height: 1.5px;
-    margin: 1rem auto 0.25rem auto;
+    margin: 0.25rem auto 0.25rem auto;
 }
 
 .news-container .news {
-    padding: 1rem 20rem;
+    padding: 1rem 2.5rem;
     display: grid;
-    grid-template-columns: 0.5fr 3fr 0.5fr;
+    grid-template-columns: 1fr 3fr 0.5fr;
     column-gap: 4rem;
 }
 
@@ -162,32 +166,41 @@ header .sign-in .sign-in-btn {
     font-size: 1.25rem;
     padding-top: 0.5rem;
     font-weight: 600;
+    padding-top: 0.65rem;
 }
 
 .news-container .news .content {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     font-weight: 400;
     text-transform: uppercase;
+    padding-top: 0.5rem;
 }
 
 .news-container .news .view-btn {
     font-size: 1.25rem;
     font-weight: 400;
-    padding: 1.75rem 5.875rem;
+    padding: 0.625rem 2.25rem;
     border: 2px solid var(--color-black);
     border-radius: 50px;
     align-self: center;
+    cursor: pointer;
+}
+
+.news-container .news .view-btn:hover {
+    background: #000000;
+    color: #ffffff;
 }
 
 /* footer */
 footer {
     background: #31DEDE99;
-    height: 10rem;
     border: 1px solid var(--color-primary);
     bottom: 0;
     left: 10px;
     right: 0;
-    /* box-shadow: 0 -5px 300px 100px var(--color-secondary); */
+    display: flex;
+    padding: 1rem 4rem 1rem 0.5rem;
+    justify-content: space-around;
 }
 h6{
     display:block;
@@ -196,8 +209,7 @@ h6{
     text-transform: uppercase;
     text-align:center;
     color: #010081;
-    padding-top: 30px;
-
+    padding-top: 1.5rem;
 }
 footer .logo {
     height: 5.6875rem;
@@ -256,9 +268,7 @@ footer .collagelogo{
         padding: 0.5rem;
     }
     .main-section-with-functionalities {
-        padding: 4.4375rem 10% 4.1875rem 10.09%;
-        font-size: 1.50rem;
-        font-weight: 400;
+        padding: 4.4375rem 10% 4.1875rem 10.09%;;
     }
     .news-and-circular-indicator {
         margin: 1.5rem 2.75rem;
@@ -266,23 +276,21 @@ footer .collagelogo{
         font-weight: 600;
     }
     .news-container .news {
-        padding: 0.5rem 25rem;
+        padding-left: 3.5rem;
+        padding-right: 3.5rem;
         display: grid;
-        grid-template-columns: 0.2fr 3fr 0.2fr;
+        grid-template-columns: 1fr 3fr 0.5fr;
         column-gap: 3rem;
     }
-    .news-container .news .date {
-        font-size: 1rem;
-    }    
-    .news-container .news .content {
-        font-size: 0.75rem;
 
+    .news-container .news .content {
+        text-align: center;
     }
     
     .news-container .news .view-btn {
         padding: 0.5rem 1.5rem;
-        font-size:1rem;
-       }
+        text-align: center;
+    }
     
     
 }

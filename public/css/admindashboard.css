@@ -36,7 +36,6 @@ header {
 header .logo {
     height: 80px;
     width: 80px;
-    margin-left: 40px;
     border: 1px solid #3e3e3e;
     border-radius: 100px;
 }
@@ -152,3 +151,4 @@ header .student-name {
     align-items: center;
     justify-content: space-between;
 }
+
