@@ -8,6 +8,7 @@
     right: 0;
     left: 0;
     bottom : 0;
+    background: #cfcfcf73;
 }
 
 
@@ -15,13 +16,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #cfcfcf73;
     height: 100vh;
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
 }
 
-.flex {
-    display: flex;
-    align-items: center;
+.container-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
     border: 2px solid #cecece;
     background: #ffffff;
     border-radius: 5px;
@@ -32,21 +35,24 @@
     padding: 2rem;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 2rem;
-    row-gap: 2rem;
+    row-gap: 1rem;
     background: #ffffff;
     position: relative;
 }
 
+
+
 .fee-details-popup .grid {
-    display: grid;
+    display: grid;  
     padding: 2rem 2rem 3rem 2rem;
     grid-template-columns: repeat(4, 1fr);
     border: 2px solid #cecece;
     border-radius: 5px;
 }
 
+
 .documents-pop-up .grid {
-    padding: 2rem 2rem 3rem 2rem;
+    padding: 2rem 2rem 4rem 2rem;
     border: 2px solid #cecece;
     border-radius: 5px;
 }
@@ -74,24 +80,34 @@
     font-weight: 600;
 }
 
-.close-btn {
-    align-self: flex-start;
-    padding-top: 1rem;
-    padding-right: 1rem;
-}
 
-
-
-.close-btn-container {
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
-}
 
 .cta-container {
     position: absolute;
-    bottom: 0.5rem;
+    bottom: 0rem;
+    left: 0;
+    right: 0;
+    padding: 0.5rem 2rem 0.3rem 2rem;
+    display: flex;
+    justify-content: space-around;
 }
+
+.cta-container input {
+    padding: 0.2rem 1rem;
+    background: white;
+    outline: none;
+    font-size: 1rem;
+    border: 1px solid #010081;
+    color: #010081;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cta-container input:hover {
+    color: #ffffff;
+    background: #010081;
+}
+
 
 
 

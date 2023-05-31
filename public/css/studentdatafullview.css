@@ -4,16 +4,16 @@
 
 .data-table .row {
     display: grid;
-    grid-template-columns: 6fr 3fr;
+    grid-template-columns: 5fr 3fr;
 }
 
 
 .data-table button {
     cursor: pointer;
-    padding: 0.5rem 1.25rem;
+    padding: 0.25rem 1rem;
     outline: none;
     font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
+    font-size: 0.75rem;
     color: #010081;
     border: 2px solid #010081;
     border-radius: 4px;
@@ -38,14 +38,16 @@
 
 
 .data-table .one {
-    padding-top: 0.625rem;
+    padding-top: 0.1rem;
     display: grid;
-    grid-template-columns: 0.5fr 1fr 1fr 2fr 1fr 1fr;
+    grid-template-columns: 0.5fr 0.5fr 2fr 0.5fr 1.5fr 1fr;
 }
 
 .data-table .one .Id, 
-.data-table .one .name {
+.data-table .one .name,
+.data-table .one .batch {
     font-weight: 600;
+    text-align: center;
 }
 
 .no-data-available {
@@ -54,4 +56,22 @@
     justify-content: center;
     align-items: center;
     font-size: 2.5rem;
+}
+
+.fee-details-popup a:hover,
+.documents-pop-up a:hover {
+    cursor: pointer;
+}
+
+.fee-details-popup .two span {
+    color: limegreen;
+}
+
+.fee-details-popup .three span {
+    color: red;
+}
+
+.fee-details-popup .modal .verified-data-grid,
+.documents-pop-up .modal .verified-data-grid {
+    padding: 2rem;
 }

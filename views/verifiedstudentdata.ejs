@@ -92,10 +92,26 @@
   <% if (studentData.length !==0) { %>
   <table class="data-table">
     <% studentData.forEach((student, index)=> { %>
+      <tr class="row">
+        <td class="column one">
+          <span class="index">Index</span> <span class="Id">ID</span> <span class="name">Name</span> 
+            <span class="branch">Branch</span>
+          <span class="batch">Batch</span> <span class="year">Year</span>
+        </td>
+        <td class="column two"></td>
+      </tr>
     <tr class="row">
       <td class="column one">
         <span class="index"><%= index + 1 %></span>
-        <span class="Id"><%= student.ID %></span> <span class="name"><%= student.Name %></span> <span class="branch"><%= student.Branch %></span> <span class="batch"><%= student.batch %></span> <span class="year"><%= student.Year %>
+        <span class="Id"><%= student.ID %></span> <span class="name"><%= student.Name %></span> 
+        <% if (student.Branch === "Electrical Engineering") { %>
+          <span class="branch">E.E.</span>
+        <% } else if(student.Branch === "Electronics Engineering") { %>
+          <span class="branch">E.L.</span>
+        <% } else { %>
+          <span class="branch">C.S.E</span>
+        <% } %>
+        <span class="batch"><%= student.batch %></span> <span class="year"><%= student.Year %>
         %></span>
       </td>
       <td class="column two">
@@ -115,10 +131,26 @@
   <% if (studentData.length !==0) { %>
   <table class="data-table">
     <% studentData.forEach((student, index)=> { %>
+      <tr class="row">
+        <td class="column one">
+          <span class="index">Index</span> <span class="Id">ID</span> <span class="name">Name</span> 
+            <span class="branch">Branch</span>
+          <span class="batch">Batch</span> <span class="year">Year</span>
+        </td>
+        <td class="column two"></td>
+      </tr>
     <tr class="row">
       <td class="column one">
         <span class="index"><%= index + 1 %></span>
-        <span class="Id"><%= student.ID %></span> <span class="name"><%= student.Name %></span> <span class="branch"><%= student.Branch %></span> <span class="batch"><%= student.batch %></span> <span class="year"><%= student.Year %> %></span>
+        <span class="Id"><%= student.ID %></span> <span class="name"><%= student.Name %></span> 
+        <% if (student.Branch === "Electrical Engineering") { %>
+          <span class="branch">E.E.</span>
+        <% } else if(student.Branch === "Electronics Engineering") { %>
+          <span class="branch">E.L.</span>
+        <% } else { %>
+          <span class="branch">C.S.E</span>
+        <% } %>
+        <span class="batch"><%= student.batch %></span> <span class="year"><%= student.Year %> %></span>
       </td>
       <td class="column two">
         <div class="btn-container">
@@ -143,9 +175,25 @@
   <% if (studentData.length !==0) { %>
   <table class="data-table">
     <% studentData.forEach((student, index)=> { %>
+      <tr class="row">
+        <td class="column one">
+          <span class="index">Index</span> <span class="Id">ID</span> <span class="name">Name</span> 
+            <span class="branch">Branch</span>
+          <span class="batch">Batch</span> <span class="year">Year</span>
+        </td>
+        <td class="column two"></td>
+      </tr>
     <tr class="row">
       <td class="column one">
-        <span class="index"><%= index + 1 %></span> <span class="Id"><%= student.ID %></span> <span class="name"><%= student.Name %></span> <span class="branch"><%= student.Branch %></span> <span class="batch"><%= student.batch %></span> <span class="year"><%= student.Year %> %></span>
+        <span class="index"><%= index + 1 %></span> <span class="Id"><%= student.ID %></span> <span class="name"><%= student.Name %>
+          <% if (student.Branch === "Electrical Engineering") { %>
+            <span class="branch">E.E.</span>
+          <% } else if(student.Branch === "Electronics Engineering") { %>
+            <span class="branch">E.L.</span>
+          <% } else { %>
+            <span class="branch">C.S.E</span>
+          <% } %>
+        </span> <span class="batch"><%= student.batch %></span> <span class="year"><%= student.Year %> %></span>
       </td>
       <td class="column two">
         <div class="btn-container">
@@ -166,7 +214,7 @@
 
   <div class="fee-details-popup">
     <div class="modal">
-      <div class="grid">
+      <div class="grid verified-data-grid">
         <div class="column one">
           <label for="fee-type">Fee Type</label>
           <label for="academic-fee">Academic Fee</label>
@@ -207,16 +255,13 @@
             <a class="maintenance-fee-file" target="_blank">view file</a>
           </div>
         </div>
-        <div class="close-btn-container">
-          <button class="close-fee-details-btn">X</button>
-        </div>
       </div>
     </div>
   </div>
 
   <div class="pop-up">
     <div class="modal">
-      <div class="flex">
+      <div class="container-grid">
         <div class="grid">
           <label for="field"> Gender: </label>
           <span class="Gender"></span>
@@ -280,16 +325,13 @@
           <label for="field"> Room Number: </label>
           <span class="roomno"></span>
         </div>
-        <div class="btn-container close-btn">
-          <button class="close">close</button>
-        </div>
       </div>
     </div>
   </div>
 
   <div class="documents-pop-up">
     <div class="modal">
-      <div class="grid">
+      <div class="grid verified-data-grid">
         <div class="column one">
           <label for="photo-file">Student Photo: </label>
           <label for="income-file">Income: </label>
@@ -324,9 +366,6 @@
             <a class="category-file" target="_blank">view file</a>
           </div>
         </form>
-        <div class="close-btn-container">
-          <button class="close-view-documents-btn">X</button>
-        </div>
       </div>
     </div>
   </div>

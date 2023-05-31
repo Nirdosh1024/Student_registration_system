@@ -2,12 +2,11 @@
 
 const dataTable = document.querySelector(".data-table");
 const popup = document.querySelector(".pop-up");
-const closebtn = document.querySelector(".close");
 const hostelDetailsPopup = document.querySelector(".hostel-details-pop-up")
-const closeViewDocumentsBtn = document.querySelector(".close-view-documents-btn")
+
 
 const feeDetailsPopup = document.querySelector(".fee-details-popup");
-const closeFeeDetailsBtn = document.querySelector(".close-fee-details-btn");
+
 
 const sgender = document.querySelector(".Gender")
 const sdob = document.querySelector(".DOB");
@@ -20,7 +19,7 @@ const smothername = document.querySelector(".motherName");
 const sparentphn = document.querySelector(".parentphn");
 const sparentemail = document.querySelector(".parentEmail");
 const scategory = document.querySelector(".category");
-const sincome = document.querySelector(".address");
+const sincome = document.querySelector(".income");
 const sgaurdian = document.querySelector(".gaurdian");
 const sgaurdianphn = document.querySelector(".gaurdianphn");
 const sgaurdaddress = document.querySelector(".gaurdianaddress");
@@ -113,8 +112,8 @@ dataTable.addEventListener("click", async (e) => {
         sgaurdianphn.textContent = resData.gaurdianphn;
         sgaurdaddress.textContent = resData.gaurdianadd;
         sjeerank.textContent = resData.jeerank;
-        sjeepercent.textContent = resData.sjeepercent;
-        const result = resData.hosteler === "true" ? "Yes" : "No"
+        sjeepercent.textContent = resData.jeepercent;
+        const result = resData.hosteler === true ? "Yes" : "No"
         shosteler.textContent = result;
         sroomno.textContent = resData.roomno;
     }
@@ -306,19 +305,18 @@ dataTable.addEventListener("click", async (e) => {
 
 
 
-closeFeeDetailsBtn.addEventListener("click", () => {
-    feeDetailsPopup.style.display = "none";
-    window.location.reload();
-})
-
-closeViewDocumentsBtn.addEventListener("click", () => {
-    documentPopup.style.display = "none";
-    window.location.reload();
-})
-
-
-closebtn.addEventListener("click", (e) => {
-    popup.style.display = "none";
+document.addEventListener("click", (e) => {
+    if(e.target.matches(".modal") || e.target.matches(".pop-up")) {
+        popup.style.display = "none";
+    }
+    if(e.target.matches(".modal") || e.target.matches(".fee-details-popup")) {
+        feeDetailsPopup.style.display = "none";
+        window.location.reload();
+    }
+    if(e.target.matches(".modal") || e.target.matches(".documents-pop-up")) {
+        documentPopup.style.display = "none";
+        window.location.reload();
+    }
 })
 
 

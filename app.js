@@ -403,11 +403,11 @@ app.get("/viewdata", ensureAuthenticated, async (req, res) => {
 
   const subData = await newStudentModel.find({ accept_terms: true });
 
-  const filteredDataForAccounts = subData.filter((data, index) => !data.verified_by_accounts || data.rejected_by_accounts)
+  const filteredDataForAccounts = subData.filter((data, index) => !data.verified_by_accounts && !data.rejected_by_accounts)
 
-  const filteredDataForRECDeanAcad = subData.filter((data, index) => !data.verified_by_dean_acad || data.rejected_by_dean_acad)
+  const filteredDataForRECDeanAcad = subData.filter((data, index) => !data.verified_by_dean_acad && !data.rejected_by_dean_acad)
 
-  const filteredDataForWardens = subData.filter((data, index) => !data.verified_by_warden || data.rejected_by_warden)
+  const filteredDataForWardens = subData.filter((data, index) => !data.verified_by_warden && !data.rejected_by_warden)
 
   if (role === "RECAccounts") {
     res.render("studentDataFullView", {
@@ -504,6 +504,8 @@ app.get("/viewdata/viewmore", ensureAuthenticated, async (req, res) => {
   const id = req.query.id;
 
   const student = await newStudentModel.findOne({ ID: id })
+
+
   const datatoviewmore = {
     gender: student.gender,
     dob: student.DOB,
@@ -533,8 +535,14 @@ app.get("/viewdata/viewmore", ensureAuthenticated, async (req, res) => {
 app.get("/viewdata/viewFeeDetails", ensureAuthenticated, async (req, res) => {
   const id = req.query.id;
 
-  const student = await unverifiedData.findOne({ ID: id });
+  let student;
   const user = await newStudentModel.findOne({ ID: id });
+
+  if(user.data_validated_by_admin === 2) {
+    student = await newStudentModel.findOne({ ID: id });
+  } else {
+    student = await unverifiedData.findOne({ ID: id });
+  }
 
   const documentObject = {}
 
@@ -559,7 +567,15 @@ app.get("/viewdata/viewFeeDetails", ensureAuthenticated, async (req, res) => {
 app.get("/viewdata/viewDocuments", ensureAuthenticated, async (req, res) => {
   const id = req.query.id;
 
-  const student = await unverifiedData.findOne({ ID: id });
+  const user = await newStudentModel.findOne({ ID: id });
+
+  let student; 
+
+  if(user.data_validated_by_admin === 2) {
+    student = await newStudentModel.findOne({ ID: id })
+  } else {
+    student = await unverifiedData.findOne({ ID: id });
+  }
 
   const documentObject = {}
 
@@ -592,7 +608,15 @@ app.get("/viewdata/viewHostelDetails", ensureAuthenticated, async (req, res) => 
   const { id } = req.query;
 
   const student = await newStudentModel.findOne({ ID: id });
-  const user = await unverifiedData.findOne({ ID: id });
+
+  let user;
+
+  if(student.data_validated_by_admin === 2) {
+    user = await newStudentModel.findOne({ ID: id })
+  } else {
+    user = await unverifiedData.findOne({ ID: id });
+  }
+  
 
   const messFeeReceipt = user.document.filter(doc => doc.doc_name === "messfee_receipt")[0];
 

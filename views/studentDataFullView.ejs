@@ -89,10 +89,28 @@
     <% if(collections.length !== 0) { %>
     <table class="data-table">
       <% collections.forEach((collection, index) => { %>
+
+      <tr class="row">
+        <td class="column one">
+          <span class="index">Index</span> <span class="Id">ID</span> <span class="name">Name</span> 
+            <span class="branch">Branch</span>
+          <span class="batch">Batch</span> <span class="year">Year</span>
+        </td>
+        <td class="column two"></td>
+      </tr>
+
       <tr class="row">
         <td class="column one">
           <span class="index"><%= index + 1 %></span> <span class="Id"><%= collection.ID %></span> <span class="name"><%= collection.Name
-          %></span> <span class="branch"><%= collection.Branch %></span> <span class="batch"><%= collection.batch %></span> <span class="year"><%=
+          %></span> 
+            <% if (collection.Branch === "Electrical Engineering") { %>
+              <span class="branch">E.E.</span>
+            <% } else if(collection.Branch === "Electronics Engineering") { %>
+              <span class="branch">E.L.</span>
+            <% } else { %>
+              <span class="branch">C.S.E</span>
+            <% } %>
+          <span class="batch"><%= collection.batch %></span> <span class="year"><%=
           collection.Year %> %></span>
         </td>
         <td class="column two">
@@ -133,7 +151,7 @@
 
     <div class="pop-up">
       <div class="modal">
-        <div class="flex">
+        <div class="container-grid">
           <div class="grid">
               
                   <label for="field"> Gender: </label>
@@ -215,9 +233,6 @@
                   <label for="field"> Room Number: </label>
                   <span class="roomno"></span>
           </div>
-          <div class="btn-container close-btn">
-            <button class="close">close</button>
-          </div>
         </div>
       </div>
   </div>
@@ -271,9 +286,6 @@
             <input type="submit" value="Submit" class="submitted-by-accounts">
           </div>
         </form>
-        <div class="close-btn-container">
-          <button class="close-fee-details-btn">X</button>
-        </div>
       </div>
     </div>
   </div> 
@@ -319,9 +331,6 @@
             <input type="submit" value="Submit"class="submitted-by-dean-acad">
           </div>
         </form>
-        <div class="close-btn-container">
-          <button class="close-view-documents-btn">X</button>
-        </div>
       </div>
     </div>
   </div>
@@ -351,7 +360,6 @@
             <input type="submit" value="Reject" class="rejected-by-warden">
             <input type="submit" value="Submit" class="submitted-by-warden"> 
           </div>
-          
         </form>
       </div>
     </div>
