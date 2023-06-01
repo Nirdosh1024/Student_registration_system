@@ -63,22 +63,22 @@ header .college-name h5 {
 }
 
 
-header .student-name {
+/* header .student-name {
     display: flex;
     margin-left: 50px;
     gap: 10px;
-}
+} */
 
 .header .admin-name {
     display: flex;
     background-color: red;
 }
 
-.student-name {
+/* .student-name {
     font-size: 14px;
     height: 30px;
     border: 0 solid white;
-}
+} */
 
 .icon {
     width: 30px;
