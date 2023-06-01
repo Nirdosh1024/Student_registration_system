@@ -311,8 +311,15 @@ app.get("/status", ensureAuthenticated, async (req, res) => {
 })
 
 
-app.get("/layout", ensureAuthenticated, (req, res) => {
-  res.render("layout")
+app.get("/layout", ensureAuthenticated, async (req, res) => {
+  const id = req.session.passport.user._id;
+  const admin = await Admin.findById(id)
+
+  const role = admin.ID;
+
+  res.render("layout",{
+    role :role
+  })
 })
 
 app.post("/login", (req, res, next) => {
@@ -363,12 +370,27 @@ app.get("/admindashboard", ensureAuthenticated, async (req, res) => {
   res.render("admindashboard", { dataToBePassedToView });
 })
 
-app.get("/adminfeeform", ensureAuthenticated, (req, res) => {
-  res.render("adminfeeform");
+app.get("/adminfeeform", ensureAuthenticated, async (req, res) => {
+  const id = req.session.passport.user._id;
+  const admin = await Admin.findById(id)
+
+  const role = admin.ID;
+
+  res.render("adminfeeform", {
+    role : role
+  });
+
 })
 
-app.get("/adminupdate", ensureAuthenticated, (req, res) => {
-  res.render("adminUpdate")
+app.get("/adminupdate", ensureAuthenticated, async (req, res) => {
+  const id = req.session.passport.user._id;
+  const admin = await Admin.findById(id)
+
+  const role = admin.ID;
+
+  res.render("adminUpdate", {
+    role : role
+  })
 })
 // app.post("/adminfeeform", (req,res) => {
 //   res.json({ status: "OKAY" });
@@ -376,6 +398,7 @@ app.get("/adminupdate", ensureAuthenticated, (req, res) => {
 
 app.post("/adminupdate", ensureAuthenticated, async (req, res) => {
   const updateObj = req.body
+
 
   console.log(req.body)
   if (req.body) {
