@@ -88,8 +88,6 @@
     <div class="data-populated">
     <% if(collections.length !== 0) { %>
     <table class="data-table">
-      <% collections.forEach((collection, index) => { %>
-
       <tr class="row">
         <td class="column one">
           <span class="index">Index</span> <span class="Id">ID</span> <span class="name">Name</span> 
@@ -98,6 +96,7 @@
         </td>
         <td class="column two"></td>
       </tr>
+      <% collections.forEach((collection, index) => { %>
 
       <tr class="row">
         <td class="column one">
@@ -300,7 +299,7 @@
           <label for="highschool-marksheet-file">High School Marksheet: </label>
           <label for="inter-marksheet-file">Inter Marksheet</label>
           <label for="enrollment-letter-file">Enrollment Letter: </label>
-          <label for="category-file">Category Certificate: </label>
+          <label for="category-file" class="label-for-category-file">Category Certificate: </label>
         </div>
 
         <form class="column two status-from-dean-acad">

@@ -598,7 +598,8 @@ app.get("/viewdata/viewDocuments", ensureAuthenticated, async (req, res) => {
 
 
   const dataToViewDocuments = {
-    document: documentObject
+    document: documentObject,
+    category: user.category
   }
 
   res.send(dataToViewDocuments)
@@ -708,7 +709,7 @@ app.post("/statusfromdeanacad", ensureAuthenticated, async (req, res) => {
     user.document.filter((doc, index) => doc.doc_name === 'enrollment_letter')[0].verified = true;
   }
 
-  if (categoryVerified) {
+  if (categoryVerified && student.category !== "General") {
     user.document.filter((doc, index) => doc.doc_name === 'category_file')[0].verified = true;
   }
 

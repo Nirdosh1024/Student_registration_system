@@ -102,6 +102,13 @@ router.post("/", upload, async (req, res) => {
          verified : false
       })
    })
+
+   fileArray.forEach((document, index) => {
+      if(document.doc_name === "category_file" && category === "General") {
+         document.verified = true;
+      }
+   })
+   
    console.log(fileArray)
 
 
@@ -154,10 +161,7 @@ router.post("/", upload, async (req, res) => {
       const unverifiedUser = await unverifedData.create({
          ID : enrollment_number,
          fees : feeDetail,
-         document : fileArray,
-         verified_by_admissionCell : false,
-         verified_by_accounts : false,
-         verified_by_warden : false
+         document : fileArray
       }).then(() => {
          console.log("user data is saved in unverified database")
       }).catch((err) => {

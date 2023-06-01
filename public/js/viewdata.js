@@ -74,12 +74,9 @@ const messFeeFile = document.querySelector(".mess-fee-file-for-hostel-verificati
 const submittedByWarden = document.querySelector(".submitted-by-warden");
 const rejectedByWarden = document.querySelector(".rejected-by-warden");
 
-console.log(submittedByAccounts)
-console.log(rejectedByAccounts)
-console.log(submittedByDeanAcad)
-console.log(rejectedByDeanAcad)
-console.log(submittedByWarden)
-console.log(rejectedByWarden)
+// category field handling based on category of the student
+const labelForCategoryField = document.querySelector(".label-for-category-file");
+const categoryFileStatusContainer = document.querySelector(".category-file-status-container");
 
 dataTable.addEventListener("click", async (e) => {
     if (e.target.classList.contains("view-more-btn")) {
@@ -196,6 +193,11 @@ dataTable.addEventListener("click", async (e) => {
         const resData = axiosResponse.data;
         documentPopup.style.display = "block";
 
+        if(resData.category === "General") {
+            labelForCategoryField.style.display = "none";
+            categoryFileStatusContainer.style.display = "none";
+        }
+
         documentPopup.addEventListener("click", (e) => {
                 photoFile.href = `/viewdata/viewdetails/filepreview?path=${encodeURIComponent(resData.document.photofileObject.filepath)}`
 
@@ -209,7 +211,9 @@ dataTable.addEventListener("click", async (e) => {
 
                 enrollmentLetterFile.href = `/viewdata/viewdetails/filepreview?path=${encodeURIComponent(resData.document.enrollmentletterfileObject.filepath)}`
 
-                categoryFile.href = `/viewdata/viewdetails/filepreview?path=${encodeURIComponent(resData.document.categoryfileObject.filepath)}`
+                if(resData.category !== "General") {
+                    categoryFile.href = `/viewdata/viewdetails/filepreview?path=${encodeURIComponent(resData.document.categoryfileObject.filepath)}`
+                } 
         })
 
         submittedByDeanAcad.addEventListener("click", async (e) => {
